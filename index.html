@@ -3,77 +3,403 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jayunboxes | Tech & Unboxings</title>
+  <title>Jay • Tech & AI | @jayunboxes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --heading: #f0f6fc;
+      --bg-dark: #090a0f;
+      --card-bg: rgba(22, 27, 34, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
       --accent: #58a6ff;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --badge-bg: #21262d;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 2rem 1rem;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(88, 166, 255, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 60px;
     }
-    .container { max-width: 680px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 2.5rem; }
-    h1 { color: var(--heading); font-size: 2rem; margin-bottom: 0.25rem; }
-    p.tagline { color: #8b949e; font-size: 1rem; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
     }
-    h2 { color: var(--heading); font-size: 1.1rem; margin-bottom: 0.75rem; }
-    .links a {
-      display: block;
-      background: #21262d;
-      color: var(--accent);
+
+    /* Banner & Header */
+    .banner {
+      width: 100%;
+      background: #f4efe6;
+      border-radius: 18px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #111;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .banner img {
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .profile-card {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: -10px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      margin-bottom: 12px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid #8b5cf6;
+      background: #1f2937;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: #8b5cf6;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      border: 2px solid var(--bg-dark);
+    }
+
+    .profile-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .verified-icon {
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    .handle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: #c9d1d9;
+      max-width: 420px;
+    }
+
+    /* Highlights Section */
+    .highlights-row {
+      display: flex;
+      justify-content: space-between;
+      overflow-x: auto;
+      padding: 6px 0;
+      gap: 12px;
+    }
+
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
       text-decoration: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      transition: background 0.2s;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      min-width: 64px;
     }
-    .links a:hover { background: #30363d; }
-    footer { text-align: center; color: #8b949e; font-size: 0.85rem; margin-top: 3rem; }
+
+    .highlight-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .highlight-item:hover .highlight-circle {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    /* Quick Grid Cards */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .grid-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .grid-card i {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .grid-card h3 {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .grid-card p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .grid-card:hover {
+      border-color: rgba(88, 166, 255, 0.4);
+      transform: translateY(-2px);
+      background: rgba(30, 38, 48, 0.8);
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: -10px;
+      color: var(--text-main);
+    }
+
+    /* Action / Link Cards */
+    .link-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .link-card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      background: var(--badge-bg);
+    }
+
+    .icon-yt { color: #ff0000; background: rgba(255, 0, 0, 0.1); }
+    .icon-ig { color: #e1306c; background: rgba(225, 48, 108, 0.1); }
+    .icon-mail { color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
+
+    .link-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .link-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .link-arrow {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .link-card:hover {
+      border-color: rgba(88, 166, 255, 0.35);
+      background: rgba(30, 38, 48, 0.8);
+      transform: translateX(2px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <header>
-      <h1>jayunboxes</h1>
-      <p class="tagline">Tech Reviews • Unboxings • Setups</p>
-    </header>
 
-    <div class="card">
-      <h2>Social & Channels</h2>
-      <div class="links">
-        <a href="https://instagram.com" target="_blank">Instagram (@jayunboxes)</a>
-        <a href="https://youtube.com" target="_blank">YouTube Channel</a>
+    <!-- Top Branded Header -->
+    <div class="banner">
+      <span>📱</span>
+      <span>Jayunboxes</span>
+      <span>🎧</span>
+    </div>
+
+    <!-- Profile Header -->
+    <div class="profile-card">
+      <div class="avatar-wrapper">
+        <img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&h=200&q=80" alt="Jay Profile Photo">
+        <div class="status-badge"><i class="fa-solid fa-plus" style="color: white;"></i></div>
+      </div>
+      <h1 class="profile-name">Jay • Tech & AI <i class="fa-solid fa-circle-check verified-icon"></i></h1>
+      <p class="handle">@jayunboxes</p>
+      <div class="bio">
+        <p>Tech & AI without the BS ⚡</p>
+        <p>Apps • Gadgets • Hidden features</p>
+        <p>Tech actually worth knowing 👇 | Mumbai 🇮🇳</p>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Contact & Collabs</h2>
-      <p style="font-size: 0.95rem;">For review units, business inquiries, or collaborations:</p>
-      <div class="links" style="margin-top: 0.75rem;">
-        <a href="mailto:your-email@example.com">Send an Email</a>
-      </div>
+    <!-- Instagram-style Highlights -->
+    <div class="highlights-row">
+      <a href="#" class="highlight-item">
+        <div class="highlight-circle"><i class="fa-solid fa-image"></i></div>
+        <span>Wallpapers</span>
+      </a>
+      <a href="#" class="highlight-item">
+        <div class="highlight-circle"><i class="fa-solid fa-desktop"></i></div>
+        <span>Setups</span>
+      </a>
+      <a href="#" class="highlight-item">
+        <div class="highlight-circle"><i class="fa-solid fa-code"></i></div>
+        <span>AI Tools</span>
+      </a>
+      <a href="#" class="highlight-item">
+        <div class="highlight-circle"><i class="fa-solid fa-user"></i></div>
+        <span>About me</span>
+      </a>
+      <a href="#" class="highlight-item">
+        <div class="highlight-circle"><i class="fa-brands fa-youtube"></i></div>
+        <span>YouTube</span>
+      </a>
     </div>
+
+    <!-- Top Focus Grid Cards -->
+    <div class="category-grid">
+      <a href="#" class="grid-card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Tech & AI Tips</h3>
+        <p>Shortcuts & Guides</p>
+      </a>
+      <a href="#" class="grid-card">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>Unboxings</h3>
+        <p>New Gear & Gadgets</p>
+      </a>
+      <a href="#" class="grid-card">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h3>iOS & Android</h3>
+        <p>Hidden Features</p>
+      </a>
+    </div>
+
+    <!-- Direct Channel & Collab Links -->
+    <h2 class="section-title">Connect & Watch</h2>
+
+    <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="link-card">
+      <div class="link-card-left">
+        <div class="link-icon icon-yt"><i class="fa-brands fa-youtube"></i></div>
+        <div class="link-info">
+          <h4>YouTube Shorts & Videos</h4>
+          <p>Watch full reviews and quick tips</p>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right link-arrow"></i>
+    </a>
+
+    <a href="https://instagram.com/jayunboxes" target="_blank" class="link-card">
+      <div class="link-card-left">
+        <div class="link-icon icon-ig"><i class="fa-brands fa-instagram"></i></div>
+        <div class="link-info">
+          <h4>Instagram (@jayunboxes)</h4>
+          <p>Daily tech reels, AI workflows & setups</p>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right link-arrow"></i>
+    </a>
+
+    <a href="mailto:contact@jayunboxes.com" class="link-card">
+      <div class="link-card-left">
+        <div class="link-icon icon-mail"><i class="fa-solid fa-envelope"></i></div>
+        <div class="link-info">
+          <h4>Business & Collabs</h4>
+          <p>For review units and brand inquiries</p>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-right link-arrow"></i>
+    </a>
 
     <footer>
-      <p>© 2026 jayunboxes. Hosted on GitHub Pages.</p>
+      <p>© 2026 jayunboxes • Hosted on GitHub Pages</p>
     </footer>
+
   </div>
+
 </body>
 </html>
