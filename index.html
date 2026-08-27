@@ -3,115 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jay • Tech & AI | Futuristic Showcase</title>
+  <title>Jay • Tech & AI | @jayunboxes</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      --bg-base: #05070f;
-      --card-bg: rgba(18, 22, 34, 0.65);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --cyan-glow: #00f2fe;
-      --purple-glow: #8a2be2;
-      --neon-blue: #4facfe;
-      --text-white: #ffffff;
-      --text-dim: #94a3b8;
+      --bg-gradient: radial-gradient(circle at 15% 15%, #181d36 0%, #08090d 100%);
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-card: rgba(255, 255, 255, 0.05);
+      --glass-card-hover: rgba(255, 255, 255, 0.09);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-border-highlight: rgba(255, 255, 255, 0.28);
+      --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      
+      --accent-cyan: #00f2fe;
+      --accent-purple: #7928ca;
+      --accent-magenta: #ff0080;
+      
+      --text-main: #ffffff;
+      --text-sub: rgba(255, 255, 255, 0.65);
+      --text-dim: rgba(255, 255, 255, 0.45);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background-color: var(--bg-base);
-      color: var(--text-white);
+      background: #08090d;
+      background-image: var(--bg-gradient);
+      color: var(--text-main);
       min-height: 100vh;
-      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px 80px;
       position: relative;
+      overflow-x: hidden;
     }
 
-    /* Interactive Background Canvas */
-    #particle-canvas {
+    /* Vibrant Ambient Mesh Glows */
+    .ambient-glow {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      border-radius: 50%;
+      filter: blur(120px);
       pointer-events: none;
       z-index: 0;
+      opacity: 0.55;
+      animation: floatGlow 14s infinite alternate ease-in-out;
+    }
+    .glow-1 {
+      width: 420px;
+      height: 420px;
+      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-purple));
+      top: -80px;
+      left: -120px;
+    }
+    .glow-2 {
+      width: 480px;
+      height: 480px;
+      background: linear-gradient(135deg, var(--accent-cyan), #0070f3);
+      bottom: 5%;
+      right: -140px;
+      animation-duration: 18s;
+      animation-delay: -4s;
+    }
+    .glow-3 {
+      width: 320px;
+      height: 320px;
+      background: #4facfe;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.25;
     }
 
-    .wrapper {
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(0.9); }
+      100% { transform: translate(60px, 40px) scale(1.15); }
+    }
+
+    /* Main Container */
+    .container {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
+      width: 100%;
+      max-width: 660px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
     }
 
-    /* Ambient Glow Spots */
-    .glow-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-      opacity: 0.35;
-      animation: pulseGlow 8s infinite alternate ease-in-out;
-    }
-    .glow-1 { width: 350px; height: 350px; background: var(--cyan-glow); top: -100px; left: -100px; }
-    .glow-2 { width: 400px; height: 400px; background: var(--purple-glow); bottom: 20%; right: -150px; animation-duration: 11s; }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(0.8) translate(0, 0); opacity: 0.25; }
-      100% { transform: scale(1.2) translate(30px, 30px); opacity: 0.45; }
+    /* Core Glassmorphic Frame */
+    .glass-box {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--glass-shadow), inset 0 1px 1px var(--glass-border-highlight);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
     }
 
-    /* Glassmorphism Card System */
-    .glass-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 28px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .glass-panel:hover {
-      border-color: rgba(0, 242, 254, 0.3);
-      box-shadow: 0 25px 50px rgba(0, 242, 254, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    /* Dynamic Hero Section */
-    .hero {
+    /* Header Profile Layout */
+    .profile-section {
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
-      padding: 40px 20px;
-    }
-
-    .avatar-container {
       position: relative;
-      width: 120px;
-      height: 120px;
     }
 
-    .avatar-ring {
+    .avatar-wrapper {
+      position: relative;
+      width: 106px;
+      height: 106px;
+      margin-bottom: 18px;
+    }
+
+    .avatar-glow {
       position: absolute;
-      inset: -4px;
+      inset: -3px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
-      animation: spin 5s linear infinite;
-      z-index: 1;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-magenta));
+      animation: rotateGlow 6s linear infinite;
+      filter: blur(3px);
     }
 
     .avatar-img {
@@ -120,473 +139,381 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      z-index: 2;
-      border: 4px solid var(--bg-base);
+      border: 3px solid rgba(8, 9, 13, 0.85);
+      z-index: 1;
     }
 
-    .hero-badge {
+    @keyframes rotateGlow {
+      100% { transform: rotate(360deg); }
+    }
+
+    .verified-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid rgba(0, 242, 254, 0.25);
-      color: var(--cyan-glow);
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: 0.8rem;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      animation: floatBadge 3s ease-in-out infinite alternate;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
+    h1.brand-title {
+      font-size: 2.1rem;
       font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #fff 40%, var(--cyan-glow));
+      letter-spacing: -0.5px;
+      background: linear-gradient(180deg, #ffffff 60%, rgba(255, 255, 255, 0.7));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
     }
 
-    .hero p {
+    .brand-handle {
       color: var(--text-dim);
-      font-size: 1.05rem;
-      max-width: 520px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .brand-bio {
+      color: var(--text-sub);
+      font-size: 0.95rem;
       line-height: 1.5;
+      max-width: 480px;
     }
 
-    /* Highlights Row with Pulse Rings */
-    .stories-container {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
+    .brand-bio span.highlight {
+      color: #ffffff;
+      font-weight: 600;
     }
 
-    .story-item {
+    /* Highlight Quick-Bubbles */
+    .highlights-shelf {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .highlight-pill {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      color: var(--text-dim);
-      font-size: 0.78rem;
+      color: var(--text-sub);
+      font-size: 0.72rem;
       font-weight: 500;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
-    .story-circle {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-      border: 1.5px solid var(--card-border);
+    .highlight-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      color: var(--text-white);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .story-item:hover .story-circle {
-      transform: scale(1.1) rotate(5deg);
-      border-color: var(--cyan-glow);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-      color: var(--cyan-glow);
-    }
-
-    .story-item:hover span {
-      color: var(--text-white);
-    }
-
-    /* Video / Showcase Grid */
-    .section-title {
       font-size: 1.25rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
+      color: var(--text-main);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    .section-title i {
-      color: var(--cyan-glow);
+    .highlight-pill:hover .highlight-icon {
+      transform: translateY(-4px);
+      background: var(--glass-card-hover);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.25), inset 0 1px 1px #fff;
+      color: var(--accent-cyan);
     }
 
-    .video-grid {
+    .highlight-pill:hover span {
+      color: var(--text-main);
+    }
+
+    /* Bento Cards Grid */
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
-    .video-card {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--card-border);
-      padding: 16px;
+    .bento-item {
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      cursor: pointer;
+      justify-content: space-between;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-main);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
       transition: all 0.3s ease;
     }
 
-    .video-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--purple-glow);
-      box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
+    .bento-item:hover {
+      background: var(--glass-card-hover);
+      border-color: var(--glass-border-highlight);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     }
 
-    .video-thumb {
-      width: 100%;
-      height: 160px;
-      border-radius: 12px;
-      background: #111522;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .play-button {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-white);
-      font-size: 1.1rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    .video-card:hover .play-button {
-      transform: scale(1.2);
-      background: var(--cyan-glow);
-      color: #000;
-    }
-
-    .video-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--cyan-glow);
-    }
-
-    .video-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    /* Links & Collabs */
-    .links-column {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .action-btn {
-      position: relative;
+    .bento-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .bento-icon-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .bento-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .bento-item p {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    /* Glass Links Shelf */
+    .links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .glass-link-row {
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
       padding: 16px 20px;
-      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       text-decoration: none;
-      color: var(--text-white);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      overflow: hidden;
-      transition: all 0.3s ease;
+      color: var(--text-main);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      transition: all 0.25s ease;
     }
 
-    .action-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .action-btn:hover::before {
-      left: 100%;
-    }
-
-    .action-btn:hover {
-      transform: scale(1.015);
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-left {
+    .link-detail {
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    .btn-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+    .link-symbol {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .yt-icon { background: rgba(255, 0, 0, 0.15); color: #ff3b30; }
-    .ig-icon { background: rgba(225, 48, 108, 0.15); color: #f43f5e; }
-    .mail-icon { background: rgba(0, 242, 254, 0.15); color: var(--cyan-glow); }
+    .sym-yt { background: rgba(255, 0, 0, 0.12); color: #ff4b4b; border-color: rgba(255, 0, 0, 0.25); }
+    .sym-ig { background: rgba(225, 48, 108, 0.12); color: #f43f5e; border-color: rgba(225, 48, 108, 0.25); }
+    .sym-mail { background: rgba(0, 242, 254, 0.12); color: var(--accent-cyan); border-color: rgba(0, 242, 254, 0.25); }
 
-    .btn-meta h4 {
+    .link-texts h4 {
       font-size: 0.95rem;
       font-weight: 600;
     }
 
-    .btn-meta span {
+    .link-texts span {
       font-size: 0.78rem;
-      color: var(--text-dim);
+      color: var(--text-sub);
     }
 
-    /* Keyframe Animations */
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes floatBadge { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
+    .glass-link-row:hover {
+      background: var(--glass-card-hover);
+      border-color: var(--glass-border-highlight);
+      transform: translateX(3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Section Headers */
+    .shelf-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      margin-left: 6px;
+      margin-bottom: -10px;
+    }
 
     /* Footer */
     footer {
       text-align: center;
       color: var(--text-dim);
-      font-size: 0.8rem;
-      margin-top: 20px;
+      font-size: 0.78rem;
+      margin-top: 10px;
     }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.9rem; }
-      .wrapper { padding: 20px 14px 60px; }
-      .glass-panel { padding: 20px; }
+    @media (max-width: 580px) {
+      .container { gap: 18px; }
+      .glass-box { padding: 22px 18px; border-radius: 24px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .highlights-shelf { gap: 8px; }
+      .highlight-icon { width: 50px; height: 50px; font-size: 1.1rem; border-radius: 16px; }
+      h1.brand-title { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Particle Background -->
-  <canvas id="particle-canvas"></canvas>
+  <!-- Blurred Lighting Spheres -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
 
-  <div class="glow-orb glow-1"></div>
-  <div class="glow-orb glow-2"></div>
+  <div class="container">
 
-  <main class="wrapper">
-
-    <!-- Interactive Hero Banner -->
-    <header class="glass-panel hero tilt-card">
-      <div class="avatar-container">
-        <div class="avatar-ring"></div>
-        <img class="avatar-img" src="8AC3A47C-983B-4CFF-8CDB-2873F1B5CBCA.png" alt="Jay Profile">
+    <!-- Hero Identity Box -->
+    <header class="glass-box profile-section">
+      <div class="avatar-wrapper">
+        <div class="avatar-glow"></div>
+        <!-- Update src to your own uploaded image or direct link -->
+        <img class="avatar-img" src="Profile.jpg.PNG" alt="Jay Profile">
       </div>
 
-      <div class="hero-badge">
-        <i class="fa-solid fa-bolt"></i> Tech Creator & Reviewer
+      <div class="verified-badge">
+        <i class="fa-solid fa-sparkles"></i> Tech Creator
       </div>
 
-      <h1>Jay • Tech & AI</h1>
-      <p>Tech & AI without the BS ⚡ Exploring gadgets, hidden smartphone features, camera setups, and workflows that actually save time.</p>
+      <h1 class="brand-title">Jay • Tech & AI</h1>
+      <p class="brand-handle">@jayunboxes</p>
+
+      <div class="brand-bio">
+        Tech & AI without the BS ⚡<br>
+        Deep dives into <span class="highlight">Apple Ecosystem</span>, <span class="highlight">Gadgets</span>, and workflows worth knowing.
+      </div>
     </header>
 
-    <!-- Interactive Story Highlights -->
-    <section class="glass-panel">
-      <div class="stories-container">
-        <a href="https://instagram.com/jayunboxes" target="_blank" class="story-item">
-          <div class="story-circle"><i class="fa-solid fa-image"></i></div>
+    <!-- Highlights Shelf -->
+    <div class="glass-box">
+      <div class="highlights-shelf">
+        <a href="https://instagram.com/jayunboxes" target="_blank" class="highlight-pill">
+          <div class="highlight-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
           <span>Wallpapers</span>
         </a>
-        <a href="https://instagram.com/jayunboxes" target="_blank" class="story-item">
-          <div class="story-circle"><i class="fa-solid fa-desktop"></i></div>
-          <span>Desk Setups</span>
+        <a href="https://instagram.com/jayunboxes" target="_blank" class="highlight-pill">
+          <div class="highlight-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <span>Setups</span>
         </a>
-        <a href="https://instagram.com/jayunboxes" target="_blank" class="story-item">
-          <div class="story-circle"><i class="fa-solid fa-microchip"></i></div>
+        <a href="https://instagram.com/jayunboxes" target="_blank" class="highlight-pill">
+          <div class="highlight-icon"><i class="fa-solid fa-microchip"></i></div>
           <span>AI Tools</span>
         </a>
-        <a href="https://instagram.com/jayunboxes" target="_blank" class="story-item">
-          <div class="story-circle"><i class="fa-solid fa-box"></i></div>
-          <span>Unboxings</span>
+        <a href="https://instagram.com/jayunboxes" target="_blank" class="highlight-pill">
+          <div class="highlight-icon"><i class="fa-solid fa-box-open"></i></div>
+          <span>Unboxing</span>
         </a>
-        <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="story-item">
-          <div class="story-circle"><i class="fa-brands fa-youtube"></i></div>
+        <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="highlight-pill">
+          <div class="highlight-icon"><i class="fa-brands fa-youtube"></i></div>
           <span>Shorts</span>
         </a>
       </div>
-    </section>
+    </div>
 
-    <!-- Featured Unboxings / Video Showcase -->
-    <section class="glass-panel">
-      <div class="section-title">
-        <i class="fa-solid fa-play"></i>
-        <span>Featured Tech Reviews & Shorts</span>
-      </div>
-
-      <div class="video-grid">
-        <!-- Card 1 -->
-        <div class="video-card" onclick="window.open('https://youtube.com/@Jay.unboxes', '_blank')">
-          <div class="video-thumb" style="background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80') center/cover;">
-            <div class="video-badge">Must Watch</div>
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
-          </div>
-          <h3>5 iPhone Settings to Change Right Now</h3>
-          <span style="font-size: 0.8rem; color: var(--text-dim);">Battery • Privacy • Speed</span>
+    <!-- Featured Categories Grid -->
+    <span class="shelf-title">Featured Highlights</span>
+    <div class="bento-grid">
+      <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="bento-item">
+        <div class="bento-header">
+          <div class="bento-icon-badge"><i class="fa-solid fa-mobile-screen" style="color: var(--accent-cyan);"></i></div>
+          <i class="fa-solid fa-arrow-right" style="color: var(--text-dim); font-size: 0.8rem;"></i>
         </div>
-
-        <!-- Card 2 -->
-        <div class="video-card" onclick="window.open('https://youtube.com/@Jay.unboxes', '_blank')">
-          <div class="video-thumb" style="background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80') center/cover;">
-            <div class="video-badge">AI Workflow</div>
-            <div class="play-button"><i class="fa-solid fa-play"></i></div>
-          </div>
-          <h3>Create Viral Video Ads with Generative AI</h3>
-          <span style="font-size: 0.8rem; color: var(--text-dim);">OpusClip • CapCut • GPT-4</span>
+        <div>
+          <h3>5 iPhone Settings</h3>
+          <p>Optimize battery health, disable trackers, and increase speed.</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Channels & Collabs -->
-    <section class="glass-panel">
-      <div class="section-title">
-        <i class="fa-solid fa-satellite-dish"></i>
-        <span>Connect & Business</span>
-      </div>
+      <a href="https://instagram.com/jayunboxes" target="_blank" class="bento-item">
+        <div class="bento-header">
+          <div class="bento-icon-badge"><i class="fa-solid fa-robot" style="color: #ff0080;"></i></div>
+          <i class="fa-solid fa-arrow-right" style="color: var(--text-dim); font-size: 0.8rem;"></i>
+        </div>
+        <div>
+          <h3>Viral AI Workflows</h3>
+          <p>Automate video editing, captions, and scriptwriting seamlessly.</p>
+        </div>
+      </a>
+    </div>
 
-      <div class="links-column">
-        <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="action-btn">
-          <div class="btn-left">
-            <div class="btn-icon yt-icon"><i class="fa-brands fa-youtube"></i></div>
-            <div class="btn-meta">
-              <h4>YouTube Channel (@Jay.unboxes)</h4>
-              <span>Watch full reviews, unboxings & shorts</span>
-            </div>
+    <!-- Direct Connect & Collabs -->
+    <span class="shelf-title">Channels & Business</span>
+    <div class="links-stack">
+      <a href="https://youtube.com/@Jay.unboxes" target="_blank" class="glass-link-row">
+        <div class="link-detail">
+          <div class="link-symbol sym-yt"><i class="fa-brands fa-youtube"></i></div>
+          <div class="link-texts">
+            <h4>YouTube Channel</h4>
+            <span>Watch short-form tutorials & reviews</span>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-dim); font-size: 0.9rem;"></i>
-        </a>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color: var(--text-dim); font-size: 0.85rem;"></i>
+      </a>
 
-        <a href="https://instagram.com/jayunboxes" target="_blank" class="action-btn">
-          <div class="btn-left">
-            <div class="btn-icon ig-icon"><i class="fa-brands fa-instagram"></i></div>
-            <div class="btn-meta">
-              <h4>Instagram (@jayunboxes)</h4>
-              <span>Daily tech reels, secret features & setup inspiration</span>
-            </div>
+      <a href="https://instagram.com/jayunboxes" target="_blank" class="glass-link-row">
+        <div class="link-detail">
+          <div class="link-symbol sym-ig"><i class="fa-brands fa-instagram"></i></div>
+          <div class="link-texts">
+            <h4>Instagram Reels</h4>
+            <span>Daily tech drops, setups & tips</span>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-dim); font-size: 0.9rem;"></i>
-        </a>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color: var(--text-dim); font-size: 0.85rem;"></i>
+      </a>
 
-        <a href="mailto:contact@jayunboxes.com" class="action-btn">
-          <div class="btn-left">
-            <div class="btn-icon mail-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div class="btn-meta">
-              <h4>Review Units & Collaborations</h4>
-              <span>contact@jayunboxes.com</span>
-            </div>
+      <a href="mailto:contact@jayunboxes.com" class="glass-link-row">
+        <div class="link-detail">
+          <div class="link-symbol sym-mail"><i class="fa-solid fa-envelope"></i></div>
+          <div class="link-texts">
+            <h4>Brand Inquiries & Collabs</h4>
+            <span>contact@jayunboxes.com</span>
           </div>
-          <i class="fa-solid fa-arrow-up-right-from-square" style="color: var(--text-dim); font-size: 0.9rem;"></i>
-        </a>
-      </div>
-    </section>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color: var(--text-dim); font-size: 0.85rem;"></i>
+      </a>
+    </div>
 
     <footer>
-      <p>© 2026 jayunboxes • Designed for High Performance</p>
+      <p>© 2026 jayunboxes • All rights reserved. </p>
     </footer>
 
-  </main>
+  </div>
 
-  <!-- Interactive Particles and 3D Tilt Script -->
-  <script>
-    // Particle Canvas Animation
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.4;
-        this.speedY = (Math.random() - 0.5) * 0.4;
-        this.opacity = Math.random() * 0.5 + 0.1;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-          this.reset();
-        }
-      }
-      draw() {
-        ctx.fillStyle = `rgba(0, 242, 254, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 45; i++) {
-      particles.push(new Particle());
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // 3D Tilt Effect on Desktop
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    if (window.innerWidth > 768) {
-      tiltCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          const rotateX = (-y / rect.height) * 12;
-          const rotateY = (x / rect.width) * 12;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-        });
-      });
-    }
-  </script>
 </body>
 </html>
