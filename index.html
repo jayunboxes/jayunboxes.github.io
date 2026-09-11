@@ -12,14 +12,12 @@
   
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
-  <!-- GSAP for Smooth Motion Graphics -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
   <style>
     :root {
       --bg: #06070a;
-      --card-bg: rgba(18, 21, 31, 0.65);
-      --card-border: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(20, 24, 34, 0.78);
+      --card-border: rgba(255, 255, 255, 0.12);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --accent: #3b82f6;
@@ -48,7 +46,7 @@
       min-height: 100vh;
     }
 
-    /* Interactive Background Canvas */
+    /* Motion Background Canvas */
     #motion-canvas {
       position: fixed;
       top: 0;
@@ -102,10 +100,26 @@
       z-index: 1;
     }
 
-    /* Profile Header with Orbit Rings */
+    /* Bulletproof CSS Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .anim-item {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Profile Header */
     .profile-section {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .avatar-container {
@@ -151,11 +165,6 @@
       padding: 3px;
       background: linear-gradient(135deg, #3b82f6, #06b6d4, #10b981);
       box-shadow: 0 10px 30px -5px var(--accent-glow);
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .avatar-wrapper:hover {
-      transform: scale(1.08) rotate(3deg);
     }
 
     .avatar {
@@ -211,12 +220,13 @@
       letter-spacing: -0.01em;
     }
 
-    /* Interactive Social Buttons */
+    /* Social Buttons (Fully visible & high contrast) */
     .social-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin: 24px 0 28px;
+      animation-delay: 0.1s;
     }
 
     .social-btn {
@@ -232,24 +242,25 @@
       border: 1px solid var(--card-border);
       color: var(--text);
       text-decoration: none;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       backdrop-filter: blur(14px);
-      overflow: hidden;
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: all 0.25s ease;
     }
 
-    .social-btn:hover {
-      transform: translateY(-4px) scale(1.03);
-      border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    .social-btn:hover, .social-btn:active {
+      transform: translateY(-3px) scale(1.03);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(30, 36, 50, 0.85);
     }
 
     /* VIP WhatsApp Motion Card */
     .vip-card {
       position: relative;
-      background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(15, 25, 20, 0.75) 100%);
-      border: 1px solid rgba(37, 211, 102, 0.35);
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.18) 0%, rgba(15, 25, 20, 0.85) 100%);
+      border: 1px solid rgba(37, 211, 102, 0.4);
       border-radius: 20px;
       padding: 22px;
       margin-bottom: 24px;
@@ -263,7 +274,8 @@
       box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       backdrop-filter: blur(16px);
-      will-change: transform;
+      -webkit-backdrop-filter: blur(16px);
+      animation-delay: 0.15s;
     }
 
     .vip-card::after {
@@ -312,7 +324,6 @@
       border-radius: 12px;
       white-space: nowrap;
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .section-title {
@@ -325,9 +336,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      animation-delay: 0.2s;
     }
 
-    /* Video Hero / Card (Fixed unavailable embed issue) */
+    /* Video Hero / Card */
     .video-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -335,11 +347,13 @@
       overflow: hidden;
       margin-bottom: 24px;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
       transition: border-color 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: block;
+      animation-delay: 0.25s;
     }
 
     .video-card:hover {
@@ -366,7 +380,6 @@
       opacity: 0.7;
     }
 
-    /* Pulsing YouTube Play Button */
     .play-btn-circle {
       position: relative;
       width: 68px;
@@ -377,7 +390,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
       z-index: 2;
     }
 
@@ -393,11 +406,6 @@
     @keyframes pulseRipple {
       0% { transform: scale(0.9); opacity: 1; }
       100% { transform: scale(1.4); opacity: 0; }
-    }
-
-    .video-card:hover .play-btn-circle {
-      transform: scale(1.1);
-      box-shadow: 0 0 45px rgba(255, 0, 0, 0.85);
     }
 
     .play-icon {
@@ -429,13 +437,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 13, 20, 0.7);
+      background: rgba(10, 13, 20, 0.85);
     }
 
     .video-details span {
       font-size: 0.92rem;
       font-weight: 600;
-      letter-spacing: -0.01em;
     }
 
     .sub-btn {
@@ -445,24 +452,18 @@
       font-weight: 700;
       padding: 9px 16px;
       border-radius: 10px;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 7px;
       box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
-      transition: all 0.2s ease;
     }
 
-    .sub-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
-    }
-
-    /* Links Stack */
+    /* Links Stack (Explore & Connect section) */
     .links-stack {
       display: flex;
       flex-direction: column;
       gap: 14px;
+      animation-delay: 0.3s;
     }
 
     .link-item {
@@ -479,6 +480,8 @@
       font-weight: 600;
       font-size: 0.95rem;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3);
       transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
       overflow: hidden;
     }
@@ -495,14 +498,14 @@
       transition: opacity 0.25s ease;
     }
 
-    .link-item:hover {
+    .link-item:hover, .link-item:active {
       transform: translateX(6px) scale(1.01);
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(30, 35, 48, 0.7);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(30, 35, 48, 0.85);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
-    .link-item:hover::before {
+    .link-item:hover::before, .link-item:active::before {
       opacity: 1;
     }
 
@@ -516,24 +519,26 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #93c5fd;
+      flex-shrink: 0;
       transition: transform 0.25s ease, background-color 0.25s ease;
     }
 
     .link-item:hover .link-icon {
       transform: scale(1.1) rotate(5deg);
-      background: rgba(59, 130, 246, 0.2);
+      background: rgba(59, 130, 246, 0.25);
       color: #fff;
     }
 
     .chevron-icon {
       transition: transform 0.2s ease;
       color: var(--text-muted);
+      flex-shrink: 0;
     }
 
     .link-item:hover .chevron-icon {
@@ -548,8 +553,9 @@
       left: 0;
       right: 0;
       padding: 14px 20px;
-      background: rgba(6, 7, 10, 0.82);
+      background: rgba(6, 7, 10, 0.88);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: center;
@@ -571,11 +577,6 @@
       gap: 9px;
       text-decoration: none;
       box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
-      transition: all 0.2s ease;
-    }
-
-    .sticky-btn:active {
-      transform: scale(0.98);
     }
 
     footer {
@@ -595,7 +596,7 @@
   <div class="glow-orb glow-2"></div>
 
   <main class="container">
-    <header class="profile-section">
+    <header class="profile-section anim-item">
       <div class="avatar-container">
         <div class="orbit-ring"></div>
         <div class="avatar-wrapper">
@@ -609,26 +610,28 @@
       <p class="bio">Smart gadgets, raw teardowns & daily desk setups.</p>
     </header>
 
-    <nav class="social-strip" aria-label="Social Channels">
+    <!-- Social Bar -->
+    <nav class="social-strip anim-item" aria-label="Social Channels">
       <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="instagram" style="color: var(--instagram);"></i>
+        <i data-feather="instagram" style="color: var(--instagram); width: 22px; height: 22px;"></i>
         <span>Instagram</span>
       </a>
       <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="youtube" style="color: var(--youtube);"></i>
+        <i data-feather="youtube" style="color: var(--youtube); width: 22px; height: 22px;"></i>
         <span>YouTube</span>
       </a>
       <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="at-sign" style="color: var(--threads);"></i>
+        <i data-feather="at-sign" style="color: var(--threads); width: 22px; height: 22px;"></i>
         <span>Threads</span>
       </a>
       <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="message-circle" style="color: var(--whatsapp);"></i>
+        <i data-feather="message-circle" style="color: var(--whatsapp); width: 22px; height: 22px;"></i>
         <span>WhatsApp</span>
       </a>
     </nav>
 
-    <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="vip-card tilt-card">
+    <!-- VIP Broadcast Card -->
+    <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="vip-card tilt-card anim-item">
       <div class="vip-info">
         <h3><i data-feather="zap" style="width: 18px; color: var(--whatsapp);"></i> Join VIP Broadcast</h3>
         <p>Instant alerts on tech price drops, gear leaks & giveaways.</p>
@@ -636,12 +639,12 @@
       <div class="vip-cta">Join Free</div>
     </a>
 
-    <div class="section-title">
+    <!-- Latest Tech Video -->
+    <div class="section-title anim-item">
       <i data-feather="play-circle" style="width: 16px;"></i> Latest Tech Video
     </div>
     
-    <!-- FIXED YOUTUBE SHOWCASE (Opens directly to your channel/video cleanly) -->
-    <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="video-card tilt-card">
+    <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="video-card tilt-card anim-item">
       <div class="video-preview">
         <div class="preview-grid-bg"></div>
         <div class="play-btn-circle">
@@ -657,17 +660,18 @@
       </div>
     </a>
 
-    <div class="section-title">
+    <!-- Explore & Connect -->
+    <div class="section-title anim-item">
       <i data-feather="layers" style="width: 16px;"></i> Explore & Connect
     </div>
     
-    <div class="links-stack">
+    <div class="links-stack anim-item">
       <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="link-item">
         <div class="link-left">
           <div class="link-icon"><i data-feather="at-sign"></i></div>
           <div>
             <div>Tech Discussions on Threads</div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400;">Bite-sized takes, AMA sessions & hot debates</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400;">Bite-sized takes, AMA sessions & debates</div>
           </div>
         </div>
         <i data-feather="chevron-right" class="chevron-icon"></i>
@@ -678,7 +682,7 @@
           <div class="link-icon"><i data-feather="film"></i></div>
           <div>
             <div>Featured in Recent Reels</div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400;">Gadget unboxings & short-form setup videos</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 400;">Gadget unboxings & short setup videos</div>
           </div>
         </div>
         <i data-feather="chevron-right" class="chevron-icon"></i>
@@ -709,90 +713,94 @@
   </aside>
 
   <script>
-    feather.replace();
+    // Initialize icons immediately
+    if (window.feather) {
+      feather.replace();
+    }
 
-    // --- Interactive Constellation / Particle Motion Canvas ---
+    // --- Interactive Constellation Particle Mesh ---
     const canvas = document.getElementById('motion-canvas');
-    const ctx = canvas.getContext('2d');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
 
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
 
-    window.addEventListener('resize', () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    });
+      const particles = [];
+      const count = 35;
+      const maxDistance = 110;
 
-    const particles = [];
-    const count = 38;
-    const maxDistance = 110;
+      class Particle {
+        constructor() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.vx = (Math.random() - 0.5) * 0.4;
+          this.vy = (Math.random() - 0.5) * 0.4;
+          this.radius = Math.random() * 1.5 + 0.8;
+        }
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.vx = (Math.random() - 0.5) * 0.45;
-        this.vy = (Math.random() - 0.5) * 0.45;
-        this.radius = Math.random() * 1.6 + 0.8;
-      }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
+          if (this.x < 0) this.x = w;
+          if (this.x > w) this.x = 0;
+          if (this.y < 0) this.y = h;
+          if (this.y > h) this.y = 0;
+        }
 
-        if (this.x < 0) this.x = w;
-        if (this.x > w) this.x = 0;
-        if (this.y < 0) this.y = h;
-        if (this.y > h) this.y = 0;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(96, 165, 250, 0.4)';
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, w, h);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < maxDistance) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.18 * (1 - dist / maxDistance)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(96, 165, 250, 0.45)';
+          ctx.fill();
         }
       }
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
 
-    // --- 3D Tilt Effect ---
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDistance) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(59, 130, 246, ${0.18 * (1 - dist / maxDistance)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    }
+
+    // --- 3D Tilt Effect on Desktop / Smooth Touch on Mobile ---
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        const rotateX = (-y / (rect.height / 2)) * 6;
-        const rotateY = (x / (rect.width / 2)) * 6;
+        const rotateX = (-y / (rect.height / 2)) * 5;
+        const rotateY = (x / (rect.width / 2)) * 5;
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
       });
 
@@ -800,34 +808,6 @@
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
       });
     });
-
-    // --- GSAP Orchestrated Entrance Motion ---
-    if (window.gsap) {
-      gsap.from(".profile-section", {
-        y: 35,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out"
-      });
-
-      gsap.from(".social-strip .social-btn", {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: "back.out(1.4)",
-        delay: 0.15
-      });
-
-      gsap.from(".vip-card, .video-card, .links-stack .link-item", {
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: "power2.out",
-        delay: 0.25
-      });
-    }
   </script>
 </body>
 </html>
