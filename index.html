@@ -3,77 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jayunboxes | Tech Reviews, Unboxings & Setup Gear</title>
-  <meta name="description" content="Raw tech reviews, unboxings, desk setups, and daily flash deals by Jay." />
-  
+  <title>jayunboxes | Tech Hub & Wallpapers</title>
+  <meta name="description" content="Tech teardowns, YouTube Shorts, setups, and exclusive wallpapers by Jay." />
+
+  <!-- Google Fonts: Clean modern typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
+  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- Official Threads Embed Script -->
+  <script async src="https://www.threads.net/embed.js"></script>
 
   <style>
     :root {
-      --bg: #090a0f;
-      --card-bg: rgba(22, 25, 35, 0.7);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.3);
+      --bg: #07090e;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-bg-hover: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --card-border-hover: rgba(255, 255, 255, 0.22);
+      --glass-highlight: rgba(255, 255, 255, 0.15);
+      --text: #f5f5f7;
+      --text-muted: #86868b;
+      --apple-blue: #2997ff;
       --whatsapp: #25d366;
-      --youtube: #ff0000;
-      --instagram: #e1306c;
-      --threads: #ffffff;
+      --youtube: #ff3b30;
+      --shadow-glass: 0 16px 40px -12px rgba(0, 0, 0, 0.65);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 90px;
+      padding-bottom: 110px;
       overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
     }
 
-    .glow-bg {
+    /* Ambient Dynamic Lighting (Apple Glow) */
+    .ambient-glow {
       position: fixed;
-      top: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
-      z-index: -1;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(140px);
       pointer-events: none;
+      z-index: -1;
+      opacity: 0.35;
     }
+    .glow-1 { top: -120px; left: 50%; transform: translateX(-50%); background: #1d4ed8; }
+    .glow-2 { top: 40%; right: -150px; background: #6366f1; opacity: 0.2; }
+    .glow-3 { bottom: 10%; left: -150px; background: #0ea5e9; opacity: 0.2; }
 
     .container {
-      max-width: 680px;
+      max-width: 640px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 36px 20px;
+    }
+
+    /* Tab Switcher Navigation (iOS Segmented Control Style) */
+    .tab-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      padding: 4px;
+      border-radius: 9999px;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-glass);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tab-btn.active {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Tab Content visibility */
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.35s ease forwards;
+    }
+    .tab-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Profile Header */
     .profile-section {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .avatar-wrapper {
-      width: 104px;
-      height: 104px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       margin: 0 auto 16px;
       padding: 3px;
-      background: linear-gradient(135deg, #3b82f6, #1e293b);
-      box-shadow: 0 10px 25px -5px var(--accent-glow);
+      background: linear-gradient(145deg, rgba(255,255,255,0.4), rgba(255,255,255,0.05));
+      box-shadow: 0 12px 32px rgba(0,0,0,0.5);
     }
 
     .avatar {
@@ -82,27 +144,28 @@
       border-radius: 50%;
       object-fit: cover;
       display: block;
-      background-color: #1e293b;
+      background: #111;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 9999px;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      color: #60a5fa;
+      background: rgba(41, 151, 255, 0.12);
+      border: 1px solid rgba(41, 151, 255, 0.3);
+      color: var(--apple-blue);
       font-size: 0.8rem;
       font-weight: 600;
       margin-bottom: 12px;
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      font-size: 1.75rem;
+      font-size: 1.85rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     p.bio {
@@ -111,12 +174,23 @@
       margin-top: 6px;
     }
 
-    /* Social Bar */
+    /* Glass Cards Base */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      box-shadow: var(--shadow-glass);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Social Grid */
     .social-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin: 24px 0 32px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .social-btn {
@@ -125,130 +199,70 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 8px;
-      border-radius: 14px;
+      padding: 14px 8px;
+      border-radius: 18px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       color: var(--text);
       text-decoration: none;
       font-size: 0.75rem;
       font-weight: 600;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.25s ease;
     }
 
     .social-btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.25);
+      background: var(--card-bg-hover);
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
     }
 
-    /* WhatsApp Primary Card */
-    .vip-card {
-      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(18, 24, 27, 0.6) 100%);
-      border: 1px solid rgba(37, 211, 102, 0.3);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.2s ease;
-    }
-
-    .vip-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--whatsapp);
-      box-shadow: 0 8px 30px -10px rgba(37, 211, 102, 0.25);
-    }
-
-    .vip-info h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .vip-info p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .vip-cta {
-      background: var(--whatsapp);
-      color: #000;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 10px 18px;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
-
+    /* Section Title */
     .section-title {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
-      margin: 32px 0 16px;
+      margin: 28px 0 14px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* YouTube Card */
-    .video-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 24px;
-      backdrop-filter: blur(10px);
+    /* YouTube Shorts Reel (Horizontal Slider) */
+    .shorts-slider {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
     }
 
-    .video-container {
+    .shorts-card {
+      flex: 0 0 200px;
+      height: 355px;
+      scroll-snap-align: start;
+      border-radius: 20px;
+      overflow: hidden;
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--card-border);
     }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .shorts-card iframe {
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    .video-details {
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .video-details span {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .sub-btn {
-      background: var(--youtube);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 8px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    /* Threads Post Box */
+    .threads-box {
+      padding: 20px;
+      margin-bottom: 24px;
     }
 
     /* Link Stack */
@@ -264,19 +278,19 @@
       justify-content: space-between;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 18px;
       padding: 16px 20px;
       color: var(--text);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      backdrop-filter: blur(10px);
-      transition: all 0.2s ease;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      transition: all 0.25s ease;
     }
 
     .link-item:hover {
+      background: var(--card-bg-hover);
+      border-color: var(--card-border-hover);
       transform: translateX(4px);
-      border-color: rgba(255, 255, 255, 0.2);
     }
 
     .link-left {
@@ -286,24 +300,84 @@
     }
 
     .link-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.07);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Mobile Sticky Bar */
+    /* Wallpapers Gallery */
+    .wallpapers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .wallpaper-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(20px);
+    }
+
+    .wallpaper-preview {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display: block;
+      background: #151821;
+    }
+
+    .wallpaper-info {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wallpaper-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* Sticky Bottom WhatsApp Card */
     .sticky-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 14px 20px;
-      background: rgba(9, 10, 15, 0.85);
-      backdrop-filter: blur(16px);
+      padding: 16px 20px;
+      background: rgba(7, 9, 14, 0.75);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: center;
@@ -312,24 +386,29 @@
 
     .sticky-btn {
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       background: var(--whatsapp);
       color: #000;
       font-weight: 700;
       font-size: 0.95rem;
-      padding: 12px;
-      border-radius: 12px;
+      padding: 14px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease;
+    }
+
+    .sticky-btn:hover {
+      transform: scale(1.02);
     }
 
     footer {
       text-align: center;
-      color: #6b7280;
+      color: var(--text-muted);
       font-size: 0.8rem;
       margin-top: 48px;
     }
@@ -337,116 +416,222 @@
 </head>
 <body>
 
-  <div class="glow-bg"></div>
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
 
   <main class="container">
+    <!-- Header -->
     <header class="profile-section">
       <div class="avatar-wrapper">
-        <img src="Profile.jpg.PNG" alt="jayunboxes Profile" class="avatar" />
+        <img src="profile.png" alt="jayunboxes Profile" class="avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80'" />
       </div>
-      <span class="badge"><i data-feather="cpu" style="width: 14px;"></i> Tech & Unboxings</span>
+      <span class="badge"><i data-feather="cpu" style="width: 13px;"></i> Tech & Desk Setups</span>
       <h1>jayunboxes</h1>
-      <p class="bio">Smart gadgets, raw teardowns & daily desk setups.</p>
+      <p class="bio">Raw reviews, quick teardowns, iOS tips & gear leaks.</p>
     </header>
 
-    <nav class="social-strip" aria-label="Social Channels">
-      <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="instagram" style="color: var(--instagram);"></i>
-        <span>Instagram</span>
-      </a>
-      <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="youtube" style="color: var(--youtube);"></i>
-        <span>YouTube</span>
-      </a>
-      <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="at-sign" style="color: var(--threads);"></i>
-        <span>Threads</span>
-      </a>
-      <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="social-btn">
-        <i data-feather="message-circle" style="color: var(--whatsapp);"></i>
-        <span>WhatsApp</span>
-      </a>
+    <!-- Apple-style Segmented Tab Control -->
+    <nav class="tab-switcher" aria-label="Sections">
+      <button class="tab-btn active" onclick="switchTab('hub')">
+        <i data-feather="grid" style="width: 16px;"></i> Feed & Links
+      </button>
+      <button class="tab-btn" onclick="switchTab('wallpapers')">
+        <i data-feather="image" style="width: 16px;"></i> Wallpapers
+      </button>
     </nav>
 
-    <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="vip-card">
-      <div class="vip-info">
-        <h3><i data-feather="zap" style="width: 18px; color: var(--whatsapp);"></i> Join the VIP Broadcast</h3>
-        <p>Instant alerts on tech price drops, gear leaks & exclusive updates.</p>
-      </div>
-      <div class="vip-cta">Join Free</div>
-    </a>
+    <!-- ==================== TAB 1: HUB ==================== -->
+    <div id="view-hub" class="tab-view active">
+      <!-- Quick Socials Strip -->
+      <nav class="social-strip">
+        <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="social-btn">
+          <i data-feather="instagram" style="color: #e1306c;"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="social-btn">
+          <i data-feather="youtube" style="color: var(--youtube);"></i>
+          <span>YouTube</span>
+        </a>
+        <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="social-btn">
+          <i data-feather="at-sign"></i>
+          <span>Threads</span>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="social-btn">
+          <i data-feather="message-circle" style="color: var(--whatsapp);"></i>
+          <span>Alerts</span>
+        </a>
+      </nav>
 
-    <div class="section-title">
-      <i data-feather="play-circle" style="width: 16px;"></i> Latest Tech Video
-    </div>
-    <section class="video-card">
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube-nocookie.com/embed?listType=user_uploads&list=jay.unboxes" 
-          title="jay.unboxes YouTube Uploads" 
-          allowfullscreen>
-        </iframe>
+      <!-- YOUTUBE SHORTS CAROUSEL -->
+      <div class="section-title">
+        <i data-feather="smartphone" style="width: 15px;"></i> Featured YouTube Shorts
       </div>
-      <div class="video-details">
-        <span>Reviews & Teardowns</span>
-        <a href="https://youtube.com/@jay.unboxes?sub_confirmation=1" target="_blank" rel="noopener" class="sub-btn">
-          <i data-feather="youtube" style="width: 14px;"></i> Subscribe
+      <div class="shorts-slider">
+        <!-- Short 1 (Replace VIDEO_ID_1 with your Short's video ID) -->
+        <div class="shorts-card">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+            title="YouTube Short" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <!-- Short 2 -->
+        <div class="shorts-card">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+            title="YouTube Short" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <!-- Short 3 -->
+        <div class="shorts-card">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" 
+            title="YouTube Short" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- THREADS EMBED SECTION -->
+      <div class="section-title">
+        <i data-feather="message-square" style="width: 15px;"></i> Latest on Threads
+      </div>
+      <div class="glass-card threads-box">
+        <!-- Paste the embed block from Threads here (Threads -> Post -> Three Dots -> Copy Embed Code) -->
+        <blockquote class="threads-post" data-text-post-permalink="https://www.threads.net/@jayunboxes" data-text-post-show-media="true" style="margin: 0; padding: 0;">
+          <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" style="color: var(--apple-blue); text-decoration: none; font-size: 0.9rem;">
+            Follow @jayunboxes on Threads for unfiltered setup gear debates & tech discussions →
+          </a>
+        </blockquote>
+      </div>
+
+      <!-- EXPLORE & LINKS STACK -->
+      <div class="section-title">
+        <i data-feather="compass" style="width: 15px;"></i> Quick Links & Collabs
+      </div>
+      <div class="links-stack">
+        <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="link-item">
+          <div class="link-left">
+            <div class="link-icon"><i data-feather="film" style="color: #e1306c;"></i></div>
+            <div>
+              <div style="font-weight: 600;">Latest Tech Reels</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Unboxing reels & studio gear showcases</div>
+            </div>
+          </div>
+          <i data-feather="chevron-right" style="color: var(--text-muted); width: 18px;"></i>
+        </a>
+
+        <a href="mailto:techwithjay.biz@gmail.com" class="link-item">
+          <div class="link-left">
+            <div class="link-icon"><i data-feather="mail" style="color: var(--apple-blue);"></i></div>
+            <div>
+              <div style="font-weight: 600;">Brand Collaborations</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">techwithjay.biz@gmail.com</div>
+            </div>
+          </div>
+          <i data-feather="chevron-right" style="color: var(--text-muted); width: 18px;"></i>
         </a>
       </div>
-    </section>
-
-    <div class="section-title">
-      <i data-feather="layers" style="width: 16px;"></i> Explore & Connect
-    </div>
-    <div class="links-stack">
-      <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="link-item">
-        <div class="link-left">
-          <div class="link-icon"><i data-feather="at-sign"></i></div>
-          <div>
-            <div>Tech Discussions on Threads</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400;">Bite-sized takes, AMA sessions & hot tech debates</div>
-          </div>
-        </div>
-        <i data-feather="chevron-right" style="color: var(--text-muted);"></i>
-      </a>
-
-      <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="link-item">
-        <div class="link-left">
-          <div class="link-icon"><i data-feather="film"></i></div>
-          <div>
-            <div>Featured in Recent Reels</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400;">Gadget unboxings & short-form setup videos</div>
-          </div>
-        </div>
-        <i data-feather="chevron-right" style="color: var(--text-muted);"></i>
-      </a>
-
-      <a href="mailto:techwithjay.biz@gmail.com" class="link-item">
-        <div class="link-left">
-          <div class="link-icon"><i data-feather="mail"></i></div>
-          <div>
-            <div>Brand Collaborations & Inquiries</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400;">techwithjay.biz@gmail.com</div>
-          </div>
-        </div>
-        <i data-feather="chevron-right" style="color: var(--text-muted);"></i>
-      </a>
     </div>
 
+    <!-- ==================== TAB 2: WALLPAPERS ==================== -->
+    <div id="view-wallpapers" class="tab-view">
+      <div class="section-title" style="margin-top: 0;">
+        <i data-feather="sparkles" style="width: 15px;"></i> Exclusive Wallpapers (4K Ultra-Res)
+      </div>
+
+      <div class="wallpapers-grid">
+        <!-- Wallpaper Card 1 -->
+        <div class="wallpaper-card">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80" alt="Liquid Flow Dark Wallpaper" class="wallpaper-preview" loading="lazy" />
+          <div class="wallpaper-info">
+            <span class="wallpaper-title">Liquid Obsidian</span>
+            <!-- Set href to your actual high-res image file and add download attribute -->
+            <a href="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe" download="Liquid-Obsidian-JayUnboxes.jpg" target="_blank" class="download-btn">
+              <i data-feather="download" style="width: 13px;"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Wallpaper Card 2 -->
+        <div class="wallpaper-card">
+          <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80" alt="Neon Minimalist Waves" class="wallpaper-preview" loading="lazy" />
+          <div class="wallpaper-info">
+            <span class="wallpaper-title">Cyber Waves 8K</span>
+            <a href="https://images.unsplash.com/photo-1550684848-fac1c5b4e853" download="Cyber-Waves-JayUnboxes.jpg" target="_blank" class="download-btn">
+              <i data-feather="download" style="width: 13px;"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Wallpaper Card 3 -->
+        <div class="wallpaper-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=800&auto=format&fit=crop&q=80" alt="Minimalist Studio Abstract" class="wallpaper-preview" loading="lazy" />
+          <div class="wallpaper-info">
+            <span class="wallpaper-title">Studio Prism</span>
+            <a href="https://images.unsplash.com/photo-1579783902614-a3fb3927b675" download="Studio-Prism-JayUnboxes.jpg" target="_blank" class="download-btn">
+              <i data-feather="download" style="width: 13px;"></i> Download
+            </a>
+          </div>
+        </div>
+
+        <!-- Wallpaper Card 4 -->
+        <div class="wallpaper-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80" alt="Aesthetic Coastline" class="wallpaper-preview" loading="lazy" />
+          <div class="wallpaper-info">
+            <span class="wallpaper-title">Moody Horizon</span>
+            <a href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" download="Moody-Horizon-JayUnboxes.jpg" target="_blank" class="download-btn">
+              <i data-feather="download" style="width: 13px;"></i> Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-      <p>© 2026 jayunboxes • All Rights Reserved</p>
+      <p>© 2026 jayunboxes • Designed for Tech Enthusiasts</p>
     </footer>
   </main>
 
+  <!-- Sticky Bottom Quick Action -->
   <aside class="sticky-bar">
     <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="sticky-btn">
       <i data-feather="message-circle" style="width: 18px;"></i>
-      Join the WhatsApp Channel
+      Join VIP Broadcast on WhatsApp
     </a>
   </aside>
 
+  <!-- Interactive Logic -->
   <script>
+    // Initialize feather icons
     feather.replace();
+
+    // Tab Switching Function
+    function switchTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const views = document.querySelectorAll('.tab-view');
+
+      views.forEach(view => view.classList.remove('active'));
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      if (tabName === 'hub') {
+        document.getElementById('view-hub').classList.add('active');
+        tabs[0].classList.add('active');
+      } else if (tabName === 'wallpapers') {
+        document.getElementById('view-wallpapers').classList.add('active');
+        tabs[1].classList.add('active');
+      }
+
+      // Re-trigger feather icons replacement in case dynamic items appear
+      setTimeout(() => {
+        feather.replace();
+      }, 50);
+    }
   </script>
 </body>
 </html>
