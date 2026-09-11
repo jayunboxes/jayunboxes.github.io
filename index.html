@@ -46,7 +46,6 @@
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
-      selection-background-color: var(--accent);
     }
 
     /* Interactive Background Canvas */
@@ -240,23 +239,10 @@
       overflow: hidden;
     }
 
-    .social-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
     .social-btn:hover {
       transform: translateY(-4px) scale(1.03);
       border-color: rgba(255, 255, 255, 0.3);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .social-btn:hover::before {
-      opacity: 1;
     }
 
     /* VIP WhatsApp Motion Card */
@@ -277,11 +263,9 @@
       box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       backdrop-filter: blur(16px);
-      transform-style: preserve-3d;
       will-change: transform;
     }
 
-    /* Light Sweep Shine Effect */
     .vip-card::after {
       content: '';
       position: absolute;
@@ -331,11 +315,6 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .vip-card:hover .vip-cta {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-    }
-
     .section-title {
       font-size: 0.9rem;
       font-weight: 700;
@@ -348,7 +327,7 @@
       gap: 10px;
     }
 
-    /* Video Card */
+    /* Video Hero / Card (Fixed unavailable embed issue) */
     .video-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -357,28 +336,92 @@
       margin-bottom: 24px;
       backdrop-filter: blur(14px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-      transition: border-color 0.3s ease, transform 0.2s ease;
-      will-change: transform;
+      transition: border-color 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
 
     .video-card:hover {
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 42, 42, 0.4);
     }
 
-    .video-container {
+    .video-preview {
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      background: #000;
+      aspect-ratio: 16 / 9;
+      background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #090a13 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    .video-container iframe {
+    .preview-grid-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.7;
+    }
+
+    /* Pulsing YouTube Play Button */
+    .play-btn-circle {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      background: #ff0000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2;
+    }
+
+    .play-btn-circle::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 0, 0, 0.5);
+      animation: pulseRipple 2s infinite ease-out;
+    }
+
+    @keyframes pulseRipple {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .video-card:hover .play-btn-circle {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px rgba(255, 0, 0, 0.85);
+    }
+
+    .play-icon {
+      width: 0; 
+      height: 0; 
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      border-left: 18px solid #ffffff;
+      margin-left: 4px;
+    }
+
+    .video-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fca5a5;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .video-details {
@@ -552,7 +595,7 @@
   <div class="glow-orb glow-2"></div>
 
   <main class="container">
-    <header class="profile-section gs-anim">
+    <header class="profile-section">
       <div class="avatar-container">
         <div class="orbit-ring"></div>
         <div class="avatar-wrapper">
@@ -566,7 +609,7 @@
       <p class="bio">Smart gadgets, raw teardowns & daily desk setups.</p>
     </header>
 
-    <nav class="social-strip gs-anim" aria-label="Social Channels">
+    <nav class="social-strip" aria-label="Social Channels">
       <a href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" class="social-btn">
         <i data-feather="instagram" style="color: var(--instagram);"></i>
         <span>Instagram</span>
@@ -585,7 +628,7 @@
       </a>
     </nav>
 
-    <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="vip-card tilt-card gs-anim">
+    <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" class="vip-card tilt-card">
       <div class="vip-info">
         <h3><i data-feather="zap" style="width: 18px; color: var(--whatsapp);"></i> Join VIP Broadcast</h3>
         <p>Instant alerts on tech price drops, gear leaks & giveaways.</p>
@@ -593,31 +636,32 @@
       <div class="vip-cta">Join Free</div>
     </a>
 
-    <div class="section-title gs-anim">
+    <div class="section-title">
       <i data-feather="play-circle" style="width: 16px;"></i> Latest Tech Video
     </div>
     
-    <section class="video-card tilt-card gs-anim">
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube-nocookie.com/embed?listType=user_uploads&list=jay.unboxes" 
-          title="jay.unboxes YouTube Uploads" 
-          allowfullscreen>
-        </iframe>
+    <!-- FIXED YOUTUBE SHOWCASE (Opens directly to your channel/video cleanly) -->
+    <a href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" class="video-card tilt-card">
+      <div class="video-preview">
+        <div class="preview-grid-bg"></div>
+        <div class="play-btn-circle">
+          <div class="play-icon"></div>
+        </div>
+        <div class="video-tag">WATCH ON YOUTUBE</div>
       </div>
       <div class="video-details">
         <span>Reviews & Teardowns</span>
-        <a href="https://youtube.com/@jay.unboxes?sub_confirmation=1" target="_blank" rel="noopener" class="sub-btn">
+        <div class="sub-btn">
           <i data-feather="youtube" style="width: 15px;"></i> Subscribe
-        </a>
+        </div>
       </div>
-    </section>
+    </a>
 
-    <div class="section-title gs-anim">
+    <div class="section-title">
       <i data-feather="layers" style="width: 16px;"></i> Explore & Connect
     </div>
     
-    <div class="links-stack gs-anim">
+    <div class="links-stack">
       <a href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" class="link-item">
         <div class="link-left">
           <div class="link-icon"><i data-feather="at-sign"></i></div>
@@ -652,7 +696,7 @@
       </a>
     </div>
 
-    <footer class="gs-anim">
+    <footer>
       <p>© 2026 jayunboxes • Built for Tech Enthusiasts</p>
     </footer>
   </main>
@@ -740,7 +784,7 @@
     }
     animateParticles();
 
-    // --- 3D Tilt Effect on Highlight Cards ---
+    // --- 3D Tilt Effect ---
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
@@ -760,28 +804,28 @@
     // --- GSAP Orchestrated Entrance Motion ---
     if (window.gsap) {
       gsap.from(".profile-section", {
-        y: 40,
+        y: 35,
         opacity: 0,
-        duration: 1,
+        duration: 0.9,
         ease: "power3.out"
       });
 
       gsap.from(".social-strip .social-btn", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: "back.out(1.4)",
+        delay: 0.15
+      });
+
+      gsap.from(".vip-card, .video-card, .links-stack .link-item", {
         y: 25,
         opacity: 0,
         duration: 0.7,
         stagger: 0.08,
-        ease: "back.out(1.5)",
-        delay: 0.2
-      });
-
-      gsap.from(".vip-card, .video-card, .links-stack .link-item", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
         ease: "power2.out",
-        delay: 0.35
+        delay: 0.25
       });
     }
   </script>
