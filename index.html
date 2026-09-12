@@ -1,87 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>jayunboxes | Tech Deals, AI Tools & Gadget Finds</title>
 
-  <meta
-    name="description"
-    content="Jayunboxes brings you verified tech deals, AI tools, gadget finds, Apple updates, wallpapers and useful tech discoveries."
-  />
+  <meta name="description"
+        content="jayunboxes — tech deals, AI tools, gadget finds, Apple updates, reviews and useful tech resources.">
 
-  <meta name="theme-color" content="#06070a" />
+  <meta name="theme-color" content="#09090b">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
+  <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 
+  <!-- SheetJS
+       Allows the website to read deals.xlsx directly in the browser -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
   <style>
+
     :root {
-      --bg: #06070a;
-      --bg-soft: #0b0d12;
-
-      --card-bg: rgba(20, 24, 34, 0.78);
-      --card-bg-solid: #11151e;
-
-      --card-border: rgba(255, 255, 255, 0.11);
-
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-
-      --accent: #8b5cf6;
-      --accent-2: #6366f1;
-      --accent-glow: rgba(139, 92, 246, 0.35);
-
-      --whatsapp: #25d366;
-      --whatsapp-glow: rgba(37, 211, 102, 0.35);
-
-      --instagram: #e1306c;
-      --youtube: #ff2a2a;
-
-      --success: #22c55e;
-      --warning: #f59e0b;
-
-      --toggle-bg: rgba(255, 255, 255, 0.07);
-      --sticky-bg: rgba(6, 7, 10, 0.9);
-
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      --bg: #09090b;
+      --bg-secondary: #111114;
+      --card: rgba(255,255,255,0.055);
+      --card-hover: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.09);
+      --text: #f7f7f8;
+      --muted: #9a9aa3;
+      --accent: #7b1fa2;
+      --accent-light: #a855f7;
+      --green: #25d366;
+      --radius: 22px;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
     }
 
-    body.light-theme {
-      --bg: #f5f7fb;
-      --bg-soft: #eef1f7;
-
-      --card-bg: rgba(255, 255, 255, 0.88);
-      --card-bg-solid: #ffffff;
-
-      --card-border: rgba(0, 0, 0, 0.08);
-
-      --text: #0f172a;
-      --text-muted: #64748b;
-
-      --accent: #7c3aed;
-      --accent-2: #6366f1;
-      --accent-glow: rgba(124, 58, 237, 0.18);
-
-      --toggle-bg: rgba(0, 0, 0, 0.06);
-      --sticky-bg: rgba(255, 255, 255, 0.92);
-
-      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    body.light {
+      --bg: #f5f5f7;
+      --bg-secondary: #ffffff;
+      --card: rgba(255,255,255,.8);
+      --card-hover: #ffffff;
+      --border: rgba(0,0,0,.08);
+      --text: #111114;
+      --muted: #66666f;
+      --shadow: 0 15px 45px rgba(0,0,0,.08);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     html {
@@ -89,3196 +62,1603 @@
     }
 
     body {
+      font-family: "Plus Jakarta Sans", sans-serif;
       background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(139, 92, 246, 0.11),
-          transparent 35%
-        ),
+        radial-gradient(circle at 15% 10%, rgba(123,31,162,.16), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(168,85,247,.10), transparent 25%),
         var(--bg);
-
       color: var(--text);
-      line-height: 1.5;
-
-      padding-bottom: 105px;
-
-      overflow-x: hidden;
-      position: relative;
-
       min-height: 100vh;
-
-      transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
+      overflow-x: hidden;
+      transition: background .3s ease, color .3s ease;
     }
 
     a {
-      -webkit-tap-highlight-color: transparent;
+      color: inherit;
+      text-decoration: none;
     }
 
     button {
-      font-family: inherit;
+      font: inherit;
     }
-
-    /* =========================================
-       BACKGROUND
-    ========================================= */
-
-    #motion-canvas {
-      position: fixed;
-      inset: 0;
-
-      width: 100%;
-      height: 100%;
-
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .glow-orb {
-      position: fixed;
-
-      border-radius: 50%;
-      filter: blur(100px);
-
-      z-index: 0;
-      pointer-events: none;
-
-      opacity: 0.45;
-
-      animation: floatGlow 15s ease-in-out infinite alternate;
-    }
-
-    .glow-1 {
-      top: -140px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      width: 600px;
-      height: 450px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(139, 92, 246, 0.24) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
-    }
-
-    .glow-2 {
-      bottom: 8%;
-      right: -120px;
-
-      width: 450px;
-      height: 450px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(37, 211, 102, 0.11) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
-
-      animation-duration: 19s;
-    }
-
-    @keyframes floatGlow {
-      0% {
-        transform: translate(-50%, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(-46%, 35px) scale(1.12);
-      }
-
-      100% {
-        transform: translate(-54%, -20px) scale(0.96);
-      }
-    }
-
-    /* =========================================
-       LAYOUT
-    ========================================= */
 
     .container {
-      position: relative;
-
-      width: 100%;
-      max-width: 680px;
-
-      margin: 0 auto;
-
-      padding: 20px 18px 45px;
-
-      z-index: 1;
+      width: min(1100px, calc(100% - 32px));
+      margin: auto;
     }
 
-    /* =========================================
-       TOP BAR
-    ========================================= */
+    /* ---------------- TOP BAR ---------------- */
 
-    .top-bar {
+    .topbar {
       display: flex;
       justify-content: flex-end;
-
-      margin-bottom: 10px;
+      padding: 18px 0 0;
     }
 
-    .theme-toggle-btn {
-      width: 43px;
-      height: 43px;
-
+    .theme-btn {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-
-      background: var(--toggle-bg);
-
-      border: 1px solid var(--card-border);
-
+      border: 1px solid var(--border);
+      background: var(--card);
       color: var(--text);
-
-      cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-
-      transition: 0.25s ease;
-    }
-
-    .theme-toggle-btn:hover {
-      transform: rotate(12deg) scale(1.06);
-      border-color: var(--accent);
-    }
-
-    .icon-sun {
-      display: none;
-      color: #f59e0b;
-    }
-
-    .icon-moon {
-      display: block;
-      color: #c4b5fd;
-    }
-
-    body.light-theme .icon-sun {
-      display: block;
-    }
-
-    body.light-theme .icon-moon {
-      display: none;
-    }
-
-    /* =========================================
-       ANIMATIONS
-    ========================================= */
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .anim-item {
-      animation:
-        fadeInUp
-        0.65s
-        cubic-bezier(0.16, 1, 0.3, 1)
-        both;
-    }
-
-    /* =========================================
-       PROFILE
-    ========================================= */
-
-    .profile-section {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .avatar-container {
-      position: relative;
-
-      width: 118px;
-      height: 118px;
-
-      margin: 0 auto 17px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .orbit-ring {
-      position: absolute;
-      inset: 0;
-
-      border-radius: 50%;
-
-      border: 1.5px dashed rgba(139, 92, 246, 0.45);
-
-      animation: rotateRing 22s linear infinite;
-    }
-
-    .orbit-ring::after {
-      content: '';
-
-      position: absolute;
-
-      top: 5px;
-      left: 12px;
-
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-
-      background: #a78bfa;
-
-      box-shadow:
-        0 0 12px #8b5cf6;
-    }
-
-    @keyframes rotateRing {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .avatar-wrapper {
-      position: relative;
-
-      width: 94px;
-      height: 94px;
-
-      border-radius: 50%;
-
-      padding: 3px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #8b5cf6,
-          #6366f1,
-          #06b6d4
-        );
-
-      box-shadow:
-        0 10px 35px -5px var(--accent-glow);
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      display: block;
-
-      background: #1e293b;
-    }
-
-    .status-badge {
-      position: absolute;
-
-      bottom: 5px;
-      right: 5px;
-
-      width: 15px;
-      height: 15px;
-
-      border-radius: 50%;
-
-      background: #22c55e;
-
-      border: 3px solid var(--bg);
-
-      box-shadow: 0 0 9px #22c55e;
-    }
-
-    .badge {
-      display: inline-flex;
-
-      align-items: center;
-      gap: 7px;
-
-      padding: 6px 13px;
-
-      border-radius: 999px;
-
-      background: rgba(139, 92, 246, 0.12);
-
-      border: 1px solid rgba(139, 92, 246, 0.32);
-
-      color: #a78bfa;
-
-      font-size: 0.77rem;
-      font-weight: 700;
-
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: 2rem;
-
-      font-weight: 800;
-
-      letter-spacing: -0.04em;
-    }
-
-    .bio {
-      color: var(--text-muted);
-
-      font-size: 0.93rem;
-
-      margin-top: 7px;
-
-      max-width: 480px;
-
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* =========================================
-       SOCIAL STRIP
-    ========================================= */
-
-    .social-strip {
       display: grid;
+      place-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(15px);
+    }
 
-      grid-template-columns: repeat(4, 1fr);
+    /* ---------------- HERO ---------------- */
 
-      gap: 9px;
+    .hero {
+      text-align: center;
+      padding: 45px 0 30px;
+    }
 
-      margin: 21px 0 20px;
+    .profile-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: auto;
+    }
+
+    .profile-ring {
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7b1fa2, #a855f7, #7b1fa2);
+      filter: blur(.3px);
+      opacity: .9;
+    }
+
+    .profile {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--bg);
+      z-index: 2;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+      font-size: clamp(32px, 7vw, 56px);
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .handle {
+      color: var(--accent-light);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .hero-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .hero-tag {
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ---------------- SOCIALS ---------------- */
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 22px 0 35px;
     }
 
     .social-btn {
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 7px;
-
-      padding: 12px 7px;
-
-      border-radius: 15px;
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      color: var(--text);
-
-      text-decoration: none;
-
-      font-size: 0.72rem;
-
-      font-weight: 700;
-
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      transition: 0.25s ease;
+      width: 45px;
+      height: 45px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      transition: .2s ease;
     }
 
     .social-btn:hover {
       transform: translateY(-3px);
-
-      border-color: rgba(139, 92, 246, 0.4);
+      background: var(--card-hover);
     }
 
-    /* =========================================
-       INSIDER CTA
-    ========================================= */
+    /* ---------------- PRIMARY CTA ---------------- */
 
-    .insider-card {
-      position: relative;
-
-      display: block;
-
-      text-decoration: none;
-
-      color: var(--text);
-
+    .insider {
       background:
-        linear-gradient(
-          135deg,
-          rgba(37, 211, 102, 0.16),
-          rgba(139, 92, 246, 0.08),
-          var(--card-bg)
-        );
-
-      border: 1px solid rgba(37, 211, 102, 0.38);
-
-      border-radius: 21px;
-
-      padding: 21px;
-
-      margin-bottom: 17px;
-
-      overflow: hidden;
-
-      box-shadow: var(--shadow);
-
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .insider-card:hover {
-      transform: translateY(-3px);
-
-      border-color: var(--whatsapp);
-
-      box-shadow:
-        0 15px 40px -10px var(--whatsapp-glow);
-    }
-
-    .insider-card::after {
-      content: '';
-
-      position: absolute;
-
-      top: -80%;
-      left: -50%;
-
-      width: 30%;
-      height: 250%;
-
-      transform: rotate(25deg);
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,0.14),
-          transparent
-        );
-
-      animation: shine 6s ease-in-out infinite;
-    }
-
-    @keyframes shine {
-      0%, 70% {
-        left: -50%;
-      }
-
-      100% {
-        left: 150%;
-      }
-    }
-
-    .insider-top {
+        linear-gradient(135deg, rgba(37,211,102,.12), rgba(123,31,162,.12)),
+        var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
       display: flex;
-
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 45px;
+    }
 
+    .insider-info {
+      display: flex;
       gap: 15px;
-    }
-
-    .insider-title {
-      display: flex;
-
       align-items: center;
-
-      gap: 9px;
-
-      font-size: 1.05rem;
-
-      font-weight: 800;
     }
 
-    .insider-title svg {
-      color: var(--whatsapp);
-    }
-
-    .insider-description {
-      color: var(--text-muted);
-
-      font-size: 0.82rem;
-
-      margin-top: 5px;
-
-      max-width: 420px;
-    }
-
-    .insider-cta {
+    .insider-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: rgba(37,211,102,.14);
+      color: var(--green);
+      display: grid;
+      place-items: center;
       flex-shrink: 0;
-
-      padding: 10px 15px;
-
-      border-radius: 11px;
-
-      background: var(--whatsapp);
-
-      color: #04180d;
-
-      font-size: 0.78rem;
-
-      font-weight: 800;
-
-      box-shadow:
-        0 5px 18px rgba(37, 211, 102, 0.3);
     }
 
-    .insider-subline {
-      display: flex;
+    .insider h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
 
+    .insider p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-flex;
       align-items: center;
-
-      gap: 7px;
-
-      margin-top: 13px;
-
-      font-size: 0.71rem;
-
-      color: #86efac;
-
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 17px;
+      border-radius: 13px;
+      font-size: 13px;
       font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s ease;
+      white-space: nowrap;
     }
 
-    /* =========================================
-       SECTION HEADINGS
-    ========================================= */
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: #07150c;
+    }
+
+    .btn-purple {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      background: var(--card);
+    }
+
+    /* ---------------- SECTION ---------------- */
+
+    section {
+      margin-bottom: 55px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
 
     .section-title {
-      display: flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      margin: 31px 0 13px;
-
-      color: var(--text-muted);
-
-      font-size: 0.79rem;
-
+      font-size: 24px;
       font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.09em;
+      letter-spacing: -.7px;
     }
 
-    .section-title svg {
-      color: var(--accent);
+    .section-subtitle {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    .section-description {
-      color: var(--text-muted);
-
-      font-size: 0.78rem;
-
-      margin:
-        -7px
-        0
-        13px;
-    }
-
-    /* =========================================
-       LIVE DEALS
-    ========================================= */
+    /* ---------------- DEALS ---------------- */
 
     .deals-grid {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
     }
 
     .deal-card {
       position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 14px;
-
-      padding: 13px;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(139, 92, 246, 0.08),
-          var(--card-bg)
-        );
-
-      border: 1px solid var(--card-border);
-
-      text-decoration: none;
-
-      color: var(--text);
-
       overflow: hidden;
-
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: .25s ease;
     }
 
     .deal-card:hover {
-      transform: translateY(-3px);
-
-      border-color:
-        rgba(139, 92, 246, 0.42);
+      transform: translateY(-5px);
+      background: var(--card-hover);
+      box-shadow: var(--shadow);
     }
 
     .deal-image {
-      width: 92px;
-      height: 92px;
-
-      border-radius: 14px;
-
-      flex-shrink: 0;
-
+      width: 100%;
+      aspect-ratio: 1 / .82;
       object-fit: cover;
-
-      background:
-        linear-gradient(
-          135deg,
-          #151827,
-          #0a0c12
-        );
-
-      border: 1px solid var(--card-border);
+      background: var(--bg-secondary);
+      display: block;
     }
 
     .deal-content {
-      flex: 1;
+      padding: 16px;
+    }
 
-      min-width: 0;
+    .deal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
     .deal-store {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 5px;
-
-      color: var(--text-muted);
-
-      font-size: 0.66rem;
-
-      font-weight: 700;
-
+      color: var(--accent-light);
+      font-size: 11px;
+      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: .5px;
+    }
 
-      letter-spacing: 0.04em;
-
-      margin-bottom: 3px;
+    .deal-category {
+      color: var(--muted);
+      font-size: 10px;
     }
 
     .deal-name {
-      font-size: 0.91rem;
-
-      font-weight: 800;
-
-      line-height: 1.25;
-
-      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+      min-height: 42px;
     }
 
-    .deal-price-row {
+    .prices {
       display: flex;
-
-      align-items: baseline;
-
-      gap: 7px;
-
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
     }
 
-    .deal-old {
-      color: var(--text-muted);
-
+    .old-price {
+      color: var(--muted);
       text-decoration: line-through;
-
-      font-size: 0.75rem;
+      font-size: 12px;
     }
 
-    .deal-price {
-      font-size: 1.02rem;
-
-      font-weight: 800;
-
-      color: #86efac;
-    }
-
-    .deal-discount {
-      display: inline-flex;
-
-      padding: 3px 6px;
-
-      border-radius: 5px;
-
-      background: rgba(34, 197, 94, 0.12);
-
-      color: #86efac;
-
-      font-size: 0.62rem;
-
+    .new-price {
+      font-size: 20px;
       font-weight: 800;
     }
 
-    .deal-meta {
-      margin-top: 6px;
+    .discount {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #8df0ad;
+    }
 
-      color: var(--text-muted);
-
-      font-size: 0.65rem;
+    .deal-checked {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 8px;
     }
 
     .deal-button {
-      flex-shrink: 0;
-
-      padding: 9px 11px;
-
-      border-radius: 10px;
-
-      background: var(--accent);
-
-      color: #fff;
-
-      font-size: 0.68rem;
-
-      font-weight: 800;
+      width: 100%;
+      margin-top: 14px;
     }
 
-    .deal-disclaimer {
-      margin-top: 10px;
-
-      color: var(--text-muted);
-
-      font-size: 0.65rem;
-
-      line-height: 1.45;
-    }
-
-    /* =========================================
-       VIRAL REEL
-    ========================================= */
-
-    .reel-card {
-      display: block;
-
-      text-decoration: none;
-
-      color: var(--text);
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(225, 48, 108, 0.11),
-          var(--card-bg)
-        );
-
-      border: 1px solid var(--card-border);
-
-      box-shadow: var(--shadow);
-
-      transition: 0.25s ease;
-    }
-
-    .reel-card:hover {
-      transform: translateY(-3px);
-
-      border-color:
-        rgba(225, 48, 108, 0.4);
-    }
-
-    .reel-preview {
-      position: relative;
-
-      aspect-ratio: 16 / 9;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at center,
-          #2b1630,
-          #08090d
-        );
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-    }
-
-    .reel-grid {
+    .featured-badge {
       position: absolute;
-      inset: 0;
-
-      opacity: 0.35;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,0.05) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.05) 1px,
-          transparent 1px
-        );
-
-      background-size: 24px 24px;
-    }
-
-    .reel-play {
-      position: relative;
-
-      width: 62px;
-      height: 62px;
-
-      border-radius: 50%;
-
-      background:
-        linear-gradient(
-          135deg,
-          #e1306c,
-          #8b5cf6
-        );
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      box-shadow:
-        0 0 35px rgba(225, 48, 108, 0.42);
-
+      top: 12px;
+      left: 12px;
+      padding: 6px 9px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 800;
       z-index: 2;
     }
 
-    .reel-play::after {
-      content: '';
-
-      width: 0;
-      height: 0;
-
-      border-top: 9px solid transparent;
-      border-bottom: 9px solid transparent;
-      border-left: 14px solid white;
-
-      margin-left: 4px;
+    .deal-loading,
+    .deal-empty,
+    .deal-error {
+      grid-column: 1 / -1;
+      padding: 35px;
+      text-align: center;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: var(--card);
+      font-size: 13px;
     }
 
-    .reel-label {
-      position: absolute;
+    /* ---------------- CHANNEL CARDS ---------------- */
 
-      top: 13px;
-      left: 13px;
-
-      padding: 5px 8px;
-
-      border-radius: 6px;
-
-      background: rgba(0,0,0,0.65);
-
-      color: #f9a8d4;
-
-      font-size: 0.62rem;
-
-      font-weight: 800;
-    }
-
-    .reel-details {
-      padding: 15px 17px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 12px;
-    }
-
-    .reel-title {
-      font-size: 0.88rem;
-
-      font-weight: 800;
-    }
-
-    .reel-subtitle {
-      color: var(--text-muted);
-
-      font-size: 0.7rem;
-
-      margin-top: 2px;
-    }
-
-    .reel-button {
-      flex-shrink: 0;
-
-      padding: 9px 12px;
-
-      border-radius: 9px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #e1306c,
-          #8b5cf6
-        );
-
-      color: white;
-
-      font-size: 0.68rem;
-
-      font-weight: 800;
-    }
-
-    /* =========================================
-       CHANNELS
-    ========================================= */
-
-    .channel-grid {
+    .channels-grid {
       display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
 
     .channel-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
       display: flex;
-
-      flex-direction: column;
-
-      align-items: flex-start;
-
-      gap: 9px;
-
-      padding: 17px;
-
-      border-radius: 17px;
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      color: var(--text);
-
-      text-decoration: none;
-
-      transition: 0.25s ease;
+      align-items: center;
+      gap: 15px;
+      transition: .2s ease;
     }
 
     .channel-card:hover {
       transform: translateY(-3px);
-
-      border-color:
-        rgba(139, 92, 246, 0.38);
+      background: var(--card-hover);
     }
 
     .channel-icon {
-      width: 39px;
-      height: 39px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 11px;
-
-      background: var(--toggle-bg);
-
-      border: 1px solid var(--card-border);
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
 
-    .channel-name {
-      font-size: 0.84rem;
-
-      font-weight: 800;
+    .channel-icon.whatsapp {
+      background: rgba(37,211,102,.12);
+      color: var(--green);
     }
 
-    .channel-description {
-      color: var(--text-muted);
-
-      font-size: 0.69rem;
-
-      line-height: 1.45;
+    .channel-icon.instagram {
+      background: rgba(225,48,108,.12);
+      color: #e1306c;
     }
 
-    /* =========================================
-       AI TOOLS
-    ========================================= */
-
-    .tools-scroll {
-      display: flex;
-
-      gap: 10px;
-
-      overflow-x: auto;
-
-      padding: 2px 1px 10px;
-
-      scroll-snap-type: x mandatory;
-
-      -webkit-overflow-scrolling: touch;
+    .channel-card h3 {
+      font-size: 15px;
     }
 
-    .tools-scroll::-webkit-scrollbar {
-      height: 5px;
-    }
-
-    .tools-scroll::-webkit-scrollbar-thumb {
-      background: var(--card-border);
-
-      border-radius: 10px;
-    }
-
-    .tool-card {
-      flex: 0 0 180px;
-
-      scroll-snap-align: start;
-
-      padding: 16px;
-
-      border-radius: 16px;
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      text-decoration: none;
-
-      color: var(--text);
-
-      transition: 0.25s ease;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-3px);
-
-      border-color:
-        rgba(139, 92, 246, 0.4);
-    }
-
-    .tool-icon {
-      width: 38px;
-      height: 38px;
-
-      border-radius: 10px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(139, 92, 246, 0.22),
-          rgba(99, 102, 241, 0.08)
-        );
-
-      border: 1px solid
-        rgba(139, 92, 246, 0.2);
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      color: #a78bfa;
-
-      margin-bottom: 11px;
-    }
-
-    .tool-name {
-      font-size: 0.82rem;
-
-      font-weight: 800;
-    }
-
-    .tool-description {
-      color: var(--text-muted);
-
-      font-size: 0.68rem;
-
+    .channel-card p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
       margin-top: 4px;
     }
 
-    .free-label {
-      display: inline-flex;
+    /* ---------------- AI TOOLS ---------------- */
 
-      margin-top: 9px;
-
-      padding: 3px 6px;
-
-      border-radius: 5px;
-
-      background: rgba(34,197,94,0.11);
-
-      color: #86efac;
-
-      font-size: 0.58rem;
-
-      font-weight: 800;
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
     }
 
-    /* =========================================
-       WALLPAPERS
-    ========================================= */
-
-    .wallpapers-scroll {
-      display: flex;
-
-      gap: 12px;
-
-      overflow-x: auto;
-
-      padding: 3px 1px 13px;
-
-      scroll-snap-type: x mandatory;
-
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .wallpapers-scroll::-webkit-scrollbar {
-      height: 5px;
-    }
-
-    .wallpapers-scroll::-webkit-scrollbar-thumb {
-      background: var(--card-border);
-
-      border-radius: 10px;
-    }
-
-    .wallpaper-item {
-      flex: 0 0 140px;
-
-      height: 225px;
-
-      border-radius: 16px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      border: 1px solid var(--card-border);
-
-      background: var(--card-bg);
-
-      cursor: pointer;
-
-      scroll-snap-align: start;
-
-      box-shadow:
-        0 6px 20px rgba(0,0,0,0.2);
-
-      transition: 0.25s ease;
-    }
-
-    .wallpaper-item:hover {
-      transform: translateY(-4px);
-
-      border-color: var(--accent);
-    }
-
-    .wallpaper-item img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-
-      transition: 0.4s ease;
-    }
-
-    .wallpaper-item:hover img {
-      transform: scale(1.07);
-    }
-
-    .wallpaper-download-badge {
-      position: absolute;
-
-      right: 9px;
-      bottom: 9px;
-
-      width: 31px;
-      height: 31px;
-
-      border-radius: 50%;
-
-      background: rgba(0,0,0,0.7);
-
-      border: 1px solid rgba(255,255,255,0.18);
-
-      color: white;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* =========================================
-       MODAL
-    ========================================= */
-
-    .wp-modal {
-      position: fixed;
-      inset: 0;
-
-      z-index: 1000;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
+    .tool-card {
       padding: 20px;
-
-      background: rgba(0,0,0,0.86);
-
-      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
     }
 
-    .wp-modal.open {
-      display: flex;
-
-      animation: fadeIn 0.2s ease;
+    .tool-card h3 {
+      font-size: 14px;
+      margin-bottom: 7px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+    .tool-card p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
     }
 
-    .wp-modal-box {
-      width: 100%;
-      max-width: 380px;
-
-      padding: 15px;
-
-      border-radius: 20px;
-
-      background: var(--card-bg-solid);
-
-      border: 1px solid var(--card-border);
-
-      box-shadow:
-        0 25px 60px rgba(0,0,0,0.55);
-    }
-
-    .wp-modal-preview {
-      width: 100%;
-
-      max-height: 470px;
-
-      object-fit: contain;
-
-      border-radius: 12px;
-
-      background: #000;
-    }
-
-    .wp-modal-actions {
-      display: flex;
-
-      gap: 9px;
-
-      margin-top: 13px;
-    }
-
-    .wp-btn {
-      flex: 1;
-
-      padding: 12px;
-
-      border: none;
-
-      border-radius: 11px;
-
-      font-size: 0.83rem;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 6px;
-
-      text-decoration: none;
-    }
-
-    .wp-btn-download {
-      background: var(--accent);
-
-      color: white;
-    }
-
-    .wp-btn-close {
-      background: var(--toggle-bg);
-
-      color: var(--text);
-
-      border: 1px solid var(--card-border);
-    }
-
-    /* =========================================
-       EXPLORE LINKS
-    ========================================= */
-
-    .links-stack {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 11px;
-    }
-
-    .link-item {
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 10px;
-
-      padding: 15px 17px;
-
-      border-radius: 16px;
-
-      background: var(--card-bg);
-
-      border: 1px solid var(--card-border);
-
-      color: var(--text);
-
-      text-decoration: none;
-
-      transition: 0.25s ease;
-    }
-
-    .link-item:hover {
-      transform: translateX(4px);
-
-      border-color:
-        rgba(139, 92, 246, 0.4);
-    }
-
-    .link-left {
-      display: flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-      min-width: 0;
-    }
-
-    .link-icon {
-      width: 40px;
-      height: 40px;
-
-      flex-shrink: 0;
-
-      border-radius: 11px;
-
-      background: var(--toggle-bg);
-
-      border: 1px solid var(--card-border);
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      color: var(--accent);
-    }
-
-    .link-title {
-      font-size: 0.82rem;
-
-      font-weight: 800;
-    }
-
-    .link-description {
-      font-size: 0.68rem;
-
-      color: var(--text-muted);
-
-      margin-top: 2px;
-    }
-
-    .chevron-icon {
-      flex-shrink: 0;
-
-      color: var(--text-muted);
-    }
-
-    /* =========================================
-       FOOTER
-    ========================================= */
+    /* ---------------- FOOTER ---------------- */
 
     footer {
       text-align: center;
-
-      color: var(--text-muted);
-
-      font-size: 0.72rem;
-
-      margin-top: 45px;
+      padding: 25px 0 100px;
+      color: var(--muted);
+      font-size: 11px;
     }
 
-    footer strong {
+    .footer-brand {
       color: var(--text);
-    }
-
-    /* =========================================
-       STICKY CTA
-    ========================================= */
-
-    .sticky-bar {
-      position: fixed;
-
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      z-index: 100;
-
-      padding:
-        12px
-        max(18px, env(safe-area-inset-right))
-        calc(12px + env(safe-area-inset-bottom))
-        max(18px, env(safe-area-inset-left));
-
-      background: var(--sticky-bg);
-
-      border-top: 1px solid var(--card-border);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .sticky-inner {
-      width: 100%;
-
-      max-width: 650px;
-
-      margin: 0 auto;
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 9px;
-    }
-
-    .sticky-btn {
-      min-height: 47px;
-
-      border-radius: 13px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 7px;
-
-      text-decoration: none;
-
-      font-size: 0.78rem;
-
       font-weight: 800;
+      margin-bottom: 7px;
     }
 
-    .sticky-whatsapp {
-      background: var(--whatsapp);
+    /* ---------------- STICKY CTA ---------------- */
 
-      color: #04180d;
-
-      box-shadow:
-        0 5px 20px rgba(37,211,102,0.28);
+    .sticky-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      width: min(500px, calc(100% - 28px));
+      z-index: 50;
+      background: rgba(10,10,12,.85);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(20px);
+      border-radius: 17px;
+      padding: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
     }
 
-    .sticky-broadcast {
-      background: var(--card-bg);
-
-      color: var(--text);
-
-      border: 1px solid var(--card-border);
+    .sticky-cta a {
+      width: 100%;
     }
 
-    /* =========================================
-       MOBILE
-    ========================================= */
+    /* ---------------- MOBILE ---------------- */
 
-    @media (max-width: 520px) {
+    @media(max-width: 800px) {
+
+      .deals-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media(max-width: 600px) {
+
       .container {
-        padding-left: 14px;
-        padding-right: 14px;
+        width: min(100% - 22px, 1100px);
       }
 
-      h1 {
-        font-size: 1.85rem;
+      .hero {
+        padding-top: 30px;
       }
 
-      .deal-image {
-        width: 76px;
-        height: 76px;
+      .insider {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .deal-button {
-        display: none;
+      .insider .btn {
+        width: 100%;
       }
 
-      .insider-top {
-        align-items: center;
+      .deals-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
-      .insider-cta {
-        padding: 9px 11px;
+      .deal-content {
+        padding: 12px;
       }
 
-      .reel-details {
-        align-items: flex-start;
+      .deal-name {
+        font-size: 13px;
+        min-height: 37px;
       }
 
-      .reel-button {
-        padding: 8px 9px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .social-strip {
-        gap: 6px;
+      .new-price {
+        font-size: 17px;
       }
 
-      .social-btn {
-        font-size: 0.66rem;
-      }
-
-      .channel-grid {
+      .channels-grid {
         grid-template-columns: 1fr;
       }
+
+      .tools-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-title {
+        font-size: 21px;
+      }
+
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================
-       BACKGROUND
-  ========================================= -->
+  <div class="container">
 
-  <canvas id="motion-canvas"></canvas>
-
-  <div class="glow-orb glow-1"></div>
-  <div class="glow-orb glow-2"></div>
-
-
-  <main class="container">
-
-    <!-- =======================================
-         TOP BAR
-    ======================================== -->
-
-    <div class="top-bar">
-      <button
-        id="theme-toggle"
-        class="theme-toggle-btn"
-        aria-label="Toggle dark and light mode"
-      >
-        <i data-feather="sun" class="icon-sun"></i>
-        <i data-feather="moon" class="icon-moon"></i>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <i data-feather="sun"></i>
       </button>
     </div>
 
+    <!-- HERO -->
+    <header class="hero">
 
-    <!-- =======================================
-         PROFILE
-    ======================================== -->
+      <div class="profile-wrap">
+        <div class="profile-ring"></div>
 
-    <header class="profile-section anim-item">
-
-      <div class="avatar-container">
-
-        <div class="orbit-ring"></div>
-
-        <div class="avatar-wrapper">
-
-          <img
-            src="Profile.jpg.PNG"
-            alt="Jayunboxes profile"
-            class="avatar"
-          />
-
-          <div
-            class="status-badge"
-            title="Active"
-          ></div>
-
-        </div>
-
+        <img
+          src="Profile.jpg.PNG"
+          class="profile"
+          alt="Jayunboxes">
       </div>
-
-
-      <span class="badge">
-        <i data-feather="zap" style="width:14px;"></i>
-        Tech • Deals • AI
-      </span>
-
 
       <h1>jayunboxes</h1>
 
+      <div class="handle">@jayunboxes</div>
 
-      <p class="bio">
-        Tech deals, AI tools, gadget finds & things actually worth knowing.
+      <p>
+        Tech Deals • AI Tools • Gadget Finds
+        <br>
+        Smart gadgets, useful AI tools & tech updates — without the fluff.
       </p>
+
+      <div class="hero-tags">
+        <span class="hero-tag">Tech Deals</span>
+        <span class="hero-tag">AI Tools</span>
+        <span class="hero-tag">Apple</span>
+        <span class="hero-tag">Gadgets</span>
+      </div>
 
     </header>
 
+    <!-- SOCIALS -->
+    <div class="socials">
 
-    <!-- =======================================
-         SOCIALS
-    ======================================== -->
-
-    <nav
-      class="social-strip anim-item"
-      aria-label="Social Channels"
-    >
-
-      <a
-        href="https://instagram.com/jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="social-btn"
-      >
-        <i
-          data-feather="instagram"
-          style="color:var(--instagram);width:21px;height:21px;"
-        ></i>
-
-        <span>Instagram</span>
+      <a class="social-btn"
+         href="https://instagram.com/jayunboxes"
+         target="_blank"
+         aria-label="Instagram">
+        <i data-feather="instagram"></i>
       </a>
 
-
-      <a
-        href="https://youtube.com/@jay.unboxes"
-        target="_blank"
-        rel="noopener"
-        class="social-btn"
-      >
-        <i
-          data-feather="youtube"
-          style="color:var(--youtube);width:21px;height:21px;"
-        ></i>
-
-        <span>YouTube</span>
+      <a class="social-btn"
+         href="https://youtube.com/@jay.unboxes"
+         target="_blank"
+         aria-label="YouTube">
+        <i data-feather="youtube"></i>
       </a>
 
-
-      <a
-        href="https://threads.net/@jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="social-btn"
-      >
-        <i
-          data-feather="at-sign"
-          style="color:var(--text);width:21px;height:21px;"
-        ></i>
-
-        <span>Threads</span>
+      <a class="social-btn"
+         href="https://threads.net/@jayunboxes"
+         target="_blank"
+         aria-label="Threads">
+        <i data-feather="at-sign"></i>
       </a>
 
-
-      <a
-        href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
-        target="_blank"
-        rel="noopener"
-        class="social-btn"
-      >
-        <i
-          data-feather="message-circle"
-          style="color:var(--whatsapp);width:21px;height:21px;"
-        ></i>
-
-        <span>WhatsApp</span>
+      <a class="social-btn"
+         href="mailto:techwithjay.biz@gmail.com"
+         aria-label="Email">
+        <i data-feather="mail"></i>
       </a>
-
-    </nav>
-
-
-    <!-- =======================================
-         WHATSAPP INSIDER
-    ======================================== -->
-
-    <a
-      href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
-      target="_blank"
-      rel="noopener"
-      class="insider-card anim-item"
-    >
-
-      <div class="insider-top">
-
-        <div>
-
-          <div class="insider-title">
-
-            <i
-              data-feather="message-circle"
-              style="width:19px;"
-            ></i>
-
-            Jayunboxes Insider
-
-          </div>
-
-
-          <p class="insider-description">
-            Get verified tech deals, price drops, AI finds and alerts before they disappear.
-          </p>
-
-        </div>
-
-
-        <div class="insider-cta">
-          Join Free
-        </div>
-
-      </div>
-
-
-      <div class="insider-subline">
-
-        <i
-          data-feather="bell"
-          style="width:13px;"
-        ></i>
-
-        No spam • Just useful tech drops
-
-      </div>
-
-    </a>
-
-
-    <!-- =======================================
-         LIVE DEALS
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="tag"
-        style="width:16px;"
-      ></i>
-
-      Live Tech Deals
 
     </div>
 
+    <!-- WHATSAPP INSIDER -->
+    <div class="insider">
 
-    <p class="section-description">
-      Crazy prices, verified before posting. Availability and prices can change quickly.
-    </p>
+      <div class="insider-info">
 
-
-    <section
-      id="deals"
-      class="deals-grid anim-item"
-      aria-label="Live tech deals"
-    >
-
-      <!--
-        DEAL CARDS ARE GENERATED FROM JAVASCRIPT
-        NEAR THE BOTTOM OF THIS FILE.
-
-        Update the DEALS array to add/change deals.
-      -->
-
-    </section>
-
-
-    <p class="deal-disclaimer">
-      Prices and availability may vary by location and can change without notice.
-      Always verify the final price at checkout. Some links may be affiliate links.
-    </p>
-
-
-    <!-- =======================================
-         INSTAGRAM REEL
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="instagram"
-        style="width:16px;"
-      ></i>
-
-      From Instagram
-
-    </div>
-
-
-    <a
-      href="https://instagram.com/jayunboxes"
-      target="_blank"
-      rel="noopener"
-      class="reel-card anim-item"
-    >
-
-      <div class="reel-preview">
-
-        <div class="reel-grid"></div>
-
-        <div class="reel-label">
-          VIRAL TECH FINDS
-        </div>
-
-        <div class="reel-play"></div>
-
-      </div>
-
-
-      <div class="reel-details">
-
-        <div>
-
-          <div class="reel-title">
-            Watch the latest @jayunboxes Reel
-          </div>
-
-          <div class="reel-subtitle">
-            Deals • AI • Apple • Gadget discoveries
-          </div>
-
-        </div>
-
-
-        <div class="reel-button">
-          Open Instagram
-        </div>
-
-      </div>
-
-    </a>
-
-
-    <!-- =======================================
-         CHANNELS
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="radio"
-        style="width:16px;"
-      ></i>
-
-      Stay in the Loop
-
-    </div>
-
-
-    <div class="channel-grid anim-item">
-
-      <a
-        href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
-        target="_blank"
-        rel="noopener"
-        class="channel-card"
-      >
-
-        <div
-          class="channel-icon"
-          style="color:var(--whatsapp);"
-        >
+        <div class="insider-icon">
           <i data-feather="message-circle"></i>
         </div>
 
+        <div>
+          <h3>Jayunboxes Insider</h3>
 
-        <div class="channel-name">
-          WhatsApp Insider
+          <p>
+            Get tech deals, price drops, useful AI tools and exclusive finds
+            directly on WhatsApp.
+          </p>
         </div>
 
-
-        <div class="channel-description">
-          Best for deal alerts, links, codes and useful tech drops.
-        </div>
-
-      </a>
-
-
-      <a
-        href="https://instagram.com/jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="channel-card"
-      >
-
-        <div
-          class="channel-icon"
-          style="color:var(--instagram);"
-        >
-          <i data-feather="send"></i>
-        </div>
-
-
-        <div class="channel-name">
-          Instagram Broadcast
-        </div>
-
-
-        <div class="channel-description">
-          Follow for polls, teasers, updates and new Reel alerts.
-        </div>
-
-      </a>
-
-    </div>
-
-
-    <!-- =======================================
-         AI TOOLS
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="cpu"
-        style="width:16px;"
-      ></i>
-
-      AI Tools
-
-    </div>
-
-
-    <p class="section-description">
-      Useful AI tools featured by jayunboxes.
-    </p>
-
-
-    <div
-      class="tools-scroll anim-item"
-      id="tools-list"
-    ></div>
-
-
-    <!-- =======================================
-         WALLPAPERS
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="image"
-        style="width:16px;"
-      ></i>
-
-      Free Setup Wallpapers
-
-    </div>
-
-
-    <p class="section-description">
-      Download premium-looking wallpapers for your phone.
-    </p>
-
-
-    <div class="wallpapers-scroll anim-item" id="wallpapers-list">
-
-      <div
-        class="wallpaper-item"
-        style="
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          color:var(--text-muted);
-          font-size:0.75rem;
-          text-align:center;
-          padding:10px;
-        "
-      >
-        Loading wallpapers...
       </div>
 
-    </div>
+      <a
+        class="btn btn-green"
+        href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
+        target="_blank">
 
+        <i data-feather="zap"></i>
+        Join Free
 
-    <!-- =======================================
-         EXPLORE
-    ======================================== -->
-
-    <div class="section-title anim-item">
-
-      <i
-        data-feather="layers"
-        style="width:16px;"
-      ></i>
-
-      Explore Jayunboxes
+      </a>
 
     </div>
 
+    <!-- LIVE DEALS -->
+    <section id="deals">
 
-    <div class="links-stack anim-item">
+      <div class="section-head">
 
+        <div>
+          <div class="section-title">🔥 Live Tech Deals</div>
 
-      <a
-        href="https://youtube.com/@jay.unboxes"
-        target="_blank"
-        rel="noopener"
-        class="link-item"
-      >
-
-        <div class="link-left">
-
-          <div class="link-icon">
-            <i
-              data-feather="youtube"
-              style="color:var(--youtube);"
-            ></i>
+          <div class="section-subtitle">
+            Deals are loaded automatically from the Jayunboxes deals sheet.
           </div>
-
-
-          <div>
-
-            <div class="link-title">
-              YouTube
-            </div>
-
-            <div class="link-description">
-              Tech reviews, unboxings & deeper videos
-            </div>
-
-          </div>
-
         </div>
 
+      </div>
 
-        <i
-          data-feather="chevron-right"
-          class="chevron-icon"
-        ></i>
+      <div class="deals-grid" id="dealsGrid">
 
-      </a>
-
-
-      <a
-        href="https://instagram.com/jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="link-item"
-      >
-
-        <div class="link-left">
-
-          <div class="link-icon">
-            <i data-feather="film"></i>
-          </div>
-
-
-          <div>
-
-            <div class="link-title">
-              Instagram Reels
-            </div>
-
-            <div class="link-description">
-              Viral tech finds, AI tricks & daily discoveries
-            </div>
-
-          </div>
-
+        <div class="deal-loading">
+          Loading today's deals...
         </div>
 
+      </div>
 
-        <i
-          data-feather="chevron-right"
-          class="chevron-icon"
-        ></i>
+    </section>
 
-      </a>
+    <!-- CHANNELS -->
+    <section>
 
+      <div class="section-head">
 
-      <a
-        href="https://threads.net/@jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="link-item"
-      >
+        <div>
+          <div class="section-title">Stay Updated</div>
 
-        <div class="link-left">
-
-          <div class="link-icon">
-            <i data-feather="at-sign"></i>
+          <div class="section-subtitle">
+            Don't miss the next deal drop.
           </div>
-
-
-          <div>
-
-            <div class="link-title">
-              Threads
-            </div>
-
-            <div class="link-description">
-              Tech takes, discussions & opinions
-            </div>
-
-          </div>
-
         </div>
 
+      </div>
 
-        <i
-          data-feather="chevron-right"
-          class="chevron-icon"
-        ></i>
-
-      </a>
-
-
-      <a
-        href="mailto:techwithjay.biz@gmail.com"
-        class="link-item"
-      >
-
-        <div class="link-left">
-
-          <div class="link-icon">
-            <i data-feather="mail"></i>
-          </div>
-
-
-          <div>
-
-            <div class="link-title">
-              Brand Collaborations
-            </div>
-
-            <div class="link-description">
-              techwithjay.biz@gmail.com
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <i
-          data-feather="chevron-right"
-          class="chevron-icon"
-        ></i>
-
-      </a>
-
-
-    </div>
-
-
-    <footer>
-
-      <p>
-        © 2026 <strong>jayunboxes</strong>
-        • Built for people who love tech.
-      </p>
-
-    </footer>
-
-  </main>
-
-
-  <!-- =========================================
-       WALLPAPER MODAL
-  ========================================== -->
-
-  <div
-    class="wp-modal"
-    id="wpModal"
-  >
-
-    <div class="wp-modal-box">
-
-      <img
-        src=""
-        alt="Wallpaper preview"
-        class="wp-modal-preview"
-        id="wpModalImg"
-      />
-
-
-      <div class="wp-modal-actions">
+      <div class="channels-grid">
 
         <a
-          href=""
-          download
-          class="wp-btn wp-btn-download"
-          id="wpModalDownload"
-        >
+          class="channel-card"
+          href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
+          target="_blank">
 
-          <i
-            data-feather="download"
-            style="width:15px;"
-          ></i>
+          <div class="channel-icon whatsapp">
+            <i data-feather="message-circle"></i>
+          </div>
 
-          Download
+          <div>
+            <h3>Jayunboxes Insider</h3>
+
+            <p>
+              Instant tech deals, price drops and exclusive finds.
+            </p>
+          </div>
 
         </a>
 
+        <a
+          class="channel-card"
+          href="https://instagram.com/jayunboxes"
+          target="_blank">
 
-        <button
-          class="wp-btn wp-btn-close"
-          id="wpModalClose"
-        >
-          Close
-        </button>
+          <div class="channel-icon instagram">
+            <i data-feather="instagram"></i>
+          </div>
+
+          <div>
+            <h3>Instagram</h3>
+
+            <p>
+              Reels, AI tools, Apple updates and gadget content.
+            </p>
+          </div>
+
+        </a>
 
       </div>
 
-    </div>
+    </section>
+
+    <!-- AI TOOLS -->
+    <section>
+
+      <div class="section-head">
+
+        <div>
+          <div class="section-title">🤖 AI Tools</div>
+
+          <div class="section-subtitle">
+            Useful AI tools featured by @jayunboxes.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <h3>ChatGPT</h3>
+          <p>
+            AI for ideas, scripts, research and everyday productivity.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <h3>Google Flow</h3>
+          <p>
+            Create cinematic AI videos and visual content.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <h3>Gemini</h3>
+          <p>
+            Google's AI assistant for research, images and productivity.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <h3>Canva</h3>
+          <p>
+            Create thumbnails, reel covers, graphics and social posts.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <h3>ElevenLabs</h3>
+          <p>
+            AI voice generation for videos and content creation.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <h3>CapCut</h3>
+          <p>
+            Fast mobile editing, captions, effects and transitions.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+      <div class="footer-brand">
+        jayunboxes
+      </div>
+
+      <div>
+        Tech Deals • AI Tools • Gadget Finds
+      </div>
+
+      <div style="margin-top:8px;">
+        © 2026 jayunboxes
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+
+    <a
+      class="btn btn-green"
+      href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
+      target="_blank">
+
+      <i data-feather="zap"></i>
+      Join Jayunboxes Insider — Free
+
+    </a>
 
   </div>
 
 
-  <!-- =========================================
-       STICKY MOBILE CTA
-  ========================================== -->
-
-  <aside class="sticky-bar">
-
-    <div class="sticky-inner">
-
-      <a
-        href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
-        target="_blank"
-        rel="noopener"
-        class="sticky-btn sticky-whatsapp"
-      >
-
-        <i
-          data-feather="message-circle"
-          style="width:17px;"
-        ></i>
-
-        WhatsApp Insider
-
-      </a>
-
-
-      <a
-        href="https://instagram.com/jayunboxes"
-        target="_blank"
-        rel="noopener"
-        class="sticky-btn sticky-broadcast"
-      >
-
-        <i
-          data-feather="send"
-          style="width:17px;"
-        ></i>
-
-        Instagram
-
-      </a>
-
-    </div>
-
-  </aside>
-
-
   <script>
 
-    /* =========================================
-       FEATHER ICONS
-    ========================================== */
+    /* =====================================================
+       JAYUNBOXES CONFIG
+       ===================================================== */
 
-    if (window.feather) {
-      feather.replace();
+    const CONFIG = {
+
+      /*
+       * PRIMARY FILE
+       *
+       * Put deals.xlsx in the same folder as index.html
+       */
+      dealsFile: "deals.xlsx",
+
+      /*
+       * OPTIONAL CSV FALLBACK
+       *
+       * If deals.xlsx fails, the website will try deals.csv
+       */
+      csvFallback: "deals.csv"
+
+    };
+
+
+    /* =====================================================
+       HELPERS
+       ===================================================== */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
     }
 
 
-    /* =========================================
-       THEME
-    ========================================== */
+    function normalizeKey(key) {
 
-    const themeToggleBtn =
-      document.getElementById('theme-toggle');
+      return String(key || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
 
-    const savedTheme =
-      localStorage.getItem('jayunboxes_theme');
-
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-theme');
     }
 
 
-    themeToggleBtn.addEventListener('click', () => {
+    function normalizeRow(row) {
 
-      document.body.classList.toggle('light-theme');
+      const result = {};
 
-      const isLight =
-        document.body.classList.contains('light-theme');
+      Object.keys(row).forEach(key => {
 
-      localStorage.setItem(
-        'jayunboxes_theme',
-        isLight ? 'light' : 'dark'
-      );
+        result[normalizeKey(key)] = row[key];
 
-      if (window.feather) {
-        feather.replace();
+      });
+
+      return result;
+
+    }
+
+
+    function getValue(row, ...keys) {
+
+      for (const key of keys) {
+
+        const normalized = normalizeKey(key);
+
+        if (
+          row[normalized] !== undefined &&
+          row[normalized] !== null &&
+          String(row[normalized]).trim() !== ""
+        ) {
+
+          return String(row[normalized]).trim();
+
+        }
+
       }
 
-    });
+      return "";
+
+    }
 
 
-    /* =========================================
-       DEAL DATABASE
-       
-       EDIT THIS SECTION TO ADD YOUR DEALS.
-    ========================================== */
+    function isActive(value) {
 
-    const DEALS = [
+      const v = String(value || "")
+        .trim()
+        .toLowerCase();
 
-      {
-        store: "Blinkit",
-        name: "Hammer Ultra Pods TWS",
-        oldPrice: "₹3,499",
-        price: "₹499",
-        discount: "85% OFF",
-        checked: "Check availability before ordering",
-        image: "deal-placeholder.jpg",
-        url: "#"
-      },
+      return ![
+        "no",
+        "false",
+        "0",
+        "inactive",
+        "off",
+        "hide",
+        "hidden"
+      ].includes(v);
 
-      {
-        store: "Amazon",
-        name: "Featured Tech Deal",
-        oldPrice: "₹1,999",
-        price: "₹699",
-        discount: "65% OFF",
-        checked: "Replace with verified live deal",
-        image: "deal-placeholder.jpg",
-        url: "#"
-      },
-
-      {
-        store: "Tech Find",
-        name: "Today's Pick",
-        oldPrice: "₹999",
-        price: "₹299",
-        discount: "70% OFF",
-        checked: "Replace with verified live deal",
-        image: "deal-placeholder.jpg",
-        url: "#"
-      }
-
-    ];
+    }
 
 
-    /* =========================================
+    function isFeatured(value) {
+
+      const v = String(value || "")
+        .trim()
+        .toLowerCase();
+
+      return [
+        "yes",
+        "true",
+        "1",
+        "featured",
+        "top"
+      ].includes(v);
+
+    }
+
+
+    function safeURL(url) {
+
+      if (!url) return "#";
+
+      try {
+
+        const parsed = new URL(
+          url,
+          window.location.href
+        );
+
+        if (
+          parsed.protocol === "http:" ||
+          parsed.protocol === "https:"
+        ) {
+
+          return parsed.href;
+
+        }
+
+      } catch (error) {}
+
+      return "#";
+
+    }
+
+
+    function placeholderImage() {
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="800"
+             height="650"
+             viewBox="0 0 800 650">
+
+          <rect width="800" height="650" fill="#111114"/>
+
+          <text
+            x="50%"
+            y="48%"
+            text-anchor="middle"
+            fill="#a855f7"
+            font-family="Arial"
+            font-size="48"
+            font-weight="700">
+
+            JAYUNBOXES
+
+          </text>
+
+          <text
+            x="50%"
+            y="57%"
+            text-anchor="middle"
+            fill="#888"
+            font-family="Arial"
+            font-size="22">
+
+            TECH DEAL
+
+          </text>
+
+        </svg>
+      `;
+
+      return "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(svg);
+
+    }
+
+
+    /* =====================================================
+       CONVERT EXCEL ROW
+       ===================================================== */
+
+    function formatDeal(row) {
+
+      const r = normalizeRow(row);
+
+      return {
+
+        store:
+          getValue(r, "store", "shop", "platform") ||
+          "Tech Deal",
+
+        name:
+          getValue(r, "name", "product", "productname") ||
+          "Tech Product",
+
+        oldPrice:
+          getValue(r, "oldprice", "mrp", "originalprice"),
+
+        price:
+          getValue(r, "price", "dealprice", "saleprice"),
+
+        discount:
+          getValue(r, "discount", "off", "discountpercent"),
+
+        checked:
+          getValue(r, "checked", "lastchecked", "updated") ||
+          "Verify before ordering",
+
+        image:
+          getValue(r, "image", "imageurl", "photo") ||
+          "",
+
+        url:
+          getValue(r, "url", "link", "dealurl", "affiliateurl") ||
+          "#",
+
+        active:
+          isActive(getValue(r, "active", "status", "visible")),
+
+        featured:
+          isFeatured(getValue(r, "featured", "topdeal")),
+
+        category:
+          getValue(r, "category", "type") ||
+          "Gadget",
+
+        sortOrder:
+          Number(
+            getValue(r, "sortorder", "order", "priority")
+          ) || 9999
+
+      };
+
+    }
+
+
+    /* =====================================================
        RENDER DEALS
-    ========================================== */
+       ===================================================== */
 
-    const dealsContainer =
-      document.getElementById('deals');
+    function renderDeals(rows) {
+
+      const grid = document.getElementById("dealsGrid");
+
+      let deals = rows
+        .map(formatDeal)
+        .filter(deal => deal.active);
+
+      deals.sort((a, b) => {
+
+        if (a.featured && !b.featured) return -1;
+
+        if (!a.featured && b.featured) return 1;
+
+        return a.sortOrder - b.sortOrder;
+
+      });
 
 
-    function renderDeals() {
+      if (!deals.length) {
 
-      if (!DEALS.length) {
-
-        dealsContainer.innerHTML = `
-          <div
-            style="
-              padding:20px;
-              border-radius:16px;
-              background:var(--card-bg);
-              border:1px solid var(--card-border);
-              color:var(--text-muted);
-              font-size:0.8rem;
-              text-align:center;
-            "
-          >
-            New deals dropping soon 👀
+        grid.innerHTML = `
+          <div class="deal-empty">
+            No active deals right now.<br>
+            Check back soon.
           </div>
         `;
 
         return;
+
       }
 
 
-      dealsContainer.innerHTML =
-        DEALS.map(deal => `
+      grid.innerHTML = deals.map(deal => {
 
-          <a
-            href="${deal.url}"
-            ${deal.url !== "#" ? 'target="_blank" rel="noopener"' : ''}
-            class="deal-card"
-          >
+        const image =
+          deal.image
+            ? safeURL(deal.image)
+            : placeholderImage();
+
+        const url =
+          safeURL(deal.url);
+
+        return `
+
+          <article class="deal-card">
+
+            ${
+              deal.featured
+                ? `<div class="featured-badge">
+                     ⚡ FEATURED
+                   </div>`
+                : ""
+            }
 
             <img
-              src="${deal.image}"
-              alt="${deal.name}"
               class="deal-image"
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(deal.name)}"
               loading="lazy"
-              onerror="
-                this.src='https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500';
-              "
-            />
-
+              onerror="this.src='${placeholderImage()}'">
 
             <div class="deal-content">
 
-              <div class="deal-store">
+              <div class="deal-top">
 
-                <i
-                  data-feather="shopping-bag"
-                  style="width:11px;"
-                ></i>
+                <div class="deal-store">
+                  ${escapeHTML(deal.store)}
+                </div>
 
-                ${deal.store}
+                <div class="deal-category">
+                  ${escapeHTML(deal.category)}
+                </div>
 
               </div>
-
 
               <div class="deal-name">
-                ${deal.name}
+                ${escapeHTML(deal.name)}
               </div>
 
+              <div class="prices">
 
-              <div class="deal-price-row">
+                ${
+                  deal.oldPrice
+                    ? `
+                      <span class="old-price">
+                        ${escapeHTML(deal.oldPrice)}
+                      </span>
+                    `
+                    : ""
+                }
 
-                <span class="deal-old">
-                  ${deal.oldPrice}
-                </span>
-
-                <span class="deal-price">
-                  ${deal.price}
-                </span>
-
-                <span class="deal-discount">
-                  ${deal.discount}
+                <span class="new-price">
+                  ${escapeHTML(deal.price || "Check price")}
                 </span>
 
               </div>
 
+              ${
+                deal.discount
+                  ? `
+                    <div class="discount">
+                      ${escapeHTML(deal.discount)}
+                    </div>
+                  `
+                  : ""
+              }
 
-              <div class="deal-meta">
-                ${deal.checked}
+              <div class="deal-checked">
+                ✓ ${escapeHTML(deal.checked)}
               </div>
+
+              <a
+                class="btn btn-purple deal-button"
+                href="${escapeHTML(url)}"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Get Deal
+                <i data-feather="arrow-up-right"></i>
+
+              </a>
 
             </div>
 
+          </article>
 
-            <div class="deal-button">
-              GET DEAL
-            </div>
+        `;
 
-          </a>
+      }).join("");
 
-        `).join('');
-
-
-      if (window.feather) {
-        feather.replace();
-      }
-
-    }
-
-
-    renderDeals();
-
-
-    /* =========================================
-       AI TOOLS
-    ========================================== */
-
-    const AI_TOOLS = [
-
-      {
-        name: "ChatGPT",
-        description: "Ideas, scripts & research",
-        free: "FREE",
-        icon: "message-square",
-        url: "https://chatgpt.com/"
-      },
-
-      {
-        name: "Canva",
-        description: "Covers, graphics & designs",
-        free: "FREE PLAN",
-        icon: "layout",
-        url: "https://www.canva.com/"
-      },
-
-      {
-        name: "ElevenLabs",
-        description: "AI voiceovers",
-        free: "FREE PLAN",
-        icon: "mic",
-        url: "https://elevenlabs.io/"
-      },
-
-      {
-        name: "Google Flow",
-        description: "AI video creation",
-        free: "CHECK PLAN",
-        icon: "video",
-        url: "https://labs.google/"
-      },
-
-      {
-        name: "InShot",
-        description: "Quick mobile editing",
-        free: "FREE",
-        icon: "scissors",
-        url: "https://inshot.com/"
-      }
-
-    ];
-
-
-    const toolsList =
-      document.getElementById('tools-list');
-
-
-    toolsList.innerHTML =
-      AI_TOOLS.map(tool => `
-
-        <a
-          href="${tool.url}"
-          target="_blank"
-          rel="noopener"
-          class="tool-card"
-        >
-
-          <div class="tool-icon">
-
-            <i
-              data-feather="${tool.icon}"
-              style="width:18px;"
-            ></i>
-
-          </div>
-
-
-          <div class="tool-name">
-            ${tool.name}
-          </div>
-
-
-          <div class="tool-description">
-            ${tool.description}
-          </div>
-
-
-          <span class="free-label">
-            ${tool.free}
-          </span>
-
-        </a>
-
-      `).join('');
-
-
-    if (window.feather) {
       feather.replace();
+
     }
 
 
-    /* =========================================
-       WALLPAPERS
-    ========================================== */
+    /* =====================================================
+       LOAD XLSX
+       ===================================================== */
 
-    const GITHUB_USER =
-      "jayunboxes";
+    async function loadExcelDeals() {
 
-    const GITHUB_REPO =
-      "jayunboxes.github.io";
+      const response = await fetch(
+        CONFIG.dealsFile + "?v=" + Date.now(),
+        {
+          cache: "no-store"
+        }
+      );
 
-    const WALLPAPERS_FOLDER =
-      "wallpapers";
+      if (!response.ok) {
 
+        throw new Error(
+          "Could not load deals.xlsx"
+        );
 
-    const wallpapersList =
-      document.getElementById('wallpapers-list');
-
-
-    const wpModal =
-      document.getElementById('wpModal');
-
-    const wpModalImg =
-      document.getElementById('wpModalImg');
-
-    const wpModalDownload =
-      document.getElementById('wpModalDownload');
-
-    const wpModalClose =
-      document.getElementById('wpModalClose');
-
-
-    function openModal(url) {
-
-      wpModalImg.src = url;
-
-      wpModalDownload.href = url;
-
-      wpModal.classList.add('open');
-
-      if (window.feather) {
-        feather.replace();
       }
 
+      const arrayBuffer =
+        await response.arrayBuffer();
+
+
+      if (!window.XLSX) {
+
+        throw new Error(
+          "SheetJS failed to load"
+        );
+
+      }
+
+
+      const workbook =
+        XLSX.read(
+          arrayBuffer,
+          {
+            type: "array",
+            cellDates: true
+          }
+        );
+
+
+      /*
+       * Prefer a sheet named "Deals".
+       * Otherwise use the first worksheet.
+       */
+
+      const sheetName =
+        workbook.SheetNames.includes("Deals")
+          ? "Deals"
+          : workbook.SheetNames[0];
+
+
+      if (!sheetName) {
+
+        throw new Error(
+          "No worksheet found"
+        );
+
+      }
+
+
+      const worksheet =
+        workbook.Sheets[sheetName];
+
+
+      return XLSX.utils.sheet_to_json(
+        worksheet,
+        {
+          defval: "",
+          raw: false
+        }
+      );
+
     }
 
 
-    window.openModal = openModal;
+    /* =====================================================
+       CSV FALLBACK
+       ===================================================== */
+
+    function parseCSV(text) {
+
+      const rows = [];
+
+      let row = [];
+      let value = "";
+      let insideQuotes = false;
 
 
-    wpModalClose.addEventListener(
-      'click',
-      () => wpModal.classList.remove('open')
-    );
+      for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+        const next = text[i + 1];
 
 
-    wpModal.addEventListener(
-      'click',
-      event => {
+        if (char === '"' && insideQuotes && next === '"') {
 
-        if (event.target === wpModal) {
-          wpModal.classList.remove('open');
+          value += '"';
+          i++;
+          continue;
+
+        }
+
+
+        if (char === '"') {
+
+          insideQuotes = !insideQuotes;
+          continue;
+
+        }
+
+
+        if (char === "," && !insideQuotes) {
+
+          row.push(value);
+          value = "";
+          continue;
+
+        }
+
+
+        if (
+          (char === "\n" || char === "\r") &&
+          !insideQuotes
+        ) {
+
+          if (char === "\r" && next === "\n") {
+            i++;
+          }
+
+          row.push(value);
+          value = "";
+
+          if (row.some(cell => cell.trim() !== "")) {
+            rows.push(row);
+          }
+
+          row = [];
+
+          continue;
+
+        }
+
+
+        value += char;
+
+      }
+
+
+      if (value.length || row.length) {
+
+        row.push(value);
+
+        if (row.some(cell => cell.trim() !== "")) {
+          rows.push(row);
         }
 
       }
-    );
 
 
-    async function loadWallpapers() {
-
-      const cacheKey =
-        "jayunboxes_wallpapers_cache";
-
-      const cacheTimeKey =
-        "jayunboxes_wallpapers_cache_time";
+      if (!rows.length) {
+        return [];
+      }
 
 
-      const cached =
-        localStorage.getItem(cacheKey);
-
-      const cacheTime =
-        localStorage.getItem(cacheTimeKey);
+      const headers = rows[0];
 
 
-      if (
-        cached &&
-        cacheTime &&
-        (
-          Date.now() -
-          parseInt(cacheTime)
-        ) < 600000
-      ) {
+      return rows.slice(1).map(row => {
 
-        renderWallpapers(
-          JSON.parse(cached)
+        const object = {};
+
+        headers.forEach((header, index) => {
+
+          object[header.trim()] =
+            row[index] ?? "";
+
+        });
+
+        return object;
+
+      });
+
+    }
+
+
+    async function loadCSVDeals() {
+
+      const response = await fetch(
+        CONFIG.csvFallback + "?v=" + Date.now(),
+        {
+          cache: "no-store"
+        }
+      );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Could not load deals.csv"
+        );
+
+      }
+
+
+      const text =
+        await response.text();
+
+
+      return parseCSV(text);
+
+    }
+
+
+    /* =====================================================
+       LOAD EVERYTHING
+       ===================================================== */
+
+    async function loadDeals() {
+
+      const grid =
+        document.getElementById("dealsGrid");
+
+
+      try {
+
+        /*
+         * First try Excel
+         */
+
+        const rows =
+          await loadExcelDeals();
+
+        renderDeals(rows);
+
+        console.log(
+          "Jayunboxes deals loaded from deals.xlsx"
         );
 
         return;
+
+      } catch (excelError) {
+
+        console.warn(
+          "Excel loading failed:",
+          excelError
+        );
 
       }
 
 
       try {
 
-        const response =
-          await fetch(
-            `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${WALLPAPERS_FOLDER}`
-          );
+        /*
+         * If Excel fails, try CSV
+         */
 
+        const rows =
+          await loadCSVDeals();
 
-        if (!response.ok) {
-          throw new Error("Wallpaper folder unavailable");
-        }
+        renderDeals(rows);
 
-
-        const files =
-          await response.json();
-
-
-        const imageFiles =
-          files
-            .filter(file =>
-              /\.(png|jpe?g|webp|svg)$/i
-                .test(file.name)
-            )
-            .map(file => ({
-              name: file.name,
-              url: file.download_url
-            }));
-
-
-        localStorage.setItem(
-          cacheKey,
-          JSON.stringify(imageFiles)
+        console.log(
+          "Jayunboxes deals loaded from deals.csv"
         );
-
-
-        localStorage.setItem(
-          cacheTimeKey,
-          Date.now().toString()
-        );
-
-
-        renderWallpapers(imageFiles);
-
-      } catch (error) {
-
-        console.warn(
-          "Could not load wallpapers:",
-          error
-        );
-
-
-        wallpapersList.innerHTML = `
-
-          <div
-            style="
-              padding:18px;
-              color:var(--text-muted);
-              font-size:0.75rem;
-            "
-          >
-            Add wallpapers to your
-            <code>/wallpapers</code>
-            folder on GitHub.
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-    function renderWallpapers(list) {
-
-      if (!list || !list.length) {
-
-        wallpapersList.innerHTML = `
-
-          <div
-            style="
-              padding:18px;
-              color:var(--text-muted);
-              font-size:0.75rem;
-            "
-          >
-            New wallpapers coming soon.
-          </div>
-
-        `;
 
         return;
 
-      }
+      } catch (csvError) {
+
+        console.error(
+          "CSV loading failed:",
+          csvError
+        );
 
 
-      wallpapersList.innerHTML =
-        list.map(item => `
+        grid.innerHTML = `
 
-          <div
-            class="wallpaper-item"
-            onclick="openModal('${item.url}')"
-          >
+          <div class="deal-error">
 
-            <img
-              src="${item.url}"
-              alt="${item.name}"
-              loading="lazy"
-            />
+            Unable to load deals right now.<br>
 
-            <div
-              class="wallpaper-download-badge"
-            >
-
-              <i
-                data-feather="download"
-                style="width:14px;"
-              ></i>
-
-            </div>
+            <small>
+              Make sure deals.xlsx or deals.csv
+              exists in your GitHub repository.
+            </small>
 
           </div>
 
-        `).join('');
+        `;
 
-
-      if (window.feather) {
-        feather.replace();
       }
 
     }
 
 
-    loadWallpapers();
+    /* =====================================================
+       THEME
+       ===================================================== */
 
+    const themeBtn =
+      document.getElementById("themeBtn");
 
-    /* =========================================
-       BACKGROUND PARTICLES
-    ========================================== */
 
-    const canvas =
-      document.getElementById('motion-canvas');
+    const savedTheme =
+      localStorage.getItem("jay-theme");
 
 
-    if (canvas) {
+    if (savedTheme === "light") {
 
-      const ctx =
-        canvas.getContext('2d');
-
-
-      let w =
-        canvas.width =
-        window.innerWidth;
-
-
-      let h =
-        canvas.height =
-        window.innerHeight;
-
-
-      window.addEventListener(
-        'resize',
-        () => {
-
-          w =
-            canvas.width =
-            window.innerWidth;
-
-          h =
-            canvas.height =
-            window.innerHeight;
-
-        }
-      );
-
-
-      const particles = [];
-
-      const count = 30;
-
-      const maxDistance = 110;
-
-
-      class Particle {
-
-        constructor() {
-
-          this.x =
-            Math.random() * w;
-
-          this.y =
-            Math.random() * h;
-
-          this.vx =
-            (Math.random() - 0.5) * 0.35;
-
-          this.vy =
-            (Math.random() - 0.5) * 0.35;
-
-          this.radius =
-            Math.random() * 1.4 + 0.7;
-
-        }
-
-
-        update() {
-
-          this.x += this.vx;
-
-          this.y += this.vy;
-
-
-          if (this.x < 0) {
-            this.x = w;
-          }
-
-          if (this.x > w) {
-            this.x = 0;
-          }
-
-          if (this.y < 0) {
-            this.y = h;
-          }
-
-          if (this.y > h) {
-            this.y = 0;
-          }
-
-        }
-
-
-        draw() {
-
-          const isLight =
-            document.body.classList.contains(
-              'light-theme'
-            );
-
-
-          ctx.beginPath();
-
-          ctx.arc(
-            this.x,
-            this.y,
-            this.radius,
-            0,
-            Math.PI * 2
-          );
-
-
-          ctx.fillStyle =
-            isLight
-              ? 'rgba(124,58,237,0.22)'
-              : 'rgba(167,139,250,0.32)';
-
-
-          ctx.fill();
-
-        }
-
-      }
-
-
-      for (
-        let i = 0;
-        i < count;
-        i++
-      ) {
-
-        particles.push(
-          new Particle()
-        );
-
-      }
-
-
-      function animateParticles() {
-
-        ctx.clearRect(
-          0,
-          0,
-          w,
-          h
-        );
-
-
-        const isLight =
-          document.body.classList.contains(
-            'light-theme'
-          );
-
-
-        for (
-          let i = 0;
-          i < particles.length;
-          i++
-        ) {
-
-          particles[i].update();
-
-          particles[i].draw();
-
-
-          for (
-            let j = i + 1;
-            j < particles.length;
-            j++
-          ) {
-
-            const dx =
-              particles[i].x -
-              particles[j].x;
-
-            const dy =
-              particles[i].y -
-              particles[j].y;
-
-            const distance =
-              Math.sqrt(
-                dx * dx +
-                dy * dy
-              );
-
-
-            if (distance < maxDistance) {
-
-              ctx.beginPath();
-
-              ctx.moveTo(
-                particles[i].x,
-                particles[i].y
-              );
-
-              ctx.lineTo(
-                particles[j].x,
-                particles[j].y
-              );
-
-
-              ctx.strokeStyle =
-                isLight
-                  ? `rgba(124,58,237,${0.07 * (1 - distance / maxDistance)})`
-                  : `rgba(139,92,246,${0.12 * (1 - distance / maxDistance)})`;
-
-
-              ctx.lineWidth = 0.7;
-
-              ctx.stroke();
-
-            }
-
-          }
-
-        }
-
-
-        requestAnimationFrame(
-          animateParticles
-        );
-
-      }
-
-
-      animateParticles();
+      document.body.classList.add("light");
 
     }
 
 
-    /* =========================================
-       DESKTOP TILT
-    ========================================== */
+    function updateThemeIcon() {
 
-    const tiltCards =
-      document.querySelectorAll(
-        '.insider-card, .reel-card, .deal-card'
-      );
+      themeBtn.innerHTML =
+        document.body.classList.contains("light")
+          ? '<i data-feather="moon"></i>'
+          : '<i data-feather="sun"></i>';
 
-
-    if (window.matchMedia('(pointer:fine)').matches) {
-
-      tiltCards.forEach(card => {
-
-        card.addEventListener(
-          'mousemove',
-          event => {
-
-            const rect =
-              card.getBoundingClientRect();
-
-
-            const x =
-              event.clientX -
-              rect.left -
-              rect.width / 2;
-
-
-            const y =
-              event.clientY -
-              rect.top -
-              rect.height / 2;
-
-
-            const rotateX =
-              (-y / (rect.height / 2)) * 2.5;
-
-
-            const rotateY =
-              (x / (rect.width / 2)) * 2.5;
-
-
-            card.style.transform =
-              `perspective(1000px)
-               rotateX(${rotateX}deg)
-               rotateY(${rotateY}deg)
-               translateY(-2px)`;
-
-          }
-        );
-
-
-        card.addEventListener(
-          'mouseleave',
-          () => {
-
-            card.style.transform =
-              '';
-
-          }
-        );
-
-      });
+      feather.replace();
 
     }
+
+
+    updateThemeIcon();
+
+
+    themeBtn.addEventListener(
+      "click",
+      () => {
+
+        document.body.classList.toggle("light");
+
+        localStorage.setItem(
+          "jay-theme",
+          document.body.classList.contains("light")
+            ? "light"
+            : "dark"
+        );
+
+        updateThemeIcon();
+
+      }
+    );
+
+
+    /* =====================================================
+       INIT
+       ===================================================== */
+
+    feather.replace();
+
+    loadDeals();
 
   </script>
 
