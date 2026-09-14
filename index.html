@@ -6,7 +6,7 @@
   
   <title>jayunboxes | Tech Deals, AI Tools, Wallpapers & Reviews</title>
   
-  <!-- SEO & Social Description -->
+  <!-- SEO & Social Meta -->
   <meta name="description" content="Official website of jayunboxes. Unfiltered tech reviews, hand-picked daily gadget deals, AI productivity tools, curated 4K setup wallpapers, and desk gear.">
   <meta name="author" content="Jay">
   <meta name="keywords" content="jayunboxes, tech deals, gadget reviews, unboxings, AI tools, 4k wallpapers, desk setup">
@@ -45,6 +45,7 @@
       --radius-sm: 12px;
       --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5);
       --shadow-lg: 0 24px 60px -12px rgba(0, 0, 0, 0.65);
+      --sidebar-width: 250px;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -103,8 +104,181 @@
       max-width: 100%;
     }
 
+    /* =========================================================
+       APP WRAPPER LAYOUT (SIDEBAR + MAIN)
+    ========================================================= */
+    .app-layout {
+      display: flex;
+      max-width: 1320px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* =========================================================
+       LEFT NAVIGATION PANE
+    ========================================================= */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+      background: rgba(7, 7, 9, 0.45);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 90;
+    }
+
+    body.light .sidebar {
+      background: rgba(248, 249, 252, 0.65);
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 8px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1.5px solid var(--accent);
+    }
+
+    .sidebar-brand-text {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 26px 0;
+      list-style: none;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.25s var(--ease);
+      position: relative;
+    }
+
+    .nav-link i {
+      width: 17px;
+      height: 17px;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      background: var(--card-hover);
+      transform: translateX(4px);
+    }
+
+    .nav-link:hover i {
+      transform: scale(1.15);
+      color: var(--accent-light);
+    }
+
+    .nav-link.active {
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border-strong);
+      font-weight: 700;
+    }
+
+    .nav-link.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 18px;
+      border-radius: 0 4px 4px 0;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .sidebar-footer {
+      padding: 18px 8px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Mobile Floating Nav Rail */
+    .mobile-nav-bar {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 7, 9, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body.light .mobile-nav-bar {
+      background: rgba(248, 249, 252, 0.9);
+    }
+
+    .mobile-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-link.active {
+      color: var(--text);
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    /* =========================================================
+       MAIN CONTENT CONTAINER
+    ========================================================= */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      padding: 0 35px 80px;
+    }
+
     .container {
-      width: min(1040px, calc(100% - 36px));
+      width: min(880px, 100%);
       margin: 0 auto;
       position: relative;
       z-index: 2;
@@ -147,7 +321,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0 0;
+      padding: 24px 0 0;
     }
 
     .views-counter-badge {
@@ -490,10 +664,11 @@
     }
 
     /* =========================================================
-       SECTION HEADINGS
+       SECTIONS
     ========================================================= */
     section {
-      margin-bottom: 55px;
+      margin-bottom: 65px;
+      scroll-margin-top: 50px;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.7s ease, transform 0.7s var(--ease);
@@ -983,13 +1158,18 @@
       z-index: 100;
     }
 
-    @media (max-width: 840px) {
+    /* =========================================================
+       RESPONSIVE & MEDIA QUERIES
+    ========================================================= */
+    @media (max-width: 1080px) {
+      .sidebar { display: none; }
+      .mobile-nav-bar { display: flex; }
+      .main-content { padding: 0 16px 80px; }
       .deals-grid, .tools-grid { grid-template-columns: repeat(2, 1fr); }
       .about-card { grid-template-columns: 1fr; gap: 18px; }
     }
 
     @media (max-width: 600px) {
-      .container { width: calc(100% - 24px); }
       .hero { padding-top: 24px; }
       .insider { flex-direction: column; align-items: stretch; padding: 20px; }
       .insider .btn { width: 100%; }
@@ -1015,212 +1195,286 @@
   <canvas id="particles"></canvas>
   <div id="cursorGlow"></div>
 
-  <div class="container">
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="views-counter-badge" title="Total Website Pageviews">
-        <span class="live-dot"></span>
-        <span>Views:</span>
-        <span class="views-number" id="siteViewsCounter">...</span>
-      </div>
+  <!-- MOBILE QUICK-NAV BAR (visible on screens < 1080px) -->
+  <nav class="mobile-nav-bar" aria-label="Mobile Navigation">
+    <a href="#overview" class="mobile-nav-link active"><i data-feather="home" style="width:13px;"></i> Home</a>
+    <a href="#about" class="mobile-nav-link"><i data-feather="user" style="width:13px;"></i> About</a>
+    <a href="#deals" class="mobile-nav-link"><i data-feather="tag" style="width:13px;"></i> Deals</a>
+    <a href="#wallpapers" class="mobile-nav-link"><i data-feather="image" style="width:13px;"></i> Walls</a>
+    <a href="#channels" class="mobile-nav-link"><i data-feather="share-2" style="width:13px;"></i> Channels</a>
+    <a href="#tools" class="mobile-nav-link"><i data-feather="cpu" style="width:13px;"></i> AI Tools</a>
+  </nav>
 
-      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-        <i data-feather="sun"></i>
-      </button>
-    </div>
-
-    <!-- HERO SECTION -->
-    <header class="hero">
-      <div class="profile-wrap">
-        <div class="profile-ring"></div>
-        <img src="Profile.jpg.PNG" class="profile" alt="jayunboxes Profile" onerror="this.style.display='none';">
-      </div>
-
-      <h1>jayunboxes</h1>
-      <div class="handle">@jayunboxes</div>
-
-      <p>
-        The central hub for verified tech deals, AI workflow tools, raw gadget teardowns & setup wallpapers — zero fluff, pure utility.
-      </p>
-
-      <div class="hero-tags">
-        <span class="hero-tag">Tech Deals</span>
-        <span class="hero-tag">AI Tools</span>
-        <span class="hero-tag">4K Wallpapers</span>
-        <span class="hero-tag">Gadgets</span>
-      </div>
-    </header>
-
-    <!-- SOCIAL STRIP -->
-    <div class="socials">
-      <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
-        <i data-feather="instagram"></i>
-      </a>
-      <a class="social-btn" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
-        <i data-feather="youtube"></i>
-      </a>
-      <a class="social-btn" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
-        <i data-feather="at-sign"></i>
-      </a>
-      <a class="social-btn" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
-        <i data-feather="mail"></i>
-      </a>
-    </div>
-
-    <!-- ABOUT ME SECTION -->
-    <section id="about" class="about-section">
-      <div class="section-head">
-        <div>
-          <div class="section-title">⚡ Behind the Tech</div>
-          <div class="section-subtitle">Creator, tech curator & gadget enthusiast.</div>
+  <div class="app-layout">
+    <!-- LEFT SIDE NAVIGATION PANE -->
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-brand">
+          <img src="Profile.jpg.PNG" alt="jayunboxes Avatar" class="sidebar-avatar" onerror="this.style.display='none';">
+          <div>
+            <div class="sidebar-brand-text">jayunboxes</div>
+            <div style="font-size: 11px; color: var(--muted); font-weight: 500;">Tech & Deals Hub</div>
+          </div>
         </div>
+
+        <ul class="nav-links">
+          <li>
+            <a href="#overview" class="nav-link active">
+              <i data-feather="home"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link">
+              <i data-feather="user"></i>
+              <span>Behind the Tech</span>
+            </a>
+          </li>
+          <li>
+            <a href="#deals" class="nav-link">
+              <i data-feather="tag"></i>
+              <span>Live Deals</span>
+            </a>
+          </li>
+          <li>
+            <a href="#wallpapers" class="nav-link">
+              <i data-feather="image"></i>
+              <span>4K Wallpapers</span>
+            </a>
+          </li>
+          <li>
+            <a href="#channels" class="nav-link">
+              <i data-feather="share-2"></i>
+              <span>Channels</span>
+            </a>
+          </li>
+          <li>
+            <a href="#tools" class="nav-link">
+              <i data-feather="cpu"></i>
+              <span>AI Tools</span>
+            </a>
+          </li>
+        </ul>
       </div>
-      
-      <div class="about-card">
-        <div class="about-lead">
-          <h3>Hey, I'm Jay 👋</h3>
+
+      <div class="sidebar-footer">
+        <span style="font-size: 11px; color: var(--muted); font-weight: 600;">© 2026 jay</span>
+        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" style="color: var(--green); font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+          VIP <i data-feather="arrow-up-right" style="width: 12px;"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT PANE -->
+    <main class="main-content">
+      <div class="container">
+        <!-- TOP BAR -->
+        <div class="topbar">
+          <div class="views-counter-badge" title="Total Website Pageviews">
+            <span class="live-dot"></span>
+            <span>Views:</span>
+            <span class="views-number" id="siteViewsCounter">...</span>
+          </div>
+
+          <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+            <i data-feather="sun"></i>
+          </button>
+        </div>
+
+        <!-- OVERVIEW / HERO SECTION -->
+        <header class="hero" id="overview">
+          <div class="profile-wrap">
+            <div class="profile-ring"></div>
+            <img src="Profile.jpg.PNG" class="profile" alt="jayunboxes Profile" onerror="this.style.display='none';">
+          </div>
+
+          <h1>jayunboxes</h1>
+          <div class="handle">@jayunboxes</div>
+
           <p>
-            Welcome to <strong>jayunboxes</strong>. I review gadgets, test everyday AI tools, and track price cuts so you get maximum value out of tech. Whether you're upgrading your desk setup, hunting down deal drops, or downloading 4K wallpapers, this hub keeps you connected with what's actually worth your money.
+            The central hub for verified tech deals, AI workflow tools, raw gadget teardowns & setup wallpapers — zero fluff, pure utility.
           </p>
-        </div>
 
-        <div class="about-stats">
-          <div class="stat-pill">
-            <div class="stat-num">Daily</div>
-            <div class="stat-label">Deal Checks</div>
+          <div class="hero-tags">
+            <span class="hero-tag">Tech Deals</span>
+            <span class="hero-tag">AI Tools</span>
+            <span class="hero-tag">4K Wallpapers</span>
+            <span class="hero-tag">Gadgets</span>
           </div>
-          <div class="stat-pill">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Raw Reviews</div>
+        </header>
+
+        <!-- SOCIAL STRIP -->
+        <div class="socials">
+          <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
+            <i data-feather="instagram"></i>
+          </a>
+          <a class="social-btn" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
+            <i data-feather="youtube"></i>
+          </a>
+          <a class="social-btn" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
+            <i data-feather="at-sign"></i>
+          </a>
+          <a class="social-btn" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
+            <i data-feather="mail"></i>
+          </a>
+        </div>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="about-section">
+          <div class="section-head">
+            <div>
+              <div class="section-title">⚡ Behind the Tech</div>
+              <div class="section-subtitle">Creator, tech curator & gadget enthusiast.</div>
+            </div>
           </div>
-          <div class="stat-pill">
-            <div class="stat-num">4K</div>
-            <div class="stat-label">Curated Walls</div>
+          
+          <div class="about-card">
+            <div class="about-lead">
+              <h3>Hey, I'm Jay 👋</h3>
+              <p>
+                Welcome to <strong>jayunboxes</strong>. I review gadgets, test everyday AI tools, and track price cuts so you get maximum value out of tech. Whether you're upgrading your desk setup, hunting down deal drops, or downloading 4K wallpapers, this hub keeps you connected with what's actually worth your money.
+              </p>
+            </div>
+
+            <div class="about-stats">
+              <div class="stat-pill">
+                <div class="stat-num">Daily</div>
+                <div class="stat-label">Deal Checks</div>
+              </div>
+              <div class="stat-pill">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Raw Reviews</div>
+              </div>
+              <div class="stat-pill">
+                <div class="stat-num">4K</div>
+                <div class="stat-label">Curated Walls</div>
+              </div>
+              <div class="stat-pill">
+                <div class="stat-num">Free</div>
+                <div class="stat-label">VIP Alerts</div>
+              </div>
+            </div>
           </div>
-          <div class="stat-pill">
-            <div class="stat-num">Free</div>
-            <div class="stat-label">VIP Alerts</div>
+        </section>
+
+        <!-- WHATSAPP INSIDER BANNER -->
+        <div class="insider">
+          <div class="insider-info">
+            <div class="insider-icon">
+              <i data-feather="message-circle"></i>
+            </div>
+            <div>
+              <h3>Jayunboxes Insider</h3>
+              <p>Instant tech deals, price drops and gear leaks sent directly on WhatsApp.</p>
+            </div>
           </div>
+          <a class="btn btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+            <i data-feather="zap"></i> Join Free
+          </a>
         </div>
-      </div>
-    </section>
 
-    <!-- WHATSAPP INSIDER BANNER -->
-    <div class="insider">
-      <div class="insider-info">
-        <div class="insider-icon">
-          <i data-feather="message-circle"></i>
-        </div>
-        <div>
-          <h3>Jayunboxes Insider</h3>
-          <p>Instant tech deals, price drops and gear leaks sent directly on WhatsApp.</p>
-        </div>
-      </div>
-      <a class="btn btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-        <i data-feather="zap"></i> Join Free
-      </a>
-    </div>
-
-    <!-- LIVE DEALS SECTION -->
-    <section id="deals">
-      <div class="section-head">
-        <div>
-          <div class="section-title">🔥 Live Tech Deals</div>
-          <div class="section-subtitle">Synced automatically from the Jayunboxes deals sheet.</div>
-        </div>
-      </div>
-      <div class="deals-grid" id="dealsGrid">
-        <div class="deal-loading">Loading today's curated deals...</div>
-      </div>
-    </section>
-
-    <!-- WALLPAPERS SECTION -->
-    <section id="wallpapers">
-      <div class="section-head">
-        <div>
-          <div class="section-title">✨ Setup Wallpapers</div>
-          <div class="section-subtitle">Aesthetic high-resolution walls for phone & desk setups.</div>
-        </div>
-      </div>
-      <div class="wallpapers-shelf" id="wallpapersList">
-        <div class="wp-item" style="display:grid; place-items:center; color:var(--muted); font-size:12px; padding:15px; text-align:center;">
-          Loading walls...
-        </div>
-      </div>
-    </section>
-
-    <!-- CHANNELS -->
-    <section>
-      <div class="section-head">
-        <div>
-          <div class="section-title">Stay Connected</div>
-          <div class="section-subtitle">Follow the journey across platforms.</div>
-        </div>
-      </div>
-      <div class="channels-grid">
-        <a class="channel-card" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-          <div class="channel-icon whatsapp"><i data-feather="message-circle"></i></div>
-          <div>
-            <h3>Jayunboxes Insider</h3>
-            <p>Instant deals, alerts & exclusive community drops.</p>
+        <!-- LIVE DEALS SECTION -->
+        <section id="deals">
+          <div class="section-head">
+            <div>
+              <div class="section-title">🔥 Live Tech Deals</div>
+              <div class="section-subtitle">Synced automatically from the Jayunboxes deals sheet.</div>
+            </div>
           </div>
-        </a>
-        <a class="channel-card" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
-          <div class="channel-icon instagram"><i data-feather="instagram"></i></div>
-          <div>
-            <h3>Instagram</h3>
-            <p>Short-form reels, setups & unboxings.</p>
+          <div class="deals-grid" id="dealsGrid">
+            <div class="deal-loading">Loading today's curated deals...</div>
           </div>
-        </a>
-      </div>
-    </section>
+        </section>
 
-    <!-- AI TOOLS -->
-    <section>
-      <div class="section-head">
-        <div>
-          <div class="section-title">🤖 AI Tools</div>
-          <div class="section-subtitle">Everyday artificial intelligence tools used by Jay.</div>
-        </div>
-      </div>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <h3>ChatGPT</h3>
-          <p>Ideation, scripting, code assistance, and research workflow.</p>
-        </div>
-        <div class="tool-card">
-          <h3>Google Flow</h3>
-          <p>Cinematic AI video creation and generative visuals.</p>
-        </div>
-        <div class="tool-card">
-          <h3>Gemini</h3>
-          <p>Contextual multimodal intelligence and workspace workflows.</p>
-        </div>
-        <div class="tool-card">
-          <h3>Canva</h3>
-          <p>Fast graphic design, presentation decks, and cover art.</p>
-        </div>
-        <div class="tool-card">
-          <h3>ElevenLabs</h3>
-          <p>High-fidelity synthetic speech synthesis & voiceover cloning.</p>
-        </div>
-        <div class="tool-card">
-          <h3>CapCut</h3>
-          <p>Rapid video montage, responsive subtitles, and motion pacing.</p>
-        </div>
-      </div>
-    </section>
+        <!-- WALLPAPERS SECTION -->
+        <section id="wallpapers">
+          <div class="section-head">
+            <div>
+              <div class="section-title">✨ Setup Wallpapers</div>
+              <div class="section-subtitle">Aesthetic high-resolution walls for phone & desk setups.</div>
+            </div>
+          </div>
+          <div class="wallpapers-shelf" id="wallpapersList">
+            <div class="wp-item" style="display:grid; place-items:center; color:var(--muted); font-size:12px; padding:15px; text-align:center;">
+              Loading walls...
+            </div>
+          </div>
+        </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-brand">jayunboxes</div>
-      <div>Tech Deals • AI Tools • Aesthetic Wallpapers</div>
-      <div class="footer-meta">
-        <span>© 2026 jayunboxes</span>
-        <span>•</span>
-        <span id="footerViewsCount">Live Views Active</span>
+        <!-- CHANNELS -->
+        <section id="channels">
+          <div class="section-head">
+            <div>
+              <div class="section-title">Stay Connected</div>
+              <div class="section-subtitle">Follow the journey across platforms.</div>
+            </div>
+          </div>
+          <div class="channels-grid">
+            <a class="channel-card" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+              <div class="channel-icon whatsapp"><i data-feather="message-circle"></i></div>
+              <div>
+                <h3>Jayunboxes Insider</h3>
+                <p>Instant deals, alerts & exclusive community drops.</p>
+              </div>
+            </a>
+            <a class="channel-card" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
+              <div class="channel-icon instagram"><i data-feather="instagram"></i></div>
+              <div>
+                <h3>Instagram</h3>
+                <p>Short-form reels, setups & unboxings.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- AI TOOLS -->
+        <section id="tools">
+          <div class="section-head">
+            <div>
+              <div class="section-title">🤖 AI Tools</div>
+              <div class="section-subtitle">Everyday artificial intelligence tools used by Jay.</div>
+            </div>
+          </div>
+          <div class="tools-grid">
+            <div class="tool-card">
+              <h3>ChatGPT</h3>
+              <p>Ideation, scripting, code assistance, and research workflow.</p>
+            </div>
+            <div class="tool-card">
+              <h3>Google Flow</h3>
+              <p>Cinematic AI video creation and generative visuals.</p>
+            </div>
+            <div class="tool-card">
+              <h3>Gemini</h3>
+              <p>Contextual multimodal intelligence and workspace workflows.</p>
+            </div>
+            <div class="tool-card">
+              <h3>Canva</h3>
+              <p>Fast graphic design, presentation decks, and cover art.</p>
+            </div>
+            <div class="tool-card">
+              <h3>ElevenLabs</h3>
+              <p>High-fidelity synthetic speech synthesis & voiceover cloning.</p>
+            </div>
+            <div class="tool-card">
+              <h3>CapCut</h3>
+              <p>Rapid video montage, responsive subtitles, and motion pacing.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="footer-brand">jayunboxes</div>
+          <div>Tech Deals • AI Tools • Aesthetic Wallpapers</div>
+          <div class="footer-meta">
+            <span>© 2026 jayunboxes</span>
+            <span>•</span>
+            <span id="footerViewsCount">Live Views Active</span>
+          </div>
+        </footer>
       </div>
-    </footer>
+    </main>
   </div>
 
   <!-- WALLPAPER MODAL -->
@@ -1257,8 +1511,35 @@
     const myWallpapers = [];
 
     /* =========================================================
+       ACTIVE NAVIGATION SCROLL SPY
+    ========================================================= */
+    function initNavScrollSpy() {
+      const sections = document.querySelectorAll('header#overview, section[id]');
+      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = 'overview';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }, { passive: true });
+    }
+
+    /* =========================================================
        SMART INTERNET PRODUCT IMAGE MATCHER
-       Extracts authentic web visuals based on product name
     ========================================================= */
     function getSmartProductImage(productName, userProvidedImage) {
       if (userProvidedImage && userProvidedImage.trim() !== "" && userProvidedImage.trim() !== "#") {
@@ -1267,7 +1548,6 @@
 
       const p = String(productName || "").toLowerCase();
 
-      // Curated authentic web image presets for popular gadgets
       if (p.includes("iphone")) {
         return "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80";
       }
@@ -1308,7 +1588,6 @@
         return "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&auto=format&fit=crop&q=80";
       }
 
-      // Dynamic Unsplash keyword search fallback
       const cleanKeyword = encodeURIComponent(productName.replace(/[^a-zA-Z0-9 ]/g, "").slice(0, 30) || "gadget");
       return `https://source.unsplash.com/featured/800x550/?${cleanKeyword},technology`;
     }
@@ -1460,7 +1739,6 @@
             price: getValue(nr, "price", "dealprice", "saleprice"),
             discount: getValue(nr, "discount", "off"),
             checked: getValue(nr, "checked", "lastchecked") || "Active verification",
-            // Automatically get image from internet using product name if none given
             image: getSmartProductImage(pName, rawImg),
             url: getValue(nr, "url", "link", "dealurl") || "#",
             active: isActive(getValue(nr, "active", "status")),
@@ -1698,6 +1976,7 @@
     loadDeals();
     loadWallpapers();
     initViewsCounter();
+    initNavScrollSpy();
   </script>
 </body>
 </html>
