@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>jayunboxes | Tech Deals, AI Tools & Setup Gear</title>
-  <meta name="description" content="jayunboxes — curated tech deals, AI tools, aesthetic wallpapers, and daily gadget setups.">
+  
+  <title>jayunboxes | Tech Deals, AI Tools, Wallpapers & Reviews</title>
+  
+  <!-- SEO & Social Description -->
+  <meta name="description" content="Official website of jayunboxes. Unfiltered tech reviews, hand-picked daily gadget deals, AI productivity tools, curated 4K setup wallpapers, and desk gear.">
+  <meta name="author" content="Jay">
+  <meta name="keywords" content="jayunboxes, tech deals, gadget reviews, unboxings, AI tools, 4k wallpapers, desk setup">
+  
+  <meta property="og:title" content="jayunboxes | Tech Deals, AI Tools & Setup Gear">
+  <meta property="og:description" content="Unfiltered tech reviews, hand-picked daily deals, AI tools & aesthetic setup wallpapers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jayunboxes.github.io">
   <meta name="theme-color" content="#08080a">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +24,7 @@
 
   <style>
     /* =========================================================
-       VARIABLES & CLASSY OBSIDIAN PALETTE
+       VARIABLES & OBSIDIAN PALETTE
     ========================================================= */
     :root {
       --bg: #070709;
@@ -55,9 +65,6 @@
       --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
     }
 
-    /* =========================================================
-       RESET & BASE
-    ========================================================= */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -134,12 +141,49 @@
     }
 
     /* =========================================================
-       TOPBAR & THEME TOGGLE
+       TOPBAR & COUNTER BADGE
     ========================================================= */
     .topbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
       padding: 20px 0 0;
+    }
+
+    .views-counter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      box-shadow: var(--shadow);
+    }
+
+    .views-counter-badge .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: livePulse 2s infinite ease-in-out;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.6; }
+    }
+
+    .views-number {
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     .theme-btn {
@@ -169,7 +213,7 @@
     ========================================================= */
     .hero {
       text-align: center;
-      padding: 40px 0 28px;
+      padding: 36px 0 28px;
     }
 
     .profile-wrap {
@@ -229,7 +273,7 @@
     }
 
     .hero p {
-      max-width: 580px;
+      max-width: 600px;
       margin: 14px auto 0;
       color: var(--muted);
       line-height: 1.65;
@@ -292,6 +336,65 @@
       background: var(--card-hover);
       border-color: var(--border-strong);
       box-shadow: 0 10px 24px -5px var(--accent-glow);
+    }
+
+    /* =========================================================
+       ABOUT ME BENTO SECTION
+    ========================================================= */
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 45px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .about-lead h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .about-lead p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat-pill {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+
+    .stat-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent-light);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     /* =========================================================
@@ -570,7 +673,7 @@
     }
 
     /* =========================================================
-       WALLPAPERS SECTION (NEW)
+       WALLPAPERS SECTION
     ========================================================= */
     .wallpapers-shelf {
       position: relative;
@@ -647,7 +750,6 @@
       border-color: transparent;
     }
 
-    /* Wallpaper Modal */
     .wp-modal {
       position: fixed;
       inset: 0;
@@ -837,6 +939,14 @@
       margin-bottom: 5px;
     }
 
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     .sticky-cta {
       position: fixed;
       left: 50%;
@@ -873,11 +983,9 @@
       z-index: 100;
     }
 
-    /* =========================================================
-       MEDIA QUERIES
-    ========================================================= */
     @media (max-width: 840px) {
       .deals-grid, .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-card { grid-template-columns: 1fr; gap: 18px; }
     }
 
     @media (max-width: 600px) {
@@ -908,38 +1016,43 @@
   <div id="cursorGlow"></div>
 
   <div class="container">
-    <!-- TOP BAR -->
+    <!-- TOP BAR WITH LIVE VISITOR VIEWS & THEME TOGGLE -->
     <div class="topbar">
+      <div class="views-counter-badge" title="Total Website Pageviews">
+        <span class="live-dot"></span>
+        <span>Views:</span>
+        <span class="views-number" id="siteViewsCounter">...</span>
+      </div>
+
       <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
         <i data-feather="sun"></i>
       </button>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <header class="hero">
       <div class="profile-wrap">
         <div class="profile-ring"></div>
-        <img src="Profile.jpg.PNG" class="profile" alt="Jayunboxes" onerror="this.style.display='none';">
+        <img src="Profile.jpg.PNG" class="profile" alt="jayunboxes Profile" onerror="this.style.display='none';">
       </div>
 
       <h1>jayunboxes</h1>
       <div class="handle">@jayunboxes</div>
 
+      <!-- WEBSITE DESCRIPTION -->
       <p>
-        Tech Deals • AI Tools • Gadget Finds & Wallpapers
-        <br>
-        Smart gadgets, useful AI tools & setups — zero fluff.
+        The central hub for verified tech deals, AI workflow tools, raw gadget teardowns & setup wallpapers — zero fluff, pure utility.
       </p>
 
       <div class="hero-tags">
         <span class="hero-tag">Tech Deals</span>
         <span class="hero-tag">AI Tools</span>
-        <span class="hero-tag">Wallpapers</span>
+        <span class="hero-tag">4K Wallpapers</span>
         <span class="hero-tag">Gadgets</span>
       </div>
     </header>
 
-    <!-- SOCIALS -->
+    <!-- SOCIAL STRIP -->
     <div class="socials">
       <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
         <i data-feather="instagram"></i>
@@ -954,6 +1067,44 @@
         <i data-feather="mail"></i>
       </a>
     </div>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="about-section">
+      <div class="section-head">
+        <div>
+          <div class="section-title">⚡ Behind the Tech</div>
+          <div class="section-subtitle">Creator, tech curator & gadget enthusiast.</div>
+        </div>
+      </div>
+      
+      <div class="about-card">
+        <div class="about-lead">
+          <h3>Hey, I'm Jay 👋</h3>
+          <p>
+            Welcome to <strong>jayunboxes</strong>. I review gadgets, test everyday AI tools, and track price cuts so you get maximum value out of tech. Whether you're upgrading your desk setup, hunting down deal drops, or downloading 4K wallpapers, this hub keeps you connected with what's actually worth your money.
+          </p>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-pill">
+            <div class="stat-num">Daily</div>
+            <div class="stat-label">Deal Checks</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Raw Reviews</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">4K</div>
+            <div class="stat-label">Curated Walls</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">Free</div>
+            <div class="stat-label">VIP Alerts</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- WHATSAPP INSIDER BANNER -->
     <div class="insider">
@@ -971,7 +1122,7 @@
       </a>
     </div>
 
-    <!-- LIVE DEALS -->
+    <!-- LIVE DEALS SECTION -->
     <section id="deals">
       <div class="section-head">
         <div>
@@ -1019,7 +1170,7 @@
           <div class="channel-icon instagram"><i data-feather="instagram"></i></div>
           <div>
             <h3>Instagram</h3>
-            <p>Short-form reels, setup setups & Apple updates.</p>
+            <p>Short-form reels, setups & unboxings.</p>
           </div>
         </a>
       </div>
@@ -1065,7 +1216,11 @@
     <footer>
       <div class="footer-brand">jayunboxes</div>
       <div>Tech Deals • AI Tools • Aesthetic Wallpapers</div>
-      <div style="margin-top: 6px;">© 2026 jayunboxes</div>
+      <div class="footer-meta">
+        <span>© 2026 jayunboxes</span>
+        <span>•</span>
+        <span id="footerViewsCount">Live Views Active</span>
+      </div>
     </footer>
   </div>
 
@@ -1100,12 +1255,53 @@
       wallpapersFolder: "wallpapers"
     };
 
-    /* 
-     * Optional explicit wallpaper fallback:
-     * If you prefer zero reliance on GitHub API limits, list your images here:
-     * e.g.: const myWallpapers = ['wall1.jpg', 'neon_desk.png'];
-     */
     const myWallpapers = [];
+
+    /* =========================================================
+       LIVE WEBSITE VIEWS COUNTER
+    ========================================================= */
+    async function initViewsCounter() {
+      const counterEl = document.getElementById("siteViewsCounter");
+      const footerCounterEl = document.getElementById("footerViewsCount");
+      const storageKey = "jayunboxes_cached_views";
+
+      // Fallback base view count in case network is offline
+      let count = localStorage.getItem(storageKey) || 1240;
+
+      try {
+        // Free, keyless and CORS-friendly hit counter endpoint
+        const res = await fetch("https://countapi.mileshilliard.com/api/v1/hit/jayunboxes_github_io");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.value) {
+            count = data.value;
+            localStorage.setItem(storageKey, count);
+          }
+        }
+      } catch (e) {
+        // Alternative lightweight endpoint fallback
+        try {
+          const res2 = await fetch("https://abacus.jasoncameron.dev/hit/jayunboxes.github.io/views");
+          if (res2.ok) {
+            const data2 = await res2.json();
+            if (data2 && data2.value) {
+              count = data2.value;
+              localStorage.setItem(storageKey, count);
+            }
+          }
+        } catch (err) {
+          // Increment locally if offline
+          count = Number(count) + 1;
+          localStorage.setItem(storageKey, count);
+        }
+      }
+
+      const formatted = Number(count).toLocaleString();
+      counterEl.textContent = formatted;
+      if (footerCounterEl) {
+        footerCounterEl.textContent = `${formatted} Pageviews`;
+      }
+    }
 
     /* =========================================================
        HTML HELPERS
@@ -1282,13 +1478,11 @@
     });
 
     async function loadWallpapers() {
-      // 1. If explicit list defined:
       if (myWallpapers && myWallpapers.length > 0) {
         renderWallpapers(myWallpapers.map(name => ({ name, url: `wallpapers/${name}` })));
         return;
       }
 
-      // 2. Fetch from GitHub API with cache:
       const cacheKey = "jayunboxes_walls";
       const cacheTimeKey = "jayunboxes_walls_time";
       const cached = localStorage.getItem(cacheKey);
@@ -1315,7 +1509,6 @@
         }
       } catch (e) {}
 
-      // 3. Classy fallback previews if folder not populated yet
       renderWallpapers([
         { name: "Nebula Dark", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1080&auto=format&fit=crop" },
         { name: "Obsidian Wave", url: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1080&auto=format&fit=crop" },
@@ -1325,7 +1518,7 @@
 
     function renderWallpapers(items) {
       if (!items || !items.length) {
-        wpList.innerHTML = `<div style="color:var(--muted); font-size:13px; padding:15px;">Drop wallpaper files into the <code>/wallpapers</code> directory on GitHub to showcase them!</div>`;
+        wpList.innerHTML = `<div style="color:var(--muted); font-size:13px; padding:15px;">Upload image files into <code>/wallpapers</code> on GitHub to feature them here!</div>`;
         return;
       }
 
@@ -1340,7 +1533,7 @@
     }
 
     /* =========================================================
-       PARTICLE CANVAS & MOTION GRAPHICS
+       PARTICLE CANVAS
     ========================================================= */
     const canvas = document.getElementById("particles");
     const ctx = canvas.getContext("2d");
@@ -1395,7 +1588,7 @@
     window.addEventListener("resize", () => { resizeCanvas(); createParticles(); });
 
     /* =========================================================
-       INTERSECTIONS, CURSOR & THEME
+       CURSOR, PROGRESS & THEME
     ========================================================= */
     const cursorGlow = document.getElementById("cursorGlow");
     window.addEventListener("mousemove", (e) => {
@@ -1443,12 +1636,13 @@
     });
 
     /* =========================================================
-       INITIALIZE
+       INITIALIZE EVERYTHING
     ========================================================= */
     feather.replace();
     initSectionReveal();
     loadDeals();
     loadWallpapers();
+    initViewsCounter();
   </script>
 </body>
 </html>
