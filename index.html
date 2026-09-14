@@ -1016,7 +1016,7 @@
   <div id="cursorGlow"></div>
 
   <div class="container">
-    <!-- TOP BAR WITH LIVE VISITOR VIEWS & THEME TOGGLE -->
+    <!-- TOP BAR -->
     <div class="topbar">
       <div class="views-counter-badge" title="Total Website Pageviews">
         <span class="live-dot"></span>
@@ -1039,7 +1039,6 @@
       <h1>jayunboxes</h1>
       <div class="handle">@jayunboxes</div>
 
-      <!-- WEBSITE DESCRIPTION -->
       <p>
         The central hub for verified tech deals, AI workflow tools, raw gadget teardowns & setup wallpapers — zero fluff, pure utility.
       </p>
@@ -1258,6 +1257,63 @@
     const myWallpapers = [];
 
     /* =========================================================
+       SMART INTERNET PRODUCT IMAGE MATCHER
+       Extracts authentic web visuals based on product name
+    ========================================================= */
+    function getSmartProductImage(productName, userProvidedImage) {
+      if (userProvidedImage && userProvidedImage.trim() !== "" && userProvidedImage.trim() !== "#") {
+        return safeURL(userProvidedImage);
+      }
+
+      const p = String(productName || "").toLowerCase();
+
+      // Curated authentic web image presets for popular gadgets
+      if (p.includes("iphone")) {
+        return "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("macbook") || p.includes("laptop")) {
+        return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("airpods") || p.includes("earbuds") || p.includes("tws")) {
+        return "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("headphone") || p.includes("xm5") || p.includes("xm4") || p.includes("bose")) {
+        return "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("ipad") || p.includes("tablet") || p.includes("pad")) {
+        return "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("watch") || p.includes("smartwatch") || p.includes("band")) {
+        return "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("keyboard") || p.includes("keychron")) {
+        return "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("mouse") || p.includes("mx master")) {
+        return "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("monitor") || p.includes("display") || p.includes("screen")) {
+        return "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("samsung") || p.includes("galaxy") || p.includes("android") || p.includes("pixel")) {
+        return "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("charger") || p.includes("gan") || p.includes("adapter") || p.includes("cable")) {
+        return "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("speaker") || p.includes("soundbar") || p.includes("audio")) {
+        return "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("desk") || p.includes("setup") || p.includes("mat")) {
+        return "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&auto=format&fit=crop&q=80";
+      }
+
+      // Dynamic Unsplash keyword search fallback
+      const cleanKeyword = encodeURIComponent(productName.replace(/[^a-zA-Z0-9 ]/g, "").slice(0, 30) || "gadget");
+      return `https://source.unsplash.com/featured/800x550/?${cleanKeyword},technology`;
+    }
+
+    /* =========================================================
        LIVE WEBSITE VIEWS COUNTER
     ========================================================= */
     async function initViewsCounter() {
@@ -1265,11 +1321,9 @@
       const footerCounterEl = document.getElementById("footerViewsCount");
       const storageKey = "jayunboxes_cached_views";
 
-      // Fallback base view count in case network is offline
       let count = localStorage.getItem(storageKey) || 1240;
 
       try {
-        // Free, keyless and CORS-friendly hit counter endpoint
         const res = await fetch("https://countapi.mileshilliard.com/api/v1/hit/jayunboxes_github_io");
         if (res.ok) {
           const data = await res.json();
@@ -1279,7 +1333,6 @@
           }
         }
       } catch (e) {
-        // Alternative lightweight endpoint fallback
         try {
           const res2 = await fetch("https://abacus.jasoncameron.dev/hit/jayunboxes.github.io/views");
           if (res2.ok) {
@@ -1290,7 +1343,6 @@
             }
           }
         } catch (err) {
-          // Increment locally if offline
           count = Number(count) + 1;
           localStorage.setItem(storageKey, count);
         }
@@ -1398,14 +1450,18 @@
 
         const deals = rows.map(r => {
           const nr = normalizeRow(r);
+          const pName = getValue(nr, "name", "product", "productname") || "Tech Product";
+          const rawImg = getValue(nr, "image", "imageurl", "photo");
+
           return {
             store: getValue(nr, "store", "shop", "platform") || "Deal",
-            name: getValue(nr, "name", "product", "productname") || "Tech Product",
+            name: pName,
             oldPrice: getValue(nr, "oldPrice", "old price", "mrp", "originalprice"),
             price: getValue(nr, "price", "dealprice", "saleprice"),
             discount: getValue(nr, "discount", "off"),
             checked: getValue(nr, "checked", "lastchecked") || "Active verification",
-            image: getValue(nr, "image", "imageurl", "photo"),
+            // Automatically get image from internet using product name if none given
+            image: getSmartProductImage(pName, rawImg),
             url: getValue(nr, "url", "link", "dealurl") || "#",
             active: isActive(getValue(nr, "active", "status")),
             featured: isYes(getValue(nr, "featured", "topdeal")),
@@ -1422,13 +1478,12 @@
         }
 
         grid.innerHTML = deals.map(d => {
-          const img = d.image ? safeURL(d.image) : placeholderImage();
           const target = safeURL(d.url);
           return `
             <article class="deal-card">
               ${d.featured ? `<div class="featured-badge">⚡ TOP FIND</div>` : ""}
               <div class="deal-image-wrap">
-                <img class="deal-image" src="${escapeHTML(img)}" alt="${escapeHTML(d.name)}" loading="lazy" onerror="this.src='${placeholderImage()}'">
+                <img class="deal-image" src="${escapeHTML(d.image)}" alt="${escapeHTML(d.name)}" loading="lazy" onerror="this.src='${placeholderImage()}'">
               </div>
               <div class="deal-content">
                 <div class="deal-top">
