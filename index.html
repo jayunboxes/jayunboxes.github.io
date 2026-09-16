@@ -1589,7 +1589,7 @@
       }
 
       const cleanKeyword = encodeURIComponent(productName.replace(/[^a-zA-Z0-9 ]/g, "").slice(0, 30) || "gadget");
-      return `https://source.unsplash.com/featured/800x550/?${cleanKeyword},technology`;
+      return `https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&auto=format&fit=crop&q=80`;
     }
 
     /* =========================================================
@@ -1722,36 +1722,46 @@
     async function loadDeals() {
       const grid = document.getElementById("dealsGrid");
       try {
-        const res = await fetch(CONFIG.dealsFile + "?v=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) throw new Error("Could not load deals.csv");
+        // Correct query separator to prevent breaking Google Sheets output=csv URL
+        const separator = CONFIG.dealsFile.includes("?") ? "&" : "?";
+        const fetchUrl = CONFIG.dealsFile + separator + "t=" + Date.now();
+
+        const res = await fetch(fetchUrl);
+        if (!res.ok) throw new Error("HTTP Status " + res.status);
         const raw = await res.text();
+
+        // Detect if sheet published link returned HTML error
+        if (raw.trim().startsWith("<!DOCTYPE") || raw.trim().startsWith("<html")) {
+          throw new Error("Received HTML rather than CSV data.");
+        }
+
         const rows = parseCSV(raw);
 
         const deals = rows.map(r => {
           const nr = normalizeRow(r);
-          const pName = getValue(nr, "name", "product", "productname") || "Tech Product";
-          const rawImg = getValue(nr, "image", "imageurl", "photo");
+          const pName = getValue(nr, "name", "product", "productname", "title") || "Tech Product";
+          const rawImg = getValue(nr, "image", "imageurl", "photo", "img");
 
           return {
-            store: getValue(nr, "store", "shop", "platform") || "Deal",
+            store: getValue(nr, "store", "shop", "platform") || "Amazon",
             name: pName,
-            oldPrice: getValue(nr, "oldPrice", "old price", "mrp", "originalprice"),
+            oldPrice: getValue(nr, "oldprice", "mrp", "originalprice"),
             price: getValue(nr, "price", "dealprice", "saleprice"),
             discount: getValue(nr, "discount", "off"),
             checked: getValue(nr, "checked", "lastchecked") || "Active verification",
             image: getSmartProductImage(pName, rawImg),
-            url: getValue(nr, "url", "link", "dealurl") || "#",
+            url: getValue(nr, "url", "link", "dealurl", "affiliateurl") || "#",
             active: isActive(getValue(nr, "active", "status")),
             featured: isYes(getValue(nr, "featured", "topdeal")),
             category: getValue(nr, "category", "type") || "Tech",
-            sortOrder: Number(getValue(nr, "sortOrder", "order")) || 9999
+            sortOrder: Number(getValue(nr, "sortorder", "order")) || 9999
           };
-        }).filter(d => d.active);
+        }).filter(d => d.active && d.name !== "Tech Product");
 
         deals.sort((a, b) => (b.featured - a.featured) || (a.sortOrder - b.sortOrder));
 
         if (!deals.length) {
-          grid.innerHTML = `<div class="deal-empty">No live deals at this moment. Check back shortly.</div>`;
+          grid.innerHTML = `<div class="deal-empty">No active deals found. Add products to your Google Sheet to feature them here!</div>`;
           return;
         }
 
@@ -1785,7 +1795,14 @@
 
         feather.replace();
       } catch (err) {
-        grid.innerHTML = `<div class="deal-error">Unable to load deals right now.<br><small>Confirm <strong>deals.csv</strong> is in your root folder.</small></div>`;
+        console.error("Deals load error:", err);
+        grid.innerHTML = `
+          <div class="deal-error">
+            Unable to load deals right now.<br>
+            <small style="display:block; margin-top:6px; color:var(--muted);">
+              Ensure the Google Sheet is set to <strong>Publish to Web ➔ Comma-separated values (.csv)</strong>.
+            </small>
+          </div>`;
       }
     }
 
