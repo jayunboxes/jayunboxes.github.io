@@ -15,7 +15,7 @@
   <meta property="og:description" content="Unfiltered tech reviews, hand-picked daily deals, AI tools & aesthetic setup wallpapers.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jayunboxes.github.io">
-  <meta name="theme-color" content="#08080a">
+  <meta name="theme-color" content="#3f78e0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,46 +24,61 @@
 
   <style>
     /* =========================================================
-       VARIABLES & OBSIDIAN PALETTE
+       SANDBOX THEME DESIGN SYSTEM (Tailwind/Bootstrap Multipurpose)
     ========================================================= */
     :root {
-      --bg: #070709;
-      --bg-secondary: #0f0f13;
-      --card: rgba(255, 255, 255, 0.038);
-      --card-hover: rgba(255, 255, 255, 0.065);
-      --card-subtle: rgba(255, 255, 255, 0.02);
-      --border: rgba(255, 255, 255, 0.07);
-      --border-strong: rgba(255, 255, 255, 0.14);
-      --text: #f9fafb;
-      --muted: #8e8e99;
-      --accent: #8b5cf6;
-      --accent-light: #c084fc;
-      --accent-glow: rgba(139, 92, 246, 0.22);
-      --green: #22c55e;
-      --green-glow: rgba(34, 197, 94, 0.2);
-      --radius: 20px;
-      --radius-sm: 12px;
-      --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5);
-      --shadow-lg: 0 24px 60px -12px rgba(0, 0, 0, 0.65);
-      --sidebar-width: 250px;
+      /* Sandbox Dark Mode Defaults */
+      --sb-bg: #15171e;
+      --sb-surface: #1e222d;
+      --sb-surface-hover: #262b39;
+      --sb-border: rgba(164, 174, 198, 0.14);
+      --sb-border-strong: rgba(164, 174, 198, 0.25);
+      --sb-text: #f1f3f7;
+      --sb-text-muted: #9499a8;
+      
+      /* Sandbox Signature Accent Colors */
+      --sb-primary: #3f78e0;
+      --sb-primary-light: #5a8fee;
+      --sb-primary-soft: rgba(63, 120, 224, 0.15);
+      
+      --sb-purple: #7952b3;
+      --sb-purple-soft: rgba(121, 82, 179, 0.15);
+
+      --sb-green: #45c4a0;
+      --sb-green-soft: rgba(69, 196, 160, 0.15);
+
+      --sb-radius: 16px;
+      --sb-radius-sm: 10px;
+      --sb-radius-pill: 9999px;
+
+      --sb-shadow: 0 0.5rem 1.75rem rgba(10, 12, 18, 0.25);
+      --sb-shadow-hover: 0 1rem 3rem rgba(10, 12, 18, 0.4);
+      --sidebar-width: 260px;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* Sandbox Crisp Light Mode */
     body.light {
-      --bg: #f8f9fc;
-      --bg-secondary: #ffffff;
-      --card: rgba(255, 255, 255, 0.75);
-      --card-hover: rgba(255, 255, 255, 0.95);
-      --card-subtle: rgba(0, 0, 0, 0.02);
-      --border: rgba(0, 0, 0, 0.07);
-      --border-strong: rgba(0, 0, 0, 0.14);
-      --text: #09090b;
-      --muted: #64748b;
-      --accent: #7c3aed;
-      --accent-light: #9333ea;
-      --accent-glow: rgba(124, 58, 237, 0.12);
-      --shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
+      --sb-bg: #f6f7fb;
+      --sb-surface: #ffffff;
+      --sb-surface-hover: #f9fafd;
+      --sb-border: #e4e7ee;
+      --sb-border-strong: #d1d6e2;
+      --sb-text: #2c3240;
+      --sb-text-muted: #60697b;
+      
+      --sb-primary: #3f78e0;
+      --sb-primary-light: #3269d4;
+      --sb-primary-soft: #eaf1fc;
+      
+      --sb-purple: #7952b3;
+      --sb-purple-soft: #f2eef8;
+
+      --sb-green: #45c4a0;
+      --sb-green-soft: #eaf7f4;
+
+      --sb-shadow: 0 0.45rem 1.5rem rgba(30, 34, 40, 0.06);
+      --sb-shadow-hover: 0 1rem 2.5rem rgba(30, 34, 40, 0.1);
     }
 
     * {
@@ -78,17 +93,13 @@
     }
 
     body {
-      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 10% 8%, var(--accent-glow), transparent 32%),
-        radial-gradient(circle at 92% 28%, rgba(192, 132, 252, 0.08), transparent 30%);
-      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--sb-bg);
+      color: var(--sb-text);
       min-height: 100vh;
       overflow-x: hidden;
-      line-height: 1.55;
-      letter-spacing: -0.01em;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
@@ -100,23 +111,17 @@
       font: inherit;
     }
 
-    img {
-      max-width: 100%;
-    }
-
-    /* =========================================================
-       APP WRAPPER LAYOUT (SIDEBAR + MAIN)
-    ========================================================= */
+    /* Layout Wrapper */
     .app-layout {
       display: flex;
-      max-width: 1320px;
+      max-width: 1360px;
       margin: 0 auto;
       min-height: 100vh;
       position: relative;
     }
 
     /* =========================================================
-       LEFT NAVIGATION PANE
+       SANDBOX SIDEBAR / LEFT NAV
     ========================================================= */
     .sidebar {
       position: sticky;
@@ -124,148 +129,123 @@
       height: 100vh;
       width: var(--sidebar-width);
       flex-shrink: 0;
-      padding: 30px 20px;
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-right: 1px solid var(--border);
-      background: rgba(7, 7, 9, 0.45);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      border-right: 1px solid var(--sb-border);
+      background: var(--sb-surface);
       z-index: 90;
-    }
-
-    body.light .sidebar {
-      background: rgba(248, 249, 252, 0.65);
     }
 
     .sidebar-brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 0 8px 24px;
-      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--sb-border);
     }
 
     .sidebar-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--sb-radius-sm);
       object-fit: cover;
-      border: 1.5px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(63, 120, 224, 0.25);
     }
 
-    .sidebar-brand-text {
-      font-size: 15px;
+    .sidebar-brand-title {
+      font-size: 16px;
       font-weight: 800;
       letter-spacing: -0.02em;
     }
 
-    .nav-links {
+    .sidebar-brand-subtitle {
+      font-size: 11.5px;
+      color: var(--sb-text-muted);
+      font-weight: 500;
+    }
+
+    .nav-menu {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin: 26px 0;
+      margin: 28px 0;
       list-style: none;
     }
 
-    .nav-link {
+    .nav-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      color: var(--muted);
+      padding: 11px 16px;
+      border-radius: var(--sb-radius-sm);
+      color: var(--sb-text-muted);
       font-size: 13.5px;
       font-weight: 600;
-      transition: all 0.25s var(--ease);
+      transition: all 0.2s var(--ease);
       position: relative;
     }
 
-    .nav-link i {
+    .nav-item i {
       width: 17px;
       height: 17px;
-      transition: transform 0.25s ease;
+      transition: transform 0.2s ease;
     }
 
-    .nav-link:hover {
-      color: var(--text);
-      background: var(--card-hover);
-      transform: translateX(4px);
+    .nav-item:hover {
+      color: var(--sb-primary);
+      background: var(--sb-primary-soft);
+      transform: translateX(3px);
     }
 
-    .nav-link:hover i {
-      transform: scale(1.15);
-      color: var(--accent-light);
-    }
-
-    .nav-link.active {
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border-strong);
+    .nav-item.active {
+      color: var(--sb-primary);
+      background: var(--sb-primary-soft);
       font-weight: 700;
     }
 
-    .nav-link.active::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 18px;
-      border-radius: 0 4px 4px 0;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
     .sidebar-footer {
-      padding: 18px 8px 0;
-      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      border-top: 1px solid var(--sb-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    /* Mobile Floating Nav Rail */
+    /* Mobile Quick Navigation */
     .mobile-nav-bar {
       display: none;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7, 7, 9, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      background: var(--sb-surface);
+      border-bottom: 1px solid var(--sb-border);
       padding: 10px 16px;
       overflow-x: auto;
       white-space: nowrap;
       gap: 8px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    body.light .mobile-nav-bar {
-      background: rgba(248, 249, 252, 0.9);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
 
     .mobile-nav-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 13px;
-      border-radius: 999px;
-      background: var(--card);
-      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: var(--sb-radius-pill);
+      background: var(--sb-bg);
+      border: 1px solid var(--sb-border);
       font-size: 12px;
       font-weight: 600;
-      color: var(--muted);
+      color: var(--sb-text-muted);
       flex-shrink: 0;
     }
 
     .mobile-nav-link.active {
-      color: var(--text);
-      border-color: var(--accent);
-      background: var(--card-hover);
+      color: var(--sb-primary);
+      background: var(--sb-primary-soft);
+      border-color: var(--sb-primary);
     }
 
     /* =========================================================
@@ -274,49 +254,15 @@
     .main-content {
       flex: 1;
       min-width: 0;
-      padding: 0 35px 80px;
+      padding: 0 45px 80px;
     }
 
     .container {
-      width: min(880px, 100%);
+      max-width: 900px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
     }
 
-    /* =========================================================
-       CANVAS & GLOW LAYERS
-    ========================================================= */
-    #particles {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -4;
-      opacity: 0.75;
-    }
-
-    #cursorGlow {
-      position: fixed;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: -2;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    @media (hover: hover) {
-      #cursorGlow { opacity: 1; }
-    }
-
-    /* =========================================================
-       TOPBAR & COUNTER BADGE
-    ========================================================= */
+    /* Top Bar & Badges */
     .topbar {
       display: flex;
       justify-content: space-between;
@@ -324,382 +270,338 @@
       padding: 24px 0 0;
     }
 
-    .views-counter-badge {
+    .badge-counter {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      gap: 8px;
+      padding: 7px 15px;
+      border-radius: var(--sb-radius-pill);
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
       font-size: 12px;
       font-weight: 600;
-      color: var(--muted);
-      box-shadow: var(--shadow);
+      color: var(--sb-text-muted);
+      box-shadow: var(--sb-shadow);
     }
 
-    .views-counter-badge .live-dot {
+    .badge-counter .dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-      animation: livePulse 2s infinite ease-in-out;
+      background: var(--sb-green);
+      box-shadow: 0 0 10px var(--sb-green);
     }
 
-    @keyframes livePulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.6; }
+    .badge-counter strong {
+      color: var(--sb-text);
+      font-weight: 700;
     }
 
-    .views-number {
-      color: var(--text);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-
-    .theme-btn {
+    .theme-toggle-btn {
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
+      border: 1px solid var(--sb-border);
+      background: var(--sb-surface);
+      color: var(--sb-text);
       display: grid;
       place-items: center;
       cursor: pointer;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
-      transition: all 0.25s var(--ease);
+      box-shadow: var(--sb-shadow);
+      transition: all 0.2s var(--ease);
     }
 
-    .theme-btn:hover {
-      transform: scale(1.08) rotate(14deg);
-      border-color: var(--border-strong);
-      background: var(--card-hover);
+    .theme-toggle-btn:hover {
+      transform: scale(1.06);
+      border-color: var(--sb-primary);
+      color: var(--sb-primary);
     }
 
     /* =========================================================
-       HERO
+       SANDBOX HERO
     ========================================================= */
     .hero {
       text-align: center;
-      padding: 36px 0 28px;
+      padding: 40px 0 32px;
     }
 
-    .profile-wrap {
+    .hero-avatar-wrapper {
       position: relative;
-      width: 112px;
-      height: 112px;
+      width: 115px;
+      height: 115px;
       margin: 0 auto;
     }
 
-    .profile-ring {
+    .hero-avatar-wrapper::before {
+      content: '';
       position: absolute;
-      inset: -6px;
+      inset: -5px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--accent), #e879f9, var(--accent), #4c1d95, var(--accent));
-      animation: ringRotate 8s linear infinite;
-      box-shadow: 0 0 35px var(--accent-glow);
+      background: linear-gradient(135deg, var(--sb-primary), var(--sb-purple), var(--sb-green));
+      animation: spinRing 9s linear infinite;
     }
 
-    .profile-ring::after {
-      content: "";
-      position: absolute;
-      inset: 2.5px;
-      border-radius: 50%;
-      background: var(--bg);
-      transition: background 0.4s ease;
-    }
-
-    .profile {
+    .hero-avatar {
       position: relative;
-      width: 112px;
-      height: 112px;
+      width: 115px;
+      height: 115px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3.5px solid var(--bg);
-      z-index: 2;
-      transition: transform 0.4s var(--ease);
+      border: 4px solid var(--sb-bg);
       display: block;
+      z-index: 2;
     }
 
-    .profile-wrap:hover .profile {
-      transform: scale(1.05);
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .hero h1 {
-      margin-top: 22px;
-      font-size: clamp(34px, 7vw, 54px);
+      font-size: clamp(34px, 6vw, 48px);
       font-weight: 800;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
+      margin-top: 22px;
     }
 
-    .handle {
-      color: var(--accent-light);
+    .hero-subtitle {
+      color: var(--sb-primary);
       font-weight: 700;
       font-size: 14px;
-      letter-spacing: 0.02em;
       margin-top: 4px;
+      letter-spacing: 0.02em;
     }
 
-    .hero p {
-      max-width: 600px;
+    .hero-desc {
+      max-width: 620px;
       margin: 14px auto 0;
-      color: var(--muted);
-      line-height: 1.65;
+      color: var(--sb-text-muted);
       font-size: 15px;
+      line-height: 1.65;
     }
 
-    .hero-tags {
+    .hero-chips {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 22px;
     }
 
-    .hero-tag {
-      border: 1px solid var(--border);
-      background: var(--card);
+    .hero-chip {
       padding: 6px 14px;
-      border-radius: 999px;
+      border-radius: var(--sb-radius-pill);
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
       font-size: 12px;
       font-weight: 600;
-      color: var(--muted);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all 0.25s var(--ease);
+      color: var(--sb-text-muted);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
     }
 
-    .hero-tag:hover {
+    .hero-chip:hover {
+      color: var(--sb-primary);
+      border-color: var(--sb-primary);
       transform: translateY(-2px);
-      color: var(--text);
-      border-color: var(--border-strong);
     }
 
-    /* =========================================================
-       SOCIALS
-    ========================================================= */
+    /* Social Pills */
     .socials {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin: 22px 0 34px;
+      margin: 24px 0 36px;
     }
 
-    .social-btn {
-      width: 46px;
-      height: 46px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 14px;
+    .social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
       display: grid;
       place-items: center;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      color: var(--text);
-      transition: all 0.25s var(--ease);
+      color: var(--sb-text);
+      box-shadow: var(--sb-shadow);
+      transition: all 0.2s var(--ease);
     }
 
-    .social-btn:hover {
-      transform: translateY(-4px);
-      background: var(--card-hover);
-      border-color: var(--border-strong);
-      box-shadow: 0 10px 24px -5px var(--accent-glow);
+    .social-link:hover {
+      transform: translateY(-3px);
+      color: var(--sb-primary);
+      border-color: var(--sb-primary);
     }
 
     /* =========================================================
-       ABOUT ME BENTO SECTION
+       SANDBOX BENTO CARDS & SECTIONS
     ========================================================= */
-    .about-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      margin-bottom: 45px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
+    section {
+      margin-bottom: 60px;
+      scroll-margin-top: 50px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .section-desc {
+      color: var(--sb-text-muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* About Bento Card */
+    .about-box {
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius);
+      padding: 30px;
+      box-shadow: var(--sb-shadow);
       display: grid;
       grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
+      gap: 26px;
       align-items: center;
     }
 
-    .about-lead h3 {
+    .about-box h3 {
       font-size: 20px;
       font-weight: 800;
       margin-bottom: 8px;
       letter-spacing: -0.02em;
     }
 
-    .about-lead p {
-      color: var(--muted);
+    .about-box p {
+      color: var(--sb-text-muted);
       font-size: 14px;
       line-height: 1.7;
     }
 
-    .about-stats {
+    .stats-matrix {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    .stat-pill {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
+    .stat-card {
+      background: var(--sb-bg);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius-sm);
+      padding: 16px;
+      text-align: center;
     }
 
-    .stat-num {
-      font-size: 18px;
+    .stat-value {
+      font-size: 20px;
       font-weight: 800;
-      color: var(--accent-light);
+      color: var(--sb-primary);
     }
 
-    .stat-label {
+    .stat-name {
       font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      color: var(--sb-text-muted);
+      margin-top: 2px;
     }
 
-    /* =========================================================
-       VIP CARD / PRIMARY CTA
-    ========================================================= */
-    .insider {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, var(--card) 60%);
-      border: 1px solid rgba(34, 197, 94, 0.26);
-      border-radius: var(--radius);
+    /* VIP Primary Banner */
+    .vip-banner {
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-left: 4px solid var(--sb-green);
+      border-radius: var(--sb-radius);
       padding: 24px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--sb-shadow);
       margin-bottom: 50px;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
     }
 
-    .insider-info {
+    .vip-banner:hover {
+      box-shadow: var(--sb-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .vip-details {
       display: flex;
       gap: 16px;
       align-items: center;
-      position: relative;
-      z-index: 1;
     }
 
-    .insider-icon {
+    .vip-badge-icon {
       width: 48px;
       height: 48px;
-      border-radius: 14px;
-      background: rgba(34, 197, 94, 0.14);
-      color: var(--green);
+      border-radius: var(--sb-radius-sm);
+      background: var(--sb-green-soft);
+      color: var(--sb-green);
       display: grid;
       place-items: center;
       flex-shrink: 0;
     }
 
-    .insider h3 {
+    .vip-details h3 {
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 3px;
     }
 
-    .insider p {
-      color: var(--muted);
+    .vip-details p {
+      color: var(--sb-text-muted);
       font-size: 13px;
     }
 
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
-    .btn {
-      position: relative;
+    /* Sandbox Action Buttons */
+    .sb-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 18px;
-      border-radius: 12px;
+      padding: 11px 20px;
+      border-radius: var(--sb-radius-sm);
       font-size: 13px;
       font-weight: 700;
       border: none;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.25s var(--ease);
-      overflow: hidden;
+      transition: all 0.2s var(--ease);
     }
 
-    .btn-green {
-      background: var(--green);
-      color: #041b0d;
-      box-shadow: 0 8px 24px -4px var(--green-glow);
+    .sb-btn-green {
+      background: var(--sb-green);
+      color: #061c14;
     }
 
-    .btn-green:hover {
+    .sb-btn-green:hover {
+      filter: brightness(1.08);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px -4px var(--green-glow);
     }
 
-    .btn-purple {
-      background: linear-gradient(135deg, var(--accent), #7c3aed);
+    .sb-btn-primary {
+      background: var(--sb-primary);
       color: #ffffff;
-      box-shadow: 0 8px 25px -5px var(--accent-glow);
+      box-shadow: 0 4px 14px rgba(63, 120, 224, 0.3);
     }
 
-    .btn-purple:hover {
+    .sb-btn-primary:hover {
+      background: var(--sb-primary-light);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px -5px var(--accent-glow);
-    }
-
-    /* =========================================================
-       SECTIONS
-    ========================================================= */
-    section {
-      margin-bottom: 65px;
-      scroll-margin-top: 50px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s var(--ease);
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-subtitle {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 13px;
     }
 
     /* =========================================================
@@ -708,32 +610,32 @@
     .deals-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
     .deal-card {
-      position: relative;
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius);
       overflow: hidden;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: transform 0.35s var(--ease), border-color 0.3s ease, background 0.3s ease, box-shadow 0.35s ease;
-      will-change: transform;
+      box-shadow: var(--sb-shadow);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s var(--ease);
+      position: relative;
     }
 
     .deal-card:hover {
-      background: var(--card-hover);
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+      box-shadow: var(--sb-shadow-hover);
+      border-color: var(--sb-border-strong);
     }
 
     .deal-image-wrap {
       position: relative;
+      background: var(--sb-bg);
+      border-bottom: 1px solid var(--sb-border);
       overflow: hidden;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
     }
 
     .deal-image {
@@ -741,122 +643,111 @@
       aspect-ratio: 16 / 11;
       object-fit: cover;
       display: block;
-      transition: transform 0.45s var(--ease);
+      transition: transform 0.4s var(--ease);
     }
 
     .deal-card:hover .deal-image {
       transform: scale(1.05);
     }
 
-    .deal-content {
-      padding: 16px;
+    .deal-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--sb-primary);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: var(--sb-radius-pill);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
-    .deal-top {
+    .deal-content {
+      padding: 18px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .deal-store-row {
+      display: flex;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
       margin-bottom: 8px;
     }
 
     .deal-store {
-      color: var(--accent-light);
       font-size: 11px;
       font-weight: 800;
+      color: var(--sb-primary);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     .deal-category {
-      color: var(--muted);
-      font-size: 10.5px;
-      font-weight: 500;
+      font-size: 11px;
+      color: var(--sb-text-muted);
     }
 
-    .deal-name {
+    .deal-title {
       font-size: 14.5px;
       font-weight: 700;
       line-height: 1.4;
+      margin-bottom: 12px;
       min-height: 40px;
     }
 
-    .prices {
+    .price-row {
       display: flex;
       align-items: baseline;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: auto;
     }
 
     .old-price {
-      color: var(--muted);
-      text-decoration: line-through;
       font-size: 12px;
+      color: var(--sb-text-muted);
+      text-decoration: line-through;
     }
 
     .new-price {
       font-size: 19px;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      color: var(--sb-text);
     }
 
-    .discount {
-      display: inline-block;
-      margin-top: 6px;
+    .discount-pill {
       font-size: 11px;
       font-weight: 700;
-      color: #4ade80;
+      color: var(--sb-green);
+      margin-top: 4px;
     }
 
-    .deal-checked {
-      color: var(--muted);
-      font-size: 10.5px;
-      margin-top: 6px;
-    }
-
-    .deal-button {
-      width: 100%;
+    .deal-btn-action {
       margin-top: 14px;
+      width: 100%;
     }
 
-    .featured-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 5px 10px;
-      background: rgba(139, 92, 246, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: #fff;
-      border-radius: 999px;
-      font-size: 9.5px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      z-index: 5;
-      box-shadow: 0 4px 15px var(--accent-glow);
-    }
-
-    .deal-loading, .deal-empty, .deal-error {
+    .deal-error, .deal-empty, .deal-loading {
       grid-column: 1 / -1;
-      padding: 35px;
+      padding: 40px;
       text-align: center;
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      color: var(--muted);
-      background: var(--card);
+      background: var(--sb-surface);
+      border: 1px dashed var(--sb-border);
+      border-radius: var(--sb-radius);
+      color: var(--sb-text-muted);
       font-size: 13.5px;
     }
 
     /* =========================================================
-       WALLPAPERS SECTION
+       WALLPAPERS SHELF
     ========================================================= */
     .wallpapers-shelf {
-      position: relative;
-      margin: 0 -18px;
-      padding: 4px 18px 14px;
-      overflow-x: auto;
       display: flex;
-      gap: 14px;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 4px 4px 16px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
@@ -866,71 +757,67 @@
     }
 
     .wallpapers-shelf::-webkit-scrollbar-thumb {
-      background: var(--border);
+      background: var(--sb-border);
       border-radius: 10px;
     }
 
-    .wp-item {
-      flex: 0 0 156px;
-      height: 250px;
-      border-radius: 18px;
-      position: relative;
+    .wp-card {
+      flex: 0 0 160px;
+      height: 255px;
+      border-radius: var(--sb-radius);
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg-secondary);
+      border: 1px solid var(--sb-border);
+      background: var(--sb-surface);
+      position: relative;
       cursor: pointer;
       scroll-snap-align: start;
-      box-shadow: var(--shadow);
-      transition: all 0.3s var(--ease);
+      box-shadow: var(--sb-shadow);
+      transition: all 0.25s var(--ease);
     }
 
-    .wp-item:hover {
-      transform: translateY(-5px) scale(1.02);
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow-lg);
+    .wp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sb-shadow-hover);
     }
 
-    .wp-item img {
+    .wp-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s var(--ease);
+      transition: transform 0.4s var(--ease);
     }
 
-    .wp-item:hover img {
+    .wp-card:hover img {
       transform: scale(1.08);
     }
 
-    .wp-pill {
+    .wp-download-icon {
       position: absolute;
       bottom: 10px;
       right: 10px;
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #ffffff;
+      background: rgba(10, 14, 22, 0.75);
+      color: #fff;
       display: grid;
       place-items: center;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: all 0.2s ease;
     }
 
-    .wp-item:hover .wp-pill {
+    .wp-card:hover .wp-download-icon {
+      background: var(--sb-primary);
       transform: scale(1.1);
-      background: var(--accent);
-      border-color: transparent;
     }
 
+    /* Wallpaper Modal */
     .wp-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(10, 14, 22, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -940,32 +827,26 @@
 
     .wp-modal.open {
       display: flex;
-      animation: modalFadeIn 0.25s var(--ease);
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.96); }
-      to { opacity: 1; transform: scale(1); }
     }
 
     .wp-modal-box {
-      max-width: 390px;
+      max-width: 400px;
       width: 100%;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius);
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius);
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      box-shadow: var(--sb-shadow-hover);
     }
 
     .wp-modal-preview {
       width: 100%;
       max-height: 480px;
       object-fit: contain;
-      border-radius: var(--radius-sm);
+      border-radius: var(--sb-radius-sm);
       background: #000;
     }
 
@@ -974,34 +855,7 @@
       gap: 10px;
     }
 
-    .wp-btn-action {
-      flex: 1;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 13px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .wp-btn-download {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .wp-btn-close {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    /* =========================================================
-       CHANNELS & AI TOOLS
-    ========================================================= */
+    /* Channels & AI Tools */
     .channels-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1009,25 +863,21 @@
     }
 
     .channel-card {
-      position: relative;
-      overflow: hidden;
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius);
       padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
       display: flex;
       align-items: center;
-      gap: 15px;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transition: all 0.3s var(--ease);
+      gap: 16px;
+      box-shadow: var(--sb-shadow);
+      transition: all 0.25s var(--ease);
     }
 
     .channel-card:hover {
       transform: translateY(-4px);
-      background: var(--card-hover);
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow);
+      border-color: var(--sb-border-strong);
+      box-shadow: var(--sb-shadow-hover);
     }
 
     .channel-icon {
@@ -1040,8 +890,8 @@
     }
 
     .channel-icon.whatsapp {
-      background: rgba(34, 197, 94, 0.12);
-      color: var(--green);
+      background: var(--sb-green-soft);
+      color: var(--sb-green);
     }
 
     .channel-icon.instagram {
@@ -1049,14 +899,14 @@
       color: #e1306c;
     }
 
-    .channel-card h3 {
+    .channel-info h3 {
       font-size: 15px;
       font-weight: 700;
     }
 
-    .channel-card p {
-      color: var(--muted);
+    .channel-info p {
       font-size: 12px;
+      color: var(--sb-text-muted);
       margin-top: 3px;
     }
 
@@ -1067,59 +917,45 @@
     }
 
     .tool-card {
-      position: relative;
-      overflow: hidden;
-      padding: 20px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: var(--radius);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transition: all 0.3s var(--ease);
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border);
+      border-radius: var(--sb-radius);
+      padding: 22px;
+      box-shadow: var(--sb-shadow);
+      transition: all 0.25s var(--ease);
     }
 
     .tool-card:hover {
       transform: translateY(-4px);
-      background: var(--card-hover);
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow);
+      box-shadow: var(--sb-shadow-hover);
+      border-color: var(--sb-primary);
     }
 
     .tool-card h3 {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
       margin-bottom: 6px;
     }
 
     .tool-card p {
-      color: var(--muted);
+      color: var(--sb-text-muted);
       font-size: 12px;
       line-height: 1.6;
     }
 
-    /* =========================================================
-       FOOTER & STICKY CTA
-    ========================================================= */
+    /* Footer & Sticky CTA */
     footer {
       text-align: center;
-      padding: 30px 0 110px;
-      color: var(--muted);
+      padding: 40px 0 110px;
+      color: var(--sb-text-muted);
       font-size: 12px;
     }
 
     .footer-brand {
-      color: var(--text);
+      color: var(--sb-text);
       font-weight: 800;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .footer-meta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
+      font-size: 15px;
+      margin-bottom: 4px;
     }
 
     .sticky-cta {
@@ -1128,20 +964,12 @@
       bottom: max(16px, env(safe-area-inset-bottom));
       transform: translateX(-50%);
       width: min(480px, calc(100% - 30px));
-      z-index: 50;
-      background: rgba(10, 10, 14, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 16px;
+      z-index: 80;
+      background: var(--sb-surface);
+      border: 1px solid var(--sb-border-strong);
+      border-radius: var(--sb-radius-pill);
       padding: 8px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-    }
-
-    body.light .sticky-cta {
-      background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(0, 0, 0, 0.08);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
     }
 
     .sticky-cta a {
@@ -1154,48 +982,38 @@
       left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(90deg, var(--accent), #c084fc);
-      z-index: 100;
+      background: var(--sb-primary);
+      z-index: 120;
     }
 
-    /* =========================================================
-       RESPONSIVE & MEDIA QUERIES
-    ========================================================= */
+    /* Responsive */
     @media (max-width: 1080px) {
       .sidebar { display: none; }
       .mobile-nav-bar { display: flex; }
       .main-content { padding: 0 16px 80px; }
       .deals-grid, .tools-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-card { grid-template-columns: 1fr; gap: 18px; }
+      .about-box { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
-      .hero { padding-top: 24px; }
-      .insider { flex-direction: column; align-items: stretch; padding: 20px; }
-      .insider .btn { width: 100%; }
+      .vip-banner { flex-direction: column; align-items: stretch; }
+      .vip-banner .sb-btn { width: 100%; }
       .deals-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .deal-content { padding: 12px; }
-      .deal-name { font-size: 13px; min-height: 36px; }
+      .deal-title { font-size: 13px; min-height: 36px; }
       .new-price { font-size: 17px; }
       .channels-grid { grid-template-columns: 1fr; }
       .tools-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .section-title { font-size: 20px; }
-      .wp-item { flex: 0 0 134px; height: 215px; }
-    }
-
-    @keyframes ringRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      .wp-card { flex: 0 0 135px; height: 215px; }
     }
   </style>
 </head>
 
 <body>
   <div id="scrollProgress"></div>
-  <canvas id="particles"></canvas>
-  <div id="cursorGlow"></div>
 
-  <!-- MOBILE QUICK-NAV BAR (visible on screens < 1080px) -->
+  <!-- Mobile Quick Navigation Bar -->
   <nav class="mobile-nav-bar" aria-label="Mobile Navigation">
     <a href="#overview" class="mobile-nav-link active"><i data-feather="home" style="width:13px;"></i> Home</a>
     <a href="#about" class="mobile-nav-link"><i data-feather="user" style="width:13px;"></i> About</a>
@@ -1206,60 +1024,60 @@
   </nav>
 
   <div class="app-layout">
-    <!-- LEFT SIDE NAVIGATION PANE -->
+    <!-- SANDBOX LEFT SIDEBAR NAVIGATION -->
     <aside class="sidebar">
       <div>
         <div class="sidebar-brand">
           <img src="Profile.jpg.PNG" alt="jayunboxes Avatar" class="sidebar-avatar" onerror="this.style.display='none';">
           <div>
-            <div class="sidebar-brand-text">jayunboxes</div>
-            <div style="font-size: 11px; color: var(--muted); font-weight: 500;">Tech & Deals Hub</div>
+            <div class="sidebar-brand-title">jayunboxes</div>
+            <div class="sidebar-brand-subtitle">Tech Deals & Setup Hub</div>
           </div>
         </div>
 
-        <ul class="nav-links">
+        <ul class="nav-menu">
           <li>
-            <a href="#overview" class="nav-link active">
+            <a href="#overview" class="nav-item active">
               <i data-feather="home"></i>
               <span>Overview</span>
             </a>
           </li>
           <li>
-            <a href="#about" class="nav-link">
+            <a href="#about" class="nav-item">
               <i data-feather="user"></i>
-              <span>Behind the Tech</span>
+              <span>About Creator</span>
             </a>
           </li>
           <li>
-            <a href="#deals" class="nav-link">
+            <a href="#deals" class="nav-item">
               <i data-feather="tag"></i>
-              <span>Live Deals</span>
+              <span>Curated Deals</span>
             </a>
           </li>
           <li>
-            <a href="#wallpapers" class="nav-link">
+            <a href="#wallpapers" class="nav-item">
               <i data-feather="image"></i>
               <span>4K Wallpapers</span>
             </a>
           </li>
           <li>
-            <a href="#channels" class="nav-link">
+            <a href="#channels" class="nav-item">
               <i data-feather="share-2"></i>
               <span>Channels</span>
             </a>
           </li>
           <li>
-            <a href="#tools" class="nav-link">
+            <a href="#tools" class="nav-item">
               <i data-feather="cpu"></i>
-              <span>AI Tools</span>
+              <span>AI Stack</span>
             </a>
           </li>
         </ul>
       </div>
 
       <div class="sidebar-footer">
-        <span style="font-size: 11px; color: var(--muted); font-weight: 600;">© 2026 jay</span>
-        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" style="color: var(--green); font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+        <span style="font-size: 11.5px; color: var(--sb-text-muted); font-weight: 600;">Sandbox Edition</span>
+        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" style="color: var(--sb-green); font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
           VIP <i data-feather="arrow-up-right" style="width: 12px;"></i>
         </a>
       </div>
@@ -1268,99 +1086,98 @@
     <!-- MAIN CONTENT PANE -->
     <main class="main-content">
       <div class="container">
-        <!-- TOP BAR -->
+        <!-- TOP ACTIONS & STATS -->
         <div class="topbar">
-          <div class="views-counter-badge" title="Total Website Pageviews">
-            <span class="live-dot"></span>
-            <span>Views:</span>
-            <span class="views-number" id="siteViewsCounter">...</span>
+          <div class="badge-counter" title="Total Website Pageviews">
+            <span class="dot"></span>
+            <span>Live Views:</span>
+            <strong id="siteViewsCounter">...</strong>
           </div>
 
-          <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <button class="theme-toggle-btn" id="themeBtn" aria-label="Toggle theme">
             <i data-feather="sun"></i>
           </button>
         </div>
 
-        <!-- OVERVIEW / HERO SECTION -->
+        <!-- HERO SECTION -->
         <header class="hero" id="overview">
-          <div class="profile-wrap">
-            <div class="profile-ring"></div>
-            <img src="Profile.jpg.PNG" class="profile" alt="jayunboxes Profile" onerror="this.style.display='none';">
+          <div class="hero-avatar-wrapper">
+            <img src="Profile.jpg.PNG" class="hero-avatar" alt="jayunboxes Profile" onerror="this.style.display='none';">
           </div>
 
           <h1>jayunboxes</h1>
-          <div class="handle">@jayunboxes</div>
+          <div class="hero-subtitle">@jayunboxes</div>
 
-          <p>
-            The central hub for verified tech deals, AI workflow tools, raw gadget teardowns & setup wallpapers — zero fluff, pure utility.
+          <p class="hero-desc">
+            Raw, unfiltered tech reviews, daily verified gadget price drops, AI productivity tools, and aesthetic setup gear.
           </p>
 
-          <div class="hero-tags">
-            <span class="hero-tag">Tech Deals</span>
-            <span class="hero-tag">AI Tools</span>
-            <span class="hero-tag">4K Wallpapers</span>
-            <span class="hero-tag">Gadgets</span>
+          <div class="hero-chips">
+            <span class="hero-chip">Tech Deals</span>
+            <span class="hero-chip">AI Tools</span>
+            <span class="hero-chip">4K Wallpapers</span>
+            <span class="hero-chip">Gadgets</span>
           </div>
         </header>
 
-        <!-- SOCIAL STRIP -->
+        <!-- SOCIALS -->
         <div class="socials">
-          <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
+          <a class="social-link" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
             <i data-feather="instagram"></i>
           </a>
-          <a class="social-btn" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
+          <a class="social-link" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
             <i data-feather="youtube"></i>
           </a>
-          <a class="social-btn" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
+          <a class="social-link" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
             <i data-feather="at-sign"></i>
           </a>
-          <a class="social-btn" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
+          <a class="social-link" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
             <i data-feather="mail"></i>
           </a>
         </div>
 
-        <!-- ABOUT ME SECTION -->
-        <section id="about" class="about-section">
-          <div class="section-head">
+        <!-- ABOUT SECTION -->
+        <section id="about">
+          <div class="section-header">
             <div>
               <div class="section-title">⚡ Behind the Tech</div>
-              <div class="section-subtitle">Creator, tech curator & gadget enthusiast.</div>
+              <div class="section-desc">Creator, tech curator & gadget enthusiast.</div>
             </div>
           </div>
           
-          <div class="about-card">
-            <div class="about-lead">
+          <div class="about-box">
+            <div>
               <h3>Hey, I'm Jay 👋</h3>
               <p>
-                Welcome to <strong>jayunboxes</strong>. I review gadgets, test everyday AI tools, and track price cuts so you get maximum value out of tech. Whether you're upgrading your desk setup, hunting down deal drops, or downloading 4K wallpapers, this hub keeps you connected with what's actually worth your money.
+                Welcome to <strong>jayunboxes</strong>. I review gadgets, test practical AI tools, and hunt down daily price cuts so you make smarter tech purchases. Whether upgrading your setup or grabbing 4K wallpapers, this hub keeps you connected with what's actually worth your money.
               </p>
             </div>
 
-            <div class="about-stats">
-              <div class="stat-pill">
-                <div class="stat-num">Daily</div>
-                <div class="stat-label">Deal Checks</div>
+            <div class="stats-matrix">
+              <div class="stat-card">
+                <div class="stat-value">Daily</div>
+                <div class="stat-name">Deal Checks</div>
               </div>
-              <div class="stat-pill">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Raw Reviews</div>
+              <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-name">Raw Reviews</div>
               </div>
-              <div class="stat-pill">
-                <div class="stat-num">4K</div>
-                <div class="stat-label">Curated Walls</div>
+              <div class="stat-card">
+                <div class="stat-value">4K</div>
+                <div class="stat-name">Curated Walls</div>
               </div>
-              <div class="stat-pill">
-                <div class="stat-num">Free</div>
-                <div class="stat-label">VIP Alerts</div>
+              <div class="stat-card">
+                <div class="stat-value">Free</div>
+                <div class="stat-name">VIP Alerts</div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- WHATSAPP INSIDER BANNER -->
-        <div class="insider">
-          <div class="insider-info">
-            <div class="insider-icon">
+        <!-- VIP BANNER -->
+        <div class="vip-banner">
+          <div class="vip-details">
+            <div class="vip-badge-icon">
               <i data-feather="message-circle"></i>
             </div>
             <div>
@@ -1368,58 +1185,58 @@
               <p>Instant tech deals, price drops and gear leaks sent directly on WhatsApp.</p>
             </div>
           </div>
-          <a class="btn btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+          <a class="sb-btn sb-btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
             <i data-feather="zap"></i> Join Free
           </a>
         </div>
 
-        <!-- LIVE DEALS SECTION -->
+        <!-- DEALS SECTION -->
         <section id="deals">
-          <div class="section-head">
+          <div class="section-header">
             <div>
               <div class="section-title">🔥 Live Tech Deals</div>
-              <div class="section-subtitle">Synced automatically from the Jayunboxes deals sheet.</div>
+              <div class="section-desc">Synced automatically from the Jayunboxes deals sheet.</div>
             </div>
           </div>
           <div class="deals-grid" id="dealsGrid">
-            <div class="deal-loading">Loading today's curated deals...</div>
+            <div class="deal-loading">Loading curated deals...</div>
           </div>
         </section>
 
         <!-- WALLPAPERS SECTION -->
         <section id="wallpapers">
-          <div class="section-head">
+          <div class="section-header">
             <div>
               <div class="section-title">✨ Setup Wallpapers</div>
-              <div class="section-subtitle">Aesthetic high-resolution walls for phone & desk setups.</div>
+              <div class="section-desc">Aesthetic high-resolution walls for phone & desk setups.</div>
             </div>
           </div>
           <div class="wallpapers-shelf" id="wallpapersList">
-            <div class="wp-item" style="display:grid; place-items:center; color:var(--muted); font-size:12px; padding:15px; text-align:center;">
-              Loading walls...
+            <div class="wp-card" style="display:grid; place-items:center; color:var(--sb-text-muted); font-size:12px; padding:15px; text-align:center;">
+              Loading wallpapers...
             </div>
           </div>
         </section>
 
-        <!-- CHANNELS -->
+        <!-- CHANNELS SECTION -->
         <section id="channels">
-          <div class="section-head">
+          <div class="section-header">
             <div>
               <div class="section-title">Stay Connected</div>
-              <div class="section-subtitle">Follow the journey across platforms.</div>
+              <div class="section-desc">Follow the journey across channels.</div>
             </div>
           </div>
           <div class="channels-grid">
             <a class="channel-card" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
               <div class="channel-icon whatsapp"><i data-feather="message-circle"></i></div>
-              <div>
+              <div class="channel-info">
                 <h3>Jayunboxes Insider</h3>
                 <p>Instant deals, alerts & exclusive community drops.</p>
               </div>
             </a>
             <a class="channel-card" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
               <div class="channel-icon instagram"><i data-feather="instagram"></i></div>
-              <div>
+              <div class="channel-info">
                 <h3>Instagram</h3>
                 <p>Short-form reels, setups & unboxings.</p>
               </div>
@@ -1427,12 +1244,12 @@
           </div>
         </section>
 
-        <!-- AI TOOLS -->
+        <!-- AI TOOLS SECTION -->
         <section id="tools">
-          <div class="section-head">
+          <div class="section-header">
             <div>
               <div class="section-title">🤖 AI Tools</div>
-              <div class="section-subtitle">Everyday artificial intelligence tools used by Jay.</div>
+              <div class="section-desc">Everyday artificial intelligence tools used by Jay.</div>
             </div>
           </div>
           <div class="tools-grid">
@@ -1467,11 +1284,7 @@
         <footer>
           <div class="footer-brand">jayunboxes</div>
           <div>Tech Deals • AI Tools • Aesthetic Wallpapers</div>
-          <div class="footer-meta">
-            <span>© 2026 jayunboxes</span>
-            <span>•</span>
-            <span id="footerViewsCount">Live Views Active</span>
-          </div>
+          <div style="margin-top: 6px;" id="footerViewsCount">Live Views Active</div>
         </footer>
       </div>
     </main>
@@ -1482,17 +1295,17 @@
     <div class="wp-modal-box">
       <img src="" alt="Wallpaper Preview" class="wp-modal-preview" id="wpModalImg" />
       <div class="wp-modal-actions">
-        <a href="" download class="wp-btn-action wp-btn-download" id="wpModalDownload" target="_blank">
+        <a href="" download class="sb-btn sb-btn-primary" style="flex:1;" id="wpModalDownload" target="_blank">
           <i data-feather="download" style="width: 15px;"></i> Download 4K
         </a>
-        <button class="wp-btn-action wp-btn-close" id="wpModalClose">Close</button>
+        <button class="sb-btn" style="background:var(--sb-bg); color:var(--sb-text); border:1px solid var(--sb-border);" id="wpModalClose">Close</button>
       </div>
     </div>
   </div>
 
   <!-- STICKY CTA -->
   <div class="sticky-cta">
-    <a class="btn btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+    <a class="sb-btn sb-btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
       <i data-feather="zap"></i> Join Jayunboxes Insider — Free
     </a>
   </div>
@@ -1515,7 +1328,7 @@
     ========================================================= */
     function initNavScrollSpy() {
       const sections = document.querySelectorAll('header#overview, section[id]');
-      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+      const navLinks = document.querySelectorAll('.nav-item, .mobile-nav-link');
 
       window.addEventListener('scroll', () => {
         let current = 'overview';
@@ -1588,8 +1401,7 @@
         return "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&auto=format&fit=crop&q=80";
       }
 
-      const cleanKeyword = encodeURIComponent(productName.replace(/[^a-zA-Z0-9 ]/g, "").slice(0, 30) || "gadget");
-      return `https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&auto=format&fit=crop&q=80`;
+      return "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=800&auto=format&fit=crop&q=80";
     }
 
     /* =========================================================
@@ -1683,7 +1495,7 @@
     }
 
     function placeholderImage() {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550"><rect width="800" height="550" fill="#0f0f13"/><circle cx="400" cy="275" r="140" fill="#8b5cf6" opacity=".1"/><text x="50%" y="49%" text-anchor="middle" fill="#c084fc" font-family="sans-serif" font-size="36" font-weight="700">JAYUNBOXES</text><text x="50%" y="58%" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="18">TECH DEAL</text></svg>`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550"><rect width="800" height="550" fill="#1e222d"/><circle cx="400" cy="275" r="140" fill="#3f78e0" opacity=".15"/><text x="50%" y="49%" text-anchor="middle" fill="#5a8fee" font-family="sans-serif" font-size="36" font-weight="700">JAYUNBOXES</text><text x="50%" y="58%" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="18">TECH DEAL</text></svg>`;
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
@@ -1722,7 +1534,6 @@
     async function loadDeals() {
       const grid = document.getElementById("dealsGrid");
       try {
-        // Correct query separator to prevent breaking Google Sheets output=csv URL
         const separator = CONFIG.dealsFile.includes("?") ? "&" : "?";
         const fetchUrl = CONFIG.dealsFile + separator + "t=" + Date.now();
 
@@ -1730,7 +1541,6 @@
         if (!res.ok) throw new Error("HTTP Status " + res.status);
         const raw = await res.text();
 
-        // Detect if sheet published link returned HTML error
         if (raw.trim().startsWith("<!DOCTYPE") || raw.trim().startsWith("<html")) {
           throw new Error("Received HTML rather than CSV data.");
         }
@@ -1769,24 +1579,23 @@
           const target = safeURL(d.url);
           return `
             <article class="deal-card">
-              ${d.featured ? `<div class="featured-badge">⚡ TOP FIND</div>` : ""}
+              ${d.featured ? `<div class="deal-badge">⚡ TOP FIND</div>` : ""}
               <div class="deal-image-wrap">
                 <img class="deal-image" src="${escapeHTML(d.image)}" alt="${escapeHTML(d.name)}" loading="lazy" onerror="this.src='${placeholderImage()}'">
               </div>
               <div class="deal-content">
-                <div class="deal-top">
+                <div class="deal-store-row">
                   <span class="deal-store">${escapeHTML(d.store)}</span>
                   <span class="deal-category">${escapeHTML(d.category)}</span>
                 </div>
-                <div class="deal-name">${escapeHTML(d.name)}</div>
-                <div class="prices">
+                <div class="deal-title">${escapeHTML(d.name)}</div>
+                <div class="price-row">
                   ${d.oldPrice ? `<span class="old-price">${escapeHTML(d.oldPrice)}</span>` : ""}
                   <span class="new-price">${escapeHTML(d.price || "Check Price")}</span>
                 </div>
-                ${d.discount ? `<div class="discount">✓ ${escapeHTML(d.discount)}</div>` : ""}
-                <div class="deal-checked">✓ ${escapeHTML(d.checked)}</div>
-                <a class="btn btn-purple deal-button" href="${escapeHTML(target)}" target="_blank" rel="noopener noreferrer">
-                  Get Deal <i data-feather="arrow-up-right"></i>
+                ${d.discount ? `<div class="discount-pill">✓ ${escapeHTML(d.discount)}</div>` : ""}
+                <a class="sb-btn sb-btn-primary deal-btn-action" href="${escapeHTML(target)}" target="_blank" rel="noopener noreferrer">
+                  Get Deal <i data-feather="arrow-up-right" style="width:14px;"></i>
                 </a>
               </div>
             </article>
@@ -1799,8 +1608,8 @@
         grid.innerHTML = `
           <div class="deal-error">
             Unable to load deals right now.<br>
-            <small style="display:block; margin-top:6px; color:var(--muted);">
-              Ensure the Google Sheet is set to <strong>Publish to Web ➔ Comma-separated values (.csv)</strong>.
+            <small style="display:block; margin-top:6px; color:var(--sb-text-muted);">
+              Ensure Google Sheet is set to <strong>Publish to Web ➔ Comma-separated values (.csv)</strong>.
             </small>
           </div>`;
       }
@@ -1868,102 +1677,27 @@
 
     function renderWallpapers(items) {
       if (!items || !items.length) {
-        wpList.innerHTML = `<div style="color:var(--muted); font-size:13px; padding:15px;">Upload image files into <code>/wallpapers</code> on GitHub to feature them here!</div>`;
+        wpList.innerHTML = `<div style="color:var(--sb-text-muted); font-size:13px; padding:15px;">Upload image files into <code>/wallpapers</code> on GitHub to feature them here!</div>`;
         return;
       }
 
       wpList.innerHTML = items.map(w => `
-        <div class="wp-item" onclick="openWallpaper('${escapeHTML(w.url)}')">
+        <div class="wp-card" onclick="openWallpaper('${escapeHTML(w.url)}')">
           <img src="${escapeHTML(w.url)}" alt="${escapeHTML(w.name)}" loading="lazy" />
-          <div class="wp-pill"><i data-feather="download" style="width:14px; height:14px;"></i></div>
+          <div class="wp-download-icon"><i data-feather="download" style="width:14px; height:14px;"></i></div>
         </div>
       `).join("");
 
       feather.replace();
     }
 
-    /* =========================================================
-       PARTICLE CANVAS
-    ========================================================= */
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
-      canvas.style.width = window.innerWidth + "px";
-      canvas.style.height = window.innerHeight + "px";
-      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-    }
-
-    function createParticles() {
-      particles = [];
-      const count = window.innerWidth < 600 ? 25 : 45;
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          size: Math.random() * 1.5 + 0.5,
-          speed: Math.random() * 0.3 + 0.1,
-          drift: Math.random() * 0.2 - 0.1,
-          opacity: Math.random() * 0.4 + 0.1
-        });
-      }
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      const isLight = document.body.classList.contains("light");
-
-      particles.forEach(p => {
-        p.y -= p.speed;
-        p.x += p.drift;
-        if (p.y < -10) { p.y = window.innerHeight + 10; p.x = Math.random() * window.innerWidth; }
-        if (p.x < -10) p.x = window.innerWidth + 10;
-        if (p.x > window.innerWidth + 10) p.x = -10;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = isLight ? `rgba(124, 58, 237, ${p.opacity * 0.6})` : `rgba(168, 85, 247, ${p.opacity})`;
-        ctx.fill();
-      });
-
-      requestAnimationFrame(animateParticles);
-    }
-
-    resizeCanvas();
-    createParticles();
-    animateParticles();
-    window.addEventListener("resize", () => { resizeCanvas(); createParticles(); });
-
-    /* =========================================================
-       CURSOR, PROGRESS & THEME
-    ========================================================= */
-    const cursorGlow = document.getElementById("cursorGlow");
-    window.addEventListener("mousemove", (e) => {
-      cursorGlow.style.left = e.clientX + "px";
-      cursorGlow.style.top = e.clientY + "px";
-    });
-
+    /* Scroll Progress & Theme */
     const progress = document.getElementById("scrollProgress");
     window.addEventListener("scroll", () => {
       const s = window.scrollY;
       const d = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (d > 0 ? (s / d) * 100 : 0) + "%";
     }, { passive: true });
-
-    function initSectionReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            observer.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll("section").forEach(s => observer.observe(s));
-    }
 
     const themeBtn = document.getElementById("themeBtn");
     if (localStorage.getItem("jay-theme") === "light") {
@@ -1989,7 +1723,6 @@
        INITIALIZE EVERYTHING
     ========================================================= */
     feather.replace();
-    initSectionReveal();
     loadDeals();
     loadWallpapers();
     initViewsCounter();
