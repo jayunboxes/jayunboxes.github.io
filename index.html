@@ -136,7 +136,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Page Header */
     .page-header {
       margin-bottom: 28px;
     }
@@ -224,6 +223,82 @@
       line-height: 1.6;
     }
 
+    /* COLORFUL BRANDED APP ICONS STRIP */
+    .social-strip {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      transition: all 0.22s var(--ease);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    /* Instagram Colorful Gradient Style */
+    .social-btn.btn-instagram {
+      background: linear-gradient(135deg, rgba(254, 218, 117, 0.12), rgba(250, 126, 30, 0.12), rgba(214, 41, 118, 0.14), rgba(150, 47, 191, 0.14));
+      border-color: rgba(225, 48, 108, 0.25);
+      color: #d62976;
+    }
+    .social-btn.btn-instagram:hover {
+      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(214, 41, 118, 0.35);
+    }
+
+    /* YouTube Red Style */
+    .social-btn.btn-youtube {
+      background: rgba(255, 0, 0, 0.08);
+      border-color: rgba(255, 0, 0, 0.22);
+      color: #ff0000;
+    }
+    .social-btn.btn-youtube:hover {
+      background: #ff0000;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Threads Modern Obsidian Style */
+    .social-btn.btn-threads {
+      background: #f5f5f4;
+      border-color: rgba(0, 0, 0, 0.15);
+      color: #111111;
+    }
+    .social-btn.btn-threads:hover {
+      background: #111111;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Email Royal Blue Style */
+    .social-btn.btn-mail {
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(37, 99, 235, 0.22);
+      color: #2563eb;
+    }
+    .social-btn.btn-mail:hover {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
     /* Bento Directory Navigation Cards */
     .directory-grid {
       display: grid;
@@ -261,14 +336,32 @@
     }
 
     .dir-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
-      color: var(--text);
+    }
+
+    .dir-icon.ic-deals {
+      background: rgba(245, 158, 11, 0.12);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+    .dir-icon.ic-walls {
+      background: rgba(147, 51, 234, 0.12);
+      color: #9333ea;
+      border: 1px solid rgba(147, 51, 234, 0.2);
+    }
+    .dir-icon.ic-tools {
+      background: rgba(37, 99, 235, 0.12);
+      color: #2563eb;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+    .dir-icon.ic-channels {
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
     .dir-title {
@@ -323,37 +416,11 @@
       border: none;
       cursor: pointer;
       transition: opacity 0.2s ease;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
     }
 
     .btn-green:hover {
       opacity: 0.92;
-    }
-
-    /* Social Icons Strip */
-    .social-strip {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .social-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      color: var(--text-muted);
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow);
-    }
-
-    .social-btn:hover {
-      color: var(--text);
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
     }
 
     /* =========================================================
@@ -667,6 +734,22 @@
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
+      gap: 14px;
+    }
+
+    .channel-lead {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .channel-badge-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
 
     /* Footer */
@@ -738,18 +821,19 @@
           Welcome to my tech corner. I review gadgets, test practical AI tools, track price cuts, and design 4K setup wallpapers — completely unfiltered with zero marketing fluff.
         </p>
 
+        <!-- COLORFUL APP ICONS -->
         <div class="social-strip">
-          <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
-            <i data-feather="instagram" style="width: 17px;"></i>
+          <a class="social-btn btn-instagram" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <i data-feather="instagram" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
-            <i data-feather="youtube" style="width: 17px;"></i>
+          <a class="social-btn btn-youtube" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+            <i data-feather="youtube" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
-            <i data-feather="at-sign" style="width: 17px;"></i>
+          <a class="social-btn btn-threads" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads" title="Threads">
+            <i data-feather="at-sign" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
-            <i data-feather="mail" style="width: 17px;"></i>
+          <a class="social-btn btn-mail" href="mailto:techwithjay.biz@gmail.com" aria-label="Email" title="Email Inquiries">
+            <i data-feather="mail" style="width: 19px; height: 19px;"></i>
           </a>
         </div>
       </section>
@@ -769,7 +853,7 @@
       <div class="directory-grid">
         <div class="dir-card" onclick="switchPage('deals')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="tag" style="width: 18px;"></i></div>
+            <div class="dir-icon ic-deals"><i data-feather="tag" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
@@ -780,7 +864,7 @@
 
         <div class="dir-card" onclick="switchPage('wallpapers')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="image" style="width: 18px;"></i></div>
+            <div class="dir-icon ic-walls"><i data-feather="image" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
@@ -791,7 +875,7 @@
 
         <div class="dir-card" onclick="switchPage('tools')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="cpu" style="width: 18px;"></i></div>
+            <div class="dir-icon ic-tools"><i data-feather="cpu" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
@@ -802,7 +886,7 @@
 
         <div class="dir-card" onclick="switchPage('channels')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="share-2" style="width: 18px;"></i></div>
+            <div class="dir-icon ic-channels"><i data-feather="share-2" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
@@ -903,41 +987,66 @@
 
       <div class="cards-stack">
         <a class="simple-card channel-row" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-          <div>
-            <h3>WhatsApp VIP Channel</h3>
-            <p>Instant price drop alerts & deals broadcast</p>
+          <div class="channel-lead">
+            <div class="channel-badge-icon" style="background: rgba(22, 163, 74, 0.12); color: #16a34a;">
+              <i data-feather="message-circle" style="width: 20px;"></i>
+            </div>
+            <div>
+              <h3>WhatsApp VIP Channel</h3>
+              <p>Instant price drop alerts & deals broadcast</p>
+            </div>
           </div>
           <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
-          <div>
-            <h3>Instagram Reels</h3>
-            <p>Gadget unboxings, desk setups, and short tutorials</p>
+          <div class="channel-lead">
+            <div class="channel-badge-icon" style="background: rgba(225, 48, 108, 0.12); color: #e1306c;">
+              <i data-feather="instagram" style="width: 20px;"></i>
+            </div>
+            <div>
+              <h3>Instagram Reels</h3>
+              <p>Gadget unboxings, desk setups, and short tutorials</p>
+            </div>
           </div>
           <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener">
-          <div>
-            <h3>YouTube</h3>
-            <p>Long-form teardowns, reviews, and setup upgrades</p>
+          <div class="channel-lead">
+            <div class="channel-badge-icon" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+              <i data-feather="youtube" style="width: 20px;"></i>
+            </div>
+            <div>
+              <h3>YouTube</h3>
+              <p>Long-form teardowns, reviews, and setup upgrades</p>
+            </div>
           </div>
           <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener">
-          <div>
-            <h3>Threads</h3>
-            <p>Bite-sized tech takes, discussions & AMAs</p>
+          <div class="channel-lead">
+            <div class="channel-badge-icon" style="background: rgba(0, 0, 0, 0.08); color: #111111;">
+              <i data-feather="at-sign" style="width: 20px;"></i>
+            </div>
+            <div>
+              <h3>Threads</h3>
+              <p>Bite-sized tech takes, discussions & AMAs</p>
+            </div>
           </div>
           <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="mailto:techwithjay.biz@gmail.com">
-          <div>
-            <h3>Business Inquiries</h3>
-            <p>techwithjay.biz@gmail.com</p>
+          <div class="channel-lead">
+            <div class="channel-badge-icon" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
+              <i data-feather="mail" style="width: 20px;"></i>
+            </div>
+            <div>
+              <h3>Business Inquiries</h3>
+              <p>techwithjay.biz@gmail.com</p>
+            </div>
           </div>
           <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
