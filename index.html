@@ -4,81 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   
-  <title>jayunboxes | Tech Deals, AI Tools, Wallpapers & Reviews</title>
+  <title>jayunboxes // TECH LAB & CURATED DROPS</title>
   
-  <!-- SEO & Social Meta -->
-  <meta name="description" content="Official website of jayunboxes. Unfiltered tech reviews, hand-picked daily gadget deals, AI productivity tools, curated 4K setup wallpapers, and desk gear.">
+  <meta name="description" content="jayunboxes — engineering lab, unfiltered tech teardowns, curated gadget deals, and aesthetic wallpapers.">
   <meta name="author" content="Jay">
-  <meta name="keywords" content="jayunboxes, tech deals, gadget reviews, unboxings, AI tools, 4k wallpapers, desk setup">
-  
-  <meta property="og:title" content="jayunboxes | Tech Deals, AI Tools & Setup Gear">
-  <meta property="og:description" content="Unfiltered tech reviews, hand-picked daily deals, AI tools & aesthetic setup wallpapers.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jayunboxes.github.io">
-  <meta name="theme-color" content="#3f78e0">
+  <meta name="theme-color" content="#030304">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
     /* =========================================================
-       SANDBOX THEME DESIGN SYSTEM (Tailwind/Bootstrap Multipurpose)
+       CYBER-LAB / RETRO-TECH DESIGN TOKENS
     ========================================================= */
     :root {
-      /* Sandbox Dark Mode Defaults */
-      --sb-bg: #15171e;
-      --sb-surface: #1e222d;
-      --sb-surface-hover: #262b39;
-      --sb-border: rgba(164, 174, 198, 0.14);
-      --sb-border-strong: rgba(164, 174, 198, 0.25);
-      --sb-text: #f1f3f7;
-      --sb-text-muted: #9499a8;
+      --bg: #050608;
+      --surface: #0b0d13;
+      --surface-elevated: #131722;
+      --surface-hover: #1c2233;
       
-      /* Sandbox Signature Accent Colors */
-      --sb-primary: #3f78e0;
-      --sb-primary-light: #5a8fee;
-      --sb-primary-soft: rgba(63, 120, 224, 0.15);
-      
-      --sb-purple: #7952b3;
-      --sb-purple-soft: rgba(121, 82, 179, 0.15);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(255, 255, 255, 0.18);
+      --border-focus: #00f2fe;
 
-      --sb-green: #45c4a0;
-      --sb-green-soft: rgba(69, 196, 160, 0.15);
+      --text: #f3f5fa;
+      --text-muted: #8b93a7;
 
-      --sb-radius: 16px;
-      --sb-radius-sm: 10px;
-      --sb-radius-pill: 9999px;
+      --cyan: #00f2fe;
+      --cyan-glow: rgba(0, 242, 254, 0.25);
+      --violet: #7928ca;
+      --violet-glow: rgba(121, 40, 202, 0.35);
+      --emerald: #00df89;
+      --emerald-glow: rgba(0, 223, 137, 0.25);
+      --danger: #ff0055;
 
-      --sb-shadow: 0 0.5rem 1.75rem rgba(10, 12, 18, 0.25);
-      --sb-shadow-hover: 0 1rem 3rem rgba(10, 12, 18, 0.4);
-      --sidebar-width: 260px;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+
+      --radius: 18px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Sandbox Crisp Light Mode */
     body.light {
-      --sb-bg: #f6f7fb;
-      --sb-surface: #ffffff;
-      --sb-surface-hover: #f9fafd;
-      --sb-border: #e4e7ee;
-      --sb-border-strong: #d1d6e2;
-      --sb-text: #2c3240;
-      --sb-text-muted: #60697b;
+      --bg: #f4f5f9;
+      --surface: #ffffff;
+      --surface-elevated: #f0f2f8;
+      --surface-hover: #e5e9f3;
       
-      --sb-primary: #3f78e0;
-      --sb-primary-light: #3269d4;
-      --sb-primary-soft: #eaf1fc;
-      
-      --sb-purple: #7952b3;
-      --sb-purple-soft: #f2eef8;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-bright: rgba(0, 0, 0, 0.16);
+      --border-focus: #0284c7;
 
-      --sb-green: #45c4a0;
-      --sb-green-soft: #eaf7f4;
+      --text: #090a0f;
+      --text-muted: #626a7f;
 
-      --sb-shadow: 0 0.45rem 1.5rem rgba(30, 34, 40, 0.06);
-      --sb-shadow-hover: 0 1rem 2.5rem rgba(30, 34, 40, 0.1);
+      --cyan: #0284c7;
+      --cyan-glow: rgba(2, 132, 199, 0.18);
+      --violet: #6d28d9;
+      --emerald: #059669;
     }
 
     * {
@@ -93,13 +81,30 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--sb-bg);
-      color: var(--sb-text);
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
       min-height: 100vh;
+      line-height: 1.55;
       overflow-x: hidden;
-      line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
+      background-image: 
+        radial-gradient(circle at 10% 15%, var(--violet-glow) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, var(--cyan-glow) 0%, transparent 40%);
+    }
+
+    /* Subtle Technical Blueprint Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
     }
 
     a {
@@ -107,474 +112,431 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
-    /* Layout Wrapper */
-    .app-layout {
+    /* Layout Shell */
+    .viewport {
       display: flex;
-      max-width: 1360px;
+      max-width: 1380px;
       margin: 0 auto;
-      min-height: 100vh;
       position: relative;
+      z-index: 1;
     }
 
     /* =========================================================
-       SANDBOX SIDEBAR / LEFT NAV
+       FLOATING HUD COMMAND DOCK (SIDEBAR)
     ========================================================= */
-    .sidebar {
+    .hud-dock {
       position: sticky;
-      top: 0;
-      height: 100vh;
-      width: var(--sidebar-width);
-      flex-shrink: 0;
-      padding: 32px 24px;
+      top: 24px;
+      height: calc(100vh - 48px);
+      width: 270px;
+      margin: 24px 0 24px 24px;
+      border-radius: 24px;
+      background: rgba(11, 13, 19, 0.72);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--border-bright);
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-right: 1px solid var(--sb-border);
-      background: var(--sb-surface);
-      z-index: 90;
+      flex-shrink: 0;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .sidebar-brand {
+    body.light .hud-dock {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .dock-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--sb-border);
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--border-bright);
     }
 
-    .sidebar-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--sb-radius-sm);
+    .brand-avatar-box {
+      position: relative;
+      width: 44px;
+      height: 44px;
+    }
+
+    .brand-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       object-fit: cover;
-      box-shadow: 0 4px 12px rgba(63, 120, 224, 0.25);
+      display: block;
+      border: 1px solid var(--border-bright);
     }
 
-    .sidebar-brand-title {
-      font-size: 16px;
-      font-weight: 800;
+    .live-status-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--emerald);
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 10px var(--emerald);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
       letter-spacing: -0.02em;
     }
 
-    .sidebar-brand-subtitle {
-      font-size: 11.5px;
-      color: var(--sb-text-muted);
-      font-weight: 500;
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .nav-menu {
+    .dock-menu {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin: 28px 0;
+      gap: 7px;
       list-style: none;
+      margin: 20px 0;
     }
 
-    .nav-item {
+    .dock-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 11px 16px;
-      border-radius: var(--sb-radius-sm);
-      color: var(--sb-text-muted);
-      font-size: 13.5px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 13px;
       font-weight: 600;
       transition: all 0.2s var(--ease);
-      position: relative;
+      border: 1px solid transparent;
     }
 
-    .nav-item i {
-      width: 17px;
-      height: 17px;
-      transition: transform 0.2s ease;
+    .dock-item i {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
 
-    .nav-item:hover {
-      color: var(--sb-primary);
-      background: var(--sb-primary-soft);
-      transform: translateX(3px);
+    .dock-item:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+      border-color: var(--border);
+      transform: translateX(4px);
     }
 
-    .nav-item.active {
-      color: var(--sb-primary);
-      background: var(--sb-primary-soft);
+    .dock-item:hover i {
+      color: var(--cyan);
+    }
+
+    .dock-item.active {
+      color: var(--cyan);
+      background: rgba(0, 242, 254, 0.08);
+      border-color: rgba(0, 242, 254, 0.35);
       font-weight: 700;
     }
 
-    .sidebar-footer {
-      padding-top: 20px;
-      border-top: 1px solid var(--sb-border);
+    .dock-footer {
+      padding-top: 18px;
+      border-top: 1px dashed var(--border-bright);
+      font-family: var(--font-mono);
+      font-size: 11px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      color: var(--text-muted);
     }
 
-    /* Mobile Quick Navigation */
-    .mobile-nav-bar {
+    /* Mobile Quick Navigation Bar */
+    .mobile-header-bar {
       display: none;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--sb-surface);
-      border-bottom: 1px solid var(--sb-border);
-      padding: 10px 16px;
+      background: rgba(5, 6, 8, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 18px;
       overflow-x: auto;
-      white-space: nowrap;
       gap: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      white-space: nowrap;
     }
 
-    .mobile-nav-link {
+    body.light .mobile-header-bar {
+      background: rgba(244, 245, 249, 0.92);
+    }
+
+    .mobile-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
-      border-radius: var(--sb-radius-pill);
-      background: var(--sb-bg);
-      border: 1px solid var(--sb-border);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
       font-size: 12px;
       font-weight: 600;
-      color: var(--sb-text-muted);
-      flex-shrink: 0;
+      color: var(--text-muted);
     }
 
-    .mobile-nav-link.active {
-      color: var(--sb-primary);
-      background: var(--sb-primary-soft);
-      border-color: var(--sb-primary);
+    .mobile-chip.active {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      background: rgba(0, 242, 254, 0.08);
     }
 
     /* =========================================================
-       MAIN CONTENT CONTAINER
+       MAIN CANVAS & CONTENT
     ========================================================= */
-    .main-content {
+    .main-workspace {
       flex: 1;
       min-width: 0;
-      padding: 0 45px 80px;
+      padding: 24px 40px 100px;
     }
 
-    .container {
-      max-width: 900px;
+    .content-box {
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    /* Top Bar & Badges */
-    .topbar {
+    /* Command Center Topbar */
+    .hud-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0 0;
+      padding-bottom: 24px;
     }
 
-    .badge-counter {
+    .telemetry-chip {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 15px;
-      border-radius: var(--sb-radius-pill);
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--sb-text-muted);
-      box-shadow: var(--sb-shadow);
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
     }
 
-    .badge-counter .dot {
+    .telemetry-chip .pulse-led {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--sb-green);
-      box-shadow: 0 0 10px var(--sb-green);
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+      animation: ledFlicker 2s infinite ease-in-out;
     }
 
-    .badge-counter strong {
-      color: var(--sb-text);
-      font-weight: 700;
+    @keyframes ledFlicker {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
     }
 
-    .theme-toggle-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1px solid var(--sb-border);
-      background: var(--sb-surface);
-      color: var(--sb-text);
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
       display: grid;
       place-items: center;
       cursor: pointer;
-      box-shadow: var(--sb-shadow);
       transition: all 0.2s var(--ease);
     }
 
-    .theme-toggle-btn:hover {
+    .icon-action-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
       transform: scale(1.06);
-      border-color: var(--sb-primary);
-      color: var(--sb-primary);
     }
 
     /* =========================================================
-       SANDBOX HERO
+       HERO / LAB PROFILE BENTO
     ========================================================= */
-    .hero {
-      text-align: center;
-      padding: 40px 0 32px;
-    }
-
-    .hero-avatar-wrapper {
+    .lab-hero {
       position: relative;
-      width: 115px;
-      height: 115px;
-      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      padding: 40px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     }
 
-    .hero-avatar-wrapper::before {
+    .lab-hero::after {
+      content: "FEED.01";
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .hero-flex {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+    }
+
+    .hero-photo-wrap::before {
       content: '';
       position: absolute;
-      inset: -5px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--sb-primary), var(--sb-purple), var(--sb-green));
-      animation: spinRing 9s linear infinite;
+      inset: -4px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      z-index: 1;
+      opacity: 0.8;
+      animation: borderGlow 6s ease infinite alternate;
     }
 
-    .hero-avatar {
+    @keyframes borderGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(180deg); }
+    }
+
+    .hero-photo {
       position: relative;
-      width: 115px;
-      height: 115px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--sb-bg);
+      border-radius: 26px;
+      border: 3px solid var(--surface);
       display: block;
       z-index: 2;
     }
 
-    @keyframes spinRing {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .hero h1 {
-      font-size: clamp(34px, 6vw, 48px);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      margin-top: 22px;
-    }
-
-    .hero-subtitle {
-      color: var(--sb-primary);
+    .hero-intro h1 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
       font-weight: 700;
-      font-size: 14px;
-      margin-top: 4px;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
     }
 
-    .hero-desc {
-      max-width: 620px;
-      margin: 14px auto 0;
-      color: var(--sb-text-muted);
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    .hero-chips {
+    .hero-badge-row {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
     }
 
-    .hero-chip {
-      padding: 6px 14px;
-      border-radius: var(--sb-radius-pill);
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
+    .creator-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .hero-bio {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      margin-top: 12px;
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .hero-social-strip {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
       font-size: 12px;
       font-weight: 600;
-      color: var(--sb-text-muted);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-      transition: all 0.2s ease;
-    }
-
-    .hero-chip:hover {
-      color: var(--sb-primary);
-      border-color: var(--sb-primary);
-      transform: translateY(-2px);
-    }
-
-    /* Social Pills */
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 24px 0 36px;
-    }
-
-    .social-link {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      display: grid;
-      place-items: center;
-      color: var(--sb-text);
-      box-shadow: var(--sb-shadow);
       transition: all 0.2s var(--ease);
     }
 
-    .social-link:hover {
-      transform: translateY(-3px);
-      color: var(--sb-primary);
-      border-color: var(--sb-primary);
+    .social-pill:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
     }
 
-    /* =========================================================
-       SANDBOX BENTO CARDS & SECTIONS
-    ========================================================= */
-    section {
-      margin-bottom: 60px;
-      scroll-margin-top: 50px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .section-desc {
-      color: var(--sb-text-muted);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    /* About Bento Card */
-    .about-box {
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius);
-      padding: 30px;
-      box-shadow: var(--sb-shadow);
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .about-box h3 {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .about-box p {
-      color: var(--sb-text-muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .stats-matrix {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .stat-card {
-      background: var(--sb-bg);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius-sm);
-      padding: 16px;
-      text-align: center;
-    }
-
-    .stat-value {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--sb-primary);
-    }
-
-    .stat-name {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--sb-text-muted);
-      margin-top: 2px;
-    }
-
-    /* VIP Primary Banner */
-    .vip-banner {
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-left: 4px solid var(--sb-green);
-      border-radius: var(--sb-radius);
+    /* VIP Banner */
+    .vip-terminal {
+      background: linear-gradient(135deg, rgba(0, 223, 137, 0.1) 0%, var(--surface) 80%);
+      border: 1px solid rgba(0, 223, 137, 0.28);
+      border-radius: var(--radius);
       padding: 24px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      box-shadow: var(--sb-shadow);
-      margin-bottom: 50px;
-      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      margin-bottom: 45px;
     }
 
-    .vip-banner:hover {
-      box-shadow: var(--sb-shadow-hover);
-      transform: translateY(-2px);
-    }
-
-    .vip-details {
+    .terminal-meta {
       display: flex;
-      gap: 16px;
       align-items: center;
+      gap: 16px;
     }
 
-    .vip-badge-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--sb-radius-sm);
-      background: var(--sb-green-soft);
-      color: var(--sb-green);
+    .terminal-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(0, 223, 137, 0.15);
+      color: var(--emerald);
       display: grid;
       place-items: center;
       flex-shrink: 0;
     }
 
-    .vip-details h3 {
+    .terminal-meta h3 {
+      font-family: var(--font-display);
       font-size: 16px;
       font-weight: 700;
-      margin-bottom: 3px;
     }
 
-    .vip-details p {
-      color: var(--sb-text-muted);
-      font-size: 13px;
+    .terminal-meta p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
     }
 
-    /* Sandbox Action Buttons */
-    .sb-btn {
+    .btn-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       padding: 11px 20px;
-      border-radius: var(--sb-radius-sm);
+      border-radius: 10px;
       font-size: 13px;
       font-weight: 700;
       border: none;
@@ -583,58 +545,148 @@
       transition: all 0.2s var(--ease);
     }
 
-    .sb-btn-green {
-      background: var(--sb-green);
-      color: #061c14;
+    .btn-emerald {
+      background: var(--emerald);
+      color: #03150d;
+      box-shadow: 0 4px 16px var(--emerald-glow);
     }
 
-    .sb-btn-green:hover {
-      filter: brightness(1.08);
+    .btn-emerald:hover {
       transform: translateY(-2px);
+      filter: brightness(1.1);
     }
 
-    .sb-btn-primary {
-      background: var(--sb-primary);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(63, 120, 224, 0.3);
+    .btn-cyan {
+      background: var(--cyan);
+      color: #021217;
+      box-shadow: 0 4px 16px var(--cyan-glow);
     }
 
-    .sb-btn-primary:hover {
-      background: var(--sb-primary-light);
+    .btn-cyan:hover {
       transform: translateY(-2px);
+      filter: brightness(1.1);
     }
 
     /* =========================================================
-       DEALS GRID
+       SECTION ARCHITECTURE
+    ========================================================= */
+    section {
+      margin-bottom: 60px;
+      scroll-margin-top: 40px;
+    }
+
+    .section-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-counter {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* About Bento Matrix */
+    .about-bento {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
+    }
+
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .bento-card h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .bento-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .stats-rail {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat-chip {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* =========================================================
+       DEALS CARDS (HARDWARE BENTO)
     ========================================================= */
     .deals-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
     .deal-card {
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--sb-shadow);
       display: flex;
       flex-direction: column;
-      transition: all 0.25s var(--ease);
       position: relative;
+      transition: all 0.25s var(--ease);
     }
 
     .deal-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sb-shadow-hover);
-      border-color: var(--sb-border-strong);
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
     }
 
-    .deal-image-wrap {
+    .deal-visual {
       position: relative;
-      background: var(--sb-bg);
-      border-bottom: 1px solid var(--sb-border);
+      background: var(--surface-elevated);
+      border-bottom: 1px solid var(--border);
       overflow: hidden;
     }
 
@@ -643,88 +695,93 @@
       aspect-ratio: 16 / 11;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s var(--ease);
+      transition: transform 0.45s var(--ease);
     }
 
     .deal-card:hover .deal-image {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
-    .deal-badge {
+    .deal-pill-tag {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--sb-primary);
-      color: #ffffff;
-      padding: 4px 10px;
-      border-radius: var(--sb-radius-pill);
-      font-size: 10px;
+      top: 10px;
+      left: 10px;
+      background: rgba(3, 4, 6, 0.78);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 9.5px;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
-    .deal-content {
-      padding: 18px;
+    .deal-body {
+      padding: 16px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
-    .deal-store-row {
+    .deal-source-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .deal-store {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--sb-primary);
+    .store-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--cyan);
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
-    .deal-category {
-      font-size: 11px;
-      color: var(--sb-text-muted);
+    .category-label {
+      font-size: 10.5px;
+      color: var(--text-muted);
     }
 
-    .deal-title {
-      font-size: 14.5px;
+    .deal-heading {
+      font-size: 14px;
       font-weight: 700;
       line-height: 1.4;
-      margin-bottom: 12px;
       min-height: 40px;
+      margin-bottom: 12px;
     }
 
-    .price-row {
+    .deal-price-dock {
+      margin-top: auto;
       display: flex;
       align-items: baseline;
       gap: 8px;
-      margin-top: auto;
     }
 
-    .old-price {
+    .mrp-crossed {
       font-size: 12px;
-      color: var(--sb-text-muted);
+      color: var(--text-muted);
       text-decoration: line-through;
+      font-family: var(--font-mono);
     }
 
-    .new-price {
-      font-size: 19px;
+    .deal-price {
+      font-size: 18px;
       font-weight: 800;
-      color: var(--sb-text);
+      font-family: var(--font-mono);
+      color: var(--text);
     }
 
-    .discount-pill {
+    .discount-tag {
       font-size: 11px;
       font-weight: 700;
-      color: var(--sb-green);
+      color: var(--emerald);
       margin-top: 4px;
+      font-family: var(--font-mono);
     }
 
-    .deal-btn-action {
+    .btn-deal {
       margin-top: 14px;
       width: 100%;
     }
@@ -733,54 +790,53 @@
       grid-column: 1 / -1;
       padding: 40px;
       text-align: center;
-      background: var(--sb-surface);
-      border: 1px dashed var(--sb-border);
-      border-radius: var(--sb-radius);
-      color: var(--sb-text-muted);
-      font-size: 13.5px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
     }
 
     /* =========================================================
-       WALLPAPERS SHELF
+       WALLPAPERS HORIZONTAL TAPE
     ========================================================= */
-    .wallpapers-shelf {
+    .walls-tape {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       overflow-x: auto;
-      padding: 4px 4px 16px;
+      padding: 4px 2px 14px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
 
-    .wallpapers-shelf::-webkit-scrollbar {
-      height: 5px;
+    .walls-tape::-webkit-scrollbar {
+      height: 4px;
     }
 
-    .wallpapers-shelf::-webkit-scrollbar-thumb {
-      background: var(--sb-border);
+    .walls-tape::-webkit-scrollbar-thumb {
+      background: var(--border-bright);
       border-radius: 10px;
     }
 
-    .wp-card {
+    .wall-brick {
       flex: 0 0 160px;
-      height: 255px;
-      border-radius: var(--sb-radius);
+      height: 260px;
+      border-radius: var(--radius);
       overflow: hidden;
-      border: 1px solid var(--sb-border);
-      background: var(--sb-surface);
+      border: 1px solid var(--border);
+      background: var(--surface);
       position: relative;
       cursor: pointer;
       scroll-snap-align: start;
-      box-shadow: var(--sb-shadow);
       transition: all 0.25s var(--ease);
     }
 
-    .wp-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sb-shadow-hover);
+    .wall-brick:hover {
+      border-color: var(--cyan);
+      transform: translateY(-4px);
     }
 
-    .wp-card img {
+    .wall-brick img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -788,26 +844,29 @@
       transition: transform 0.4s var(--ease);
     }
 
-    .wp-card:hover img {
+    .wall-brick:hover img {
       transform: scale(1.08);
     }
 
-    .wp-download-icon {
+    .wall-action-chip {
       position: absolute;
       bottom: 10px;
       right: 10px;
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: rgba(10, 14, 22, 0.75);
+      background: rgba(5, 6, 8, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-bright);
       color: #fff;
       display: grid;
       place-items: center;
       transition: all 0.2s ease;
     }
 
-    .wp-card:hover .wp-download-icon {
-      background: var(--sb-primary);
+    .wall-brick:hover .wall-action-chip {
+      background: var(--cyan);
+      color: #000;
       transform: scale(1.1);
     }
 
@@ -815,9 +874,9 @@
     .wp-modal {
       position: fixed;
       inset: 0;
-      background: rgba(10, 14, 22, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(3, 4, 6, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -832,21 +891,21 @@
     .wp-modal-box {
       max-width: 400px;
       width: 100%;
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius);
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius);
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      box-shadow: var(--sb-shadow-hover);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     }
 
     .wp-modal-preview {
       width: 100%;
       max-height: 480px;
       object-fit: contain;
-      border-radius: var(--sb-radius-sm);
+      border-radius: var(--radius-sm);
       background: #000;
     }
 
@@ -855,32 +914,30 @@
       gap: 10px;
     }
 
-    /* Channels & AI Tools */
-    .channels-grid {
+    /* Channels & AI Stack */
+    .channels-pair {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
-    .channel-card {
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius);
-      padding: 20px;
+    .channel-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
       display: flex;
       align-items: center;
       gap: 16px;
-      box-shadow: var(--sb-shadow);
-      transition: all 0.25s var(--ease);
+      transition: all 0.2s var(--ease);
     }
 
-    .channel-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--sb-border-strong);
-      box-shadow: var(--sb-shadow-hover);
+    .channel-cell:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
     }
 
-    .channel-icon {
+    .channel-icon-pill {
       width: 48px;
       height: 48px;
       border-radius: 14px;
@@ -889,56 +946,56 @@
       flex-shrink: 0;
     }
 
-    .channel-icon.whatsapp {
-      background: var(--sb-green-soft);
-      color: var(--sb-green);
+    .channel-icon-pill.whatsapp {
+      background: rgba(0, 223, 137, 0.12);
+      color: var(--emerald);
     }
 
-    .channel-icon.instagram {
+    .channel-icon-pill.instagram {
       background: rgba(225, 48, 108, 0.12);
       color: #e1306c;
     }
 
-    .channel-info h3 {
+    .channel-copy h3 {
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 700;
     }
 
-    .channel-info p {
+    .channel-copy p {
       font-size: 12px;
-      color: var(--sb-text-muted);
+      color: var(--text-muted);
       margin-top: 3px;
     }
 
-    .tools-grid {
+    .tools-matrix {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
 
-    .tool-card {
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border);
-      border-radius: var(--sb-radius);
-      padding: 22px;
-      box-shadow: var(--sb-shadow);
-      transition: all 0.25s var(--ease);
+    .tool-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all 0.2s var(--ease);
     }
 
-    .tool-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--sb-shadow-hover);
-      border-color: var(--sb-primary);
+    .tool-cell:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
     }
 
-    .tool-card h3 {
+    .tool-cell h3 {
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
-    .tool-card p {
-      color: var(--sb-text-muted);
+    .tool-cell p {
+      color: var(--text-muted);
       font-size: 12px;
       line-height: 1.6;
     }
@@ -946,334 +1003,355 @@
     /* Footer & Sticky CTA */
     footer {
       text-align: center;
-      padding: 40px 0 110px;
-      color: var(--sb-text-muted);
-      font-size: 12px;
+      padding: 40px 0 100px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
-    .footer-brand {
-      color: var(--sb-text);
-      font-weight: 800;
-      font-size: 15px;
+    .footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
       margin-bottom: 4px;
     }
 
-    .sticky-cta {
+    .sticky-dock {
       position: fixed;
       left: 50%;
       bottom: max(16px, env(safe-area-inset-bottom));
       transform: translateX(-50%);
-      width: min(480px, calc(100% - 30px));
+      width: min(440px, calc(100% - 32px));
       z-index: 80;
-      background: var(--sb-surface);
-      border: 1px solid var(--sb-border-strong);
-      border-radius: var(--sb-radius-pill);
-      padding: 8px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+      background: rgba(11, 13, 19, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-pill);
+      padding: 7px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
 
-    .sticky-cta a {
+    .sticky-dock a {
       width: 100%;
     }
 
-    #scrollProgress {
+    #scrollTrack {
       position: fixed;
       top: 0;
       left: 0;
       height: 3px;
       width: 0%;
-      background: var(--sb-primary);
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
       z-index: 120;
     }
 
     /* Responsive */
     @media (max-width: 1080px) {
-      .sidebar { display: none; }
-      .mobile-nav-bar { display: flex; }
-      .main-content { padding: 0 16px 80px; }
-      .deals-grid, .tools-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-box { grid-template-columns: 1fr; }
+      .hud-dock { display: none; }
+      .mobile-header-bar { display: flex; }
+      .main-workspace { padding: 18px 18px 80px; }
+      .deals-grid, .tools-matrix { grid-template-columns: repeat(2, 1fr); }
+      .about-bento { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
-      .vip-banner { flex-direction: column; align-items: stretch; }
-      .vip-banner .sb-btn { width: 100%; }
+      .lab-hero { padding: 24px; }
+      .hero-flex { flex-direction: column; text-align: center; gap: 18px; }
+      .hero-badge-row, .hero-social-strip { justify-content: center; flex-wrap: wrap; }
+      .vip-terminal { flex-direction: column; align-items: stretch; padding: 20px; }
+      .vip-terminal .btn-action { width: 100%; }
       .deals-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .deal-content { padding: 12px; }
-      .deal-title { font-size: 13px; min-height: 36px; }
-      .new-price { font-size: 17px; }
-      .channels-grid { grid-template-columns: 1fr; }
-      .tools-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .section-title { font-size: 20px; }
-      .wp-card { flex: 0 0 135px; height: 215px; }
+      .deal-body { padding: 12px; }
+      .deal-heading { font-size: 13px; min-height: 36px; }
+      .deal-price { font-size: 16px; }
+      .channels-pair { grid-template-columns: 1fr; }
+      .tools-matrix { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .wall-brick { flex: 0 0 135px; height: 215px; }
     }
   </style>
 </head>
 
 <body>
-  <div id="scrollProgress"></div>
+  <div id="scrollTrack"></div>
 
-  <!-- Mobile Quick Navigation Bar -->
-  <nav class="mobile-nav-bar" aria-label="Mobile Navigation">
-    <a href="#overview" class="mobile-nav-link active"><i data-feather="home" style="width:13px;"></i> Home</a>
-    <a href="#about" class="mobile-nav-link"><i data-feather="user" style="width:13px;"></i> About</a>
-    <a href="#deals" class="mobile-nav-link"><i data-feather="tag" style="width:13px;"></i> Deals</a>
-    <a href="#wallpapers" class="mobile-nav-link"><i data-feather="image" style="width:13px;"></i> Walls</a>
-    <a href="#channels" class="mobile-nav-link"><i data-feather="share-2" style="width:13px;"></i> Channels</a>
-    <a href="#tools" class="mobile-nav-link"><i data-feather="cpu" style="width:13px;"></i> AI Tools</a>
+  <!-- MOBILE COMMAND RAIL -->
+  <nav class="mobile-header-bar" aria-label="Mobile Navigation">
+    <a href="#lab" class="mobile-chip active"><i data-feather="terminal" style="width:13px;"></i> LAB</a>
+    <a href="#about" class="mobile-chip"><i data-feather="user" style="width:13px;"></i> CREATOR</a>
+    <a href="#deals" class="mobile-chip"><i data-feather="cpu" style="width:13px;"></i> DEALS</a>
+    <a href="#walls" class="mobile-chip"><i data-feather="layers" style="width:13px;"></i> WALLS</a>
+    <a href="#network" class="mobile-chip"><i data-feather="share-2" style="width:13px;"></i> NETWORK</a>
+    <a href="#ai" class="mobile-chip"><i data-feather="box" style="width:13px;"></i> AI STACK</a>
   </nav>
 
-  <div class="app-layout">
-    <!-- SANDBOX LEFT SIDEBAR NAVIGATION -->
-    <aside class="sidebar">
+  <div class="viewport">
+    <!-- LEFT HUD COMMAND DOCK -->
+    <aside class="hud-dock">
       <div>
-        <div class="sidebar-brand">
-          <img src="Profile.jpg.PNG" alt="jayunboxes Avatar" class="sidebar-avatar" onerror="this.style.display='none';">
+        <div class="dock-brand">
+          <div class="brand-avatar-box">
+            <img src="Profile.jpg.PNG" alt="jayunboxes Avatar" class="brand-avatar" onerror="this.style.display='none';">
+            <div class="live-status-dot"></div>
+          </div>
           <div>
-            <div class="sidebar-brand-title">jayunboxes</div>
-            <div class="sidebar-brand-subtitle">Tech Deals & Setup Hub</div>
+            <div class="brand-title">jayunboxes</div>
+            <div class="brand-tag">SYS.ACTIVE // LAB</div>
           </div>
         </div>
 
-        <ul class="nav-menu">
+        <ul class="dock-menu">
           <li>
-            <a href="#overview" class="nav-item active">
-              <i data-feather="home"></i>
-              <span>Overview</span>
+            <a href="#lab" class="dock-item active">
+              <i data-feather="terminal"></i>
+              <span>Laboratory Hub</span>
             </a>
           </li>
           <li>
-            <a href="#about" class="nav-item">
+            <a href="#about" class="dock-item">
               <i data-feather="user"></i>
-              <span>About Creator</span>
+              <span>Behind the Tech</span>
             </a>
           </li>
           <li>
-            <a href="#deals" class="nav-item">
-              <i data-feather="tag"></i>
-              <span>Curated Deals</span>
+            <a href="#deals" class="dock-item">
+              <i data-feather="cpu"></i>
+              <span>Hardware Deals</span>
             </a>
           </li>
           <li>
-            <a href="#wallpapers" class="nav-item">
-              <i data-feather="image"></i>
+            <a href="#walls" class="dock-item">
+              <i data-feather="layers"></i>
               <span>4K Wallpapers</span>
             </a>
           </li>
           <li>
-            <a href="#channels" class="nav-item">
+            <a href="#network" class="dock-item">
               <i data-feather="share-2"></i>
-              <span>Channels</span>
+              <span>Network Feed</span>
             </a>
           </li>
           <li>
-            <a href="#tools" class="nav-item">
-              <i data-feather="cpu"></i>
+            <a href="#ai" class="dock-item">
+              <i data-feather="box"></i>
               <span>AI Stack</span>
             </a>
           </li>
         </ul>
       </div>
 
-      <div class="sidebar-footer">
-        <span style="font-size: 11.5px; color: var(--sb-text-muted); font-weight: 600;">Sandbox Edition</span>
-        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" style="color: var(--sb-green); font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
-          VIP <i data-feather="arrow-up-right" style="width: 12px;"></i>
+      <div class="dock-footer">
+        <span>V4.2 LAB</span>
+        <a href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener" style="color:var(--emerald); font-weight:700;">
+          VIP ACCESS &rarr;
         </a>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT PANE -->
-    <main class="main-content">
-      <div class="container">
-        <!-- TOP ACTIONS & STATS -->
-        <div class="topbar">
-          <div class="badge-counter" title="Total Website Pageviews">
-            <span class="dot"></span>
-            <span>Live Views:</span>
-            <strong id="siteViewsCounter">...</strong>
+    <!-- MAIN WORKSPACE -->
+    <main class="main-workspace">
+      <div class="content-box">
+        
+        <!-- COMMAND TELEMETRY BAR -->
+        <header class="hud-topbar">
+          <div class="telemetry-chip">
+            <span class="pulse-led"></span>
+            <span>SYSTEM PAGEVIEWS:</span>
+            <strong style="color:var(--text);" id="siteViewsCounter">...</strong>
           </div>
 
-          <button class="theme-toggle-btn" id="themeBtn" aria-label="Toggle theme">
-            <i data-feather="sun"></i>
-          </button>
-        </div>
-
-        <!-- HERO SECTION -->
-        <header class="hero" id="overview">
-          <div class="hero-avatar-wrapper">
-            <img src="Profile.jpg.PNG" class="hero-avatar" alt="jayunboxes Profile" onerror="this.style.display='none';">
-          </div>
-
-          <h1>jayunboxes</h1>
-          <div class="hero-subtitle">@jayunboxes</div>
-
-          <p class="hero-desc">
-            Raw, unfiltered tech reviews, daily verified gadget price drops, AI productivity tools, and aesthetic setup gear.
-          </p>
-
-          <div class="hero-chips">
-            <span class="hero-chip">Tech Deals</span>
-            <span class="hero-chip">AI Tools</span>
-            <span class="hero-chip">4K Wallpapers</span>
-            <span class="hero-chip">Gadgets</span>
+          <div class="top-actions">
+            <button class="icon-action-btn" id="themeBtn" aria-label="Toggle Color Theme">
+              <i data-feather="sun"></i>
+            </button>
           </div>
         </header>
 
-        <!-- SOCIALS -->
-        <div class="socials">
-          <a class="social-link" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
-            <i data-feather="instagram"></i>
-          </a>
-          <a class="social-link" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
-            <i data-feather="youtube"></i>
-          </a>
-          <a class="social-link" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
-            <i data-feather="at-sign"></i>
-          </a>
-          <a class="social-link" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
-            <i data-feather="mail"></i>
+        <!-- LAB HERO / PROFILE BENTO -->
+        <div class="lab-hero" id="lab">
+          <div class="hero-flex">
+            <div class="hero-photo-wrap">
+              <img src="Profile.jpg.PNG" class="hero-photo" alt="jayunboxes Profile" onerror="this.style.display='none';">
+            </div>
+
+            <div class="hero-intro">
+              <div class="hero-badge-row">
+                <span class="creator-tag">@jayunboxes</span>
+                <span style="color:var(--text-muted); font-size:11px;">// HARDWARE CURATOR</span>
+              </div>
+
+              <h1>jayunboxes</h1>
+
+              <p class="hero-bio">
+                Raw, unfiltered gadget teardowns, hand-verified daily price drops, AI productivity workflows, and aesthetic setup wallpaper drops.
+              </p>
+
+              <div class="hero-social-strip">
+                <a class="social-pill" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
+                  <i data-feather="instagram" style="width:13px;"></i> Instagram
+                </a>
+                <a class="social-pill" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener">
+                  <i data-feather="youtube" style="width:13px;"></i> YouTube
+                </a>
+                <a class="social-pill" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener">
+                  <i data-feather="at-sign" style="width:13px;"></i> Threads
+                </a>
+                <a class="social-pill" href="mailto:techwithjay.biz@gmail.com">
+                  <i data-feather="mail" style="width:13px;"></i> Inquiries
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIP ACCESS TERMINAL -->
+        <div class="vip-terminal">
+          <div class="terminal-meta">
+            <div class="terminal-icon">
+              <i data-feather="zap"></i>
+            </div>
+            <div>
+              <h3>Jayunboxes VIP Terminal</h3>
+              <p>Direct broadcast for instant price cuts, flash deals, and gear leaks.</p>
+            </div>
+          </div>
+          <a class="btn-action btn-emerald" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+            Join Channel &rarr;
           </a>
         </div>
 
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT ME SECTION -->
         <section id="about">
-          <div class="section-header">
-            <div>
-              <div class="section-title">⚡ Behind the Tech</div>
-              <div class="section-desc">Creator, tech curator & gadget enthusiast.</div>
+          <div class="section-bar">
+            <div class="section-title">
+              <i data-feather="user" style="color:var(--cyan); width:18px;"></i>
+              Behind The Tech
             </div>
+            <div class="section-counter">MOD.01</div>
           </div>
-          
-          <div class="about-box">
-            <div>
+
+          <div class="about-bento">
+            <div class="bento-card">
               <h3>Hey, I'm Jay 👋</h3>
               <p>
-                Welcome to <strong>jayunboxes</strong>. I review gadgets, test practical AI tools, and hunt down daily price cuts so you make smarter tech purchases. Whether upgrading your setup or grabbing 4K wallpapers, this hub keeps you connected with what's actually worth your money.
+                Welcome to <strong>jayunboxes</strong>. I evaluate consumer tech, pressure-test everyday AI tools, and monitor price fluctuations so you make smarter tech investments. Whether dialing in your desk setup or downloading 4K wallpapers, this station filters out the marketing noise to deliver pure utility.
               </p>
             </div>
 
-            <div class="stats-matrix">
-              <div class="stat-card">
-                <div class="stat-value">Daily</div>
-                <div class="stat-name">Deal Checks</div>
+            <div class="stats-rail">
+              <div class="stat-chip">
+                <div class="stat-val">DAILY</div>
+                <div class="stat-lbl">Price Audits</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-value">100%</div>
-                <div class="stat-name">Raw Reviews</div>
+              <div class="stat-chip">
+                <div class="stat-val">100%</div>
+                <div class="stat-lbl">Raw Reviews</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-value">4K</div>
-                <div class="stat-name">Curated Walls</div>
+              <div class="stat-chip">
+                <div class="stat-val">4K</div>
+                <div class="stat-lbl">Curated Walls</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-value">Free</div>
-                <div class="stat-name">VIP Alerts</div>
+              <div class="stat-chip">
+                <div class="stat-val">FREE</div>
+                <div class="stat-lbl">VIP Alerts</div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- VIP BANNER -->
-        <div class="vip-banner">
-          <div class="vip-details">
-            <div class="vip-badge-icon">
-              <i data-feather="message-circle"></i>
-            </div>
-            <div>
-              <h3>Jayunboxes Insider</h3>
-              <p>Instant tech deals, price drops and gear leaks sent directly on WhatsApp.</p>
-            </div>
-          </div>
-          <a class="sb-btn sb-btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-            <i data-feather="zap"></i> Join Free
-          </a>
-        </div>
-
-        <!-- DEALS SECTION -->
+        <!-- LIVE TECH DEALS -->
         <section id="deals">
-          <div class="section-header">
-            <div>
-              <div class="section-title">🔥 Live Tech Deals</div>
-              <div class="section-desc">Synced automatically from the Jayunboxes deals sheet.</div>
+          <div class="section-bar">
+            <div class="section-title">
+              <i data-feather="cpu" style="color:var(--cyan); width:18px;"></i>
+              Curated Hardware Deals
             </div>
+            <div class="section-counter">MOD.02 // LIVE SYNC</div>
           </div>
+
           <div class="deals-grid" id="dealsGrid">
-            <div class="deal-loading">Loading curated deals...</div>
+            <div class="deal-loading">Scanning live hardware drops...</div>
           </div>
         </section>
 
-        <!-- WALLPAPERS SECTION -->
-        <section id="wallpapers">
-          <div class="section-header">
-            <div>
-              <div class="section-title">✨ Setup Wallpapers</div>
-              <div class="section-desc">Aesthetic high-resolution walls for phone & desk setups.</div>
+        <!-- SETUP WALLPAPERS -->
+        <section id="walls">
+          <div class="section-bar">
+            <div class="section-title">
+              <i data-feather="layers" style="color:var(--cyan); width:18px;"></i>
+              Setup Wallpapers
             </div>
+            <div class="section-counter">MOD.03 // 4K ASSETS</div>
           </div>
-          <div class="wallpapers-shelf" id="wallpapersList">
-            <div class="wp-card" style="display:grid; place-items:center; color:var(--sb-text-muted); font-size:12px; padding:15px; text-align:center;">
-              Loading wallpapers...
+
+          <div class="walls-tape" id="wallpapersList">
+            <div class="wall-brick" style="display:grid; place-items:center; color:var(--text-muted); font-size:11px; padding:15px; text-align:center;">
+              Querying /wallpapers...
             </div>
           </div>
         </section>
 
-        <!-- CHANNELS SECTION -->
-        <section id="channels">
-          <div class="section-header">
-            <div>
-              <div class="section-title">Stay Connected</div>
-              <div class="section-desc">Follow the journey across channels.</div>
+        <!-- NETWORK CHANNELS -->
+        <section id="network">
+          <div class="section-bar">
+            <div class="section-title">
+              <i data-feather="share-2" style="color:var(--cyan); width:18px;"></i>
+              Network Feed
             </div>
+            <div class="section-counter">MOD.04</div>
           </div>
-          <div class="channels-grid">
-            <a class="channel-card" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-              <div class="channel-icon whatsapp"><i data-feather="message-circle"></i></div>
-              <div class="channel-info">
+
+          <div class="channels-pair">
+            <a class="channel-cell" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+              <div class="channel-icon-pill whatsapp"><i data-feather="message-circle"></i></div>
+              <div class="channel-copy">
                 <h3>Jayunboxes Insider</h3>
-                <p>Instant deals, alerts & exclusive community drops.</p>
+                <p>Instant flash price alerts & exclusive community drops.</p>
               </div>
             </a>
-            <a class="channel-card" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
-              <div class="channel-icon instagram"><i data-feather="instagram"></i></div>
-              <div class="channel-info">
+            <a class="channel-cell" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
+              <div class="channel-icon-pill instagram"><i data-feather="instagram"></i></div>
+              <div class="channel-copy">
                 <h3>Instagram</h3>
-                <p>Short-form reels, setups & unboxings.</p>
+                <p>Short-form reels, hardware teardowns & daily setups.</p>
               </div>
             </a>
           </div>
         </section>
 
-        <!-- AI TOOLS SECTION -->
-        <section id="tools">
-          <div class="section-header">
-            <div>
-              <div class="section-title">🤖 AI Tools</div>
-              <div class="section-desc">Everyday artificial intelligence tools used by Jay.</div>
+        <!-- AI STACK -->
+        <section id="ai">
+          <div class="section-bar">
+            <div class="section-title">
+              <i data-feather="box" style="color:var(--cyan); width:18px;"></i>
+              AI Intelligence Stack
             </div>
+            <div class="section-counter">MOD.05</div>
           </div>
-          <div class="tools-grid">
-            <div class="tool-card">
+
+          <div class="tools-matrix">
+            <div class="tool-cell">
               <h3>ChatGPT</h3>
               <p>Ideation, scripting, code assistance, and research workflow.</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-cell">
               <h3>Google Flow</h3>
               <p>Cinematic AI video creation and generative visuals.</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-cell">
               <h3>Gemini</h3>
               <p>Contextual multimodal intelligence and workspace workflows.</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-cell">
               <h3>Canva</h3>
               <p>Fast graphic design, presentation decks, and cover art.</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-cell">
               <h3>ElevenLabs</h3>
               <p>High-fidelity synthetic speech synthesis & voiceover cloning.</p>
             </div>
-            <div class="tool-card">
+            <div class="tool-cell">
               <h3>CapCut</h3>
               <p>Rapid video montage, responsive subtitles, and motion pacing.</p>
             </div>
@@ -1282,31 +1360,32 @@
 
         <!-- FOOTER -->
         <footer>
-          <div class="footer-brand">jayunboxes</div>
-          <div>Tech Deals • AI Tools • Aesthetic Wallpapers</div>
-          <div style="margin-top: 6px;" id="footerViewsCount">Live Views Active</div>
+          <div class="footer-brand-title">jayunboxes // ARCHIVE</div>
+          <div>TECH DEALS • WORKFLOW TOOLS • AESTHETIC WALLPAPERS</div>
+          <div style="margin-top: 6px;" id="footerViewsCount">ALL SYSTEMS GO</div>
         </footer>
+
       </div>
     </main>
   </div>
 
-  <!-- WALLPAPER MODAL -->
+  <!-- WALLPAPER DOWNLOAD MODAL -->
   <div class="wp-modal" id="wpModal">
     <div class="wp-modal-box">
       <img src="" alt="Wallpaper Preview" class="wp-modal-preview" id="wpModalImg" />
       <div class="wp-modal-actions">
-        <a href="" download class="sb-btn sb-btn-primary" style="flex:1;" id="wpModalDownload" target="_blank">
-          <i data-feather="download" style="width: 15px;"></i> Download 4K
+        <a href="" download class="btn-action btn-cyan" style="flex:1;" id="wpModalDownload" target="_blank">
+          <i data-feather="download" style="width: 14px;"></i> Download 4K
         </a>
-        <button class="sb-btn" style="background:var(--sb-bg); color:var(--sb-text); border:1px solid var(--sb-border);" id="wpModalClose">Close</button>
+        <button class="btn-action" style="background:var(--surface-elevated); color:var(--text); border:1px solid var(--border);" id="wpModalClose">Dismiss</button>
       </div>
     </div>
   </div>
 
-  <!-- STICKY CTA -->
-  <div class="sticky-cta">
-    <a class="sb-btn sb-btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-      <i data-feather="zap"></i> Join Jayunboxes Insider — Free
+  <!-- FLOATING QUICK DOCK -->
+  <div class="sticky-dock">
+    <a class="btn-action btn-emerald" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
+      <i data-feather="zap" style="width:14px;"></i> Join VIP Channel &mdash; Free
     </a>
   </div>
 
@@ -1324,14 +1403,14 @@
     const myWallpapers = [];
 
     /* =========================================================
-       ACTIVE NAVIGATION SCROLL SPY
+       ACTIVE HUD NAVIGATION SPY
     ========================================================= */
     function initNavScrollSpy() {
-      const sections = document.querySelectorAll('header#overview, section[id]');
-      const navLinks = document.querySelectorAll('.nav-item, .mobile-nav-link');
+      const sections = document.querySelectorAll('div#lab, section[id]');
+      const navLinks = document.querySelectorAll('.dock-item, .mobile-chip');
 
       window.addEventListener('scroll', () => {
-        let current = 'overview';
+        let current = 'lab';
         const scrollPosition = window.scrollY + 120;
 
         sections.forEach(section => {
@@ -1405,7 +1484,7 @@
     }
 
     /* =========================================================
-       LIVE WEBSITE VIEWS COUNTER
+       LIVE TELEMETRY PAGEVIEWS COUNTER
     ========================================================= */
     async function initViewsCounter() {
       const counterEl = document.getElementById("siteViewsCounter");
@@ -1442,12 +1521,12 @@
       const formatted = Number(count).toLocaleString();
       counterEl.textContent = formatted;
       if (footerCounterEl) {
-        footerCounterEl.textContent = `${formatted} Pageviews`;
+        footerCounterEl.textContent = `TELEMETRY: ${formatted} SESSIONS RECORDED`;
       }
     }
 
     /* =========================================================
-       HTML HELPERS
+       PARSER & HELPERS
     ========================================================= */
     function escapeHTML(str) {
       return String(str ?? "")
@@ -1495,13 +1574,10 @@
     }
 
     function placeholderImage() {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550"><rect width="800" height="550" fill="#1e222d"/><circle cx="400" cy="275" r="140" fill="#3f78e0" opacity=".15"/><text x="50%" y="49%" text-anchor="middle" fill="#5a8fee" font-family="sans-serif" font-size="36" font-weight="700">JAYUNBOXES</text><text x="50%" y="58%" text-anchor="middle" fill="#888" font-family="sans-serif" font-size="18">TECH DEAL</text></svg>`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550"><rect width="800" height="550" fill="#0b0d13"/><circle cx="400" cy="275" r="140" fill="#00f2fe" opacity=".1"/><text x="50%" y="49%" text-anchor="middle" fill="#00f2fe" font-family="monospace" font-size="32" font-weight="700">JAYUNBOXES</text><text x="50%" y="58%" text-anchor="middle" fill="#8b93a7" font-family="monospace" font-size="16">HARDWARE ASSET</text></svg>`;
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
     }
 
-    /* =========================================================
-       CSV DEALS PARSER & RENDERER
-    ========================================================= */
     function parseCSV(text) {
       const rows = [];
       let row = [], value = "", insideQuotes = false;
@@ -1531,6 +1607,9 @@
       });
     }
 
+    /* =========================================================
+       LOAD DEALS
+    ========================================================= */
     async function loadDeals() {
       const grid = document.getElementById("dealsGrid");
       try {
@@ -1563,7 +1642,7 @@
             url: getValue(nr, "url", "link", "dealurl", "affiliateurl") || "#",
             active: isActive(getValue(nr, "active", "status")),
             featured: isYes(getValue(nr, "featured", "topdeal")),
-            category: getValue(nr, "category", "type") || "Tech",
+            category: getValue(nr, "category", "type") || "Hardware",
             sortOrder: Number(getValue(nr, "sortorder", "order")) || 9999
           };
         }).filter(d => d.active && d.name !== "Tech Product");
@@ -1571,7 +1650,7 @@
         deals.sort((a, b) => (b.featured - a.featured) || (a.sortOrder - b.sortOrder));
 
         if (!deals.length) {
-          grid.innerHTML = `<div class="deal-empty">No active deals found. Add products to your Google Sheet to feature them here!</div>`;
+          grid.innerHTML = `<div class="deal-empty">No active hardware deals logged. Add items to your Google Sheet!</div>`;
           return;
         }
 
@@ -1579,23 +1658,23 @@
           const target = safeURL(d.url);
           return `
             <article class="deal-card">
-              ${d.featured ? `<div class="deal-badge">⚡ TOP FIND</div>` : ""}
-              <div class="deal-image-wrap">
+              ${d.featured ? `<div class="deal-pill-tag">⚡ VERIFIED</div>` : ""}
+              <div class="deal-visual">
                 <img class="deal-image" src="${escapeHTML(d.image)}" alt="${escapeHTML(d.name)}" loading="lazy" onerror="this.src='${placeholderImage()}'">
               </div>
-              <div class="deal-content">
-                <div class="deal-store-row">
-                  <span class="deal-store">${escapeHTML(d.store)}</span>
-                  <span class="deal-category">${escapeHTML(d.category)}</span>
+              <div class="deal-body">
+                <div class="deal-source-line">
+                  <span class="store-label">${escapeHTML(d.store)}</span>
+                  <span class="category-label">${escapeHTML(d.category)}</span>
                 </div>
-                <div class="deal-title">${escapeHTML(d.name)}</div>
-                <div class="price-row">
-                  ${d.oldPrice ? `<span class="old-price">${escapeHTML(d.oldPrice)}</span>` : ""}
-                  <span class="new-price">${escapeHTML(d.price || "Check Price")}</span>
+                <div class="deal-heading">${escapeHTML(d.name)}</div>
+                <div class="deal-price-dock">
+                  ${d.oldPrice ? `<span class="mrp-crossed">${escapeHTML(d.oldPrice)}</span>` : ""}
+                  <span class="deal-price">${escapeHTML(d.price || "Check Price")}</span>
                 </div>
-                ${d.discount ? `<div class="discount-pill">✓ ${escapeHTML(d.discount)}</div>` : ""}
-                <a class="sb-btn sb-btn-primary deal-btn-action" href="${escapeHTML(target)}" target="_blank" rel="noopener noreferrer">
-                  Get Deal <i data-feather="arrow-up-right" style="width:14px;"></i>
+                ${d.discount ? `<div class="discount-tag">✓ ${escapeHTML(d.discount)}</div>` : ""}
+                <a class="btn-action btn-cyan btn-deal" href="${escapeHTML(target)}" target="_blank" rel="noopener noreferrer">
+                  Acquire Asset <i data-feather="arrow-up-right" style="width:14px;"></i>
                 </a>
               </div>
             </article>
@@ -1607,8 +1686,8 @@
         console.error("Deals load error:", err);
         grid.innerHTML = `
           <div class="deal-error">
-            Unable to load deals right now.<br>
-            <small style="display:block; margin-top:6px; color:var(--sb-text-muted);">
+            ERR: UNABLE TO SYNC HARDWARE DROPS<br>
+            <small style="display:block; margin-top:6px; color:var(--text-muted);">
               Ensure Google Sheet is set to <strong>Publish to Web ➔ Comma-separated values (.csv)</strong>.
             </small>
           </div>`;
@@ -1616,7 +1695,7 @@
     }
 
     /* =========================================================
-       DYNAMIC WALLPAPERS LOADER
+       WALLPAPERS TAPE LOADER
     ========================================================= */
     const wpList = document.getElementById("wallpapersList");
     const wpModal = document.getElementById("wpModal");
@@ -1677,14 +1756,14 @@
 
     function renderWallpapers(items) {
       if (!items || !items.length) {
-        wpList.innerHTML = `<div style="color:var(--sb-text-muted); font-size:13px; padding:15px;">Upload image files into <code>/wallpapers</code> on GitHub to feature them here!</div>`;
+        wpList.innerHTML = `<div style="color:var(--text-muted); font-size:12px; padding:15px; font-family:var(--font-mono);">NO ASSETS IN /wallpapers</div>`;
         return;
       }
 
       wpList.innerHTML = items.map(w => `
-        <div class="wp-card" onclick="openWallpaper('${escapeHTML(w.url)}')">
+        <div class="wall-brick" onclick="openWallpaper('${escapeHTML(w.url)}')">
           <img src="${escapeHTML(w.url)}" alt="${escapeHTML(w.name)}" loading="lazy" />
-          <div class="wp-download-icon"><i data-feather="download" style="width:14px; height:14px;"></i></div>
+          <div class="wall-action-chip"><i data-feather="download" style="width:14px; height:14px;"></i></div>
         </div>
       `).join("");
 
@@ -1692,7 +1771,7 @@
     }
 
     /* Scroll Progress & Theme */
-    const progress = document.getElementById("scrollProgress");
+    const progress = document.getElementById("scrollTrack");
     window.addEventListener("scroll", () => {
       const s = window.scrollY;
       const d = document.documentElement.scrollHeight - window.innerHeight;
