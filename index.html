@@ -9,15 +9,18 @@
   <meta name="author" content="Jay">
   <meta name="theme-color" content="#fafaf9">
 
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="jayunboxes | Tech Reviews, Curated Deals & Media Kit">
+  <meta property="og:description" content="Minimalist tech reviews, curated gadget deals, and 4K desk setup wallpapers by Jay.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    /* =========================================================
-       MINIMALIST WARM LIGHT PALETTE
-    ========================================================= */
     :root {
       --bg: #fafaf9;
       --surface: #ffffff;
@@ -58,6 +61,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -73,15 +80,13 @@
       padding: 40px 20px 100px;
     }
 
-    /* =========================================================
-       HEADER NAVIGATION TABS
-    ========================================================= */
+    /* TOP NAVIGATION PILL TABS */
     .top-nav {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 6px;
-      padding: 8px 10px;
+      padding: 6px 8px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-pill);
@@ -90,6 +95,12 @@
       margin: 0 auto 36px;
       overflow-x: auto;
       max-width: 100%;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .top-nav::-webkit-scrollbar {
+      display: none;
     }
 
     .tab-btn {
@@ -119,9 +130,7 @@
       font-weight: 700;
     }
 
-    /* =========================================================
-       PAGE SWITCHING MECHANISM
-    ========================================================= */
+    /* PAGE SWITCHING MECHANISM */
     .page-view {
       display: none;
       animation: fadeIn 0.3s var(--ease) forwards;
@@ -171,9 +180,7 @@
       margin-top: 4px;
     }
 
-    /* =========================================================
-       HOME / OVERVIEW VIEW
-    ========================================================= */
+    /* PROFILE */
     .profile-card {
       text-align: center;
       padding: 36px 24px;
@@ -356,11 +363,6 @@
       color: #e1306c;
       border: 1px solid rgba(225, 48, 108, 0.2);
     }
-    .dir-icon.ic-channels {
-      background: rgba(16, 185, 129, 0.12);
-      color: #059669;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
 
     .dir-title {
       font-size: 16px;
@@ -415,9 +417,7 @@
       box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
     }
 
-    /* =========================================================
-       TECH DEALS GRID (ENHANCED PRODUCT DISPLAY)
-    ========================================================= */
+    /* DEALS GRID */
     .deals-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -555,9 +555,7 @@
       opacity: 0.9;
     }
 
-    /* =========================================================
-       MEDIA KIT STYLES
-    ========================================================= */
+    /* MEDIA KIT */
     .mediakit-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -606,20 +604,9 @@
       border-radius: var(--radius-pill);
     }
 
-    .badge-ig {
-      background: rgba(225, 48, 108, 0.1);
-      color: #e1306c;
-    }
-
-    .badge-yt {
-      background: rgba(255, 0, 0, 0.1);
-      color: #ff0000;
-    }
-
-    .badge-reach {
-      background: rgba(37, 99, 235, 0.1);
-      color: #2563eb;
-    }
+    .badge-ig { background: rgba(225, 48, 108, 0.1); color: #e1306c; }
+    .badge-yt { background: rgba(255, 0, 0, 0.1); color: #ff0000; }
+    .badge-reach { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
 
     .mediakit-banner {
       background: linear-gradient(135deg, #1c1917, #292524);
@@ -709,18 +696,10 @@
       padding-bottom: 0;
     }
 
-    .spec-name {
-      color: var(--text-muted);
-    }
+    .spec-name { color: var(--text-muted); }
+    .spec-val { font-weight: 700; color: var(--text); }
 
-    .spec-val {
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    /* =========================================================
-       WALLPAPERS TAB
-    ========================================================= */
+    /* WALLPAPERS */
     .wallpapers-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -843,9 +822,7 @@
       border: 1px solid var(--border);
     }
 
-    /* =========================================================
-       AI TOOLS & CHANNELS TAB
-    ========================================================= */
+    /* TOOLS & CHANNELS */
     .cards-stack {
       display: flex;
       flex-direction: column;
@@ -909,13 +886,9 @@
       color: var(--text-muted);
     }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .mediakit-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .mediakit-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 680px) {
@@ -944,33 +917,32 @@
     
     <!-- TOP NAVIGATION PILL TABS -->
     <nav class="top-nav" aria-label="Page Tabs">
-      <button class="tab-btn active" onclick="switchPage('home')">
+      <button class="tab-btn active" data-tab="home" onclick="navigateTo('home')">
         <i data-feather="home" style="width:14px;"></i> Home
       </button>
-      <button class="tab-btn" onclick="switchPage('deals')">
+      <button class="tab-btn" data-tab="deals" onclick="navigateTo('deals')">
         <i data-feather="tag" style="width:14px;"></i> Tech Deals
       </button>
-      <button class="tab-btn" onclick="switchPage('mediakit')">
+      <button class="tab-btn" data-tab="mediakit" onclick="navigateTo('mediakit')">
         <i data-feather="bar-chart-2" style="width:14px;"></i> Media Kit
       </button>
-      <button class="tab-btn" onclick="switchPage('wallpapers')">
+      <button class="tab-btn" data-tab="wallpapers" onclick="navigateTo('wallpapers')">
         <i data-feather="image" style="width:14px;"></i> Wallpapers
       </button>
-      <button class="tab-btn" onclick="switchPage('tools')">
+      <button class="tab-btn" data-tab="tools" onclick="navigateTo('tools')">
         <i data-feather="cpu" style="width:14px;"></i> AI Tools
       </button>
-      <button class="tab-btn" onclick="switchPage('channels')">
+      <button class="tab-btn" data-tab="channels" onclick="navigateTo('channels')">
         <i data-feather="share-2" style="width:14px;"></i> Channels
       </button>
     </nav>
 
-    <!-- =======================================================
-         VIEW 1: HOME / OVERVIEW
-    ======================================================== -->
+    <!-- VIEW 1: HOME -->
     <div id="page-home" class="page-view active-page">
       <section class="profile-card">
         <div class="avatar-wrap">
-          <img src="Profile.jpg.PNG" class="avatar" alt="jayunboxes Profile" onerror="this.style.display='none';">
+          <!-- Update to your exact filename in lowercase -->
+          <img src="profile.png" class="avatar" alt="jayunboxes Profile" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=80';">
         </div>
         <h1>jayunboxes</h1>
         <div class="profile-handle">@jayunboxes</div>
@@ -978,7 +950,6 @@
           Welcome to my tech corner. I review gadgets, test practical AI tools, track price cuts, and design 4K setup wallpapers — completely unfiltered with zero marketing fluff.
         </p>
 
-        <!-- COLORFUL APP ICONS -->
         <div class="social-strip">
           <a class="social-btn btn-instagram" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
             <i data-feather="instagram" style="width: 19px; height: 19px;"></i>
@@ -995,7 +966,6 @@
         </div>
       </section>
 
-      <!-- VIP Broadcast Banner -->
       <div class="vip-card">
         <div class="vip-info">
           <h3>Jayunboxes VIP Broadcast</h3>
@@ -1006,9 +976,8 @@
         </a>
       </div>
 
-      <!-- Navigation Directory Cards -->
       <div class="directory-grid">
-        <div class="dir-card" onclick="switchPage('deals')">
+        <div class="dir-card" onclick="navigateTo('deals')">
           <div class="dir-top">
             <div class="dir-icon ic-deals"><i data-feather="tag" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
@@ -1019,7 +988,7 @@
           </div>
         </div>
 
-        <div class="dir-card" onclick="switchPage('mediakit')">
+        <div class="dir-card" onclick="navigateTo('mediakit')">
           <div class="dir-top">
             <div class="dir-icon ic-media"><i data-feather="bar-chart-2" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
@@ -1030,7 +999,7 @@
           </div>
         </div>
 
-        <div class="dir-card" onclick="switchPage('wallpapers')">
+        <div class="dir-card" onclick="navigateTo('wallpapers')">
           <div class="dir-top">
             <div class="dir-icon ic-walls"><i data-feather="image" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
@@ -1041,7 +1010,7 @@
           </div>
         </div>
 
-        <div class="dir-card" onclick="switchPage('tools')">
+        <div class="dir-card" onclick="navigateTo('tools')">
           <div class="dir-top">
             <div class="dir-icon ic-tools"><i data-feather="cpu" style="width: 18px;"></i></div>
             <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
@@ -1054,12 +1023,10 @@
       </div>
     </div>
 
-    <!-- =======================================================
-         VIEW 2: TECH DEALS (PRODUCT GRID)
-    ======================================================== -->
+    <!-- VIEW 2: TECH DEALS -->
     <div id="page-deals" class="page-view">
       <div class="page-header">
-        <button class="back-btn" onclick="switchPage('home')">
+        <button class="back-btn" onclick="navigateTo('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Curated Tech Deals</h2>
@@ -1071,19 +1038,16 @@
       </div>
     </div>
 
-    <!-- =======================================================
-         VIEW 3: MEDIA KIT & STATS (NEW)
-    ======================================================== -->
+    <!-- VIEW 3: MEDIA KIT -->
     <div id="page-mediakit" class="page-view">
       <div class="page-header">
-        <button class="back-btn" onclick="switchPage('home')">
+        <button class="back-btn" onclick="navigateTo('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Media Kit & Partnerships</h2>
         <p class="page-desc">Metrics, reach, demographics, and collaboration opportunities with @jayunboxes.</p>
       </div>
 
-      <!-- Quick Collab Banner -->
       <div class="mediakit-banner">
         <div>
           <h3>Work With Jay</h3>
@@ -1094,7 +1058,6 @@
         </a>
       </div>
 
-      <!-- Key Stats Grid -->
       <div class="mediakit-grid">
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
@@ -1137,7 +1100,7 @@
             <span class="mediakit-badge badge-reach"><i data-feather="users" style="width:12px;"></i> Broadcast</span>
             <i data-feather="zap" style="width: 16px; color: var(--green);"></i>
           </div>
-          <div class="mediakit-stat-num">100++</div>
+          <div class="mediakit-stat-num">100+</div>
           <div class="mediakit-stat-label">VIP WhatsApp Members</div>
         </div>
 
@@ -1151,7 +1114,6 @@
         </div>
       </div>
 
-      <!-- Demographics & Deliverables -->
       <div class="demo-grid">
         <div class="spec-card">
           <h4><i data-feather="pie-chart" style="width:16px; color:var(--accent);"></i> Audience Demographics</h4>
@@ -1175,12 +1137,10 @@
       </div>
     </div>
 
-    <!-- =======================================================
-         VIEW 4: WALLPAPERS
-    ======================================================== -->
+    <!-- VIEW 4: WALLPAPERS -->
     <div id="page-wallpapers" class="page-view">
       <div class="page-header">
-        <button class="back-btn" onclick="switchPage('home')">
+        <button class="back-btn" onclick="navigateTo('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">4K Setup Wallpapers</h2>
@@ -1194,12 +1154,10 @@
       </div>
     </div>
 
-    <!-- =======================================================
-         VIEW 5: AI TOOLS
-    ======================================================== -->
+    <!-- VIEW 5: AI TOOLS -->
     <div id="page-tools" class="page-view">
       <div class="page-header">
-        <button class="back-btn" onclick="switchPage('home')">
+        <button class="back-btn" onclick="navigateTo('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">AI Workflow Tools</h2>
@@ -1234,12 +1192,10 @@
       </div>
     </div>
 
-    <!-- =======================================================
-         VIEW 6: CHANNELS & CONTACT
-    ======================================================== -->
+    <!-- VIEW 6: CHANNELS & CONTACT -->
     <div id="page-channels" class="page-view">
       <div class="page-header">
-        <button class="back-btn" onclick="switchPage('home')">
+        <button class="back-btn" onclick="navigateTo('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Connect & Channels</h2>
@@ -1275,341 +1231,4 @@
 
         <a class="simple-card channel-row" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
-              <i data-feather="youtube" style="width: 20px;"></i>
-            </div>
-            <div>
-              <h3>YouTube</h3>
-              <p>Long-form teardowns, reviews, and setup upgrades</p>
-            </div>
-          </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
-        </a>
-
-        <a class="simple-card channel-row" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener">
-          <div class="channel-lead">
-            <div class="channel-badge-icon" style="background: rgba(0, 0, 0, 0.08); color: #111111;">
-              <i data-feather="at-sign" style="width: 20px;"></i>
-            </div>
-            <div>
-              <h3>Threads</h3>
-              <p>Bite-sized tech takes, discussions & AMAs</p>
-            </div>
-          </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
-        </a>
-
-        <a class="simple-card channel-row" href="mailto:techwithjay.biz@gmail.com">
-          <div class="channel-lead">
-            <div class="channel-badge-icon" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
-              <i data-feather="mail" style="width: 20px;"></i>
-            </div>
-            <div>
-              <h3>Business Inquiries</h3>
-              <p>techwithjay.biz@gmail.com</p>
-            </div>
-          </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div>jayunboxes • 2026</div>
-      <div style="margin-top: 4px; font-size: 11.5px;">Curated Tech, Desk Essentials & Reviews</div>
-    </footer>
-  </main>
-
-  <!-- WALLPAPER MODAL -->
-  <div class="wp-modal" id="wpModal">
-    <div class="wp-modal-box">
-      <img src="" alt="Wallpaper Preview" class="wp-modal-preview" id="wpModalImg" />
-      <div class="wp-modal-actions">
-        <a href="" download class="btn-modal btn-modal-dl" id="wpModalDownload" target="_blank">
-          <i data-feather="download" style="width: 14px;"></i> Download 4K
-        </a>
-        <button class="btn-modal btn-modal-close" id="wpModalClose">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    /* =========================================================
-       PAGE / TAB SWITCHING LOGIC
-    ========================================================= */
-    function switchPage(pageId) {
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active-page');
-      });
-
-      const target = document.getElementById('page-' + pageId);
-      if (target) {
-        target.classList.add('active-page');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)) {
-          btn.classList.add('active');
-        }
-      });
-
-      feather.replace();
-    }
-
-    /* =========================================================
-       CONFIGURATION
-    ========================================================= */
-    const CONFIG = {
-      dealsFile: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRziQESSwMiMFMVt4jWD5mH_UJC1mm_0fpRUe69nINcsY55KPv0Tz84fHnkW4Cc12gX0RHvW8X3ia6x/pub?gid=0&single=true&output=csv",
-      githubUser: "jayunboxes",
-      githubRepo: "jayunboxes.github.io",
-      wallpapersFolder: "wallpapers"
-    };
-
-    const myWallpapers = [];
-
-    /* =========================================================
-       CLEAN PRODUCT-CENTERED IMAGE MATCHER
-    ========================================================= */
-    function getSmartProductImage(productName, userProvidedImage) {
-      // 1. If user provided a custom image URL in the CSV, use it
-      if (userProvidedImage && userProvidedImage.trim() !== "" && userProvidedImage.trim() !== "#") {
-        return userProvidedImage.trim();
-      }
-
-      const p = String(productName || "").toLowerCase();
-
-      // 2. Crisp, product-on-white/studio product renders
-      if (p.includes("iphone") || p.includes("phone")) {
-        return "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("macbook") || p.includes("laptop")) {
-        return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("airpods") || p.includes("earbuds") || p.includes("tws") || p.includes("buds")) {
-        return "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("headphone") || p.includes("sony") || p.includes("bose") || p.includes("xm5") || p.includes("xm4")) {
-        return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("ipad") || p.includes("tablet") || p.includes("pad")) {
-        return "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("watch") || p.includes("smartwatch") || p.includes("band")) {
-        return "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("keyboard") || p.includes("keychron")) {
-        return "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("mouse") || p.includes("mx master")) {
-        return "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("monitor") || p.includes("screen") || p.includes("display")) {
-        return "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("charger") || p.includes("gan") || p.includes("adapter") || p.includes("cable") || p.includes("bank")) {
-        return "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("speaker") || p.includes("soundbar") || p.includes("audio")) {
-        return "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&auto=format&fit=crop&q=80";
-      }
-      if (p.includes("desk") || p.includes("mat") || p.includes("stand") || p.includes("light")) {
-        return "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&auto=format&fit=crop&q=80";
-      }
-
-      // Clean default studio gadget image
-      return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80";
-    }
-
-    /* =========================================================
-       CSV DEALS PARSER & RENDERER
-    ========================================================= */
-    function escapeHTML(str) {
-      return String(str ?? "")
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-    }
-
-    function parseCSV(text) {
-      const rows = [];
-      let row = [], value = "", insideQuotes = false;
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i], next = text[i + 1];
-        if (char === '"' && insideQuotes && next === '"') { value += '"'; i++; continue; }
-        if (char === '"') { insideQuotes = !insideQuotes; continue; }
-        if (char === ',' && !insideQuotes) { row.push(value); value = ""; continue; }
-        if ((char === "\n" || char === "\r") && !insideQuotes) {
-          if (char === "\r" && next === "\n") i++;
-          row.push(value); value = "";
-          if (row.some(c => String(c).trim() !== "")) rows.push(row);
-          row = []; continue;
-        }
-        value += char;
-      }
-      if (value.length || row.length) {
-        row.push(value);
-        if (row.some(c => String(c).trim() !== "")) rows.push(row);
-      }
-      if (!rows.length) return [];
-      const headers = rows[0].map(h => String(h).replace(/^\uFEFF/, "").trim().toLowerCase().replace(/[^a-z0-9]/g, ""));
-      return rows.slice(1).map(r => {
-        const obj = {};
-        headers.forEach((h, idx) => { obj[h] = r[idx] ?? ""; });
-        return obj;
-      });
-    }
-
-    async function loadDeals() {
-      const grid = document.getElementById("dealsGrid");
-      try {
-        const separator = CONFIG.dealsFile.includes("?") ? "&" : "?";
-        const fetchUrl = CONFIG.dealsFile + separator + "t=" + Date.now();
-
-        const res = await fetch(fetchUrl);
-        if (!res.ok) throw new Error("HTTP Status " + res.status);
-        const raw = await res.text();
-
-        if (raw.trim().startsWith("<!DOCTYPE") || raw.trim().startsWith("<html")) {
-          throw new Error("Received HTML rather than CSV data.");
-        }
-
-        const rows = parseCSV(raw);
-
-        const deals = rows.map(r => {
-          const pName = r["name"] || r["product"] || r["title"] || "Tech Product";
-          const rawImg = r["image"] || r["imageurl"] || r["photo"];
-
-          return {
-            store: r["store"] || r["shop"] || r["platform"] || "Amazon",
-            name: pName,
-            oldPrice: r["oldprice"] || r["mrp"],
-            price: r["price"] || r["dealprice"],
-            discount: r["discount"] || r["off"],
-            image: getSmartProductImage(pName, rawImg),
-            url: r["url"] || r["link"] || "#",
-            featured: ["yes", "true", "1"].includes(String(r["featured"] || "").toLowerCase()),
-            active: !["no", "false", "0", "hide"].includes(String(r["active"] || "").toLowerCase())
-          };
-        }).filter(d => d.active && d.name !== "Tech Product");
-
-        if (!deals.length) {
-          grid.innerHTML = `<div class="deals-empty" style="grid-column: 1/-1; padding: 40px; text-align: center; background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); color: var(--text-muted); font-size: 13.5px;">No live deals found right now. Check back soon!</div>`;
-          return;
-        }
-
-        grid.innerHTML = deals.map(d => `
-          <article class="deal-card">
-            <div class="deal-img-wrap">
-              ${d.featured ? `<div class="deal-featured-tag">FEATURED</div>` : ""}
-              <img class="deal-img" src="${escapeHTML(d.image)}" alt="${escapeHTML(d.name)}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80';">
-            </div>
-            <div class="deal-body">
-              <div class="deal-meta-top">${escapeHTML(d.store)}</div>
-              <div class="deal-title">${escapeHTML(d.name)}</div>
-              <div class="deal-price-line">
-                ${d.oldPrice ? `<span class="mrp">${escapeHTML(d.oldPrice)}</span>` : ""}
-                <span class="price">${escapeHTML(d.price || "Check Deal")}</span>
-              </div>
-              ${d.discount ? `<div class="discount">✓ ${escapeHTML(d.discount)}</div>` : ""}
-              <a class="btn-deal" href="${escapeHTML(d.url)}" target="_blank" rel="noopener noreferrer">
-                Get Deal <i data-feather="arrow-up-right" style="width:13px;"></i>
-              </a>
-            </div>
-          </article>
-        `).join("");
-
-        feather.replace();
-      } catch (err) {
-        console.error("Deals load error:", err);
-        grid.innerHTML = `<div class="deals-error" style="grid-column: 1/-1; padding: 40px; text-align: center; background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); color: var(--text-muted); font-size: 13.5px;">Unable to load deals right now. Verify your Google Sheet is published to web as CSV.</div>`;
-      }
-    }
-
-    /* =========================================================
-       DYNAMIC WALLPAPERS LOADER
-    ========================================================= */
-    const wpGrid = document.getElementById("wallpapersGrid");
-    const wpModal = document.getElementById("wpModal");
-    const wpModalImg = document.getElementById("wpModalImg");
-    const wpModalDownload = document.getElementById("wpModalDownload");
-    const wpModalClose = document.getElementById("wpModalClose");
-
-    function openWallpaper(url) {
-      wpModalImg.src = url;
-      wpModalDownload.href = url;
-      wpModal.classList.add("open");
-      feather.replace();
-    }
-
-    wpModalClose.addEventListener("click", () => wpModal.classList.remove("open"));
-    wpModal.addEventListener("click", (e) => {
-      if (e.target === wpModal) wpModal.classList.remove("open");
-    });
-
-    async function loadWallpapers() {
-      if (myWallpapers && myWallpapers.length > 0) {
-        renderWallpapers(myWallpapers.map(name => ({ name, url: `wallpapers/${name}` })));
-        return;
-      }
-
-      const cacheKey = "jayunboxes_walls";
-      const cacheTimeKey = "jayunboxes_walls_time";
-      const cached = localStorage.getItem(cacheKey);
-      const cacheTime = localStorage.getItem(cacheTimeKey);
-
-      if (cached && cacheTime && (Date.now() - parseInt(cacheTime) < 600000)) {
-        renderWallpapers(JSON.parse(cached));
-        return;
-      }
-
-      try {
-        const res = await fetch(`https://api.github.com/repos/${CONFIG.githubUser}/${CONFIG.githubRepo}/contents/${CONFIG.wallpapersFolder}`);
-        if (!res.ok) throw new Error("Folder unavailable");
-        const data = await res.json();
-        const images = data
-          .filter(f => /\.(png|jpe?g|webp|PNG|JPG)$/i.test(f.name))
-          .map(f => ({ name: f.name, url: f.download_url }));
-
-        if (images.length > 0) {
-          localStorage.setItem(cacheKey, JSON.stringify(images));
-          localStorage.setItem(cacheTimeKey, Date.now().toString());
-          renderWallpapers(images);
-          return;
-        }
-      } catch (e) {}
-
-      renderWallpapers([
-        { name: "Minimal Wave", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1080&auto=format&fit=crop" },
-        { name: "Architectural Studio", url: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1080&auto=format&fit=crop" },
-        { name: "Clean Gradient", url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1080&auto=format&fit=crop" }
-      ]);
-    }
-
-    function renderWallpapers(items) {
-      if (!items || !items.length) {
-        wpGrid.innerHTML = `<div style="color:var(--text-muted); font-size:13px; padding:15px; grid-column:1/-1; text-align:center;">Upload wallpaper images to your <code>/wallpapers</code> GitHub folder to display them here!</div>`;
-        return;
-      }
-
-      wpGrid.innerHTML = items.map(w => `
-        <div class="wp-item" onclick="openWallpaper('${escapeHTML(w.url)}')">
-          <img src="${escapeHTML(w.url)}" alt="${escapeHTML(w.name)}" loading="lazy" />
-          <div class="wp-pill"><i data-feather="download" style="width:14px; height:14px;"></i></div>
-        </div>
-      `).join("");
-
-      feather.replace();
-    }
-
-    /* =========================================================
-       INIT
-    ========================================================= */
-    feather.replace();
-    loadDeals();
-    loadWallpapers();
-  </script>
-</body>
-</html>
+            <div class="channel-badge-icon" style="background: rgba(255, 0, 0,
