@@ -61,6 +61,7 @@
       max-width:100%;
     }
 
+
     /* =========================
        NAVIGATION
     ========================= */
@@ -71,9 +72,12 @@
       left:0;
       right:0;
       z-index:1000;
+
       background:rgba(0,0,0,.78);
+
       backdrop-filter:saturate(180%) blur(20px);
       -webkit-backdrop-filter:saturate(180%) blur(20px);
+
       border-bottom:1px solid rgba(255,255,255,.06);
     }
 
@@ -82,6 +86,7 @@
       height:52px;
       margin:auto;
       padding:0 22px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -128,20 +133,29 @@
       border:0;
       color:#fff;
       cursor:pointer;
+
       width:34px;
       height:34px;
+
       align-items:center;
       justify-content:center;
     }
 
-    /* MOBILE MENU */
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
     .mobile-menu{
       position:fixed;
       inset:52px 0 0;
+
       background:rgba(0,0,0,.97);
+
       z-index:999;
+
       display:none;
+
       padding:28px;
     }
 
@@ -151,12 +165,16 @@
 
     .mobile-menu a{
       display:block;
+
       font-size:30px;
       font-weight:600;
       letter-spacing:-.04em;
+
       padding:17px 0;
+
       border-bottom:1px solid var(--line);
     }
+
 
     /* =========================
        GLOBAL
@@ -173,31 +191,41 @@
 
     .eyebrow{
       color:var(--blue);
+
       font-size:14px;
       font-weight:600;
+
       letter-spacing:-.01em;
+
       margin-bottom:12px;
     }
 
     .section-title{
       font-size:clamp(42px,7vw,76px);
       line-height:.98;
+
       letter-spacing:-.055em;
+
       font-weight:700;
+
       max-width:850px;
     }
 
     .section-sub{
       margin-top:20px;
+
       color:var(--muted);
+
       font-size:18px;
       line-height:1.55;
+
       max-width:680px;
     }
 
     .reveal{
       opacity:0;
       transform:translateY(30px);
+
       transition:
         opacity .8s var(--ease),
         transform .8s var(--ease);
@@ -208,15 +236,19 @@
       transform:none;
     }
 
+
     /* =========================
        HERO
     ========================= */
 
     .hero{
       min-height:100vh;
+
       padding:140px 22px 80px;
+
       display:flex;
       align-items:center;
+
       position:relative;
       overflow:hidden;
 
@@ -238,25 +270,36 @@
       max-width:var(--max);
       width:100%;
       margin:auto;
+
       text-align:center;
     }
 
     .hero-profile{
       width:92px;
       height:92px;
+
       border-radius:50%;
+
       object-fit:cover;
+
       border:1px solid rgba(255,255,255,.15);
+
       padding:2px;
+
       background:#111;
+
       margin-bottom:25px;
+
       box-shadow:0 15px 50px rgba(0,0,0,.5);
     }
 
     .hero h1{
       font-size:clamp(68px,13vw,150px);
+
       line-height:.84;
+
       letter-spacing:-.075em;
+
       font-weight:700;
     }
 
@@ -267,29 +310,43 @@
 
     .hero-copy{
       margin:32px auto 0;
+
       max-width:660px;
+
       color:#a1a1a6;
+
       font-size:clamp(17px,2vw,21px);
+
       line-height:1.5;
     }
 
     .hero-actions{
       display:flex;
+
       justify-content:center;
+
       gap:12px;
+
       flex-wrap:wrap;
+
       margin-top:32px;
     }
 
     .pill{
       display:inline-flex;
+
       align-items:center;
       justify-content:center;
+
       gap:8px;
+
       padding:12px 20px;
+
       border-radius:999px;
+
       font-size:14px;
       font-weight:600;
+
       transition:
         transform .25s var(--ease),
         background .25s ease;
@@ -306,19 +363,28 @@
 
     .pill-dark{
       background:#151517;
+
       color:#fff;
+
       border:1px solid #2b2b2f;
     }
 
     .hero-scroll{
       position:absolute;
+
       bottom:30px;
       left:50%;
+
       transform:translateX(-50%);
+
       color:#666;
+
       font-size:11px;
+
       letter-spacing:.12em;
+
       text-transform:uppercase;
+
       animation:bob 2s infinite ease-in-out;
     }
 
@@ -327,6 +393,7 @@
         transform:translate(-50%,5px);
       }
     }
+
 
     /* =========================
        STATEMENT
@@ -353,23 +420,32 @@
       color:#6e6e73;
     }
 
+
     /* =========================
-       FEATURED
+       FEATURE CARDS
     ========================= */
 
     .feature-grid{
       display:grid;
+
       grid-template-columns:1.35fr .65fr;
+
       gap:18px;
+
       margin-top:50px;
     }
 
     .feature-card{
       min-height:500px;
+
       border-radius:28px;
+
       background:var(--card);
+
       overflow:hidden;
+
       border:1px solid var(--line);
+
       position:relative;
     }
 
@@ -380,21 +456,28 @@
 
     .feature-content{
       padding:38px;
+
       position:relative;
       z-index:2;
     }
 
     .feature-card h3{
       font-size:clamp(30px,4vw,48px);
+
       line-height:1;
+
       letter-spacing:-.05em;
+
       max-width:560px;
     }
 
     .feature-card p{
       margin-top:14px;
+
       color:var(--muted);
+
       max-width:500px;
+
       line-height:1.5;
     }
 
@@ -404,10 +487,13 @@
 
     .feature-visual{
       position:absolute;
+
       left:8%;
       right:8%;
       bottom:-8%;
+
       height:65%;
+
       border-radius:24px 24px 0 0;
 
       background:
@@ -416,14 +502,18 @@
           rgba(41,151,255,.45),
           transparent 34%
         ),
-        linear-gradient(145deg,#151515,#050505);
+        linear-gradient(
+          145deg,
+          #151515,
+          #050505
+        );
 
       border:1px solid rgba(255,255,255,.1);
 
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.45);
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
 
       display:flex;
+
       align-items:center;
       justify-content:center;
     }
@@ -431,6 +521,7 @@
     .feature-visual .orb{
       width:180px;
       height:180px;
+
       border-radius:50%;
 
       background:
@@ -442,16 +533,23 @@
           #050505 72%
         );
 
-      box-shadow:
-        0 0 90px rgba(41,151,255,.35);
+      box-shadow:0 0 90px rgba(41,151,255,.35);
     }
 
     .feature-card.small .feature-visual{
       left:10%;
       right:10%;
+
       height:52%;
+
       bottom:-2%;
-      background:linear-gradient(145deg,#e9e9ee,#bfc0c5);
+
+      background:
+        linear-gradient(
+          145deg,
+          #e9e9ee,
+          #bfc0c5
+        );
     }
 
     .feature-card.small .orb{
@@ -470,114 +568,6 @@
       box-shadow:0 20px 50px rgba(0,0,0,.25);
     }
 
-    /* =========================
-       DEALS
-    ========================= */
-
-    .deals-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:30px;
-    }
-
-    .text-link{
-      color:var(--blue);
-      font-size:14px;
-      font-weight:600;
-      white-space:nowrap;
-    }
-
-    .deals-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:45px;
-    }
-
-    .deal{
-      background:#0f0f11;
-      border:1px solid var(--line);
-      border-radius:24px;
-      overflow:hidden;
-      transition:
-        transform .35s var(--ease),
-        border-color .35s ease;
-    }
-
-    .deal:hover{
-      transform:translateY(-6px);
-      border-color:rgba(255,255,255,.22);
-    }
-
-    .deal-image{
-      height:270px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:25px;
-      background:#f5f5f7;
-    }
-
-    .deal-image img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter:drop-shadow(0 15px 18px rgba(0,0,0,.12));
-    }
-
-    .deal-body{
-      padding:22px;
-    }
-
-    .deal-store{
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:#86868b;
-    }
-
-    .deal h3{
-      font-size:18px;
-      line-height:1.3;
-      margin-top:8px;
-    }
-
-    .deal-price{
-      margin-top:15px;
-      display:flex;
-      gap:8px;
-      align-items:baseline;
-    }
-
-    .deal-price strong{
-      font-size:22px;
-    }
-
-    .old{
-      text-decoration:line-through;
-      color:#666;
-      font-size:13px;
-    }
-
-    .discount{
-      color:var(--green);
-      font-size:12px;
-      font-weight:600;
-      margin-top:5px;
-    }
-
-    .deal-btn{
-      display:flex;
-      justify-content:center;
-      margin-top:17px;
-      background:#fff;
-      color:#000;
-      border-radius:999px;
-      padding:11px;
-      font-size:13px;
-      font-weight:600;
-    }
 
     /* =========================
        WALLPAPERS
@@ -598,26 +588,38 @@
 
     .wall-grid{
       display:grid;
+
       grid-template-columns:repeat(3,1fr);
+
       gap:15px;
+
       margin-top:48px;
     }
 
     .wall{
       height:430px;
+
       border-radius:24px;
+
       overflow:hidden;
+
       position:relative;
+
       cursor:pointer;
+
       background:#ddd;
+
       border:1px solid rgba(0,0,0,.08);
     }
 
     .wall img{
       width:100%;
       height:100%;
+
       object-fit:cover;
-      transition:transform .7s var(--ease);
+
+      transition:
+        transform .7s var(--ease);
     }
 
     .wall:hover img{
@@ -626,18 +628,28 @@
 
     .wall-overlay{
       position:absolute;
+
       left:14px;
       right:14px;
       bottom:14px;
+
       padding:14px 16px;
+
       border-radius:16px;
+
       background:rgba(0,0,0,.6);
+
       backdrop-filter:blur(15px);
+
       color:#fff;
+
       font-size:13px;
+
       display:flex;
+
       justify-content:space-between;
     }
+
 
     /* =========================
        AI TOOLS
@@ -645,17 +657,25 @@
 
     .tools-grid{
       display:grid;
+
       grid-template-columns:repeat(3,1fr);
+
       gap:15px;
+
       margin-top:48px;
     }
 
     .tool{
       min-height:220px;
+
       padding:28px;
+
       border-radius:24px;
+
       background:#101012;
+
       border:1px solid var(--line);
+
       transition:
         transform .3s var(--ease),
         background .3s ease;
@@ -669,11 +689,16 @@
     .tool-icon{
       width:45px;
       height:45px;
+
       border-radius:14px;
+
       background:#1d1d1f;
+
       display:grid;
       place-items:center;
+
       color:#fff;
+
       margin-bottom:28px;
     }
 
@@ -684,10 +709,14 @@
 
     .tool p{
       color:var(--muted);
+
       font-size:14px;
+
       line-height:1.5;
+
       margin-top:8px;
     }
+
 
     /* =========================
        CHANNELS
@@ -699,16 +728,22 @@
 
     .channel-list{
       margin-top:45px;
+
       border-top:1px solid var(--line);
     }
 
     .channel{
       display:flex;
+
       align-items:center;
       justify-content:space-between;
+
       gap:20px;
+
       padding:25px 0;
+
       border-bottom:1px solid var(--line);
+
       transition:.25s ease;
     }
 
@@ -718,15 +753,20 @@
 
     .channel-left{
       display:flex;
+
       align-items:center;
+
       gap:17px;
     }
 
     .channel-icon{
       width:50px;
       height:50px;
+
       border-radius:16px;
+
       background:#151517;
+
       display:grid;
       place-items:center;
     }
@@ -737,7 +777,9 @@
 
     .channel p{
       color:var(--muted);
+
       font-size:13px;
+
       margin-top:3px;
     }
 
@@ -745,14 +787,18 @@
       color:#666;
     }
 
+
     /* =========================
        CTA
     ========================= */
 
     .cta{
       min-height:600px;
+
       display:flex;
+
       align-items:center;
+
       text-align:center;
 
       background:
@@ -770,7 +816,9 @@
 
     .cta h2{
       font-size:clamp(55px,10vw,120px);
+
       line-height:.9;
+
       letter-spacing:-.07em;
     }
 
@@ -780,8 +828,11 @@
 
     .cta p{
       max-width:560px;
+
       margin:25px auto 30px;
+
       color:var(--muted);
+
       line-height:1.55;
     }
 
@@ -789,22 +840,30 @@
       display:inline-flex;
     }
 
+
     /* =========================
        FOOTER
     ========================= */
 
     footer{
       padding:35px 22px 45px;
+
       border-top:1px solid var(--line);
+
       color:#666;
     }
 
     .footer-inner{
       max-width:var(--max);
+
       margin:auto;
+
       display:flex;
+
       justify-content:space-between;
+
       gap:20px;
+
       font-size:12px;
     }
 
@@ -817,19 +876,27 @@
       color:#fff;
     }
 
+
     /* =========================
        WALLPAPER MODAL
     ========================= */
 
     .modal{
       position:fixed;
+
       inset:0;
+
       background:rgba(0,0,0,.78);
+
       backdrop-filter:blur(18px);
+
       z-index:2000;
+
       display:none;
+
       align-items:center;
       justify-content:center;
+
       padding:20px;
     }
 
@@ -839,37 +906,56 @@
 
     .modal-box{
       max-width:430px;
+
       width:100%;
+
       background:#111;
+
       border-radius:25px;
+
       padding:12px;
+
       border:1px solid #333;
     }
 
     .modal-box img{
       width:100%;
+
       max-height:75vh;
+
       object-fit:contain;
+
       border-radius:18px;
+
       background:#000;
     }
 
     .modal-actions{
       display:flex;
+
       gap:10px;
+
       padding:10px 0 0;
     }
 
     .modal-actions a,
     .modal-actions button{
       flex:1;
+
       border:0;
+
       border-radius:999px;
+
       padding:12px;
+
       background:#fff;
+
       color:#000;
+
       font-weight:600;
+
       cursor:pointer;
+
       text-align:center;
     }
 
@@ -877,6 +963,7 @@
       background:#222;
       color:#fff;
     }
+
 
     /* =========================
        RESPONSIVE
@@ -896,7 +983,6 @@
         grid-template-columns:1fr;
       }
 
-      .deals-grid,
       .tools-grid{
         grid-template-columns:repeat(2,1fr);
       }
@@ -905,6 +991,7 @@
         grid-template-columns:repeat(2,1fr);
       }
     }
+
 
     @media(max-width:600px){
 
@@ -933,14 +1020,9 @@
         padding:27px;
       }
 
-      .deals-grid,
       .tools-grid,
       .wall-grid{
         grid-template-columns:1fr;
-      }
-
-      .deal-image{
-        height:250px;
       }
 
       .wall{
@@ -955,14 +1037,17 @@
         flex-direction:column;
       }
     }
+
   </style>
 </head>
+
 
 <body>
 
   <!-- NAVIGATION -->
 
   <header class="nav-wrap">
+
     <nav>
 
       <a class="brand" href="#top">
@@ -971,15 +1056,25 @@
 
       <div class="desktop-links">
 
-        <a href="#deals">Deals</a>
-        <a href="#wallpapers">Wallpapers</a>
-        <a href="#tools">AI Tools</a>
-        <a href="#channels">Channels</a>
+        <a href="deals.html">
+          Deals
+        </a>
+
+        <a href="#wallpapers">
+          Wallpapers
+        </a>
+
+        <a href="#tools">
+          AI Tools
+        </a>
+
+        <a href="#channels">
+          Channels
+        </a>
 
         <a
           class="nav-cta"
-          href="mailto:techwithjay.biz@gmail.com?subject=Business%20Inquiry%20-%20jayunboxes"
-        >
+          href="mailto:techwithjay.biz@gmail.com?subject=Business%20Inquiry%20-%20jayunboxes">
           Contact
         </a>
 
@@ -988,24 +1083,42 @@
       <button
         class="menu-btn"
         id="menuBtn"
-        aria-label="Open menu"
-      >
+        aria-label="Open menu">
+
         <i data-feather="menu"></i>
+
       </button>
 
     </nav>
+
   </header>
 
 
   <!-- MOBILE MENU -->
 
-  <div class="mobile-menu" id="mobileMenu">
+  <div
+    class="mobile-menu"
+    id="mobileMenu">
 
-    <a href="#deals">Deals</a>
-    <a href="#wallpapers">Wallpapers</a>
-    <a href="#tools">AI Tools</a>
-    <a href="#channels">Channels</a>
-    <a href="mailto:techwithjay.biz@gmail.com">Contact</a>
+    <a href="deals.html">
+      Deals
+    </a>
+
+    <a href="#wallpapers">
+      Wallpapers
+    </a>
+
+    <a href="#tools">
+      AI Tools
+    </a>
+
+    <a href="#channels">
+      Channels
+    </a>
+
+    <a href="mailto:techwithjay.biz@gmail.com">
+      Contact
+    </a>
 
   </div>
 
@@ -1019,12 +1132,12 @@
 
       <div class="hero-inner">
 
-        <!-- DO NOT CHANGE THIS FILE NAME -->
+        <!-- KEEP THIS FILE NAME EXACTLY THE SAME -->
+
         <img
           src="Profile.jpg.PNG"
           alt="Jay — jayunboxes"
-          class="hero-profile"
-        >
+          class="hero-profile">
 
         <div class="eyebrow">
           TECH CREATOR • @JAYUNBOXES
@@ -1036,9 +1149,8 @@
         </h1>
 
         <p class="hero-copy">
-          Gadgets worth knowing. AI tools worth trying.
-          Deals worth grabbing. No marketing fluff —
-          just tech, tested and explained.
+          Gadgets worth knowing. AI tools worth trying. Deals worth grabbing.
+          No marketing fluff — just tech, tested and explained.
         </p>
 
         <div class="hero-actions">
@@ -1047,18 +1159,29 @@
             class="pill pill-white"
             href="https://instagram.com/jayunboxes"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
+
             Instagram
-            <i data-feather="arrow-up-right" width="15"></i>
+
+            <i
+              data-feather="arrow-up-right"
+              width="15">
+            </i>
+
           </a>
+
 
           <a
             class="pill pill-dark"
-            href="#deals"
-          >
-            Explore the latest
-            <i data-feather="arrow-down" width="15"></i>
+            href="deals.html">
+
+            Explore deals
+
+            <i
+              data-feather="arrow-up-right"
+              width="15">
+            </i>
+
           </a>
 
         </div>
@@ -1093,9 +1216,8 @@
 
         <p class="section-sub">
 
-          From the next iPhone to an AI tool you didn't
-          know existed, I find the useful stuff, test it,
-          and turn it into content you can understand in seconds.
+          From the next iPhone to an AI tool you didn't know existed,
+          I find the useful stuff, test it, and turn it into content you can understand in seconds.
 
         </p>
 
@@ -1137,19 +1259,19 @@
               </div>
 
               <h3>
-                Gadgets, apps & AI —
-                without the boring bits.
+                Gadgets, apps & AI — without the boring bits.
               </h3>
 
               <p>
-                Short-form tech videos designed to show
-                you what matters before you spend your money.
+                Short-form tech videos designed to show you what matters before you spend your money.
               </p>
 
             </div>
 
             <div class="feature-visual">
+
               <div class="orb"></div>
+
             </div>
 
           </article>
@@ -1164,19 +1286,19 @@
               </div>
 
               <h3>
-                Find the good
-                stuff faster.
+                Find the good stuff faster.
               </h3>
 
               <p>
-                Deals, discoveries and useful links
-                shared across my channels.
+                Deals, discoveries and useful links shared across my channels.
               </p>
 
             </div>
 
             <div class="feature-visual">
+
               <div class="orb"></div>
+
             </div>
 
           </article>
@@ -1189,102 +1311,11 @@
     </section>
 
 
-    <!-- DEALS -->
-
-    <section class="section" id="deals">
-
-      <div class="inner">
-
-        <div class="deals-head reveal">
-
-          <div>
-
-            <div class="eyebrow">
-              CURATED DEALS
-            </div>
-
-            <h2 class="section-title">
-              Worth the price.
-            </h2>
-
-            <p class="section-sub">
-              Hand-picked tech deals pulled from
-              my live tracker.
-            </p>
-
-          </div>
-
-          <a
-            class="text-link"
-            href="https://www.amazon.in/"
-            target="_blank"
-            rel="noopener"
-          >
-            Shop smarter ↗
-          </a>
-
-        </div>
-
-
-        <div
-          class="deals-grid reveal"
-          id="dealsGrid"
-        >
-
-          <div class="deal">
-
-            <div class="deal-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=900&auto=format&fit=crop&q=85"
-                alt="Smartphone"
-              >
-
-            </div>
-
-            <div class="deal-body">
-
-              <div class="deal-store">
-                Featured tech
-              </div>
-
-              <h3>
-                Latest gadgets worth checking out
-              </h3>
-
-              <div class="deal-price">
-                <strong>Live</strong>
-              </div>
-
-              <div class="discount">
-                Updated from your deal tracker
-              </div>
-
-              <a
-                class="deal-btn"
-                href="javascript:void(0)"
-                onclick="loadDeals()"
-              >
-                View deals
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
     <!-- WALLPAPERS -->
 
     <section
       class="section wall-section"
-      id="wallpapers"
-    >
+      id="wallpapers">
 
       <div class="inner">
 
@@ -1301,8 +1332,7 @@
           </h2>
 
           <p class="section-sub">
-            Minimal wallpapers made for phones,
-            desks and clean setups.
+            Minimal wallpapers made for phones, desks and clean setups.
           </p>
 
         </div>
@@ -1310,18 +1340,16 @@
 
         <div
           class="wall-grid reveal"
-          id="wallpapersGrid"
-        >
+          id="wallpapersGrid">
+
 
           <div
             class="wall"
-            onclick="openWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1400&auto=format&fit=crop')"
-          >
+            onclick="openWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1400&auto=format&fit=crop')">
 
             <img
               src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop"
-              alt="Minimal Wave"
-            >
+              alt="Minimal Wave">
 
             <div class="wall-overlay">
 
@@ -1331,8 +1359,8 @@
 
               <i
                 data-feather="download"
-                width="15"
-              ></i>
+                width="15">
+              </i>
 
             </div>
 
@@ -1341,13 +1369,11 @@
 
           <div
             class="wall"
-            onclick="openWallpaper('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1400&auto=format&fit=crop')"
-          >
+            onclick="openWallpaper('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1400&auto=format&fit=crop')">
 
             <img
               src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=900&auto=format&fit=crop"
-              alt="Studio"
-            >
+              alt="Studio">
 
             <div class="wall-overlay">
 
@@ -1357,8 +1383,8 @@
 
               <i
                 data-feather="download"
-                width="15"
-              ></i>
+                width="15">
+              </i>
 
             </div>
 
@@ -1367,13 +1393,11 @@
 
           <div
             class="wall"
-            onclick="openWallpaper('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1400&auto=format&fit=crop')"
-          >
+            onclick="openWallpaper('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1400&auto=format&fit=crop')">
 
             <img
               src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=900&auto=format&fit=crop"
-              alt="Gradient"
-            >
+              alt="Gradient">
 
             <div class="wall-overlay">
 
@@ -1383,12 +1407,13 @@
 
               <i
                 data-feather="download"
-                width="15"
-              ></i>
+                width="15">
+              </i>
 
             </div>
 
           </div>
+
 
         </div>
 
@@ -1401,8 +1426,7 @@
 
     <section
       class="section"
-      id="tools"
-    >
+      id="tools">
 
       <div class="inner">
 
@@ -1419,8 +1443,7 @@
           </h2>
 
           <p class="section-sub">
-            The apps I use to research, create,
-            edit and publish.
+            The apps I use to research, create, edit and publish.
           </p>
 
         </div>
@@ -1440,8 +1463,7 @@
             </h3>
 
             <p>
-              Ideas, scripts, research and
-              creative workflows.
+              Ideas, scripts, research and creative workflows.
             </p>
 
           </article>
@@ -1458,8 +1480,7 @@
             </h3>
 
             <p>
-              Cinematic AI video generation
-              and visual storytelling.
+              Cinematic AI video generation and visual storytelling.
             </p>
 
           </article>
@@ -1476,8 +1497,7 @@
             </h3>
 
             <p>
-              Fast edits, captions, pacing
-              and transitions.
+              Fast edits, captions, pacing and transitions.
             </p>
 
           </article>
@@ -1494,8 +1514,7 @@
             </h3>
 
             <p>
-              Voiceovers and high-fidelity
-              synthetic speech.
+              Voiceovers and high-fidelity synthetic speech.
             </p>
 
           </article>
@@ -1512,8 +1531,7 @@
             </h3>
 
             <p>
-              Reel covers, graphics
-              and visual design.
+              Reel covers, graphics and visual design.
             </p>
 
           </article>
@@ -1530,8 +1548,7 @@
             </h3>
 
             <p>
-              Multimodal research and
-              everyday AI workflows.
+              Multimodal research and everyday AI workflows.
             </p>
 
           </article>
@@ -1548,8 +1565,7 @@
 
     <section
       class="section channels"
-      id="channels"
-    >
+      id="channels">
 
       <div class="inner">
 
@@ -1575,8 +1591,7 @@
             class="channel"
             href="https://instagram.com/jayunboxes"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
 
             <div class="channel-left">
 
@@ -1591,8 +1606,7 @@
                 </h3>
 
                 <p>
-                  Reels, gadget discoveries,
-                  tutorials & daily tech
+                  Reels, gadget discoveries, tutorials & daily tech
                 </p>
 
               </div>
@@ -1601,8 +1615,8 @@
 
             <i
               class="channel-arrow"
-              data-feather="arrow-up-right"
-            ></i>
+              data-feather="arrow-up-right">
+            </i>
 
           </a>
 
@@ -1611,8 +1625,7 @@
             class="channel"
             href="https://youtube.com/@jay.unboxes"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
 
             <div class="channel-left">
 
@@ -1627,8 +1640,7 @@
                 </h3>
 
                 <p>
-                  Shorts, reviews and
-                  deeper tech videos
+                  Shorts, reviews and deeper tech videos
                 </p>
 
               </div>
@@ -1637,8 +1649,8 @@
 
             <i
               class="channel-arrow"
-              data-feather="arrow-up-right"
-            ></i>
+              data-feather="arrow-up-right">
+            </i>
 
           </a>
 
@@ -1647,8 +1659,7 @@
             class="channel"
             href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
 
             <div class="channel-left">
 
@@ -1663,8 +1674,7 @@
                 </h3>
 
                 <p>
-                  Price drops, deals
-                  and useful finds
+                  Price drops, deals and useful finds
                 </p>
 
               </div>
@@ -1673,8 +1683,8 @@
 
             <i
               class="channel-arrow"
-              data-feather="arrow-up-right"
-            ></i>
+              data-feather="arrow-up-right">
+            </i>
 
           </a>
 
@@ -1683,8 +1693,7 @@
             class="channel"
             href="https://threads.net/@jayunboxes"
             target="_blank"
-            rel="noopener"
-          >
+            rel="noopener">
 
             <div class="channel-left">
 
@@ -1699,8 +1708,7 @@
                 </h3>
 
                 <p>
-                  Quick tech takes
-                  and conversations
+                  Quick tech takes and conversations
                 </p>
 
               </div>
@@ -1709,8 +1717,8 @@
 
             <i
               class="channel-arrow"
-              data-feather="arrow-up-right"
-            ></i>
+              data-feather="arrow-up-right">
+            </i>
 
           </a>
 
@@ -1739,24 +1747,26 @@
         </h2>
 
         <p>
-          For brand collaborations, product launches,
-          UGC and tech campaigns, get in touch.
+          For brand collaborations, product launches, UGC and tech campaigns, get in touch.
         </p>
 
         <a
           class="pill pill-white cta-email"
-          href="mailto:techwithjay.biz@gmail.com?subject=Brand%20Collaboration%20-%20jayunboxes"
-        >
+          href="mailto:techwithjay.biz@gmail.com?subject=Brand%20Collaboration%20-%20jayunboxes">
+
           Start a conversation
+
           <i
             data-feather="arrow-up-right"
-            width="15"
-          ></i>
+            width="15">
+          </i>
+
         </a>
 
       </div>
 
     </section>
+
 
   </main>
 
@@ -1775,14 +1785,11 @@
 
         <a
           href="https://instagram.com/jayunboxes"
-          target="_blank"
-        >
+          target="_blank">
           Instagram
         </a>
 
-        <a
-          href="mailto:techwithjay.biz@gmail.com"
-        >
+        <a href="mailto:techwithjay.biz@gmail.com">
           Email
         </a>
 
@@ -1797,24 +1804,21 @@
 
   <div
     class="modal"
-    id="wpModal"
-  >
+    id="wpModal">
 
     <div class="modal-box">
 
       <img
         id="wpPreview"
         src=""
-        alt="Wallpaper preview"
-      >
+        alt="Wallpaper preview">
 
       <div class="modal-actions">
 
         <a
           id="wpDownload"
           href=""
-          download
-        >
+          download>
           Download
         </a>
 
@@ -1829,11 +1833,9 @@
   </div>
 
 
-  <script>
+  <!-- JAVASCRIPT -->
 
-    /* =========================
-       INITIALIZE ICONS
-    ========================= */
+  <script>
 
     feather.replace();
 
@@ -1853,14 +1855,12 @@
 
       mobileMenu.classList.toggle("open");
 
-      document.body.classList.toggle(
-        "menu-open"
-      );
+      document.body.classList.toggle("menu-open");
 
       menuBtn.innerHTML =
         mobileMenu.classList.contains("open")
-        ? '<i data-feather="x"></i>'
-        : '<i data-feather="menu"></i>';
+          ? '<i data-feather="x"></i>'
+          : '<i data-feather="menu"></i>';
 
       feather.replace();
 
@@ -1875,9 +1875,7 @@
 
           mobileMenu.classList.remove("open");
 
-          document.body.classList.remove(
-            "menu-open"
-          );
+          document.body.classList.remove("menu-open");
 
           menuBtn.innerHTML =
             '<i data-feather="menu"></i>';
@@ -1890,32 +1888,27 @@
 
 
     /* =========================
-       SCROLL ANIMATIONS
+       SCROLL REVEALS
     ========================= */
 
     const observer =
       new IntersectionObserver(
-
-        entries => {
+        (entries) => {
 
           entries.forEach(entry => {
 
             if(entry.isIntersecting){
 
-              entry.target.classList.add(
-                "visible"
-              );
+              entry.target.classList.add("visible");
 
             }
 
           });
 
         },
-
         {
           threshold:.12
         }
-
       );
 
 
@@ -1955,534 +1948,15 @@
         modal.classList.remove("open");
 
 
-    modal.addEventListener(
-      "click",
-      e => {
+    modal.addEventListener("click", e => {
 
-        if(e.target === modal){
+      if(e.target === modal){
 
-          modal.classList.remove("open");
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       CSV PARSER
-    ========================= */
-
-    function parseCSV(text){
-
-      const rows = [];
-
-      let row = [];
-      let value = "";
-      let quotes = false;
-
-
-      for(
-        let i=0;
-        i<text.length;
-        i++
-      ){
-
-        const c = text[i];
-        const n = text[i+1];
-
-
-        if(
-          c === '"' &&
-          quotes &&
-          n === '"'
-        ){
-
-          value += '"';
-
-          i++;
-
-          continue;
-
-        }
-
-
-        if(c === '"'){
-
-          quotes = !quotes;
-
-          continue;
-
-        }
-
-
-        if(
-          c === ',' &&
-          !quotes
-        ){
-
-          row.push(value);
-
-          value = "";
-
-          continue;
-
-        }
-
-
-        if(
-          (c === '\n' ||
-           c === '\r') &&
-          !quotes
-        ){
-
-          if(
-            c === '\r' &&
-            n === '\n'
-          ){
-
-            i++;
-
-          }
-
-
-          row.push(value);
-
-          value = "";
-
-
-          if(
-            row.some(
-              v => String(v).trim()
-            )
-          ){
-
-            rows.push(row);
-
-          }
-
-
-          row = [];
-
-          continue;
-
-        }
-
-
-        value += c;
+        modal.classList.remove("open");
 
       }
 
-
-      if(
-        value.length ||
-        row.length
-      ){
-
-        row.push(value);
-
-        if(
-          row.some(
-            v => String(v).trim()
-          )
-        ){
-
-          rows.push(row);
-
-        }
-
-      }
-
-
-      if(!rows.length){
-
-        return [];
-
-      }
-
-
-      const headers =
-        rows[0].map(
-
-          h => String(h)
-            .replace(/^\uFEFF/,"")
-            .trim()
-            .toLowerCase()
-            .replace(
-              /[^a-z0-9]/g,
-              ""
-            )
-
-        );
-
-
-      return rows
-        .slice(1)
-        .map(r => {
-
-          const o = {};
-
-          headers.forEach(
-            (h,i) =>
-              o[h] = r[i] ?? ""
-          );
-
-          return o;
-
-        });
-
-    }
-
-
-    /* =========================
-       HTML ESCAPE
-    ========================= */
-
-    function escapeHTML(str){
-
-      return String(str ?? "")
-        .replace(
-          /&/g,
-          "&amp;"
-        )
-        .replace(
-          /</g,
-          "&lt;"
-        )
-        .replace(
-          />/g,
-          "&gt;"
-        )
-        .replace(
-          /"/g,
-          "&quot;"
-        )
-        .replace(
-          /'/g,
-          "&#039;"
-        );
-
-    }
-
-
-    /* =========================
-       PRODUCT IMAGE MATCHER
-    ========================= */
-
-    function getProductImage(
-      name,
-      img
-    ){
-
-      if(
-        img &&
-        img.trim() &&
-        img.trim() !== "#"
-      ){
-
-        return img.trim();
-
-      }
-
-
-      const p =
-        String(name || "")
-          .toLowerCase();
-
-
-      if(
-        p.includes("iphone") ||
-        p.includes("phone")
-      ){
-
-        return "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("macbook") ||
-        p.includes("laptop")
-      ){
-
-        return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("airpods") ||
-        p.includes("earbuds") ||
-        p.includes("buds")
-      ){
-
-        return "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("headphone") ||
-        p.includes("sony") ||
-        p.includes("bose")
-      ){
-
-        return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("ipad") ||
-        p.includes("tablet")
-      ){
-
-        return "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("watch")
-      ){
-
-        return "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      if(
-        p.includes("charger") ||
-        p.includes("gan") ||
-        p.includes("adapter") ||
-        p.includes("cable")
-      ){
-
-        return "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=900&auto=format&fit=crop&q=85";
-
-      }
-
-
-      return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&auto=format&fit=crop&q=85";
-
-    }
-
-
-    /* =========================
-       DEAL TRACKER
-    ========================= */
-
-    const CONFIG = {
-
-      dealsFile:
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRziQESSwMiMFMVt4jWD5mH_UJC1mm_0fpRUe69nINcsY55KPv0Tz84fHnkW4Cc12gX0RHvW8X3ia6x/pub?gid=0&single=true&output=csv"
-
-    };
-
-
-    async function loadDeals(){
-
-      const grid =
-        document.getElementById(
-          "dealsGrid"
-        );
-
-
-      try{
-
-        const url =
-          CONFIG.dealsFile +
-          (
-            CONFIG.dealsFile.includes("?")
-            ? "&"
-            : "?"
-          ) +
-          "t=" +
-          Date.now();
-
-
-        const res =
-          await fetch(url);
-
-
-        if(!res.ok){
-
-          throw new Error();
-
-        }
-
-
-        const rows =
-          parseCSV(
-            await res.text()
-          );
-
-
-        const deals =
-          rows.map(r => {
-
-            const name =
-              r.name ||
-              r.product ||
-              r.title;
-
-
-            return {
-
-              store:
-                r.store ||
-                r.shop ||
-                r.platform ||
-                "Deal",
-
-              name:
-                name ||
-                "Tech Product",
-
-              oldPrice:
-                r.oldprice ||
-                r.mrp,
-
-              price:
-                r.price ||
-                r.dealprice ||
-                "Check deal",
-
-              discount:
-                r.discount ||
-                r.off,
-
-              image:
-                getProductImage(
-                  name,
-                  r.image ||
-                  r.imageurl ||
-                  r.photo
-                ),
-
-              url:
-                r.url ||
-                r.link ||
-                "#",
-
-              active:
-                ![
-                  "no",
-                  "false",
-                  "0",
-                  "hide"
-                ].includes(
-                  String(
-                    r.active || ""
-                  ).toLowerCase()
-                )
-
-            };
-
-          })
-          .filter(
-            d =>
-              d.active &&
-              d.name !== "Tech Product"
-          );
-
-
-        if(!deals.length){
-
-          return;
-
-        }
-
-
-        grid.innerHTML =
-          deals
-            .slice(0,9)
-            .map(d => `
-
-              <article class="deal">
-
-                <div class="deal-image">
-
-                  <img
-                    src="${escapeHTML(d.image)}"
-                    alt="${escapeHTML(d.name)}"
-                    loading="lazy"
-                  >
-
-                </div>
-
-
-                <div class="deal-body">
-
-                  <div class="deal-store">
-                    ${escapeHTML(d.store)}
-                  </div>
-
-                  <h3>
-                    ${escapeHTML(d.name)}
-                  </h3>
-
-
-                  <div class="deal-price">
-
-                    ${
-                      d.oldPrice
-                      ? `
-                        <span class="old">
-                          ${escapeHTML(d.oldPrice)}
-                        </span>
-                      `
-                      : ""
-                    }
-
-                    <strong>
-                      ${escapeHTML(d.price)}
-                    </strong>
-
-                  </div>
-
-
-                  ${
-                    d.discount
-                    ? `
-                      <div class="discount">
-                        ✓ ${escapeHTML(d.discount)}
-                      </div>
-                    `
-                    : ""
-                  }
-
-
-                  <a
-                    class="deal-btn"
-                    href="${escapeHTML(d.url)}"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Get deal ↗
-                  </a>
-
-                </div>
-
-              </article>
-
-            `)
-            .join("");
-
-
-      }catch(e){
-
-        console.log(
-          "Deal tracker unavailable:",
-          e
-        );
-
-      }
-
-    }
-
-
-    loadDeals();
+    });
 
   </script>
 
