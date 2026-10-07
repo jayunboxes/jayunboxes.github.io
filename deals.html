@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Deals — Jay Unboxes</title>
+
+<meta name="description" content="Best tech deals curated by Jay Unboxes. Find the latest deals on gadgets, accessories, Apple products and more.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "SF Pro Text", Helvetica, Arial, sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52px;
+
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+
+    z-index: 1000;
+}
+
+.nav-inner {
+    max-width: 1100px;
+    height: 100%;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    color: #1d1d1f;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 13px;
+    opacity: .8;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    padding: 150px 20px 90px;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(0,122,255,.13),
+            transparent 45%
+        ),
+        #f5f5f7;
+}
+
+.hero-eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0071e3;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: .95;
+    letter-spacing: -5px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+
+    font-size: clamp(18px, 3vw, 24px);
+    line-height: 1.4;
+
+    color: #6e6e73;
+}
+
+/* FILTER BAR */
+
+.filters-wrapper {
+    max-width: 1100px;
+    margin: -30px auto 50px;
+    padding: 0 20px;
+
+    position: relative;
+    z-index: 5;
+}
+
+.filters {
+    background: rgba(255,255,255,.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(0,0,0,.08);
+
+    border-radius: 22px;
+
+    padding: 14px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+}
+
+.filter-btn {
+    border: none;
+    background: #f5f5f7;
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.filter-btn:hover {
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: #1d1d1f;
+    color: white;
+}
+
+/* SEARCH */
+
+.search-wrapper {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.search-box {
+    width: 100%;
+
+    border: 1px solid rgba(0,0,0,.12);
+
+    background: white;
+
+    border-radius: 999px;
+
+    padding: 15px 22px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
+
+    transition: .2s;
+}
+
+.search-box:focus {
+    border-color: #0071e3;
+    box-shadow: 0 0 0 4px rgba(0,113,227,.12);
+}
+
+/* DEALS */
+
+.deals-section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px 100px;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: 40px;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #6e6e73;
+}
+
+/* GRID */
+
+.deals-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+/* CARD */
+
+.deal-card {
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 24px;
+
+    min-height: 260px;
+
+    border: 1px solid rgba(0,0,0,.06);
+
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    overflow: hidden;
+}
+
+.deal-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.1);
+}
+
+.deal-category {
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #0071e3;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+
+    margin-bottom: 12px;
+}
+
+.deal-card h3 {
+    font-size: 21px;
+
+    letter-spacing: -.5px;
+
+    line-height: 1.2;
+
+    margin-bottom: 12px;
+}
+
+.deal-description {
+    color: #6e6e73;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    flex-grow: 1;
+}
+
+.deal-bottom {
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.deal-price {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.deal-old-price {
+    font-size: 13px;
+    color: #86868b;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.deal-button {
+    background: #0071e3;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: .2s;
+}
+
+.deal-button:hover {
+    background: #0077ed;
+
+    transform: scale(1.03);
+}
+
+/* LOADING */
+
+.loading {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: #6e6e73;
+
+    font-size: 16px;
+}
+
+/* EMPTY */
+
+.empty {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: #6e6e73;
+}
+
+/* FOOTER */
+
+footer {
+    background: #000;
+
+    color: #86868b;
+
+    padding: 60px 20px;
+
+    text-align: center;
+}
+
+.footer-logo {
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+footer p {
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+.back-home {
+    display: inline-block;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    transition: .2s;
+}
+
+.back-home:hover {
+    background: white;
+    color: black;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 52px;
+        left: 0;
+
+        width: 100%;
+
+        background: rgba(255,255,255,.95);
+
+        backdrop-filter: blur(20px);
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        gap: 20px;
+
+        border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        padding-top: 125px;
+        padding-bottom: 70px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .deals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        scrollbar-width: none;
+    }
+
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        flex-shrink: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+<div class="nav-inner">
+
+<a href="index.html" class="logo">
+Jay Unboxes
+</a>
+
+<div class="nav-links" id="navLinks">
+
+<a href="index.html">Home</a>
+
+<a href="index.html#about">About</a>
+
+<a href="deals.html">Deals</a>
+
+<a href="index.html#tools">AI Tools</a>
+
+<a href="index.html#contact">Contact</a>
+
+</div>
+
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open menu">
+☰
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-eyebrow">
+JAY UNBOXES
+</div>
+
+<h1>
+Best Tech Deals.
+</h1>
+
+<p>
+The best gadgets, accessories and tech deals I find —
+curated in one place.
+</p>
+
+</header>
+
+
+<!-- FILTERS -->
+
+<div class="filters-wrapper">
+
+<div class="filters">
+
+<button
+class="filter-btn active"
+data-category="all">
+All
+</button>
+
+<button
+class="filter-btn"
+data-category="phone">
+Phones
+</button>
+
+<button
+class="filter-btn"
+data-category="audio">
+Audio
+</button>
+
+<button
+class="filter-btn"
+data-category="accessories">
+Accessories
+</button>
+
+<button
+class="filter-btn"
+data-category="apple">
+Apple
+</button>
+
+<button
+class="filter-btn"
+data-category="gadgets">
+Gadgets
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-wrapper">
+
+<input
+type="search"
+id="searchBox"
+class="search-box"
+placeholder="Search deals..."
+autocomplete="off">
+
+</div>
+
+
+<!-- DEALS -->
+
+<section class="deals-section">
+
+<div class="section-heading">
+
+<h2>
+Today's Deals
+</h2>
+
+<p>
+Hand-picked tech deals from Jay Unboxes.
+</p>
+
+</div>
+
+<div
+class="deals-grid"
+id="dealsGrid">
+
+<div class="loading">
+Loading latest deals...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-logo">
+Jay Unboxes
+</div>
+
+<p>
+Tech. Unboxed.
+</p>
+
+<a
+href="index.html"
+class="back-home">
+← Back to Home
+</a>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   GOOGLE SHEET
+========================= */
+
+const SHEET_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRziQESSwMiMFMVt4jWD5mH_UJC1mm_0fpRUe69nINcsY55KPv0Tz84fHnkW4Cc12gX0RHvW8X3ia6x/pub?gid=0&single=true&output=csv";
+
+
+let allDeals = [];
+
+let currentCategory = "all";
+
+
+/* =========================
+   CSV PARSER
+========================= */
+
+function parseCSV(text) {
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+
+        const next = text[i + 1];
+
+        if (char === '"' && next === '"') {
+
+            cell += '"';
+
+            i++;
+
+        }
+
+        else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        }
+
+        else if (char === "," && !insideQuotes) {
+
+            row.push(cell.trim());
+
+            cell = "";
+
+        }
+
+        else if (
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ) {
+
+            if (cell || row.length) {
+
+                row.push(cell.trim());
+
+                rows.push(row);
+
+                row = [];
+
+                cell = "";
+
+            }
+
+        }
+
+        else {
+
+            cell += char;
+
+        }
+
+    }
+
+    if (cell || row.length) {
+
+        row.push(cell.trim());
+
+        rows.push(row);
+
+    }
+
+    return rows;
+
+}
+
+
+/* =========================
+   NORMALIZE DATA
+========================= */
+
+function normalizeHeader(value) {
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]/g, "");
+
+}
+
+
+function getValue(obj, possibleNames) {
+
+    for (const name of possibleNames) {
+
+        const key = Object.keys(obj)
+            .find(k => normalizeHeader(k) === normalizeHeader(name));
+
+        if (key && obj[key]) {
+
+            return obj[key];
+
+        }
+
+    }
+
+    return "";
+
+}
+
+
+/* =========================
+   LOAD DEALS
+========================= */
+
+async function loadDeals() {
+
+    const grid =
+        document.getElementById("dealsGrid");
+
+    try {
+
+        const response =
+            await fetch(SHEET_URL);
+
+        if (!response.ok) {
+
+            throw new Error("Sheet unavailable");
+
+        }
+
+        const text =
+            await response.text();
+
+        const rows =
+            parseCSV(text);
+
+        if (rows.length < 2) {
+
+            throw new Error("No deals found");
+
+        }
+
+        const headers =
+            rows[0];
+
+        allDeals =
+            rows.slice(1).map(row => {
+
+                const obj = {};
+
+                headers.forEach((header, index) => {
+
+                    obj[header] =
+                        row[index] || "";
+
+                });
+
+                return {
+
+                    title: getValue(obj, [
+                        "title",
+                        "product",
+                        "product name",
+                        "name"
+                    ]),
+
+                    category: getValue(obj, [
+                        "category",
+                        "type"
+                    ]),
+
+                    description: getValue(obj, [
+                        "description",
+                        "details",
+                        "about"
+                    ]),
+
+                    price: getValue(obj, [
+                        "price",
+                        "deal price",
+                        "sale price"
+                    ]),
+
+                    oldPrice: getValue(obj, [
+                        "old price",
+                        "mrp",
+                        "original price"
+                    ]),
+
+                    link: getValue(obj, [
+                        "link",
+                        "url",
+                        "deal link",
+                        "buy link"
+                    ])
+
+                };
+
+            })
+            .filter(deal => deal.title);
+
+        renderDeals();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        grid.innerHTML = `
+            <div class="empty">
+                <h3>Deals couldn't be loaded.</h3>
+                <p>
+                    Please try refreshing the page.
+                </p>
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderDeals() {
+
+    const grid =
+        document.getElementById("dealsGrid");
+
+    const search =
+        document
+            .getElementById("searchBox")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const filtered =
+        allDeals.filter(deal => {
+
+            const category =
+                deal.category.toLowerCase();
+
+            const searchable = `
+                ${deal.title}
+                ${deal.description}
+                ${deal.category}
+            `.toLowerCase();
+
+
+            const categoryMatch =
+                currentCategory === "all" ||
+                category.includes(currentCategory);
+
+
+            const searchMatch =
+                !search ||
+                searchable.includes(search);
+
+
+            return categoryMatch && searchMatch;
+
+        });
+
+
+    if (!filtered.length) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                No deals found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered.map(deal => {
+
+            const safeLink =
+                deal.link || "#";
+
+
+            return `
+
+                <article class="deal-card">
+
+                    <div>
+
+                        <div class="deal-category">
+                            ${escapeHTML(
+                                deal.category || "Tech Deal"
+                            )}
+                        </div>
+
+                        <h3>
+                            ${escapeHTML(
+                                deal.title
+                            )}
+                        </h3>
+
+                        <p class="deal-description">
+                            ${escapeHTML(
+                                deal.description
+                            )}
+                        </p>
+
+                    </div>
+
+
+                    <div class="deal-bottom">
+
+                        <div class="deal-price">
+
+                            ${escapeHTML(
+                                deal.price
+                            )}
+
+                            ${
+                                deal.oldPrice
+                                ?
+                                `<span class="deal-old-price">
+                                    ${escapeHTML(
+                                        deal.oldPrice
+                                    )}
+                                </span>`
+                                :
+                                ""
+                            }
+
+                        </div>
+
+
+                        ${
+                            safeLink !== "#"
+                            ?
+                            `<a
+                                href="${escapeAttribute(safeLink)}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="deal-button">
+                                View Deal
+                            </a>`
+                            :
+                            ""
+                        }
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================
+   SECURITY HELPERS
+========================= */
+
+function escapeHTML(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+    return escapeHTML(value);
+
+}
+
+
+/* =========================
+   FILTERS
+========================= */
+
+document
+    .querySelectorAll(".filter-btn")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            document
+                .querySelectorAll(".filter-btn")
+                .forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+            button.classList.add("active");
+
+            currentCategory =
+                button.dataset.category;
+
+            renderDeals();
+
+        });
+
+    });
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+    .getElementById("searchBox")
+    .addEventListener("input", renderDeals);
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu() {
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("open");
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadDeals();
+
+</script>
+
+</body>
+</html>
