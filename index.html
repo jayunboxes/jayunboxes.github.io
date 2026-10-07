@@ -7,44 +7,34 @@
   <title>jayunboxes | Tech Reviews, Curated Deals & Media Kit</title>
   <meta name="description" content="Minimalist tech reviews, curated gadget deals, media kit & stats, and 4K desk setup wallpapers by Jay.">
   <meta name="author" content="Jay">
-  <meta name="theme-color" content="#090b10">
-
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="jayunboxes | Tech Reviews, Curated Deals & Media Kit">
-  <meta property="og:description" content="Minimalist tech reviews, curated gadget deals, and 4K desk setup wallpapers by Jay.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#fafaf9">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
     /* =========================================================
-       STARTUP FRAMEWORK THEME (DESIGNMODO AESTHETIC)
+       MINIMALIST WARM LIGHT PALETTE
     ========================================================= */
     :root {
-      --bg: #090b10;
-      --bg-gradient: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #090b10 65%);
-      --surface: rgba(18, 22, 34, 0.7);
-      --surface-elevated: #151a28;
-      --surface-hover: rgba(30, 36, 56, 0.85);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.18);
-      --text: #ffffff;
-      --text-muted: #94a3b8;
-      --text-subtle: #64748b;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.4);
-      --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
-      --green: #10b981;
-      --green-glow: rgba(16, 185, 129, 0.3);
-      --radius-xl: 24px;
+      --bg: #fafaf9;
+      --surface: #ffffff;
+      --surface-subtle: #f5f5f4;
+      --border: #e7e5e4;
+      --border-strong: #d6d3d1;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --green: #16a34a;
+      --green-soft: #f0fdf4;
       --radius: 16px;
       --radius-sm: 10px;
       --radius-pill: 9999px;
-      --shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.65);
+      --shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.05);
+      --shadow-hover: 0 10px 30px -4px rgba(28, 25, 23, 0.08);
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -61,17 +51,11 @@
 
     body {
       background-color: var(--bg);
-      background-image: var(--bg-gradient);
-      background-attachment: fixed;
       color: var(--text);
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-    }
-
-    body.modal-open {
-      overflow: hidden;
     }
 
     a {
@@ -84,64 +68,35 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 840px;
       margin: 0 auto;
-      padding: 32px 20px 100px;
-    }
-
-    /* Ambient Glow Accents */
-    .glow-orb {
-      position: fixed;
-      width: 450px;
-      height: 450px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(80px);
+      padding: 40px 20px 100px;
     }
 
     /* =========================================================
-       DESIGNMODO FLOATING NAVBAR
+       HEADER NAVIGATION TABS
     ========================================================= */
-    .nav-container {
-      position: sticky;
-      top: 20px;
-      z-index: 100;
-      margin-bottom: 40px;
-      display: flex;
-      justify-content: center;
-    }
-
     .top-nav {
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      padding: 6px 8px;
-      background: rgba(13, 17, 26, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-strong);
+      padding: 8px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius-pill);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      width: fit-content;
+      margin: 0 auto 36px;
       overflow-x: auto;
       max-width: 100%;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .top-nav::-webkit-scrollbar {
-      display: none;
     }
 
     .tab-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: var(--radius-pill);
       border: none;
       background: transparent;
@@ -149,28 +104,26 @@
       font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.22s var(--ease);
+      transition: all 0.2s var(--ease);
       white-space: nowrap;
     }
 
     .tab-btn:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      background: var(--surface-subtle);
     }
 
     .tab-btn.active {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      background: var(--surface-subtle);
+      font-weight: 700;
     }
 
     /* =========================================================
-       VIEWS & GENERAL HEADINGS
+       PAGE SWITCHING MECHANISM
     ========================================================= */
     .page-view {
       display: none;
-      position: relative;
-      z-index: 1;
       animation: fadeIn 0.3s var(--ease) forwards;
     }
 
@@ -179,12 +132,12 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .page-header {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .back-btn {
@@ -203,14 +156,13 @@
     }
 
     .back-btn:hover {
-      color: #ffffff;
+      color: var(--text);
     }
 
     .page-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     .page-desc {
@@ -220,41 +172,26 @@
     }
 
     /* =========================================================
-       VIEW 1: HERO & HOME
+       HOME / OVERVIEW VIEW
     ========================================================= */
-    .hero-card {
-      position: relative;
+    .profile-card {
       text-align: center;
-      padding: 48px 24px;
+      padding: 36px 24px;
       background: var(--surface);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       margin-bottom: 24px;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     }
 
     .avatar-wrap {
       width: 104px;
       height: 104px;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
       border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.02));
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 3px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
     }
 
     .avatar {
@@ -265,118 +202,97 @@
       display: block;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.35);
-      color: #a5b4fc;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-card h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px;
-      font-weight: 700;
+    .profile-card h1 {
+      font-size: 24px;
+      font-weight: 800;
       letter-spacing: -0.03em;
-      line-height: 1.15;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
-    .hero-bio {
+    .profile-handle {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .profile-bio {
       color: var(--text-muted);
-      font-size: 15.5px;
-      max-width: 540px;
-      margin: 14px auto 0;
-      line-height: 1.65;
+      font-size: 15px;
+      max-width: 520px;
+      margin: 12px auto 0;
+      line-height: 1.6;
     }
 
     .social-strip {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin-top: 28px;
+      margin-top: 24px;
     }
 
     .social-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      color: var(--text-muted);
       transition: all 0.22s var(--ease);
-    }
-
-    .social-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
-    }
-
-    /* VIP Banner */
-    .vip-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(18, 22, 34, 0.7) 100%);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
       box-shadow: var(--shadow);
-      margin-bottom: 24px;
     }
 
-    .vip-info h3 {
-      font-size: 16px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .social-btn.btn-instagram {
+      background: linear-gradient(135deg, rgba(254, 218, 117, 0.12), rgba(250, 126, 30, 0.12), rgba(214, 41, 118, 0.14), rgba(150, 47, 191, 0.14));
+      border-color: rgba(225, 48, 108, 0.25);
+      color: #d62976;
+    }
+    .social-btn.btn-instagram:hover {
+      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(214, 41, 118, 0.35);
     }
 
-    .vip-info p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-top: 2px;
+    .social-btn.btn-youtube {
+      background: rgba(255, 0, 0, 0.08);
+      border-color: rgba(255, 0, 0, 0.22);
+      color: #ff0000;
+    }
+    .social-btn.btn-youtube:hover {
+      background: #ff0000;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
     }
 
-    .btn-green {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green);
-      color: #000000;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 0 20px var(--green-glow);
-      transition: transform 0.2s ease, filter 0.2s ease;
+    .social-btn.btn-threads {
+      background: #f5f5f4;
+      border-color: rgba(0, 0, 0, 0.15);
+      color: #111111;
+    }
+    .social-btn.btn-threads:hover {
+      background: #111111;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
-    .btn-green:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
+    .social-btn.btn-mail {
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(37, 99, 235, 0.22);
+      color: #2563eb;
+    }
+    .social-btn.btn-mail:hover {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
     }
 
-    /* Directory Cards */
     .directory-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -401,9 +317,8 @@
 
     .dir-card:hover {
       transform: translateY(-3px);
-      background: var(--surface-hover);
+      box-shadow: var(--shadow-hover);
       border-color: var(--border-strong);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
     }
 
     .dir-top {
@@ -416,28 +331,92 @@
     .dir-icon {
       width: 40px;
       height: 40px;
-      border-radius: 10px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: #38bdf8;
+    }
+
+    .dir-icon.ic-deals {
+      background: rgba(245, 158, 11, 0.12);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+    .dir-icon.ic-walls {
+      background: rgba(147, 51, 234, 0.12);
+      color: #9333ea;
+      border: 1px solid rgba(147, 51, 234, 0.2);
+    }
+    .dir-icon.ic-tools {
+      background: rgba(37, 99, 235, 0.12);
+      color: #2563eb;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+    .dir-icon.ic-media {
+      background: rgba(225, 48, 108, 0.12);
+      color: #e1306c;
+      border: 1px solid rgba(225, 48, 108, 0.2);
+    }
+    .dir-icon.ic-channels {
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
     .dir-title {
       font-size: 16px;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
     }
 
     .dir-sub {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
       margin-top: 3px;
     }
 
+    .vip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .vip-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .vip-info p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-green {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+    }
+
     /* =========================================================
-       VIEW 2: TECH DEALS
+       TECH DEALS GRID (ENHANCED PRODUCT DISPLAY)
     ========================================================= */
     .deals-grid {
       display: grid;
@@ -458,13 +437,13 @@
 
     .deal-card:hover {
       transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
       border-color: var(--border-strong);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
 
     .deal-img-wrap {
       position: relative;
-      background: #0f1420;
+      background: #f8fafc;
       border-bottom: 1px solid var(--border);
       overflow: hidden;
       display: flex;
@@ -480,7 +459,7 @@
       object-fit: contain;
       display: block;
       transition: transform 0.4s var(--ease);
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.06));
     }
 
     .deal-card:hover .deal-img {
@@ -491,36 +470,39 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: #6366f1;
+      background: var(--text);
       color: #ffffff;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       z-index: 2;
     }
 
     .deal-body {
-      padding: 20px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
     .deal-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 11px;
       font-weight: 700;
-      color: #38bdf8;
+      color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       margin-bottom: 6px;
     }
 
     .deal-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      line-height: 1.4;
+      line-height: 1.45;
       min-height: 42px;
       margin-bottom: 12px;
     }
@@ -534,14 +516,14 @@
 
     .mrp {
       font-size: 12px;
-      color: var(--text-subtle);
+      color: var(--text-muted);
       text-decoration: line-through;
     }
 
     .price {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--text);
     }
 
     .discount {
@@ -556,71 +538,26 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      background: #ffffff;
-      color: #090b10;
+      background: var(--text);
+      color: #ffffff;
       padding: 10px;
       border-radius: var(--radius-sm);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      margin-top: 16px;
+      margin-top: 14px;
       width: 100%;
       border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: opacity 0.2s ease;
     }
 
     .btn-deal:hover {
-      background: #e2e8f0;
-      transform: translateY(-1px);
+      opacity: 0.9;
     }
 
     /* =========================================================
-       VIEW 3: MEDIA KIT & STATS
+       MEDIA KIT STYLES
     ========================================================= */
-    .mediakit-banner {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(18, 22, 34, 0.8) 100%);
-      border: 1px solid rgba(99, 102, 241, 0.4);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .mediakit-banner h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .mediakit-banner p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      max-width: 480px;
-    }
-
-    .btn-collab {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #ffffff;
-      color: #000000;
-      padding: 12px 22px;
-      border-radius: var(--radius-sm);
-      font-size: 13.5px;
-      font-weight: 700;
-      white-space: nowrap;
-      transition: transform 0.2s ease;
-    }
-
-    .btn-collab:hover {
-      transform: translateY(-2px);
-    }
-
     .mediakit-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -645,12 +582,11 @@
     }
 
     .mediakit-stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       line-height: 1.1;
-      color: #ffffff;
+      color: var(--text);
     }
 
     .mediakit-stat-label {
@@ -670,9 +606,64 @@
       border-radius: var(--radius-pill);
     }
 
-    .badge-ig { background: rgba(225, 48, 108, 0.15); color: #f472b6; }
-    .badge-yt { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-    .badge-reach { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .badge-ig {
+      background: rgba(225, 48, 108, 0.1);
+      color: #e1306c;
+    }
+
+    .badge-yt {
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff0000;
+    }
+
+    .badge-reach {
+      background: rgba(37, 99, 235, 0.1);
+      color: #2563eb;
+    }
+
+    .mediakit-banner {
+      background: linear-gradient(135deg, #1c1917, #292524);
+      color: #ffffff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .mediakit-banner h3 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .mediakit-banner p {
+      font-size: 13.5px;
+      color: #d6d3d1;
+      margin-top: 4px;
+      max-width: 480px;
+    }
+
+    .btn-collab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #1c1917;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-collab:hover {
+      transform: translateY(-2px);
+    }
 
     .demo-grid {
       display: grid;
@@ -685,32 +676,31 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 22px;
+      padding: 20px;
       box-shadow: var(--shadow);
     }
 
     .spec-card h4 {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #ffffff;
     }
 
     .spec-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .spec-item {
       display: flex;
       justify-content: space-between;
       font-size: 13px;
-      padding-bottom: 8px;
+      padding-bottom: 6px;
       border-bottom: 1px dashed var(--border);
     }
 
@@ -719,11 +709,17 @@
       padding-bottom: 0;
     }
 
-    .spec-name { color: var(--text-muted); }
-    .spec-val { font-weight: 700; color: #ffffff; }
+    .spec-name {
+      color: var(--text-muted);
+    }
+
+    .spec-val {
+      font-weight: 700;
+      color: var(--text);
+    }
 
     /* =========================================================
-       VIEW 4: WALLPAPERS
+       WALLPAPERS TAB
     ========================================================= */
     .wallpapers-grid {
       display: grid;
@@ -736,7 +732,7 @@
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--surface-elevated);
+      background: var(--surface-subtle);
       position: relative;
       cursor: pointer;
       box-shadow: var(--shadow);
@@ -745,6 +741,7 @@
 
     .wp-item:hover {
       transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
       border-color: var(--border-strong);
     }
 
@@ -762,31 +759,28 @@
 
     .wp-pill {
       position: absolute;
-      bottom: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
+      bottom: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(28, 25, 23, 0.75);
       color: #ffffff;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.2s ease;
+      transition: background 0.2s ease;
     }
 
     .wp-item:hover .wp-pill {
-      background: #ffffff;
-      color: #000000;
+      background: var(--text);
     }
 
     .wp-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(28, 25, 23, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -799,16 +793,16 @@
     }
 
     .wp-modal-box {
-      max-width: 400px;
+      max-width: 390px;
       width: 100%;
-      background: #111522;
-      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .wp-modal-preview {
@@ -816,7 +810,7 @@
       max-height: 480px;
       object-fit: contain;
       border-radius: var(--radius-sm);
-      background: #000000;
+      background: #000;
     }
 
     .wp-modal-actions {
@@ -826,7 +820,7 @@
 
     .btn-modal {
       flex: 1;
-      padding: 12px;
+      padding: 11px;
       border-radius: var(--radius-sm);
       font-size: 13px;
       font-weight: 700;
@@ -839,18 +833,18 @@
     }
 
     .btn-modal-dl {
-      background: #ffffff;
-      color: #000000;
+      background: var(--text);
+      color: #fff;
     }
 
     .btn-modal-close {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
+      background: var(--surface-subtle);
+      color: var(--text);
       border: 1px solid var(--border);
     }
 
     /* =========================================================
-       VIEW 5 & 6: AI TOOLS & CHANNELS
+       AI TOOLS & CHANNELS TAB
     ========================================================= */
     .cards-stack {
       display: flex;
@@ -862,7 +856,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 22px;
+      padding: 20px;
       box-shadow: var(--shadow);
       transition: all 0.2s var(--ease);
     }
@@ -870,18 +864,17 @@
     .simple-card:hover {
       border-color: var(--border-strong);
       transform: translateY(-2px);
-      background: var(--surface-hover);
+      box-shadow: var(--shadow-hover);
     }
 
     .simple-card h3 {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 700;
       margin-bottom: 4px;
-      color: #ffffff;
     }
 
     .simple-card p {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-muted);
       line-height: 1.55;
     }
@@ -897,32 +890,32 @@
     .channel-lead {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .channel-badge-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       display: grid;
       place-items: center;
       flex-shrink: 0;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
     }
 
     footer {
       text-align: center;
       margin-top: 60px;
-      font-size: 13px;
-      color: var(--text-subtle);
+      font-size: 12.5px;
+      color: var(--text-muted);
     }
 
     /* =========================================================
        RESPONSIVE
     ========================================================= */
     @media (max-width: 768px) {
-      .mediakit-grid { grid-template-columns: repeat(2, 1fr); }
+      .mediakit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 680px) {
@@ -940,87 +933,85 @@
         justify-content: center;
       }
       .container {
-        padding-top: 16px;
-      }
-      .hero-card h1 {
-        font-size: 28px;
+        padding-top: 24px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="glow-orb"></div>
-
   <main class="container">
     
-    <!-- FLOATING STARTUP-STYLE NAV -->
-    <div class="nav-container">
-      <nav class="top-nav" aria-label="Page Tabs">
-        <button class="tab-btn active" data-tab="home" onclick="switchPage('home')">
-          <i data-feather="home" style="width:14px;"></i> Home
-        </button>
-        <button class="tab-btn" data-tab="deals" onclick="switchPage('deals')">
-          <i data-feather="tag" style="width:14px;"></i> Deals
-        </button>
-        <button class="tab-btn" data-tab="mediakit" onclick="switchPage('mediakit')">
-          <i data-feather="bar-chart-2" style="width:14px;"></i> Media Kit
-        </button>
-        <button class="tab-btn" data-tab="wallpapers" onclick="switchPage('wallpapers')">
-          <i data-feather="image" style="width:14px;"></i> Wallpapers
-        </button>
-        <button class="tab-btn" data-tab="tools" onclick="switchPage('tools')">
-          <i data-feather="cpu" style="width:14px;"></i> Tools
-        </button>
-        <button class="tab-btn" data-tab="channels" onclick="switchPage('channels')">
-          <i data-feather="share-2" style="width:14px;"></i> Channels
-        </button>
-      </nav>
-    </div>
+    <!-- TOP NAVIGATION PILL TABS -->
+    <nav class="top-nav" aria-label="Page Tabs">
+      <button class="tab-btn active" onclick="switchPage('home')">
+        <i data-feather="home" style="width:14px;"></i> Home
+      </button>
+      <button class="tab-btn" onclick="switchPage('deals')">
+        <i data-feather="tag" style="width:14px;"></i> Tech Deals
+      </button>
+      <button class="tab-btn" onclick="switchPage('mediakit')">
+        <i data-feather="bar-chart-2" style="width:14px;"></i> Media Kit
+      </button>
+      <button class="tab-btn" onclick="switchPage('wallpapers')">
+        <i data-feather="image" style="width:14px;"></i> Wallpapers
+      </button>
+      <button class="tab-btn" onclick="switchPage('tools')">
+        <i data-feather="cpu" style="width:14px;"></i> AI Tools
+      </button>
+      <button class="tab-btn" onclick="switchPage('channels')">
+        <i data-feather="share-2" style="width:14px;"></i> Channels
+      </button>
+    </nav>
 
-    <!-- VIEW 1: HOME -->
+    <!-- =======================================================
+         VIEW 1: HOME / OVERVIEW
+    ======================================================== -->
     <div id="page-home" class="page-view active-page">
-      <section class="hero-card">
+      <section class="profile-card">
         <div class="avatar-wrap">
-          <img src="profile.png" class="avatar" alt="jayunboxes Profile" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=80';">
+          <img src="Profile.jpg.PNG" class="avatar" alt="jayunboxes Profile" onerror="this.style.display='none';">
         </div>
-        <div class="hero-badge">Curator & Tech Creator</div>
         <h1>jayunboxes</h1>
-        <p class="hero-bio">
-          Independent gadget breakdowns, desk setups, verified gear price drops, and 4K minimalism. Zero marketing noise.
+        <div class="profile-handle">@jayunboxes</div>
+        <p class="profile-bio">
+          Welcome to my tech corner. I review gadgets, test practical AI tools, track price cuts, and design 4K setup wallpapers — completely unfiltered with zero marketing fluff.
         </p>
 
+        <!-- COLORFUL APP ICONS -->
         <div class="social-strip">
-          <a class="social-btn" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram">
-            <i data-feather="instagram" style="width:18px;"></i>
+          <a class="social-btn btn-instagram" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <i data-feather="instagram" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube">
-            <i data-feather="youtube" style="width:18px;"></i>
+          <a class="social-btn btn-youtube" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+            <i data-feather="youtube" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads">
-            <i data-feather="at-sign" style="width:18px;"></i>
+          <a class="social-btn btn-threads" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener" aria-label="Threads" title="Threads">
+            <i data-feather="at-sign" style="width: 19px; height: 19px;"></i>
           </a>
-          <a class="social-btn" href="mailto:techwithjay.biz@gmail.com" aria-label="Email">
-            <i data-feather="mail" style="width:18px;"></i>
+          <a class="social-btn btn-mail" href="mailto:techwithjay.biz@gmail.com" aria-label="Email" title="Email Inquiries">
+            <i data-feather="mail" style="width: 19px; height: 19px;"></i>
           </a>
         </div>
       </section>
 
+      <!-- VIP Broadcast Banner -->
       <div class="vip-card">
         <div class="vip-info">
-          <h3><i data-feather="zap" style="width:16px; color:var(--green);"></i> VIP Broadcast Channel</h3>
-          <p>Instant price drops, gear restocks, and flash deals delivered directly to WhatsApp.</p>
+          <h3>Jayunboxes VIP Broadcast</h3>
+          <p>Instant price drops, gear leaks, and flash deals directly on WhatsApp.</p>
         </div>
         <a class="btn-green" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
-          Join Channel
+          <i data-feather="zap" style="width: 14px;"></i> Join Free
         </a>
       </div>
 
+      <!-- Navigation Directory Cards -->
       <div class="directory-grid">
         <div class="dir-card" onclick="switchPage('deals')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="tag" style="width:18px;"></i></div>
-            <i data-feather="arrow-right" style="width:16px; color:var(--text-subtle);"></i>
+            <div class="dir-icon ic-deals"><i data-feather="tag" style="width: 18px;"></i></div>
+            <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
             <div class="dir-title">Curated Tech Deals</div>
@@ -1030,79 +1021,85 @@
 
         <div class="dir-card" onclick="switchPage('mediakit')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="bar-chart-2" style="width:18px;"></i></div>
-            <i data-feather="arrow-right" style="width:16px; color:var(--text-subtle);"></i>
+            <div class="dir-icon ic-media"><i data-feather="bar-chart-2" style="width: 18px;"></i></div>
+            <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
             <div class="dir-title">Media Kit & Stats</div>
-            <div class="dir-sub">Audience metrics, partnerships & reach</div>
+            <div class="dir-sub">Audience reach, engagement & brand partnerships</div>
           </div>
         </div>
 
         <div class="dir-card" onclick="switchPage('wallpapers')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="image" style="width:18px;"></i></div>
-            <i data-feather="arrow-right" style="width:16px; color:var(--text-subtle);"></i>
+            <div class="dir-icon ic-walls"><i data-feather="image" style="width: 18px;"></i></div>
+            <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
             <div class="dir-title">4K Setup Wallpapers</div>
-            <div class="dir-sub">Clean minimal backdrops for desk setups</div>
+            <div class="dir-sub">Free minimal wallpapers for phones and desks</div>
           </div>
         </div>
 
         <div class="dir-card" onclick="switchPage('tools')">
           <div class="dir-top">
-            <div class="dir-icon"><i data-feather="cpu" style="width:18px;"></i></div>
-            <i data-feather="arrow-right" style="width:16px; color:var(--text-subtle);"></i>
+            <div class="dir-icon ic-tools"><i data-feather="cpu" style="width: 18px;"></i></div>
+            <i data-feather="arrow-right" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div>
             <div class="dir-title">AI Workflow Tools</div>
-            <div class="dir-sub">The apps & AI stack powering my content</div>
+            <div class="dir-sub">Everyday AI assistants and generative tools</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 2: TECH DEALS -->
+    <!-- =======================================================
+         VIEW 2: TECH DEALS (PRODUCT GRID)
+    ======================================================== -->
     <div id="page-deals" class="page-view">
       <div class="page-header">
         <button class="back-btn" onclick="switchPage('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Curated Tech Deals</h2>
-        <p class="page-desc">Hand-picked gear and live price drops synced directly from my tracker.</p>
+        <p class="page-desc">Hand-picked gear and verified price drops synced directly from my live tracker.</p>
       </div>
 
       <div class="deals-grid" id="dealsGrid">
-        <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-muted);">Loading deals...</div>
+        <div class="deals-loading">Loading live deals...</div>
       </div>
     </div>
 
-    <!-- VIEW 3: MEDIA KIT -->
+    <!-- =======================================================
+         VIEW 3: MEDIA KIT & STATS (NEW)
+    ======================================================== -->
     <div id="page-mediakit" class="page-view">
       <div class="page-header">
         <button class="back-btn" onclick="switchPage('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Media Kit & Partnerships</h2>
-        <p class="page-desc">Audience metrics, demographics, and sponsorship opportunities.</p>
+        <p class="page-desc">Metrics, reach, demographics, and collaboration opportunities with @jayunboxes.</p>
       </div>
 
+      <!-- Quick Collab Banner -->
       <div class="mediakit-banner">
         <div>
           <h3>Work With Jay</h3>
-          <p>Uncompromising reviews, cinematic short-form reels, setup integrations, and community reach.</p>
+          <p>Authentic gadget teardowns, hands-on reels, setup integrations, and dedicated YouTube tech reviews.</p>
         </div>
         <a class="btn-collab" href="mailto:techwithjay.biz@gmail.com?subject=Brand%20Collaboration%20Inquiry%20-%20jayunboxes">
-          <i data-feather="send" style="width:15px;"></i> Contact Now
+          <i data-feather="send" style="width:15px;"></i> Inquire Now
         </a>
       </div>
 
+      <!-- Key Stats Grid -->
       <div class="mediakit-grid">
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-ig"><i data-feather="instagram" style="width:12px;"></i> Instagram</span>
-            <i data-feather="trending-up" style="width:16px; color:var(--green);"></i>
+            <i data-feather="trending-up" style="width: 16px; color: var(--green);"></i>
           </div>
           <div class="mediakit-stat-num">12K+</div>
           <div class="mediakit-stat-label">Followers (@jayunboxes)</div>
@@ -1111,25 +1108,25 @@
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-reach"><i data-feather="eye" style="width:12px;"></i> Reach</span>
-            <i data-feather="activity" style="width:16px; color:#38bdf8;"></i>
+            <i data-feather="activity" style="width: 16px; color: var(--accent);"></i>
           </div>
           <div class="mediakit-stat-num">1.8M+</div>
-          <div class="mediakit-stat-label">30-day view reach</div>
+          <div class="mediakit-stat-label">Reach last 30 days</div>
         </div>
 
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-yt"><i data-feather="youtube" style="width:12px;"></i> YouTube</span>
-            <i data-feather="play-circle" style="width:16px; color:#ef4444;"></i>
+            <i data-feather="play-circle" style="width: 16px; color: #ff0000;"></i>
           </div>
           <div class="mediakit-stat-num">160K+</div>
-          <div class="mediakit-stat-label">Views on Long & Shorts</div>
+          <div class="mediakit-stat-label">Video & Shorts Views</div>
         </div>
 
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-ig"><i data-feather="percent" style="width:12px;"></i> Rate</span>
-            <i data-feather="pie-chart" style="width:16px; color:var(--text-subtle);"></i>
+            <i data-feather="pie-chart" style="width: 16px; color: var(--text-muted);"></i>
           </div>
           <div class="mediakit-stat-num">15%</div>
           <div class="mediakit-stat-label">Avg. Engagement Rate</div>
@@ -1138,61 +1135,68 @@
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-reach"><i data-feather="users" style="width:12px;"></i> Broadcast</span>
-            <i data-feather="zap" style="width:16px; color:var(--green);"></i>
+            <i data-feather="zap" style="width: 16px; color: var(--green);"></i>
           </div>
-          <div class="mediakit-stat-num">100+</div>
-          <div class="mediakit-stat-label">VIP Community Members</div>
+          <div class="mediakit-stat-num">100++</div>
+          <div class="mediakit-stat-label">VIP WhatsApp Members</div>
         </div>
 
         <div class="mediakit-stat-card">
           <div class="mediakit-stat-header">
             <span class="mediakit-badge badge-yt"><i data-feather="video" style="width:12px;"></i> Content</span>
-            <i data-feather="check-circle" style="width:16px; color:var(--green);"></i>
+            <i data-feather="check-circle" style="width: 16px; color: var(--green);"></i>
           </div>
           <div class="mediakit-stat-num">100+</div>
-          <div class="mediakit-stat-label">Tech Videos Published</div>
+          <div class="mediakit-stat-label">Tech Reviews & Reels Published</div>
         </div>
       </div>
 
+      <!-- Demographics & Deliverables -->
       <div class="demo-grid">
         <div class="spec-card">
-          <h4><i data-feather="pie-chart" style="width:16px; color:#38bdf8;"></i> Audience Profile</h4>
+          <h4><i data-feather="pie-chart" style="width:16px; color:var(--accent);"></i> Audience Demographics</h4>
           <ul class="spec-list">
-            <li class="spec-item"><span class="spec-name">Core Age Range</span><span class="spec-val">18 - 34 yrs (78%)</span></li>
-            <li class="spec-item"><span class="spec-name">Interests</span><span class="spec-val">Tech, Desks, AI, Gaming</span></li>
-            <li class="spec-item"><span class="spec-name">Top Markets</span><span class="spec-val">India, US, UK, UAE</span></li>
+            <li class="spec-item"><span class="spec-name">Primary Age</span><span class="spec-val">18 - 34 yrs (78%)</span></li>
+            <li class="spec-item"><span class="spec-name">Top Interests</span><span class="spec-val">Gadgets, Workspace, AI & Gaming</span></li>
+            <li class="spec-item"><span class="spec-name">Top Geographies</span><span class="spec-val">India, US, UK, UAE</span></li>
             <li class="spec-item"><span class="spec-name">Gender Split</span><span class="spec-val">82% Male / 18% Female</span></li>
           </ul>
         </div>
 
         <div class="spec-card">
-          <h4><i data-feather="package" style="width:16px; color:var(--green);"></i> Deliverables</h4>
+          <h4><i data-feather="package" style="width:16px; color:var(--green);"></i> Collaboration Deliverables</h4>
           <ul class="spec-list">
-            <li class="spec-item"><span class="spec-name">Instagram Reel</span><span class="spec-val">4K 60fps Spotlight / Hook</span></li>
-            <li class="spec-item"><span class="spec-name">YouTube Feature</span><span class="spec-val">In-depth Review or Setup Cut</span></li>
-            <li class="spec-item"><span class="spec-name">Broadcast Integration</span><span class="spec-val">Dedicated Deals Push</span></li>
+            <li class="spec-item"><span class="spec-name">Instagram Reel</span><span class="spec-val">4K 60fps Unboxing / Hook</span></li>
+            <li class="spec-item"><span class="spec-name">YouTube Shorts / Long</span><span class="spec-val">Full Review & Setup Feature</span></li>
+            <li class="spec-item"><span class="spec-name">VIP Broadcast Push</span><span class="spec-val">Direct Link + Discount Code</span></li>
             <li class="spec-item"><span class="spec-name">Turnaround Time</span><span class="spec-val">5 - 7 Business Days</span></li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 4: WALLPAPERS -->
+    <!-- =======================================================
+         VIEW 4: WALLPAPERS
+    ======================================================== -->
     <div id="page-wallpapers" class="page-view">
       <div class="page-header">
         <button class="back-btn" onclick="switchPage('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">4K Setup Wallpapers</h2>
-        <p class="page-desc">Preview and download high-resolution minimal backdrops for mobile and desktop.</p>
+        <p class="page-desc">Click any wallpaper to preview and download full-resolution versions.</p>
       </div>
 
       <div class="wallpapers-grid" id="wallpapersGrid">
-        <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-muted);">Loading wallpapers...</div>
+        <div class="wp-item" style="display:grid; place-items:center; color:var(--text-muted); font-size:12px; padding:15px; text-align:center;">
+          Loading wallpapers...
+        </div>
       </div>
     </div>
 
-    <!-- VIEW 5: AI TOOLS -->
+    <!-- =======================================================
+         VIEW 5: AI TOOLS
+    ======================================================== -->
     <div id="page-tools" class="page-view">
       <div class="page-header">
         <button class="back-btn" onclick="switchPage('home')">
@@ -1230,20 +1234,22 @@
       </div>
     </div>
 
-    <!-- VIEW 6: CHANNELS & CONTACT -->
+    <!-- =======================================================
+         VIEW 6: CHANNELS & CONTACT
+    ======================================================== -->
     <div id="page-channels" class="page-view">
       <div class="page-header">
         <button class="back-btn" onclick="switchPage('home')">
           <i data-feather="arrow-left" style="width:14px;"></i> Back to Home
         </button>
         <h2 class="page-title">Connect & Channels</h2>
-        <p class="page-desc">Direct links to my social streams and collaboration inbox.</p>
+        <p class="page-desc">Where you can follow recent content or reach out for collaborations.</p>
       </div>
 
       <div class="cards-stack">
         <a class="simple-card channel-row" href="https://whatsapp.com/channel/0029Vb8NEDIJP20zFDGssJ2H" target="_blank" rel="noopener">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="color: var(--green);">
+            <div class="channel-badge-icon" style="background: rgba(22, 163, 74, 0.12); color: #16a34a;">
               <i data-feather="message-circle" style="width: 20px;"></i>
             </div>
             <div>
@@ -1251,12 +1257,12 @@
               <p>Instant price drop alerts & deals broadcast</p>
             </div>
           </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-subtle);"></i>
+          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://instagram.com/jayunboxes" target="_blank" rel="noopener">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="color: #f472b6;">
+            <div class="channel-badge-icon" style="background: rgba(225, 48, 108, 0.12); color: #e1306c;">
               <i data-feather="instagram" style="width: 20px;"></i>
             </div>
             <div>
@@ -1264,12 +1270,12 @@
               <p>Gadget unboxings, desk setups, and short tutorials</p>
             </div>
           </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-subtle);"></i>
+          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://youtube.com/@jay.unboxes" target="_blank" rel="noopener">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="color: #ef4444;">
+            <div class="channel-badge-icon" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
               <i data-feather="youtube" style="width: 20px;"></i>
             </div>
             <div>
@@ -1277,12 +1283,12 @@
               <p>Long-form teardowns, reviews, and setup upgrades</p>
             </div>
           </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-subtle);"></i>
+          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="https://threads.net/@jayunboxes" target="_blank" rel="noopener">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="color: #ffffff;">
+            <div class="channel-badge-icon" style="background: rgba(0, 0, 0, 0.08); color: #111111;">
               <i data-feather="at-sign" style="width: 20px;"></i>
             </div>
             <div>
@@ -1290,12 +1296,12 @@
               <p>Bite-sized tech takes, discussions & AMAs</p>
             </div>
           </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-subtle);"></i>
+          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
 
         <a class="simple-card channel-row" href="mailto:techwithjay.biz@gmail.com">
           <div class="channel-lead">
-            <div class="channel-badge-icon" style="color: #38bdf8;">
+            <div class="channel-badge-icon" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">
               <i data-feather="mail" style="width: 20px;"></i>
             </div>
             <div>
@@ -1303,7 +1309,7 @@
               <p>techwithjay.biz@gmail.com</p>
             </div>
           </div>
-          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-subtle);"></i>
+          <i data-feather="arrow-up-right" style="width:16px; color:var(--text-muted);"></i>
         </a>
       </div>
     </div>
@@ -1311,7 +1317,7 @@
     <!-- FOOTER -->
     <footer>
       <div>jayunboxes • 2026</div>
-      <div style="margin-top: 4px; font-size: 12px;">Minimal Tech, Workspace Gear & Creator Insights</div>
+      <div style="margin-top: 4px; font-size: 11.5px;">Curated Tech, Desk Essentials & Reviews</div>
     </footer>
   </main>
 
@@ -1330,6 +1336,30 @@
 
   <script>
     /* =========================================================
+       PAGE / TAB SWITCHING LOGIC
+    ========================================================= */
+    function switchPage(pageId) {
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active-page');
+      });
+
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.add('active-page');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)) {
+          btn.classList.add('active');
+        }
+      });
+
+      feather.replace();
+    }
+
+    /* =========================================================
        CONFIGURATION
     ========================================================= */
     const CONFIG = {
@@ -1339,95 +1369,63 @@
       wallpapersFolder: "wallpapers"
     };
 
-    /* =========================================================
-       TAB NAVIGATION
-    ========================================================= */
-    function switchPage(pageId) {
-      const cleanId = (pageId || "home").replace("#", "").trim();
-      const validPages = ["home", "deals", "mediakit", "wallpapers", "tools", "channels"];
-      const targetId = validPages.includes(cleanId) ? cleanId : "home";
-
-      document.querySelectorAll(".page-view").forEach(view => {
-        view.classList.remove("active-page");
-      });
-
-      const target = document.getElementById("page-" + targetId);
-      if (target) {
-        target.classList.add("active-page");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-
-      document.querySelectorAll(".tab-btn").forEach(btn => {
-        const btnTab = btn.getAttribute("data-tab");
-        btn.classList.toggle("active", btnTab === targetId);
-      });
-    }
-
-    window.addEventListener("hashchange", () => {
-      switchPage(window.location.hash);
-    });
+    const myWallpapers = [];
 
     /* =========================================================
-       WALLPAPER MODAL
-    ========================================================= */
-    const wpModal = document.getElementById("wpModal");
-    const wpModalImg = document.getElementById("wpModalImg");
-    const wpModalDownload = document.getElementById("wpModalDownload");
-    const wpModalClose = document.getElementById("wpModalClose");
-
-    function openWallpaper(url) {
-      if (!wpModal) return;
-      wpModalImg.src = url;
-      wpModalDownload.href = url;
-      wpModal.classList.add("open");
-      document.body.classList.add("modal-open");
-    }
-
-    function closeWallpaperModal() {
-      if (!wpModal) return;
-      wpModal.classList.remove("open");
-      document.body.classList.remove("modal-open");
-    }
-
-    if (wpModalClose) wpModalClose.addEventListener("click", closeWallpaperModal);
-    if (wpModal) {
-      wpModal.addEventListener("click", (e) => {
-        if (e.target === wpModal) closeWallpaperModal();
-      });
-    }
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && wpModal && wpModal.classList.contains("open")) {
-        closeWallpaperModal();
-      }
-    });
-
-    /* =========================================================
-       PRODUCT IMAGE MATCHER
+       CLEAN PRODUCT-CENTERED IMAGE MATCHER
     ========================================================= */
     function getSmartProductImage(productName, userProvidedImage) {
+      // 1. If user provided a custom image URL in the CSV, use it
       if (userProvidedImage && userProvidedImage.trim() !== "" && userProvidedImage.trim() !== "#") {
         return userProvidedImage.trim();
       }
 
       const p = String(productName || "").toLowerCase();
 
-      if (p.includes("iphone") || p.includes("phone")) return "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("macbook") || p.includes("laptop")) return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("airpods") || p.includes("earbuds") || p.includes("tws") || p.includes("buds")) return "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("headphone") || p.includes("sony") || p.includes("bose") || p.includes("xm5")) return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("ipad") || p.includes("tablet") || p.includes("pad")) return "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("watch") || p.includes("smartwatch")) return "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("keyboard")) return "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("mouse")) return "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("monitor")) return "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80";
-      if (p.includes("charger") || p.includes("gan") || p.includes("cable") || p.includes("bank")) return "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&auto=format&fit=crop&q=80";
+      // 2. Crisp, product-on-white/studio product renders
+      if (p.includes("iphone") || p.includes("phone")) {
+        return "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("macbook") || p.includes("laptop")) {
+        return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("airpods") || p.includes("earbuds") || p.includes("tws") || p.includes("buds")) {
+        return "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("headphone") || p.includes("sony") || p.includes("bose") || p.includes("xm5") || p.includes("xm4")) {
+        return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("ipad") || p.includes("tablet") || p.includes("pad")) {
+        return "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("watch") || p.includes("smartwatch") || p.includes("band")) {
+        return "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("keyboard") || p.includes("keychron")) {
+        return "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("mouse") || p.includes("mx master")) {
+        return "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("monitor") || p.includes("screen") || p.includes("display")) {
+        return "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("charger") || p.includes("gan") || p.includes("adapter") || p.includes("cable") || p.includes("bank")) {
+        return "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("speaker") || p.includes("soundbar") || p.includes("audio")) {
+        return "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&auto=format&fit=crop&q=80";
+      }
+      if (p.includes("desk") || p.includes("mat") || p.includes("stand") || p.includes("light")) {
+        return "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&auto=format&fit=crop&q=80";
+      }
 
+      // Clean default studio gadget image
       return "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80";
     }
 
     /* =========================================================
-       CSV DEALS PARSER & LOADER
+       CSV DEALS PARSER & RENDERER
     ========================================================= */
     function escapeHTML(str) {
       return String(str ?? "")
@@ -1466,7 +1464,6 @@
 
     async function loadDeals() {
       const grid = document.getElementById("dealsGrid");
-      if (!grid) return;
       try {
         const separator = CONFIG.dealsFile.includes("?") ? "&" : "?";
         const fetchUrl = CONFIG.dealsFile + separator + "t=" + Date.now();
@@ -1476,7 +1473,7 @@
         const raw = await res.text();
 
         if (raw.trim().startsWith("<!DOCTYPE") || raw.trim().startsWith("<html")) {
-          throw new Error("Received HTML instead of CSV.");
+          throw new Error("Received HTML rather than CSV data.");
         }
 
         const rows = parseCSV(raw);
@@ -1499,7 +1496,7 @@
         }).filter(d => d.active && d.name !== "Tech Product");
 
         if (!deals.length) {
-          grid.innerHTML = `<div style="grid-column:1/-1; padding:40px; text-align:center; background:var(--surface); border:1px dashed var(--border); border-radius:var(--radius); color:var(--text-muted); font-size:13.5px;">No live deals found right now. Check back soon!</div>`;
+          grid.innerHTML = `<div class="deals-empty" style="grid-column: 1/-1; padding: 40px; text-align: center; background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); color: var(--text-muted); font-size: 13.5px;">No live deals found right now. Check back soon!</div>`;
           return;
         }
 
@@ -1526,17 +1523,63 @@
 
         feather.replace();
       } catch (err) {
-        grid.innerHTML = `<div style="grid-column:1/-1; padding:40px; text-align:center; background:var(--surface); border:1px dashed var(--border); border-radius:var(--radius); color:var(--text-muted); font-size:13.5px;">Unable to load deals right now. Verify Google Sheet CSV link.</div>`;
+        console.error("Deals load error:", err);
+        grid.innerHTML = `<div class="deals-error" style="grid-column: 1/-1; padding: 40px; text-align: center; background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); color: var(--text-muted); font-size: 13.5px;">Unable to load deals right now. Verify your Google Sheet is published to web as CSV.</div>`;
       }
     }
 
     /* =========================================================
-       WALLPAPERS LOADER
+       DYNAMIC WALLPAPERS LOADER
     ========================================================= */
     const wpGrid = document.getElementById("wallpapersGrid");
+    const wpModal = document.getElementById("wpModal");
+    const wpModalImg = document.getElementById("wpModalImg");
+    const wpModalDownload = document.getElementById("wpModalDownload");
+    const wpModalClose = document.getElementById("wpModalClose");
+
+    function openWallpaper(url) {
+      wpModalImg.src = url;
+      wpModalDownload.href = url;
+      wpModal.classList.add("open");
+      feather.replace();
+    }
+
+    wpModalClose.addEventListener("click", () => wpModal.classList.remove("open"));
+    wpModal.addEventListener("click", (e) => {
+      if (e.target === wpModal) wpModal.classList.remove("open");
+    });
 
     async function loadWallpapers() {
-      if (!wpGrid) return;
+      if (myWallpapers && myWallpapers.length > 0) {
+        renderWallpapers(myWallpapers.map(name => ({ name, url: `wallpapers/${name}` })));
+        return;
+      }
+
+      const cacheKey = "jayunboxes_walls";
+      const cacheTimeKey = "jayunboxes_walls_time";
+      const cached = localStorage.getItem(cacheKey);
+      const cacheTime = localStorage.getItem(cacheTimeKey);
+
+      if (cached && cacheTime && (Date.now() - parseInt(cacheTime) < 600000)) {
+        renderWallpapers(JSON.parse(cached));
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${CONFIG.githubUser}/${CONFIG.githubRepo}/contents/${CONFIG.wallpapersFolder}`);
+        if (!res.ok) throw new Error("Folder unavailable");
+        const data = await res.json();
+        const images = data
+          .filter(f => /\.(png|jpe?g|webp|PNG|JPG)$/i.test(f.name))
+          .map(f => ({ name: f.name, url: f.download_url }));
+
+        if (images.length > 0) {
+          localStorage.setItem(cacheKey, JSON.stringify(images));
+          localStorage.setItem(cacheTimeKey, Date.now().toString());
+          renderWallpapers(images);
+          return;
+        }
+      } catch (e) {}
 
       renderWallpapers([
         { name: "Minimal Wave", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1080&auto=format&fit=crop" },
@@ -1546,7 +1589,11 @@
     }
 
     function renderWallpapers(items) {
-      if (!wpGrid) return;
+      if (!items || !items.length) {
+        wpGrid.innerHTML = `<div style="color:var(--text-muted); font-size:13px; padding:15px; grid-column:1/-1; text-align:center;">Upload wallpaper images to your <code>/wallpapers</code> GitHub folder to display them here!</div>`;
+        return;
+      }
+
       wpGrid.innerHTML = items.map(w => `
         <div class="wp-item" onclick="openWallpaper('${escapeHTML(w.url)}')">
           <img src="${escapeHTML(w.url)}" alt="${escapeHTML(w.name)}" loading="lazy" />
@@ -1560,14 +1607,9 @@
     /* =========================================================
        INIT
     ========================================================= */
-    document.addEventListener("DOMContentLoaded", () => {
-      feather.replace();
-      loadDeals();
-      loadWallpapers();
-
-      const initialHash = window.location.hash.replace("#", "") || "home";
-      switchPage(initialHash);
-    });
+    feather.replace();
+    loadDeals();
+    loadWallpapers();
   </script>
 </body>
 </html>
