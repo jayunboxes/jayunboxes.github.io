@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="jayunboxes — tech reviews, AI tools, curated deals, wallpapers and more.">
+  <meta name="description" content="jayunboxes — tech reviews, AI tools, creator resources, wallpapers and more.">
   <title>jayunboxes — Tech, Unboxed.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
+
     :root{
       --black:#000;
       --near:#050505;
@@ -102,7 +104,7 @@
     .desktop-links{
       display:flex;
       align-items:center;
-      gap:30px;
+      gap:26px;
     }
 
     .desktop-links a{
@@ -166,7 +168,7 @@
     .mobile-menu a{
       display:block;
 
-      font-size:30px;
+      font-size:28px;
       font-weight:600;
       letter-spacing:-.04em;
 
@@ -412,10 +414,6 @@
       max-width:1000px;
     }
 
-    .statement .section-title strong{
-      font-weight:700;
-    }
-
     .statement .section-sub{
       color:#6e6e73;
     }
@@ -566,6 +564,195 @@
         );
 
       box-shadow:0 20px 50px rgba(0,0,0,.25);
+    }
+
+
+    /* =========================
+       AI MASTERCLASS
+    ========================= */
+
+    .masterclass-section{
+      background:#000;
+    }
+
+    .masterclass-card{
+      min-height:560px;
+
+      border-radius:32px;
+
+      overflow:hidden;
+
+      position:relative;
+
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      background:
+        radial-gradient(
+          circle at 75% 50%,
+          rgba(41,151,255,.16),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #151517,
+          #050505
+        );
+
+      border:1px solid rgba(255,255,255,.1);
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.4);
+    }
+
+    .masterclass-content{
+      padding:55px;
+
+      display:flex;
+      flex-direction:column;
+
+      justify-content:center;
+
+      position:relative;
+      z-index:2;
+    }
+
+    .masterclass-content h2{
+      font-size:clamp(48px,6vw,78px);
+
+      line-height:.94;
+
+      letter-spacing:-.065em;
+
+      font-weight:700;
+
+      margin-top:5px;
+    }
+
+    .masterclass-content h2 span{
+      color:#6e6e73;
+    }
+
+    .masterclass-content p{
+      max-width:520px;
+
+      color:#a1a1a6;
+
+      font-size:17px;
+
+      line-height:1.55;
+
+      margin-top:25px;
+    }
+
+    .masterclass-actions{
+      margin-top:30px;
+    }
+
+    .masterclass-visual{
+      position:relative;
+
+      min-height:560px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+    }
+
+    .masterclass-glow{
+      position:absolute;
+
+      width:420px;
+      height:420px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(41,151,255,.35),
+          rgba(41,151,255,.08) 45%,
+          transparent 70%
+        );
+
+      filter:blur(10px);
+    }
+
+    .masterclass-paper{
+      width:245px;
+      height:340px;
+
+      position:relative;
+      z-index:2;
+
+      padding:27px;
+
+      border-radius:8px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8f8fa,
+          #d8d8dd
+        );
+
+      color:#111;
+
+      box-shadow:
+        25px 35px 70px rgba(0,0,0,.55),
+        -10px -10px 40px rgba(255,255,255,.08);
+
+      transform:
+        rotate(7deg)
+        perspective(800px)
+        rotateY(-8deg);
+
+      transition:
+        transform .5s var(--ease);
+    }
+
+    .masterclass-card:hover .masterclass-paper{
+      transform:
+        rotate(3deg)
+        perspective(800px)
+        rotateY(-3deg)
+        translateY(-8px);
+    }
+
+    .paper-top{
+      font-size:10px;
+
+      font-weight:700;
+
+      letter-spacing:.12em;
+
+      margin-bottom:55px;
+    }
+
+    .paper-title{
+      font-size:42px;
+
+      line-height:.82;
+
+      letter-spacing:-.07em;
+
+      font-weight:800;
+    }
+
+    .paper-sub{
+      margin-top:22px;
+
+      font-size:9px;
+
+      line-height:1.4;
+
+      font-weight:600;
+
+      letter-spacing:.08em;
+
+      color:#666;
     }
 
 
@@ -990,6 +1177,15 @@
       .wall-grid{
         grid-template-columns:repeat(2,1fr);
       }
+
+      .masterclass-card{
+        grid-template-columns:1fr;
+      }
+
+      .masterclass-visual{
+        min-height:450px;
+      }
+
     }
 
 
@@ -1036,6 +1232,32 @@
       .footer-inner{
         flex-direction:column;
       }
+
+      .masterclass-content{
+        padding:38px 27px 20px;
+      }
+
+      .masterclass-content h2{
+        font-size:52px;
+      }
+
+      .masterclass-content p{
+        font-size:16px;
+      }
+
+      .masterclass-visual{
+        min-height:430px;
+      }
+
+      .masterclass-paper{
+        width:210px;
+        height:295px;
+      }
+
+      .paper-title{
+        font-size:36px;
+      }
+
     }
 
   </style>
@@ -1044,7 +1266,10 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
   <header class="nav-wrap">
 
@@ -1054,10 +1279,15 @@
         jayunboxes
       </a>
 
+
       <div class="desktop-links">
 
         <a href="deals.html">
           Deals
+        </a>
+
+        <a href="#masterclass">
+          AI Masterclass
         </a>
 
         <a href="#wallpapers">
@@ -1075,10 +1305,13 @@
         <a
           class="nav-cta"
           href="mailto:techwithjay.biz@gmail.com?subject=Business%20Inquiry%20-%20jayunboxes">
+
           Contact
+
         </a>
 
       </div>
+
 
       <button
         class="menu-btn"
@@ -1094,7 +1327,9 @@
   </header>
 
 
-  <!-- MOBILE MENU -->
+  <!-- =========================
+       MOBILE MENU
+  ========================= -->
 
   <div
     class="mobile-menu"
@@ -1102,6 +1337,10 @@
 
     <a href="deals.html">
       Deals
+    </a>
+
+    <a href="#masterclass">
+      AI Masterclass
     </a>
 
     <a href="#wallpapers">
@@ -1126,34 +1365,49 @@
   <main id="top">
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
       <div class="hero-inner">
-
-        <!-- KEEP THIS FILE NAME EXACTLY THE SAME -->
 
         <img
           src="Profile.jpg.PNG"
           alt="Jay — jayunboxes"
           class="hero-profile">
 
+
         <div class="eyebrow">
           TECH CREATOR • @JAYUNBOXES
         </div>
 
+
         <h1>
+
           Tech.
-          <span>Unboxed.</span>
+
+          <span>
+            Unboxed.
+          </span>
+
         </h1>
 
+
         <p class="hero-copy">
-          Gadgets worth knowing. AI tools worth trying. Deals worth grabbing.
-          No marketing fluff — just tech, tested and explained.
+
+          Gadgets worth knowing. AI tools worth trying.
+          Deals worth grabbing.
+
+          No marketing fluff — just tech,
+          tested and explained.
+
         </p>
 
+
         <div class="hero-actions">
+
 
           <a
             class="pill pill-white"
@@ -1184,9 +1438,11 @@
 
           </a>
 
+
         </div>
 
       </div>
+
 
       <div class="hero-scroll">
         Scroll to explore
@@ -1195,7 +1451,9 @@
     </section>
 
 
-    <!-- STATEMENT -->
+    <!-- =========================
+         STATEMENT
+    ========================= -->
 
     <section class="section statement">
 
@@ -1205,19 +1463,25 @@
           THE IDEA
         </div>
 
+
         <h2 class="section-title">
 
-          <strong>Less noise.</strong>
+          <strong>
+            Less noise.
+          </strong>
+
           <br>
 
           More tech you'll actually use.
 
         </h2>
 
+
         <p class="section-sub">
 
           From the next iPhone to an AI tool you didn't know existed,
-          I find the useful stuff, test it, and turn it into content you can understand in seconds.
+          I find the useful stuff, test it, and turn it into content
+          you can understand in seconds.
 
         </p>
 
@@ -1226,11 +1490,14 @@
     </section>
 
 
-    <!-- FEATURED -->
+    <!-- =========================
+         WHAT I DO
+    ========================= -->
 
     <section class="section">
 
       <div class="inner">
+
 
         <div class="reveal">
 
@@ -1239,9 +1506,11 @@
           </div>
 
           <h2 class="section-title">
+
             Built around
             <br>
             real tech.
+
           </h2>
 
         </div>
@@ -1258,15 +1527,23 @@
                 01 — CONTENT
               </div>
 
+
               <h3>
-                Gadgets, apps & AI — without the boring bits.
+                Gadgets, apps & AI —
+                without the boring bits.
               </h3>
 
+
               <p>
-                Short-form tech videos designed to show you what matters before you spend your money.
+
+                Short-form tech videos designed
+                to show you what matters before
+                you spend your money.
+
               </p>
 
             </div>
+
 
             <div class="feature-visual">
 
@@ -1285,15 +1562,21 @@
                 02 — COMMUNITY
               </div>
 
+
               <h3>
                 Find the good stuff faster.
               </h3>
 
+
               <p>
-                Deals, discoveries and useful links shared across my channels.
+
+                Deals, discoveries and useful links
+                shared across my channels.
+
               </p>
 
             </div>
+
 
             <div class="feature-visual">
 
@@ -1311,7 +1594,121 @@
     </section>
 
 
-    <!-- WALLPAPERS -->
+    <!-- =========================
+         AI MASTERCLASS
+    ========================= -->
+
+    <section
+      class="section masterclass-section"
+      id="masterclass">
+
+      <div class="inner">
+
+
+        <div class="masterclass-card reveal">
+
+
+          <div class="masterclass-content">
+
+
+            <div class="eyebrow">
+              JAYUNBOXES EXCLUSIVE
+            </div>
+
+
+            <h2>
+
+              AI Masterclass.
+
+              <br>
+
+              <span>
+                Create smarter.
+              </span>
+
+            </h2>
+
+
+            <p>
+
+              A 32-page step-by-step creator playbook
+              designed to help you use AI for content,
+              scripting, visuals, videos, productivity
+              and building a stronger creator brand.
+
+            </p>
+
+
+            <div class="masterclass-actions">
+
+
+              <a
+                href="https://superprofile.bio/vp/6ac777382a78d50013d2955a"
+                target="_blank"
+                rel="noopener"
+                class="pill pill-white">
+
+                Get the AI Masterclass
+
+                <i
+                  data-feather="arrow-up-right"
+                  width="15">
+                </i>
+
+              </a>
+
+
+            </div>
+
+          </div>
+
+
+          <div class="masterclass-visual">
+
+            <div class="masterclass-glow"></div>
+
+
+            <div class="masterclass-paper">
+
+
+              <div class="paper-top">
+                JAYUNBOXES
+              </div>
+
+
+              <div class="paper-title">
+
+                AI
+                <br>
+                MASTERCLASS
+
+              </div>
+
+
+              <div class="paper-sub">
+
+                THE AI-POWERED
+                <br>
+                CREATOR PLAYBOOK
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WALLPAPERS
+    ========================= -->
 
     <section
       class="section wall-section"
@@ -1319,20 +1716,28 @@
 
       <div class="inner">
 
+
         <div class="reveal">
 
           <div class="eyebrow">
             FREE DOWNLOADS
           </div>
 
+
           <h2 class="section-title">
+
             Make your setup
             <br>
             look better.
+
           </h2>
 
+
           <p class="section-sub">
-            Minimal wallpapers made for phones, desks and clean setups.
+
+            Minimal wallpapers made for phones,
+            desks and clean setups.
+
           </p>
 
         </div>
@@ -1347,9 +1752,11 @@
             class="wall"
             onclick="openWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1400&auto=format&fit=crop')">
 
+
             <img
               src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop"
               alt="Minimal Wave">
+
 
             <div class="wall-overlay">
 
@@ -1371,9 +1778,11 @@
             class="wall"
             onclick="openWallpaper('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=1400&auto=format&fit=crop')">
 
+
             <img
               src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=900&auto=format&fit=crop"
               alt="Studio">
+
 
             <div class="wall-overlay">
 
@@ -1395,9 +1804,11 @@
             class="wall"
             onclick="openWallpaper('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1400&auto=format&fit=crop')">
 
+
             <img
               src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=900&auto=format&fit=crop"
               alt="Gradient">
+
 
             <div class="wall-overlay">
 
@@ -1422,7 +1833,9 @@
     </section>
 
 
-    <!-- AI TOOLS -->
+    <!-- =========================
+         AI TOOLS
+    ========================= -->
 
     <section
       class="section"
@@ -1430,20 +1843,28 @@
 
       <div class="inner">
 
+
         <div class="reveal">
 
           <div class="eyebrow">
             MY STACK
           </div>
 
+
           <h2 class="section-title">
+
             Tools behind
             <br>
             the content.
+
           </h2>
 
+
           <p class="section-sub">
-            The apps I use to research, create, edit and publish.
+
+            The apps I use to research,
+            create, edit and publish.
+
           </p>
 
         </div>
@@ -1463,7 +1884,8 @@
             </h3>
 
             <p>
-              Ideas, scripts, research and creative workflows.
+              Ideas, scripts, research
+              and creative workflows.
             </p>
 
           </article>
@@ -1480,7 +1902,8 @@
             </h3>
 
             <p>
-              Cinematic AI video generation and visual storytelling.
+              Cinematic AI video generation
+              and visual storytelling.
             </p>
 
           </article>
@@ -1497,7 +1920,8 @@
             </h3>
 
             <p>
-              Fast edits, captions, pacing and transitions.
+              Fast edits, captions,
+              pacing and transitions.
             </p>
 
           </article>
@@ -1514,7 +1938,8 @@
             </h3>
 
             <p>
-              Voiceovers and high-fidelity synthetic speech.
+              Voiceovers and high-fidelity
+              synthetic speech.
             </p>
 
           </article>
@@ -1531,7 +1956,8 @@
             </h3>
 
             <p>
-              Reel covers, graphics and visual design.
+              Reel covers, graphics
+              and visual design.
             </p>
 
           </article>
@@ -1548,7 +1974,8 @@
             </h3>
 
             <p>
-              Multimodal research and everyday AI workflows.
+              Multimodal research
+              and everyday AI workflows.
             </p>
 
           </article>
@@ -1561,7 +1988,9 @@
     </section>
 
 
-    <!-- CHANNELS -->
+    <!-- =========================
+         CHANNELS
+    ========================= -->
 
     <section
       class="section channels"
@@ -1569,16 +1998,20 @@
 
       <div class="inner">
 
+
         <div class="reveal">
 
           <div class="eyebrow">
             FOLLOW ALONG
           </div>
 
+
           <h2 class="section-title">
+
             Pick your
             <br>
             channel.
+
           </h2>
 
         </div>
@@ -1593,11 +2026,14 @@
             target="_blank"
             rel="noopener">
 
+
             <div class="channel-left">
+
 
               <div class="channel-icon">
                 <i data-feather="instagram"></i>
               </div>
+
 
               <div>
 
@@ -1606,12 +2042,14 @@
                 </h3>
 
                 <p>
-                  Reels, gadget discoveries, tutorials & daily tech
+                  Reels, gadget discoveries,
+                  tutorials & daily tech
                 </p>
 
               </div>
 
             </div>
+
 
             <i
               class="channel-arrow"
@@ -1627,11 +2065,14 @@
             target="_blank"
             rel="noopener">
 
+
             <div class="channel-left">
+
 
               <div class="channel-icon">
                 <i data-feather="youtube"></i>
               </div>
+
 
               <div>
 
@@ -1640,12 +2081,14 @@
                 </h3>
 
                 <p>
-                  Shorts, reviews and deeper tech videos
+                  Shorts, reviews and deeper
+                  tech videos
                 </p>
 
               </div>
 
             </div>
+
 
             <i
               class="channel-arrow"
@@ -1661,11 +2104,14 @@
             target="_blank"
             rel="noopener">
 
+
             <div class="channel-left">
+
 
               <div class="channel-icon">
                 <i data-feather="message-circle"></i>
               </div>
+
 
               <div>
 
@@ -1674,12 +2120,14 @@
                 </h3>
 
                 <p>
-                  Price drops, deals and useful finds
+                  Price drops, deals
+                  and useful finds
                 </p>
 
               </div>
 
             </div>
+
 
             <i
               class="channel-arrow"
@@ -1695,11 +2143,14 @@
             target="_blank"
             rel="noopener">
 
+
             <div class="channel-left">
+
 
               <div class="channel-icon">
                 <i data-feather="at-sign"></i>
               </div>
+
 
               <div>
 
@@ -1708,12 +2159,14 @@
                 </h3>
 
                 <p>
-                  Quick tech takes and conversations
+                  Quick tech takes
+                  and conversations
                 </p>
 
               </div>
 
             </div>
+
 
             <i
               class="channel-arrow"
@@ -1730,25 +2183,41 @@
     </section>
 
 
-    <!-- CONTACT CTA -->
+    <!-- =========================
+         CONTACT CTA
+    ========================= -->
 
     <section class="section cta">
 
       <div class="inner cta-inner reveal">
 
+
         <div class="eyebrow">
           LET'S BUILD SOMETHING
         </div>
 
+
         <h2>
+
           Have a product?
+
           <br>
-          <span>Let's unbox it.</span>
+
+          <span>
+            Let's unbox it.
+          </span>
+
         </h2>
 
+
         <p>
-          For brand collaborations, product launches, UGC and tech campaigns, get in touch.
+
+          For brand collaborations,
+          product launches, UGC and tech campaigns,
+          get in touch.
+
         </p>
+
 
         <a
           class="pill pill-white cta-email"
@@ -1763,6 +2232,7 @@
 
         </a>
 
+
       </div>
 
     </section>
@@ -1771,71 +2241,99 @@
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================= -->
 
   <footer>
 
     <div class="footer-inner">
 
+
       <div>
         © 2026 jayunboxes. Curated tech, no fluff.
       </div>
+
 
       <div class="footer-links">
 
         <a
           href="https://instagram.com/jayunboxes"
           target="_blank">
+
           Instagram
+
         </a>
 
+
         <a href="mailto:techwithjay.biz@gmail.com">
+
           Email
+
         </a>
 
       </div>
+
 
     </div>
 
   </footer>
 
 
-  <!-- WALLPAPER MODAL -->
+  <!-- =========================
+       WALLPAPER MODAL
+  ========================= -->
 
   <div
     class="modal"
     id="wpModal">
 
+
     <div class="modal-box">
+
 
       <img
         id="wpPreview"
         src=""
         alt="Wallpaper preview">
 
+
       <div class="modal-actions">
+
 
         <a
           id="wpDownload"
           href=""
           download>
+
           Download
+
         </a>
 
+
         <button id="wpClose">
+
           Close
+
         </button>
 
+
       </div>
+
 
     </div>
 
   </div>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
 
   <script>
+
+
+    /* Feather Icons */
 
     feather.replace();
 
@@ -1853,14 +2351,18 @@
 
     menuBtn.addEventListener("click", () => {
 
+
       mobileMenu.classList.toggle("open");
 
+
       document.body.classList.toggle("menu-open");
+
 
       menuBtn.innerHTML =
         mobileMenu.classList.contains("open")
           ? '<i data-feather="x"></i>'
           : '<i data-feather="menu"></i>';
+
 
       feather.replace();
 
@@ -1871,14 +2373,19 @@
       .querySelectorAll("a")
       .forEach(a => {
 
+
         a.addEventListener("click", () => {
+
 
           mobileMenu.classList.remove("open");
 
+
           document.body.classList.remove("menu-open");
+
 
           menuBtn.innerHTML =
             '<i data-feather="menu"></i>';
+
 
           feather.replace();
 
@@ -1893,9 +2400,12 @@
 
     const observer =
       new IntersectionObserver(
+
         (entries) => {
 
+
           entries.forEach(entry => {
+
 
             if(entry.isIntersecting){
 
@@ -1903,18 +2413,24 @@
 
             }
 
+
           });
 
+
         },
+
         {
           threshold:.12
         }
+
       );
 
 
     document
       .querySelectorAll(".reveal")
-      .forEach(el => observer.observe(el));
+      .forEach(el =>
+        observer.observe(el)
+      );
 
 
     /* =========================
@@ -1950,13 +2466,16 @@
 
     modal.addEventListener("click", e => {
 
+
       if(e.target === modal){
 
         modal.classList.remove("open");
 
       }
 
+
     });
+
 
   </script>
 
